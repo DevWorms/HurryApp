@@ -16,7 +16,7 @@
 		3B374C881C0262EC00B3919A /* HurryAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C871C0262EC00B3919A /* HurryAppUITests.swift */; };
 		3B374C961C027F2500B3919A /* RegistroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C951C027F2500B3919A /* RegistroViewController.swift */; };
 		3B374C981C02801E00B3919A /* PagoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C971C02801E00B3919A /* PagoViewController.swift */; };
-		3B374C9C1C02830400B3919A /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C9B1C02830400B3919A /* PerfilViewController.swift */; };
+		3B97AD9E1C02E375001C8947 /* ComprarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,7 @@
 		3B374C891C0262EC00B3919A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B374C951C027F2500B3919A /* RegistroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistroViewController.swift; sourceTree = "<group>"; };
 		3B374C971C02801E00B3919A /* PagoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagoViewController.swift; sourceTree = "<group>"; };
-		3B374C9B1C02830400B3919A /* PerfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
+		3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComprarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +106,7 @@
 				3B374C671C0262EA00B3919A /* AppDelegate.swift */,
 				3B374C691C0262EA00B3919A /* ViewController.swift */,
 				3B374C6B1C0262EB00B3919A /* Main.storyboard */,
-				3B374C9B1C02830400B3919A /* PerfilViewController.swift */,
+				3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */,
 				3B374C971C02801E00B3919A /* PagoViewController.swift */,
 				3B374C951C027F2500B3919A /* RegistroViewController.swift */,
 				3B374C6E1C0262EB00B3919A /* Assets.xcassets */,
@@ -268,9 +268,9 @@
 			files = (
 				3B374C6A1C0262EA00B3919A /* ViewController.swift in Sources */,
 				3B374C981C02801E00B3919A /* PagoViewController.swift in Sources */,
+				3B97AD9E1C02E375001C8947 /* ComprarViewController.swift in Sources */,
 				3B374C961C027F2500B3919A /* RegistroViewController.swift in Sources */,
 				3B374C681C0262EA00B3919A /* AppDelegate.swift in Sources */,
-				3B374C9C1C02830400B3919A /* PerfilViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
