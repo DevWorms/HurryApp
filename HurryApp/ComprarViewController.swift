@@ -8,8 +8,13 @@
 
 import UIKit
 
-class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIDocumentMenuDelegate, UIDocumentInteractionControllerDelegate {
+    
+    @IBOutlet weak var ima: UIImageView!
+    @IBOutlet weak var nameDoc: UIButton!
+    
+    var filePath: String! = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +24,86 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func uploadFile(sender: AnyObject) {
+        
+        if #available(iOS 8.0, *) {
+            let documentMenu = UIDocumentMenuViewController(documentTypes: ["public.image","public.data"], inMode: UIDocumentPickerMode.Import)
+            
+            documentMenu.delegate = self
+            
+            //documentMenu.modalPresentationStyle = UIModalPresentationStyle.FullScreen
+            
+            self.presentViewController(documentMenu, animated: true, completion: nil)
+            
+        } else {
+            // Fallback on earlier versions
+        }
+        
+    }
+    
+    @IBAction func openFile(sender: AnyObject) {
+        
+        let documentInteraction =  UIDocumentInteractionController(URL: NSURL(fileURLWithPath: self.filePath) )
+        
+        documentInteraction.delegate = self
+        
+        // Preview PDF
+        documentInteraction.presentPreviewAnimated(true)
+        //documentInteraction.presentOpenInMenuFromRect(sender.frame, inView: self.view, animated: true)
+        
+    }
+    
+    // MARK: - UIDocumentInteractionControllerDelegate
+    
+    func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
+        return self
+    }
+    
+    // MARK: - UIDocumentPickerDelegate
+    
+    @available(iOS 8.0, *)
+    func documentPicker(controller: UIDocumentPickerViewController, didPickDocumentAtURL url: NSURL) {
+        if controller.documentPickerMode == UIDocumentPickerMode.Import {
+            
+            //var data = NSData(contentsOfFile: url.path! )
+            
+            self.filePath = url.path!
+            var fileSize : UInt64 = 0
+            
+            do {
+                let attr : NSDictionary? = try NSFileManager.defaultManager().attributesOfItemAtPath( self.filePath)
+                
+                if let _attr = attr {
+                    fileSize = _attr.fileSize();
+                    
+                    print("fileSize: \(fileSize)")
+                    
+                }
+                
+                //print ("hola: \(attr)")
+                
+                //self.ima.image = UIImage(contentsOfFile: attr)
+                self.nameDoc.titleLabel?.text = url.lastPathComponent!
+                
+                
+            } catch {
+                print("Error: \(error)")
+            }
+            
+        }
+    }
+    
+    // MARK: - UIDocumentMenuDelegate
+    
+    @available(iOS 8.0, *)
+    func documentMenu(documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
+        
+        documentPicker.delegate = self
+        presentViewController(documentPicker, animated: true, completion: nil)
+        print("HurryApp Menu")
     }
     
     // MARK: - UITableViewDelegate, UITableViewDataSource
