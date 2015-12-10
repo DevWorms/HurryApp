@@ -270,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s6c-kD-sDU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2489" y="307"/>
+            <point key="canvasLocation" x="2487" y="307"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="cde-Rg-eFo">
@@ -478,10 +478,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hj5-Cs-YOO">
-                                                    <rect key="frame" x="495" y="7" width="97" height="30"/>
+                                                    <rect key="frame" x="537" y="7" width="55" height="30"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="97" id="Mou-Ma-hoC"/>
+                                                        <constraint firstAttribute="width" constant="55" id="Mou-Ma-hoC"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -511,7 +511,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4En-vH-L13">
+                                                <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4En-vH-L13">
                                                     <rect key="frame" x="543" y="5" width="51" height="31"/>
                                                     <animations/>
                                                 </switch>
@@ -540,7 +540,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lay-uN-XUH">
+                                                <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lay-uN-XUH">
                                                     <rect key="frame" x="543" y="4" width="51" height="31"/>
                                                     <animations/>
                                                 </switch>
@@ -562,7 +562,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QG4-kl-Xie">
+                                                <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QG4-kl-Xie">
                                                     <rect key="frame" x="543" y="8" width="51" height="31"/>
                                                     <animations/>
                                                 </switch>
@@ -592,7 +592,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UX2-BX-twe">
+                                                <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UX2-BX-twe">
                                                     <rect key="frame" x="543" y="8" width="51" height="31"/>
                                                     <animations/>
                                                 </switch>
@@ -628,7 +628,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MS5-xd-NEl">
+                                                <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MS5-xd-NEl">
                                                     <rect key="frame" x="543" y="7" width="51" height="31"/>
                                                     <animations/>
                                                 </switch>
@@ -650,28 +650,28 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comentarios" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NqI-cD-TIF">
-                                                    <rect key="frame" x="8" y="14" width="98" height="21"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vNc-sx-gPL">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Engargolado, engrapado, con folder de color..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vNc-sx-gPL">
                                                     <rect key="frame" x="130" y="10" width="462" height="30"/>
                                                     <animations/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comentarios:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NqI-cD-TIF">
+                                                    <rect key="frame" x="8" y="12" width="103" height="21"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstItem="vNc-sx-gPL" firstAttribute="trailing" secondItem="Hyc-39-Ean" secondAttribute="trailingMargin" id="Klv-1l-BPo"/>
                                                 <constraint firstItem="NqI-cD-TIF" firstAttribute="leading" secondItem="Hyc-39-Ean" secondAttribute="leadingMargin" id="Pee-3R-YJT"/>
-                                                <constraint firstItem="vNc-sx-gPL" firstAttribute="centerY" secondItem="NqI-cD-TIF" secondAttribute="centerY" id="iFn-Xh-Nnb"/>
+                                                <constraint firstItem="vNc-sx-gPL" firstAttribute="centerY" secondItem="NqI-cD-TIF" secondAttribute="centerY" constant="2.5" id="iFn-Xh-Nnb"/>
                                                 <constraint firstItem="vNc-sx-gPL" firstAttribute="centerY" secondItem="Hyc-39-Ean" secondAttribute="centerY" id="n7e-t0-sMF"/>
-                                                <constraint firstItem="vNc-sx-gPL" firstAttribute="leading" secondItem="NqI-cD-TIF" secondAttribute="trailing" constant="24" id="oIJ-DH-bxN"/>
+                                                <constraint firstItem="vNc-sx-gPL" firstAttribute="leading" secondItem="NqI-cD-TIF" secondAttribute="trailing" constant="19" id="oIJ-DH-bxN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -699,9 +699,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BbD-2S-HNY">
-                                <rect key="frame" x="526" y="521" width="54" height="30"/>
+                                <rect key="frame" x="526" y="519" width="57" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Aceptar"/>
+                                <state key="normal" title="Imprimir"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sube tu archivo (word/pdf)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhP-L7-L8l">
                                 <rect key="frame" x="0.0" y="64" width="600" height="40"/>
@@ -720,7 +720,7 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="feK-Kf-UbI" secondAttribute="trailing" constant="92" id="15W-Xc-u7l"/>
                             <constraint firstItem="Qf7-CV-xbJ" firstAttribute="top" secondItem="MHH-j2-6yN" secondAttribute="bottom" id="4QU-Z3-Ddh"/>
-                            <constraint firstItem="BbD-2S-HNY" firstAttribute="trailing" secondItem="99l-6Q-3Ab" secondAttribute="trailingMargin" constant="1" id="7UL-6M-d10"/>
+                            <constraint firstItem="BbD-2S-HNY" firstAttribute="trailing" secondItem="99l-6Q-3Ab" secondAttribute="trailingMargin" constant="3" id="7UL-6M-d10"/>
                             <constraint firstItem="XhP-L7-L8l" firstAttribute="trailing" secondItem="IbV-FB-tnc" secondAttribute="trailing" constant="1" id="FEy-Iv-PqZ"/>
                             <constraint firstItem="BbD-2S-HNY" firstAttribute="baseline" secondItem="MHH-j2-6yN" secondAttribute="baseline" constant="-2" id="MhU-xd-o9d"/>
                             <constraint firstItem="MHH-j2-6yN" firstAttribute="leading" secondItem="99l-6Q-3Ab" secondAttribute="leadingMargin" id="QL1-u6-R9w"/>
