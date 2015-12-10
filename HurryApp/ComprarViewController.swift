@@ -46,13 +46,15 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func openFile(sender: AnyObject) {
         
-        let documentInteraction =  UIDocumentInteractionController(URL: NSURL(fileURLWithPath: self.filePath) )
-        
-        documentInteraction.delegate = self
-        
-        // Preview PDF
-        documentInteraction.presentPreviewAnimated(true)
-        //documentInteraction.presentOpenInMenuFromRect(sender.frame, inView: self.view, animated: true)
+        if self.filePath != "" {
+            let documentInteraction =  UIDocumentInteractionController(URL: NSURL(fileURLWithPath: self.filePath) )
+            
+            documentInteraction.delegate = self
+            
+            // Preview PDF
+            documentInteraction.presentPreviewAnimated(true)
+            //documentInteraction.presentOpenInMenuFromRect(sender.frame, inView: self.view, animated: true)
+        }
         
     }
     
