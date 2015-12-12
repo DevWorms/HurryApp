@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">hurryApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="paises">
+        <item>México</item>
+        <item>Perú</item>
+        <item>España</item>
+        <item>Colombia</item>
+
+    </string-array>
+</resources>
