@@ -10,6 +10,7 @@ import UIKit
 
 class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIDocumentMenuDelegate, UIDocumentInteractionControllerDelegate {
     
+    
     @IBOutlet weak var ima: UIImageView!
     @IBOutlet weak var nameDoc: UIButton!
     
@@ -26,6 +27,60 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func mandarPHP(sender: AnyObject) {
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://hurryapp.devworms.com/subir.php")!)
+        request.HTTPMethod = "POST"
+        
+        let data = NSData(contentsOfFile: self.filePath )
+        
+        if(data==nil)  { print("ño") } else { print("shi") }
+        
+        let boundary = generateBoundaryString()
+        
+        // Set Content-Type in HTTP header.
+        let contentType = "multipart/form-data; boundary=" + boundary
+        let fileName = self.nameDoc.titleLabel?.text
+        let mimeType = "application/pdf" // http://www.sitepoint.com/web-foundations/mime-types-complete-list/
+        let fieldName = "documento" // $_FILES
+        
+        let requestBodyData = NSMutableData()
+        
+        requestBodyData.appendString("--\(boundary)\r\n")
+        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "numero" )\"\r\n\r\n")
+        requestBodyData.appendString("\( "1122" )\r\n")  // numero puede ser string o integer
+        
+        requestBodyData.appendString("--\(boundary)\r\n")
+        requestBodyData.appendString("Content-Disposition: form-data; name=\"\(fieldName)\"; filename=" + (fileName)! + "\r\n")
+        requestBodyData.appendString("Content-Type: \(mimeType)\r\n\r\n")
+        requestBodyData.appendData( data! )
+        requestBodyData.appendString("\r\n")
+        requestBodyData.appendString("--\(boundary)--\r\n")
+        
+        //print(requestBodyData) // This would allow you to see what the dataString looks like.
+        
+        // Set the HTTPBody we'd like to submit
+        request.HTTPBody = requestBodyData
+        
+        request.setValue(contentType, forHTTPHeaderField: "Content-Type")
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            data, response, error in
+            
+            if error != nil {
+                print("error=\(error)")
+                return
+            }
+            
+            print("response = \(response)")
+            
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print("responseString = \(responseString)")
+        }
+        task.resume()
+        
+        
+    }
     
     @IBAction func uploadFile(sender: AnyObject) {
         
@@ -58,6 +113,10 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
+    func generateBoundaryString() -> String {
+        return "Boundary-\(NSUUID().UUIDString)"
+    }
+    
     // MARK: - UIDocumentInteractionControllerDelegate
     
     func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
@@ -87,7 +146,8 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 //print ("hola: \(attr)")
                 
-                //self.ima.image = UIImage(contentsOfFile: attr)
+                //self.ima.image = UIImage(contentsOfFile: self.filePath )
+                self.ima.image = UIImage(data: NSData(contentsOfFile: self.filePath )! )
                 self.nameDoc.titleLabel?.text = url.lastPathComponent!
                 
                 
@@ -138,4 +198,12 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     */
 
+}
+
+extension NSMutableData {
+    
+    func appendString(string: String) {
+        let data = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        appendData(data!)
+    }
 }
