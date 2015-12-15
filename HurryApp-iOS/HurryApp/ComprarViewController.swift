@@ -10,7 +10,6 @@ import UIKit
 
 class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIDocumentMenuDelegate, UIDocumentInteractionControllerDelegate {
     
-    
     @IBOutlet weak var ima: UIImageView!
     @IBOutlet weak var nameDoc: UIButton!
     
