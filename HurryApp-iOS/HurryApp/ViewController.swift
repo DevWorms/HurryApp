@@ -16,15 +16,19 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if ((FBSDKAccessToken.currentAccessToken()) == nil){
             print("Not logged in..")
-
+            
         }else{
             print("Logged in..")
-
+            print("current: \(FBSDKAccessToken.currentAccessToken().userID)")
+            
+            self.performSegueWithIdentifier("InicioPagoSegue", sender: nil)
+            
         }
         
         let loginButton = FBSDKLoginButton()
         loginButton.delegate = self //important!
-        loginButton.center = self.view.center
+        loginButton.center.x = self.view.center.x
+        loginButton.center.y = self.view.center.y + 20.0
         self.view.addSubview(loginButton)
         
     }
@@ -51,6 +55,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         else {
             // Navigate to other view
             print("logIN")
+            self.performSegueWithIdentifier("InicioPagoSegue", sender: nil)
             
         }
     }
