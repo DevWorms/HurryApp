@@ -138,7 +138,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="Dp1-Wk-RaM" kind="presentation" identifier="PagoSegue" modalTransitionStyle="crossDissolve" id="c3m-vn-u64"/>
+                        <segue destination="Dp1-Wk-RaM" kind="presentation" identifier="PagoSegue" modalTransitionStyle="flipHorizontal" id="c3m-vn-u64"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iqh-n3-nZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -264,10 +264,10 @@
             </objects>
             <point key="canvasLocation" x="4062" y="307"/>
         </scene>
-        <!--View Controller-->
+        <!--Perfil View Controller-->
         <scene sceneID="3E4-RU-rDH">
             <objects>
-                <viewController id="pcX-5h-r8L" sceneMemberID="viewController">
+                <viewController id="pcX-5h-r8L" customClass="PerfilViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fSE-qj-Nti"/>
                         <viewControllerLayoutGuide type="bottom" id="D9L-MZ-u9g"/>
@@ -306,6 +306,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjy-oJ-o5Z">
+                                <rect key="frame" x="67" y="500" width="466" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.2527534675" blue="0.44202747219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Cerrar sesión">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOut:" destination="pcX-5h-r8L" eventType="touchUpInside" id="awS-jr-rZ4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -315,11 +325,14 @@
                             <constraint firstItem="ukZ-We-Osa" firstAttribute="leading" secondItem="gmh-OM-rSc" secondAttribute="leading" id="GpD-DS-BFP"/>
                             <constraint firstItem="zrJ-VN-HqY" firstAttribute="top" secondItem="fSE-qj-Nti" secondAttribute="bottom" constant="8" symbolic="YES" id="HXG-jK-hEr"/>
                             <constraint firstItem="5Mg-nI-NJg" firstAttribute="centerY" secondItem="zrJ-VN-HqY" secondAttribute="centerY" id="LVr-zQ-SX5"/>
+                            <constraint firstItem="Tjy-oJ-o5Z" firstAttribute="centerX" secondItem="5Ai-j6-DwT" secondAttribute="centerX" id="QHk-rW-hQ3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5Mg-nI-NJg" secondAttribute="trailing" id="QOW-rj-qF9"/>
                             <constraint firstItem="5Mg-nI-NJg" firstAttribute="trailing" secondItem="jzk-uy-EMH" secondAttribute="trailing" id="Ri9-rF-DSk"/>
                             <constraint firstItem="ukZ-We-Osa" firstAttribute="baseline" secondItem="jzk-uy-EMH" secondAttribute="baseline" id="WLN-Dg-ZAY"/>
                             <constraint firstItem="ukZ-We-Osa" firstAttribute="trailing" secondItem="gmh-OM-rSc" secondAttribute="trailing" id="Ybm-Rv-rKQ"/>
                             <constraint firstItem="gmh-OM-rSc" firstAttribute="leading" secondItem="zrJ-VN-HqY" secondAttribute="leading" id="b5X-zO-lMi"/>
+                            <constraint firstItem="Tjy-oJ-o5Z" firstAttribute="leading" secondItem="5Ai-j6-DwT" secondAttribute="leadingMargin" constant="47" id="b9C-V7-ZlO"/>
+                            <constraint firstItem="D9L-MZ-u9g" firstAttribute="top" secondItem="Tjy-oJ-o5Z" secondAttribute="bottom" constant="21" id="cyD-uh-p7E"/>
                             <constraint firstItem="gmh-OM-rSc" firstAttribute="trailing" secondItem="zrJ-VN-HqY" secondAttribute="trailing" constant="40" id="haR-p3-03I"/>
                             <constraint firstItem="5Mg-nI-NJg" firstAttribute="top" secondItem="fSE-qj-Nti" secondAttribute="bottom" constant="47" id="kqR-yq-Qaj"/>
                             <constraint firstItem="zrJ-VN-HqY" firstAttribute="leading" secondItem="5Ai-j6-DwT" secondAttribute="leadingMargin" id="sJg-ag-eJ2"/>
@@ -327,6 +340,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lkh-Px-rRA"/>
+                    <connections>
+                        <outlet property="profileImage" destination="zrJ-VN-HqY" id="PqD-nl-DG3"/>
+                        <outlet property="profileName" destination="5Mg-nI-NJg" id="xjJ-mR-OQS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9w-Tn-hrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -747,7 +764,7 @@
         <!--Navigation Controller-->
         <scene sceneID="kgz-eM-azm">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UxD-vV-i2u" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Inicio" automaticallyAdjustsScrollViewInsets="NO" id="UxD-vV-i2u" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DWx-3p-NSq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

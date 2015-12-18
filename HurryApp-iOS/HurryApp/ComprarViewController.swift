@@ -29,14 +29,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func mandarPHP(sender: AnyObject) {
         
-        
-        for i in switches {
-            print(i.on)
-        }
-        for j in textFields {
-            print(j.text!)
-        }
-        
         let data = NSData(contentsOfFile: self.filePath )
         
         if #available(iOS 8.0, *) {
@@ -57,28 +49,28 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
                 
+                /*
+                alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
+                switch action.style{
+                case .Default:
+                print("default")
+                
+                case .Cancel:
+                print("cancel")
+                
+                case .Destructive:
+                print("destructive")
+                }
+                }))
+                */
+                
                 return
             }
             
-        } else {
-            // Fallback on earlier versions
-        }
+        } else { }
         
         print("siguió")
-        /*
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
-        switch action.style{
-        case .Default:
-        print("default")
         
-        case .Cancel:
-        print("cancel")
-        
-        case .Destructive:
-        print("destructive")
-        }
-        }))
-        */
         
         let boundary = generateBoundaryString()
         

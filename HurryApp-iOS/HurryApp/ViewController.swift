@@ -15,10 +15,12 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         super.viewDidLoad()
         
         let loginButton = FBSDKLoginButton()
-        loginButton.delegate = self //important!
         loginButton.center.x = self.view.center.x
         loginButton.center.y = self.view.center.y + 20.0
         self.view.addSubview(loginButton)
+        
+        loginButton.delegate = self //important!
+        FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
         
     }
     
