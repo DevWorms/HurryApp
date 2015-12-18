@@ -21,7 +21,7 @@ class HTTPPostToPHP {
         
         requestBodyData.appendString("--\(boundary)\r\n")
         requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "numero" )\"\r\n\r\n")
-        requestBodyData.appendString("\( "1122" )\r\n")  // numero puede ser string o integer
+        requestBodyData.appendString("\( true )\r\n")  // numero puede ser string o integer
         
         requestBodyData.appendString("--\(boundary)\r\n")
         requestBodyData.appendString("Content-Disposition: form-data; name=\"\(fieldName)\"; filename=" + (fileName) + "\r\n")

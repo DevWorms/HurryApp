@@ -8,11 +8,13 @@
 
 import UIKit
 
-class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIDocumentMenuDelegate, UIDocumentInteractionControllerDelegate {
+class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIDocumentMenuDelegate, UIDocumentInteractionControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var nameDoc: UIButton!
     
     var filePath: String! = ""
+    var textFields: [UITextField] = []
+    var switches: [UISwitch] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +29,56 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func mandarPHP(sender: AnyObject) {
         
+        
+        for i in switches {
+            print(i.on)
+        }
+        for j in textFields {
+            print(j.text!)
+        }
+        
         let data = NSData(contentsOfFile: self.filePath )
         
-        if(data==nil)  { print("ño") } else { print("shi") }
+        if #available(iOS 8.0, *) {
+            
+            if (data == nil) {
+                print("ño")
+                
+                let alert = UIAlertController(title: "Nos faltó algo", message: "Selecciona un archivo existente", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+                return
+                
+            } else if (textFields[0].text == "" || textFields[0].text == " ") {
+                print("ño1")
+                
+                let alert = UIAlertController(title: "Nos faltó algo", message: "¿Cuantas hojas imprimiremos?", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+                return
+            }
+            
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        print("siguió")
+        /*
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
+        switch action.style{
+        case .Default:
+        print("default")
+        
+        case .Cancel:
+        print("cancel")
+        
+        case .Destructive:
+        print("destructive")
+        }
+        }))
+        */
         
         let boundary = generateBoundaryString()
         
@@ -59,7 +108,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         task.resume()
         
-        
+
     }
     
     func generateBoundaryString() -> String {
@@ -160,11 +209,99 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let stringIndex = String( indexPath.row )
         
+        //print(stringIndex)
+        
         let cell = tableView.dequeueReusableCellWithIdentifier( stringIndex ) as UITableViewCell!
         
+        switch (indexPath.row) {
+            case 1,2,8:
+                //print("This number is between 1,2,8")
+                let txtF = cell.viewWithTag( indexPath.row ) as! UITextField
+                textFields += [txtF]
+                txtF.delegate = self
+                //print(textFields.count)
+            
+            case 3...7:
+                //print("This number is between 3 and 7")
+                let swtch = cell.viewWithTag( indexPath.row ) as! UISwitch
+                switches += [swtch]
+                swtch.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+                //print(switches.count)
+            
+            default:
+                print("This number is not between 0 and 8")
+        }
+        
         return cell
+
     }
     
+    func stateChanged(switchState: UISwitch) {
+        
+        if switchState == switches[0] {
+            if switchState.on {
+                switches[1].setOn(false, animated: true)
+            } else {
+                switches[1].setOn(true, animated: true)
+            }
+        } else if switchState == switches[1] {
+            if switchState.on {
+                switches[0].setOn(false, animated: true)
+            } else {
+                switches[0].setOn(true, animated: true)
+            }
+        } else if switchState == switches[2] {
+            if switchState.on {
+                switches[3].setOn(false, animated: true)
+            } else {
+                switches[3].setOn(true, animated: true)
+            }
+        } else if switchState == switches[3] {
+            if switchState.on {
+                switches[2].setOn(false, animated: true)
+            } else {
+                switches[2].setOn(true, animated: true)
+            }
+        }
+        
+        
+    }
+    
+    // MARK: - UITextFieldDelegate
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        print("textFieldShouldReturn")
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        print("textFieldDidEndEditing")
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        print("shouldChangeCharactersInRange")
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        print("textFieldDidBeginEditing")
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        print("textFieldShouldBeginEditing")
+        return true
+    }
+    
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        print("textFieldShouldClear")
+        return true
+    }
+    
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        print("textFieldShouldEndEditing")
+        return true
+    }
 
     /*
     // MARK: - Navigation
