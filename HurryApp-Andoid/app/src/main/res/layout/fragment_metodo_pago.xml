@@ -1,0 +1,111 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="#e8e8e7"
+        android:orientation="vertical" >
+
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:background="@drawable/greybackground"
+            >
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:hint="Numero de tarjeta"
+                android:id="@+id/num_traj"
+                android:inputType="number"
+                android:textColor="#000000"
+                android:textColorHint="#707070"
+                android:background="#f3f3f3"
+                android:paddingLeft="5dp"
+                android:layout_marginTop="30dp"
+                android:maxLength="16" />
+
+            <LinearLayout android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="30dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:background="@drawable/greybackground"
+                >
+                    <EditText
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:inputType="number"
+                        android:ems="2"
+                        android:id="@+id/mm"
+                        android:textColor="#000000"
+                        android:textColorHint="#707070"
+                        android:background="#f3f3f3"
+                        android:hint="MM"
+                        android:textSize="16dp"
+                        android:maxLength="2" />
+
+                    <EditText
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:inputType="number"
+                        android:ems="2"
+                        android:id="@+id/aa"
+                        android:textColor="#000000"
+                        android:textColorHint="#707070"
+                        android:background="#f3f3f3"
+                        android:hint="AA"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:maxLength="2" />
+
+                    <EditText
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:inputType="number"
+                        android:ems="3"
+                        android:id="@+id/cvv"
+                        android:textColor="#000000"
+                        android:textColorHint="#707070"
+                        android:background="#f3f3f3"
+                        android:hint="CVV"
+                        android:editable="false"
+                        android:maxLength="3" />
+            </LinearLayout>
+
+            <Spinner
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:id="@+id/spinner"
+                android:layout_gravity="center_horizontal"
+                android:background="#f3f3f3"
+                android:entries="@array/paises"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agregar tarjeta"
+                android:id="@+id/button"
+                android:textColor="#fff"
+                android:textSize="13dp"
+                android:background="#2683c2"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
