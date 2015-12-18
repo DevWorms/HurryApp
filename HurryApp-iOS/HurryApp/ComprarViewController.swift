@@ -10,7 +10,6 @@ import UIKit
 
 class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIDocumentMenuDelegate, UIDocumentInteractionControllerDelegate {
     
-    @IBOutlet weak var ima: UIImageView!
     @IBOutlet weak var nameDoc: UIButton!
     
     var filePath: String! = ""
@@ -28,9 +27,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func mandarPHP(sender: AnyObject) {
         
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://hurryapp.devworms.com/subir.php")!)
-        request.HTTPMethod = "POST"
-        
         let data = NSData(contentsOfFile: self.filePath )
         
         if(data==nil)  { print("ño") } else { print("shi") }
@@ -39,27 +35,12 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         // Set Content-Type in HTTP header.
         let contentType = "multipart/form-data; boundary=" + boundary
-        let fileName = self.nameDoc.titleLabel?.text
-        let mimeType = "application/pdf" // http://www.sitepoint.com/web-foundations/mime-types-complete-list/
-        let fieldName = "documento" // $_FILES
         
-        let requestBodyData = NSMutableData()
-        
-        requestBodyData.appendString("--\(boundary)\r\n")
-        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "numero" )\"\r\n\r\n")
-        requestBodyData.appendString("\( "1122" )\r\n")  // numero puede ser string o integer
-        
-        requestBodyData.appendString("--\(boundary)\r\n")
-        requestBodyData.appendString("Content-Disposition: form-data; name=\"\(fieldName)\"; filename=" + (fileName)! + "\r\n")
-        requestBodyData.appendString("Content-Type: \(mimeType)\r\n\r\n")
-        requestBodyData.appendData( data! )
-        requestBodyData.appendString("\r\n")
-        requestBodyData.appendString("--\(boundary)--\r\n")
-        
-        //print(requestBodyData) // This would allow you to see what the dataString looks like.
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://hurryapp.devworms.com/subir.php")!)
+        request.HTTPMethod = "POST"
         
         // Set the HTTPBody we'd like to submit
-        request.HTTPBody = requestBodyData
+        request.HTTPBody = HTTPPostToPHP().postToPHP(data!, fileName: (self.nameDoc.titleLabel?.text)!, boundary: boundary)
         
         request.setValue(contentType, forHTTPHeaderField: "Content-Type")
         
@@ -79,6 +60,10 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         task.resume()
         
         
+    }
+    
+    func generateBoundaryString() -> String {
+        return "Boundary-\(NSUUID().UUIDString)"
     }
     
     @IBAction func uploadFile(sender: AnyObject) {
@@ -112,10 +97,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    func generateBoundaryString() -> String {
-        return "Boundary-\(NSUUID().UUIDString)"
-    }
-    
     // MARK: - UIDocumentInteractionControllerDelegate
     
     func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
@@ -128,9 +109,8 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     func documentPicker(controller: UIDocumentPickerViewController, didPickDocumentAtURL url: NSURL) {
         if controller.documentPickerMode == UIDocumentPickerMode.Import {
             
-            //var data = NSData(contentsOfFile: url.path! )
-            
             self.filePath = url.path!
+            
             var fileSize : UInt64 = 0
             
             do {
@@ -146,7 +126,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 //print ("hola: \(attr)")
                 
                 //self.ima.image = UIImage(contentsOfFile: self.filePath )
-                self.ima.image = UIImage(data: NSData(contentsOfFile: self.filePath )! )
+                //self.ima.image = UIImage(data: NSData(contentsOfFile: self.filePath )! )
                 self.nameDoc.titleLabel?.text = url.lastPathComponent!
                 
                 
@@ -164,7 +144,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         documentPicker.delegate = self
         presentViewController(documentPicker, animated: true, completion: nil)
-        print("HurryApp Menu")
     }
     
     // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -197,12 +176,4 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     */
 
-}
-
-extension NSMutableData {
-    
-    func appendString(string: String) {
-        let data = string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-        appendData(data!)
-    }
 }

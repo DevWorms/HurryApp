@@ -14,17 +14,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if ((FBSDKAccessToken.currentAccessToken()) == nil){
-            print("Not logged in..")
-            
-        }else{
-            print("Logged in..")
-            print("current: \(FBSDKAccessToken.currentAccessToken().userID)")
-            
-            self.performSegueWithIdentifier("InicioPagoSegue", sender: nil)
-            
-        }
-        
         let loginButton = FBSDKLoginButton()
         loginButton.delegate = self //important!
         loginButton.center.x = self.view.center.x
