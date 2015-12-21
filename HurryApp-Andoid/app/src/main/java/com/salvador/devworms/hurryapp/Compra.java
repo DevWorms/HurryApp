@@ -98,6 +98,7 @@ public class Compra extends Fragment {
 
         });
         try {
+
             Bundle args = getActivity().getIntent().getExtras();
             ubicacion= args.getString("ubicacion");
             nombre= args.getString("nombre");

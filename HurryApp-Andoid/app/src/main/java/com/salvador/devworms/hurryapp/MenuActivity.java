@@ -1,5 +1,6 @@
 package com.salvador.devworms.hurryapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,15 +10,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.facebook.login.widget.ProfilePictureView;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    TextView name;
+    ProfilePictureView fotoper;
+   public String inifbnombre;
+   public String inifbfoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        name=(TextView)findViewById(R.id.nombreperfil);
+        fotoper=(ProfilePictureView)findViewById(R.id.profilePicture);
+       // Bundle args = getIntent().getExtras();
 
+       // name= args.getString("nombre");
+       // fotoper= args.getString("foto");
 
         ///***************Barra***************************************************
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -49,7 +62,27 @@ public class MenuActivity extends AppCompatActivity
                 .replace(R.id.actividad, new Compra()).commit();
         ///***************Fragment***************************************************
 
+        try{
+            Intent i=getIntent();
+            inifbnombre=i.getExtras().getString("nombre");
+            inifbfoto=i.getExtras().getString("foto");
+            /*Bundle bundle = new Bundle();
 
+            bundle.putString("nom", inifbnombre );
+            bundle.putString("fot", inifbfoto);
+            Cuenta cuenta = new Cuenta();
+            cuenta.setArguments(bundle);
+            transaction.commit();*/
+            if(inifbnombre!=null || inifbnombre!="" )
+            name.setText(inifbnombre);
+            if(inifbfoto!=null || inifbfoto!="" )
+            fotoper.setProfileId(inifbfoto);
+        }catch (Exception e){
+           // Toast.makeText(this, conta, Toast.LENGTH_SHORT).show();
+
+             finish();
+
+        }
     }
 
     @Override
