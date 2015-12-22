@@ -12,7 +12,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var nameDoc: UIButton!
     
-    var filePath: String! = ""
     var textFields: [UITextField] = []
     var switches: [UISwitch] = []
     
@@ -20,6 +19,9 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        print("filePath: \(MyFile.url)")
+        self.nameDoc.titleLabel?.text = MyFile.Name
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,7 +31,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func mandarPHP(sender: AnyObject) {
         
-        let data = NSData(contentsOfFile: self.filePath )
+        let data = NSData(contentsOfFile: MyFile.Path )
         
         if #available(iOS 8.0, *) {
             
@@ -81,7 +83,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         request.HTTPMethod = "POST"
         
         // Set the HTTPBody we'd like to submit
-        request.HTTPBody = HTTPPostToPHP().postToPHP(data!, fileName: (self.nameDoc.titleLabel?.text)!, boundary: boundary)
+        request.HTTPBody = HTTPPostToPHP().postToPHP(data!, fileName: MyFile.Name, boundary: boundary)
         
         request.setValue(contentType, forHTTPHeaderField: "Content-Type")
         
@@ -116,6 +118,47 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             //documentMenu.modalPresentationStyle = UIModalPresentationStyle.FullScreen
             
+            documentMenu.addOptionWithTitle("iPhone", image: nil, order: .First,
+                    handler: {
+                        
+                        let fm = NSFileManager.defaultManager()
+                        let url = NSBundle.mainBundle().resourcePath
+                        
+                        //
+                        let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
+                            .UserDomainMask, true)
+                        let docsDir = dirPaths[0] as String
+                        print(docsDir)
+                        //
+                        
+                        if(url != nil ){
+                            do {
+                                let items = try fm.contentsOfDirectoryAtPath(url!)
+                                
+                                
+                                
+                                let pick = UIDocumentPickerViewController(URL: NSURL(fileURLWithPath: url!), inMode: UIDocumentPickerMode.ExportToService)
+                                
+                                pick.delegate = self
+                                self.presentViewController(pick, animated: true, completion: nil)
+                                
+                                
+                                for item in items {
+                                    print("Found \(item)")
+                                }
+                                
+                                
+                            } catch {
+                                // failed to read directory – bad permissions, perhaps?
+                                print("catch")
+                            }
+                        
+                        }else { print("ni se pudo leer la ruta") }
+                        
+                       
+                        
+                        print("New Doc Requested") })
+            
             self.presentViewController(documentMenu, animated: true, completion: nil)
             
         } else {
@@ -126,8 +169,8 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func openFile(sender: AnyObject) {
         
-        if self.filePath != "" {
-            let documentInteraction =  UIDocumentInteractionController(URL: NSURL(fileURLWithPath: self.filePath) )
+        if MyFile.Path != "" {
+            let documentInteraction =  UIDocumentInteractionController(URL: NSURL(fileURLWithPath: MyFile.Path) )
             
             documentInteraction.delegate = self
             
@@ -150,12 +193,12 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     func documentPicker(controller: UIDocumentPickerViewController, didPickDocumentAtURL url: NSURL) {
         if controller.documentPickerMode == UIDocumentPickerMode.Import {
             
-            self.filePath = url.path!
+            MyFile.url = url
             
             var fileSize : UInt64 = 0
             
             do {
-                let attr : NSDictionary? = try NSFileManager.defaultManager().attributesOfItemAtPath( self.filePath)
+                let attr : NSDictionary? = try NSFileManager.defaultManager().attributesOfItemAtPath( MyFile.Path )
                 
                 if let _attr = attr {
                     fileSize = _attr.fileSize();
@@ -168,7 +211,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 //self.ima.image = UIImage(contentsOfFile: self.filePath )
                 //self.ima.image = UIImage(data: NSData(contentsOfFile: self.filePath )! )
-                self.nameDoc.titleLabel?.text = url.lastPathComponent!
+                self.nameDoc.titleLabel?.text = MyFile.Name
                 
                 
             } catch {

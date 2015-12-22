@@ -48,7 +48,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //Facebook
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         
-        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+        print("openURL: \(url)" )
+        print("openPath: " + url.path!)
+        print("nameFile: " + url.lastPathComponent!)
+        print("sourceApplication: " + sourceApplication!)
+        
+        var boolean: Bool = true
+        
+        if sourceApplication == "com.facebook.Facebook" ||      // entra a la app por FB
+            (url.path == "/" &&  url.lastPathComponent == "/") {
+            boolean = FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+        } else {    //entra a la app abriendo otro archivo externo (ej. un .doc de mail)
+        
+            var fileSize : UInt64 = 0
+            
+            do {
+                let attr : NSDictionary? = try NSFileManager.defaultManager().attributesOfItemAtPath( url.path! )
+                
+                if let _attr = attr {
+                    fileSize = _attr.fileSize();
+                    
+                    print("fileSize: \(fileSize)")
+                    
+                }
+                
+                // fill myFile
+                MyFile.url = url
+                print( "url: \(MyFile.url)" )
+                
+            } catch {
+                print("Error: \(error)")
+            }
+
+        }
+        
+        return boolean
         
     }
 
@@ -74,7 +108,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 

@@ -18,6 +18,7 @@
 		3B374C881C0262EC00B3919A /* HurryAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C871C0262EC00B3919A /* HurryAppUITests.swift */; };
 		3B374C961C027F2500B3919A /* RegistroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C951C027F2500B3919A /* RegistroViewController.swift */; };
 		3B374C981C02801E00B3919A /* PagoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C971C02801E00B3919A /* PagoViewController.swift */; };
+		3B55442C1C28EBA100041775 /* MyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55442B1C28EBA100041775 /* MyFile.swift */; };
 		3B97AD9E1C02E375001C8947 /* ComprarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */; };
 		3BD9B1FC1C238AC400DB66D7 /* HTTPPostToPHP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */; };
 		3BD9B1FE1C23D7B800DB66D7 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD9B1FD1C23D7B700DB66D7 /* PerfilViewController.swift */; };
@@ -59,6 +60,7 @@
 		3B374C891C0262EC00B3919A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B374C951C027F2500B3919A /* RegistroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistroViewController.swift; sourceTree = "<group>"; };
 		3B374C971C02801E00B3919A /* PagoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagoViewController.swift; sourceTree = "<group>"; };
+		3B55442B1C28EBA100041775 /* MyFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFile.swift; sourceTree = "<group>"; };
 		3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComprarViewController.swift; sourceTree = "<group>"; };
 		3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPPostToPHP.swift; sourceTree = "<group>"; };
 		3BD9B1FD1C23D7B700DB66D7 /* PerfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				3B374C971C02801E00B3919A /* PagoViewController.swift */,
 				3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */,
 				3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */,
+				3B55442B1C28EBA100041775 /* MyFile.swift */,
 				3B374C6E1C0262EB00B3919A /* Assets.xcassets */,
 				3B374C701C0262EB00B3919A /* LaunchScreen.storyboard */,
 				3B374C731C0262EB00B3919A /* Info.plist */,
@@ -301,6 +304,7 @@
 				3B374C981C02801E00B3919A /* PagoViewController.swift in Sources */,
 				3B97AD9E1C02E375001C8947 /* ComprarViewController.swift in Sources */,
 				3B374C961C027F2500B3919A /* RegistroViewController.swift in Sources */,
+				3B55442C1C28EBA100041775 /* MyFile.swift in Sources */,
 				3BD9B1FE1C23D7B800DB66D7 /* PerfilViewController.swift in Sources */,
 				3B374C681C0262EA00B3919A /* AppDelegate.swift in Sources */,
 			);
