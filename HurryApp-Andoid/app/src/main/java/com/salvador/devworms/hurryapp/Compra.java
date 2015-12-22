@@ -1,36 +1,94 @@
 package com.salvador.devworms.hurryapp;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedReader;
+import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.SyncHttpClient;
+import com.loopj.android.http.TextHttpResponseHandler;
+
 import java.io.File;
-import java.io.FileReader;
 
 /**
  * Created by salvador on 07/12/2015.
  */
-public class Compra extends AppCompatActivity {
-
+public class Compra extends Fragment {
+    String respsuesta;
     Button btnBuscar;
+    Button btnMandar;
     TextView txtRuta;
     TextView txtContenido;
     String ubicacion;
+    String nombre;
     int fir=0;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_compra);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view =inflater.inflate(R.layout.fragment_compra, container, false);
 
-        btnBuscar=(Button)findViewById(R.id.btnBuscar);
-        txtRuta=(TextView)findViewById(R.id.ruta);
+        btnBuscar=(Button)view.findViewById(R.id.btnBuscar);
+        txtRuta=(TextView)view.findViewById(R.id.ruta);
+        btnMandar=(Button)view.findViewById(R.id.mandar);
+        btnMandar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                if(ubicacion==""||ubicacion==null){
+                    Toast.makeText(getActivity().getApplicationContext(), "Debe de seleccionar un archivo",
+                            Toast.LENGTH_SHORT).show();
+
+                }else{
+                    new Thread()
+                    {
+                        public void run()
+                        {
+                            try
+                            {
 
 
+                                SyncHttpClient client = new SyncHttpClient();
+                                RequestParams params = new RequestParams();
+                                params.put("numero", "1");
+                                params.put("documento", new File(ubicacion));
+
+                                client.post("http://hurryapp.devworms.com/subir.php", params, new TextHttpResponseHandler() {
+                                    @Override
+                                    public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, String responseString, Throwable throwable) {
+
+                                    }
+
+                                    @Override
+                                    public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, String responseString) {
+                                        respsuesta=responseString;
+                                        Message mesa=new Message();
+                                        vistaHandler.sendMessage(mesa);
+                                    }
+
+
+                                });
+
+
+                            }
+                            catch (Exception ex)
+                            {
+                                Message mesa=new Message();
+                                respsuesta=ex.toString();
+                                vistaHandler.sendMessage(mesa);
+                            }
+                        }
+
+                    }.start();
+                }
+
+            }
+        });
         btnBuscar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -40,55 +98,46 @@ public class Compra extends AppCompatActivity {
 
         });
         try {
-            Intent i=getIntent();
-            ubicacion=i.getExtras().getString("ubicacion");
+
+            Bundle args = getActivity().getIntent().getExtras();
+            ubicacion= args.getString("ubicacion");
+            nombre= args.getString("nombre");
+          // Intent i=getIntent();
+          //  ubicacion=i.getExtras().getString("ubicacion");
         }catch (Exception e){
 
         }
-        if(ubicacion!="")
+        if(ubicacion!= null )
+            txtRuta.setText(nombre);
 
-        selectArchivo();
-
-
+        return view;
     }
-    public void irExplorador(){
-        Intent i= new Intent(Compra.this,Exp.class);
-        startActivity(i);
-
-    }
-    private void selectArchivo(){
-        try {
-            if(ubicacion!=null)
-                txtRuta.setText(ubicacion);
-
-            File f= new File(ubicacion);
-            if(f==null)
-                txtContenido.setText("archivo no valido");
-
-            Toast.makeText(getApplicationContext(), "Archivo cargado.",
+    Handler vistaHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            Toast.makeText(getActivity().getApplicationContext(), respsuesta,
                     Toast.LENGTH_SHORT).show();
-            // abrirArchivo();
+            ubicacion="";
+            nombre="";
+            txtRuta.setText(nombre);
 
-        }catch (Exception e){}
+
+        }
+
+    };
+    public void irExplorador(){
+        Intent myIntent = new Intent(getActivity(), Exp.class);
+        getActivity().startActivity(myIntent);
+        //Intent i= new Intent(Compra.this,Exp.class);
+        //startActivity(i);
 
     }
+
     private void abrirArchivo(){
         try{
-            txtRuta.setText(ubicacion);
+            txtRuta.setText(nombre);
             File f= new File(ubicacion);
             if(f==null)
                 txtContenido.setText("archivo no valido");
-            FileReader fr = new FileReader(f);
-            BufferedReader br=new BufferedReader(fr);
-            String texto=br.readLine();
-            String aux="";
-            while(texto!=null){
-                aux=aux+texto;
-                texto=br.readLine();
-
-            }
-            txtContenido.setText(aux);
-            br.close();
 
 
         }catch (Exception e){}

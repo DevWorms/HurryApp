@@ -72,9 +72,11 @@ public class Exp extends ListActivity {
     protected void onListItemClick(ListView l,View v,int position, long id){
         File archivo=new File(listaRutasArchivos.get(position));
         if(archivo.isFile()){
-            String ubicacion=archivo.getName();
-            Intent i= new Intent(this,Compra.class);
+            String nombre=archivo.getName();
+            String ubicacion=archivo.getPath();
+            Intent i= new Intent(this,MenuActivity.class);
             i.putExtra("ubicacion",ubicacion);
+            i.putExtra("nombre",nombre);
             startActivity(i);
         }else{
 
