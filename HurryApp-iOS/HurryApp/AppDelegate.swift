@@ -45,11 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    //Facebook
+    //Open app from another app
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         
-        print("openURL: \(url)" )
-        print("openPath: " + url.path!)
         print("nameFile: " + url.lastPathComponent!)
         print("sourceApplication: " + sourceApplication!)
         
@@ -75,6 +73,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // fill myFile
                 MyFile.url = url
                 print( "url: \(MyFile.url)" )
+                
+                // utiliza ? por si viene en nil
+                let butonNameDoc = self.window?.viewWithTag(50) as? UIButton
+                
+                // for fill title´s button when applicationWillEnterForeground and ComprarViewController is initialized
+                if butonNameDoc != nil {
+                    butonNameDoc!.setTitle(MyFile.Name , forState: .Normal)
+                    print("nameDoc Foreground")
+                }else {
+                    print("nameDoc nil")
+                }
+
                 
             } catch {
                 print("Error: \(error)")

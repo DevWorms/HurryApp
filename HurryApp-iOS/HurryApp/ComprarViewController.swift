@@ -14,13 +14,13 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var textFields: [UITextField] = []
     var switches: [UISwitch] = []
+    var deleteUrl = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("filePath: \(MyFile.url)")
-        self.nameDoc.titleLabel?.text = MyFile.Name
+        self.nameDoc.setTitle(MyFile.Name, forState: .Normal)
         
     }
 
@@ -135,8 +135,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                             do {
                                 let items = try fm.contentsOfDirectoryAtPath(url!)
                                 
-                                
-                                
                                 let pick = UIDocumentPickerViewController(URL: NSURL(fileURLWithPath: url!), inMode: UIDocumentPickerMode.ExportToService)
                                 
                                 pick.delegate = self
@@ -147,15 +145,12 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                                     print("Found \(item)")
                                 }
                                 
-                                
                             } catch {
                                 // failed to read directory – bad permissions, perhaps?
                                 print("catch")
                             }
                         
                         }else { print("ni se pudo leer la ruta") }
-                        
-                       
                         
                         print("New Doc Requested") })
             
@@ -171,11 +166,13 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if MyFile.Path != "" {
             let documentInteraction =  UIDocumentInteractionController(URL: NSURL(fileURLWithPath: MyFile.Path) )
-            
             documentInteraction.delegate = self
+            
+            deleteUrl = false
             
             // Preview PDF
             documentInteraction.presentPreviewAnimated(true)
+            // menu abajo para abrir algun archivo
             //documentInteraction.presentOpenInMenuFromRect(sender.frame, inView: self.view, animated: true)
         }
         
@@ -207,11 +204,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                     
                 }
                 
-                //print ("hola: \(attr)")
-                
-                //self.ima.image = UIImage(contentsOfFile: self.filePath )
-                //self.ima.image = UIImage(data: NSData(contentsOfFile: self.filePath )! )
-                self.nameDoc.titleLabel?.text = MyFile.Name
+                self.nameDoc.setTitle(MyFile.Name, forState: .Normal)
                 
                 
             } catch {
@@ -298,8 +291,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 switches[2].setOn(true, animated: true)
             }
         }
-        
-        
     }
     
     // MARK: - UITextFieldDelegate
@@ -347,5 +338,18 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // for delete path or keep it when open another view
+    override func viewDidDisappear(animated: Bool) {
+        print("ComprarViewController DidDisappear: "+animated.description)
+        
+        // when ComprarViewController has been eliminated from a view hierarchy
+        if animated && deleteUrl {
+            print("elimina url")
+            MyFile.url = NSURL(fileURLWithPath:" ")
+        }
+        
+        deleteUrl = true
+    }    
 
 }

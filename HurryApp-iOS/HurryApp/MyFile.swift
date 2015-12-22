@@ -9,17 +9,31 @@
 import UIKit
  
 struct MyFile {
-    static var url: NSURL!
+    static var url: NSURL = NSURL(fileURLWithPath:" ")
     
     static var Path: String {
         get {
-            return self.url.path!
+            var pathDoc = ""
+            
+            if self.url.path != "/ " {
+                pathDoc = self.url.path!
+            }
+            print("Path: " + pathDoc)
+            
+            return pathDoc
         }
     }
     
     static var Name: String {
         get {
-            return self.url.lastPathComponent!
+            var nameDoc = ""
+            
+            if self.url.lastPathComponent != " " {
+                nameDoc = self.url.lastPathComponent!.stringByReplacingOccurrencesOfString(" ", withString: "_")
+            }
+            print("Name: " + nameDoc)
+
+            return nameDoc
         }
     }
 }
