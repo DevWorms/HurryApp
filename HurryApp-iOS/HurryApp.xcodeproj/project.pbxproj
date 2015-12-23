@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B163C511C1FB62E00290287 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B163C4F1C1FB62E00290287 /* FBSDKCoreKit.framework */; };
-		3B163C521C1FB62E00290287 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B163C501C1FB62E00290287 /* FBSDKLoginKit.framework */; };
+		3B1A3F501C2A3202002936AF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1A3F4E1C2A3202002936AF /* FBSDKCoreKit.framework */; };
+		3B1A3F511C2A3202002936AF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1A3F4F1C2A3202002936AF /* FBSDKLoginKit.framework */; };
 		3B374C681C0262EA00B3919A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C671C0262EA00B3919A /* AppDelegate.swift */; };
 		3B374C6A1C0262EA00B3919A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C691C0262EA00B3919A /* ViewController.swift */; };
 		3B374C6D1C0262EB00B3919A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B374C6B1C0262EB00B3919A /* Main.storyboard */; };
@@ -42,8 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3B163C4F1C1FB62E00290287 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		3B163C501C1FB62E00290287 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		3B1A3F4E1C2A3202002936AF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		3B1A3F4F1C2A3202002936AF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		3B262F751C17CB1F00B174C3 /* HurryApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HurryApp.entitlements; sourceTree = "<group>"; };
 		3B374C641C0262EA00B3919A /* HurryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HurryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B374C671C0262EA00B3919A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,8 +71,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B163C521C1FB62E00290287 /* FBSDKLoginKit.framework in Frameworks */,
-				3B163C511C1FB62E00290287 /* FBSDKCoreKit.framework in Frameworks */,
+				3B1A3F511C2A3202002936AF /* FBSDKLoginKit.framework in Frameworks */,
+				3B1A3F501C2A3202002936AF /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,8 +96,8 @@
 		3B163C4A1C1FAF4200290287 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3B163C4F1C1FB62E00290287 /* FBSDKCoreKit.framework */,
-				3B163C501C1FB62E00290287 /* FBSDKLoginKit.framework */,
+				3B1A3F4E1C2A3202002936AF /* FBSDKCoreKit.framework */,
+				3B1A3F4F1C2A3202002936AF /* FBSDKLoginKit.framework */,
 			);
 			name = Frameworks;
 			path = HurryApp;
