@@ -1,7 +1,6 @@
 package com.salvador.devworms.hurryapp;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -25,12 +24,17 @@ public class Compra extends Fragment {
     String respsuesta;
     Button btnBuscar;
     Button btnMandar;
-    TextView txtRuta;
+    public TextView txtRuta;
     TextView txtContenido;
-    String ubicacion;
-    String nombre;
+   public String ubicacion;
+   public String nombre;
     int fir=0;
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+
+    }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_compra, container, false);
 
@@ -99,17 +103,22 @@ public class Compra extends Fragment {
         });
         try {
 
-            Bundle args = getActivity().getIntent().getExtras();
-            ubicacion= args.getString("ubicacion");
-            nombre= args.getString("nombre");
-          // Intent i=getIntent();
-          //  ubicacion=i.getExtras().getString("ubicacion");
+            // Exp exp=new Exp();
+
+            Bundle bundle = this.getArguments();
+
+            ubicacion= bundle.getString("ubicacion");
+            nombre= bundle.getString("nombrearch");
+
+            //ubicacion = getArguments().getString("ubicacion");
+            //nombre= getArguments().getString("nombrearch");
+            // Intent i=getIntent();
+            //  ubicacion=i.getExtras().getString("ubicacion");
         }catch (Exception e){
 
         }
-        if(ubicacion!= null )
+        if(nombre!= null )
             txtRuta.setText(nombre);
-
         return view;
     }
     Handler vistaHandler = new Handler() {
@@ -125,8 +134,10 @@ public class Compra extends Fragment {
 
     };
     public void irExplorador(){
-        Intent myIntent = new Intent(getActivity(), Exp.class);
-        getActivity().startActivity(myIntent);
+       // Intent myIntent = new Intent(getActivity(), Exp.class);
+        // getActivity().startActivity(myIntent);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.actividad, new Exp()).commit();
         //Intent i= new Intent(Compra.this,Exp.class);
         //startActivity(i);
 

@@ -1,10 +1,13 @@
 package com.salvador.devworms.hurryapp;
 
-import android.app.ListActivity;
-import android.content.Intent;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,21 +20,76 @@ import java.util.List;
 /**
  * Created by salvador on 11/12/2015.
  */
-public class Exp extends ListActivity {
+public class Exp extends Fragment {
     private List<String> listaNombresArchivos;
     private List<String>listaRutasArchivos;
     private ArrayAdapter<String> adaptador;
     private String directprioRaiz;
     private TextView carpetaActual;
+    public String ubicacion;
+    private ListView list;
+    public String nombrearchi;
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buscar);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view =inflater.inflate(R.layout.activity_buscar, container, false);
 
-        carpetaActual=(TextView)findViewById(R.id.rutaAcual);
+
+        carpetaActual=(TextView)view.findViewById(R.id.rutaAcual);
+        list=(ListView)view.findViewById(R.id.list);
         directprioRaiz= Environment.getExternalStorageDirectory().getPath();
 
         verArchivosDirectorio(directprioRaiz);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                File archivo=new File(listaRutasArchivos.get(position));
+                if(archivo.isFile()){
+
+                    nombrearchi=archivo.getName();
+                    ubicacion=archivo.getPath();
+
+                    Compra fragment = new Compra();
+
+                    Bundle parametro = new Bundle();
+
+
+                  /*  fragment.setArguments(parametro);
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.actividad, new Compra()).commit();*/
+
+
+                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+
+                    parametro.putString("nombrearch", nombrearchi);
+                    parametro.putString("ubicacion", ubicacion);
+                    fragment.setArguments(parametro);
+
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.replace(R.id.actividad, fragment);
+                    fragmentTransaction.commit();
+
+
+
+
+           /* Intent i= new Intent(this, MenuActivity.class);
+            i.putExtra("ubicacion",ubicacion);
+            i.putExtra("nombre", nombrearchi);
+            i.putExtra("pantalla", "busca");
+
+            startActivity(i);
+            finish();*/
+
+                }else{
+
+                    verArchivosDirectorio(listaRutasArchivos.get(position));
+                }
+
+            }
+        });
+        return view;
+    }
+    public interface OnArticleSelectedListener {
+        public void onArticleSelected();
     }
     public void verArchivosDirectorio(String rutaDrectorio){
         carpetaActual.setText("Esta en: " + rutaDrectorio);
@@ -64,20 +122,39 @@ public class Exp extends ListActivity {
             listaNombresArchivos.add("No hay archivos");
             listaRutasArchivos.add(rutaDrectorio);
         }
-        adaptador= new ArrayAdapter<String>(this,R.layout.activity_buscar,R.id.empty,listaNombresArchivos);
-        setListAdapter(adaptador);
+        adaptador= new ArrayAdapter<String>(getActivity(),R.layout.activity_buscar,R.id.empty,listaNombresArchivos);
+       list.setAdapter(adaptador);
     }
 
 
-    protected void onListItemClick(ListView l,View v,int position, long id){
+    public void onListItemClick(ListView l,View v,int position, long id){
         File archivo=new File(listaRutasArchivos.get(position));
         if(archivo.isFile()){
-            String nombre=archivo.getName();
-            String ubicacion=archivo.getPath();
-            Intent i= new Intent(this,MenuActivity.class);
+
+            nombrearchi=archivo.getName();
+            ubicacion=archivo.getPath();
+
+            Compra fragment = new Compra();
+
+            Bundle parametro = new Bundle();
+
+            parametro.putString("nombrearch",nombrearchi);
+            parametro.putString("ubicacion", ubicacion);
+
+            fragment.setArguments(parametro);
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.actividad, new Compra()).commit();
+
+
+
+           /* Intent i= new Intent(this, MenuActivity.class);
             i.putExtra("ubicacion",ubicacion);
-            i.putExtra("nombre",nombre);
+            i.putExtra("nombre", nombrearchi);
+            i.putExtra("pantalla", "busca");
+
             startActivity(i);
+            finish();*/
+
         }else{
 
             verArchivosDirectorio(listaRutasArchivos.get(position));
@@ -85,4 +162,6 @@ public class Exp extends ListActivity {
 
 
     }
+
+
 }

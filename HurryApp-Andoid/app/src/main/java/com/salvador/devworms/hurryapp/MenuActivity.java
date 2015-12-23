@@ -20,6 +20,7 @@ public class MenuActivity extends AppCompatActivity
     ProfilePictureView fotoper;
    public String inifbnombre;
    public String inifbfoto;
+    String pantall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,24 +60,23 @@ public class MenuActivity extends AppCompatActivity
 
         ///***************Fragment***************************************************
         getFragmentManager().beginTransaction()
-                .replace(R.id.actividad, new Compra()).commit();
+                .replace(R.id.actividad, new Tiendas()).commit();
+        getFragmentManager().beginTransaction().addToBackStack(null);
         ///***************Fragment***************************************************
 
         try{
-            Intent i=getIntent();
-            inifbnombre=i.getExtras().getString("nombre");
-            inifbfoto=i.getExtras().getString("foto");
-            /*Bundle bundle = new Bundle();
 
-            bundle.putString("nom", inifbnombre );
-            bundle.putString("fot", inifbfoto);
-            Cuenta cuenta = new Cuenta();
-            cuenta.setArguments(bundle);
-            transaction.commit();*/
-            if(inifbnombre!=null || inifbnombre!="" )
-            name.setText(inifbnombre);
-            if(inifbfoto!=null || inifbfoto!="" )
-            fotoper.setProfileId(inifbfoto);
+            Intent i=getIntent();
+
+
+                inifbnombre = i.getExtras().getString("nombrefb");
+                inifbfoto = i.getExtras().getString("foto");
+
+                if (inifbnombre != null || inifbnombre != "")
+                    name.setText(inifbnombre);
+                if (inifbfoto != null || inifbfoto != "")
+                    fotoper.setProfileId(inifbfoto);
+
         }catch (Exception e){
            // Toast.makeText(this, conta, Toast.LENGTH_SHORT).show();
 
@@ -86,6 +86,32 @@ public class MenuActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onStart(){
+        super.onStart();
+
+    }
+    public void onResume(){
+        super.onResume();
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle guardarEstado) {
+        super.onSaveInstanceState(guardarEstado);
+        if (inifbnombre != null || inifbnombre != "")
+        guardarEstado.putString("nomfb", inifbnombre);
+        if (inifbfoto != null || inifbfoto != "")
+        guardarEstado.putString("fotofb", inifbfoto);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle recEstado) {
+        super.onRestoreInstanceState(recEstado);
+        if (inifbnombre == null || inifbnombre == "")
+            inifbnombre = recEstado.getString("variable");
+        if (inifbfoto == null || inifbfoto == "")
+            inifbfoto = recEstado.getString("posicion");
+    }
     public void onBackPressed() {
 
         if(getFragmentManager().getBackStackEntryCount() == 0) {
@@ -111,9 +137,9 @@ public class MenuActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+       // getMenuInflater().inflate(R.menu.main, menu);
 
-        MenuItem item = menu.getItem(0);
+       // MenuItem item = menu.getItem(0);
 
 
         return true;
@@ -144,13 +170,13 @@ public class MenuActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_recarga) {
-
+            item.setTitle("Recarga");
              getFragmentManager().beginTransaction()
-                    .replace(R.id.actividad, new MetPago()).commit();
+                    .replace(R.id.actividad, new Recarga()).commit();
         } else if (id == R.id.nav_imprime) {
             item.setTitle("Imprimir");
             getFragmentManager().beginTransaction()
-                    .replace(R.id.actividad, new Compra()).commit();
+                    .replace(R.id.actividad, new Tiendas()).commit();
 
         } else if (id == R.id.nav_cuenta) {
             item.setTitle("Perfil");

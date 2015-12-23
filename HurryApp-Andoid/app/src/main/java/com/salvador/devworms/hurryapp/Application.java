@@ -20,6 +20,7 @@ public class Application extends android.app.Application {
         super.onCreate();
         FacebookSdk.sdkInitialize(getApplicationContext());
         gettingHashKey();
+        String ubi;
     }
 
     public void gettingHashKey(){

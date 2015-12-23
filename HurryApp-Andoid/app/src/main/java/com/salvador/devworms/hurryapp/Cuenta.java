@@ -4,6 +4,9 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -21,6 +24,12 @@ public class Cuenta extends Fragment {
     String fot;
     Button logout;
     ProfilePictureView fotoper;
+    MenuItem agreTar;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_cuenta, container, false);
         name=(TextView)view.findViewById(R.id.cuentaNombre);
@@ -38,12 +47,12 @@ public class Cuenta extends Fragment {
        /*Bundle args = this.getActivity().getExtras();
          name= args.getString("nombre");
          fotoper= args.getString("foto");
-*/      logout.setOnClickListener(new View.OnClickListener(){
+*/      logout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
 
                 LoginManager.getInstance().logOut();
-                Intent salida=new Intent( Intent.ACTION_MAIN); //Llamando a la activity principal
+                Intent salida = new Intent(Intent.ACTION_MAIN); //Llamando a la activity principal
                 getActivity().finish(); // La cerramos.
 
 
@@ -53,7 +62,25 @@ public class Cuenta extends Fragment {
 
     return view;
     }
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // TODO Add your menu entries here
+        super.onCreateOptionsMenu(menu, inflater);
+       getActivity().getMenuInflater().inflate(R.menu.menu, menu);
+       // agreTar = menu.add("agregar tarjeta").setIcon(R.drawable.icn_tar);
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.ade:
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.actividad, new MetPago()).commit();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
        /* super.onCreate(savedInstanceState);
 
         setContentView(R.layout.fragment_cuenta);*/
