@@ -19,8 +19,11 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             facebook:com_facebook_preset_size="normal"
-            android:layout_gravity="center_horizontal"
-            android:layout_centerHorizontal="true" />
+            android:layout_gravity="center"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,24 +33,30 @@
             android:textSize="16dp"
             android:textColor="#000000"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Saldo: $100"
+            android:text="Saldo: $0"
             android:id="@+id/cuentaSaldo"
             android:textSize="16dp"
             android:textColor="#000000"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cerrar Sesion"
+            android:layout_width="150dp"
+            android:layout_height="38dp"
+            android:text="Cerrar Sesión"
             android:id="@+id/logout"
-            android:layout_gravity="center_horizontal" />
+            android:textSize="13dp"
+            android:textColor="#fff"
+            android:background="#2683c2"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp" />
 
 
     </LinearLayout>

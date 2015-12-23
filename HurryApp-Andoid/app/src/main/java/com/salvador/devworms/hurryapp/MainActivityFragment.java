@@ -125,12 +125,12 @@ public   class MainActivityFragment extends Fragment {
 
             if (profile != null ) {
                 Intent i = new Intent(getActivity(), MenuActivity.class);
-                i.putExtra("nombre", profile.getName());
+                i.putExtra("nombrefb", profile.getName());
                 i.putExtra("foto", profile.getId());
                 startActivity(i);
                 //image.setProfileId(profile.getId());
-                Intent myIntent = new Intent(getActivity(), MenuActivity.class);
-                getActivity().startActivity(myIntent);
+                //Intent myIntent = new Intent(getActivity(), MenuActivity.class);
+                //getActivity().startActivity(myIntent);
                 // stringBuilder.append("Logged In " + profile.getFirstName());
                 //  Toast.makeText(getActivity(), "Inicio facebook" + profile.getFirstName(), Toast.LENGTH_SHORT).show();
                 //image.setProfileId(profile.getId());
