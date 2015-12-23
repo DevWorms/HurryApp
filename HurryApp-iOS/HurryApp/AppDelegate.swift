@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        PayPalMobile.initializeWithClientIdsForEnvironments([PayPalEnvironmentProduction: "abc", PayPalEnvironmentSandbox: "xyz"])
+        
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         if ((FBSDKAccessToken.currentAccessToken()) == nil){
@@ -26,16 +28,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Logged in..")
             print("current: \(FBSDKAccessToken.currentAccessToken().userID)")
             
+            /*
             let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("Principal") as! UITabBarController
             vc.selectedIndex = 0 //optional
             
-            // vc = storyboard.instantiateViewControllerWithIdentifier("Registro") as! UIViewController
-            
             self.window?.rootViewController = vc
+            */
             
             /*
-            let storyboard = UIStoryboard(name: "MyStoryboardName", bundle: nil)
             let vc = storyboard.instantiateViewControllerWithIdentifier("someViewController") as! UIViewController
             self.presentViewController(vc, animated: true, completion: nil)
             */

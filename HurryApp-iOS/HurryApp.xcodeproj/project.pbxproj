@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F54CB5BA1197B9BD095294E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4320657DC23CBE043629C5 /* libPods.a */; };
 		3B1A3F501C2A3202002936AF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1A3F4E1C2A3202002936AF /* FBSDKCoreKit.framework */; };
 		3B1A3F511C2A3202002936AF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1A3F4F1C2A3202002936AF /* FBSDKLoginKit.framework */; };
 		3B374C681C0262EA00B3919A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C671C0262EA00B3919A /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 		3B374C961C027F2500B3919A /* RegistroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C951C027F2500B3919A /* RegistroViewController.swift */; };
 		3B374C981C02801E00B3919A /* PagoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C971C02801E00B3919A /* PagoViewController.swift */; };
 		3B55442C1C28EBA100041775 /* MyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55442B1C28EBA100041775 /* MyFile.swift */; };
+		3B6E86841C2B1F5A00252DA8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3B6E86831C2B1F5A00252DA8 /* Podfile */; };
 		3B97AD9E1C02E375001C8947 /* ComprarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */; };
 		3BD9B1FC1C238AC400DB66D7 /* HTTPPostToPHP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */; };
 		3BD9B1FE1C23D7B800DB66D7 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD9B1FD1C23D7B700DB66D7 /* PerfilViewController.swift */; };
@@ -42,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A4320657DC23CBE043629C5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B1A3F4E1C2A3202002936AF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		3B1A3F4F1C2A3202002936AF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		3B262F751C17CB1F00B174C3 /* HurryApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HurryApp.entitlements; sourceTree = "<group>"; };
@@ -61,9 +64,14 @@
 		3B374C951C027F2500B3919A /* RegistroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistroViewController.swift; sourceTree = "<group>"; };
 		3B374C971C02801E00B3919A /* PagoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagoViewController.swift; sourceTree = "<group>"; };
 		3B55442B1C28EBA100041775 /* MyFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFile.swift; sourceTree = "<group>"; };
+		3B6E86831C2B1F5A00252DA8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComprarViewController.swift; sourceTree = "<group>"; };
 		3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPPostToPHP.swift; sourceTree = "<group>"; };
 		3BD9B1FD1C23D7B700DB66D7 /* PerfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
+		3BEE2FAD1C2B277A00453EAA /* ZZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZAppDelegate.h; sourceTree = "<group>"; };
+		3BEE2FAE1C2B281900453EAA /* HurryApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HurryApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		4FDF15F558CE026B61E728C1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E4210B288759C1BEC0B4E051 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +81,7 @@
 			files = (
 				3B1A3F511C2A3202002936AF /* FBSDKLoginKit.framework in Frameworks */,
 				3B1A3F501C2A3202002936AF /* FBSDKCoreKit.framework in Frameworks */,
+				2F54CB5BA1197B9BD095294E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +107,7 @@
 			children = (
 				3B1A3F4E1C2A3202002936AF /* FBSDKCoreKit.framework */,
 				3B1A3F4F1C2A3202002936AF /* FBSDKLoginKit.framework */,
+				1A4320657DC23CBE043629C5 /* libPods.a */,
 			);
 			name = Frameworks;
 			path = HurryApp;
@@ -106,11 +116,13 @@
 		3B374C5B1C0262EA00B3919A = {
 			isa = PBXGroup;
 			children = (
+				3B6E86831C2B1F5A00252DA8 /* Podfile */,
 				3B374C661C0262EA00B3919A /* HurryApp */,
 				3B374C7B1C0262EB00B3919A /* HurryAppTests */,
 				3B374C861C0262EC00B3919A /* HurryAppUITests */,
 				3B374C651C0262EA00B3919A /* Products */,
 				3B163C4A1C1FAF4200290287 /* Frameworks */,
+				F6045261437BF18C6D0338F1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +149,7 @@
 				3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */,
 				3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */,
 				3B55442B1C28EBA100041775 /* MyFile.swift */,
+				3BEE2FAC1C2B271100453EAA /* PayPal requires */,
 				3B374C6E1C0262EB00B3919A /* Assets.xcassets */,
 				3B374C701C0262EB00B3919A /* LaunchScreen.storyboard */,
 				3B374C731C0262EB00B3919A /* Info.plist */,
@@ -162,6 +175,24 @@
 			path = HurryAppUITests;
 			sourceTree = "<group>";
 		};
+		3BEE2FAC1C2B271100453EAA /* PayPal requires */ = {
+			isa = PBXGroup;
+			children = (
+				3BEE2FAD1C2B277A00453EAA /* ZZAppDelegate.h */,
+				3BEE2FAE1C2B281900453EAA /* HurryApp-Bridging-Header.h */,
+			);
+			name = "PayPal requires";
+			sourceTree = "<group>";
+		};
+		F6045261437BF18C6D0338F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4FDF15F558CE026B61E728C1 /* Pods.debug.xcconfig */,
+				E4210B288759C1BEC0B4E051 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,9 +200,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B374C8C1C0262EC00B3919A /* Build configuration list for PBXNativeTarget "HurryApp" */;
 			buildPhases = (
+				BF8E5CF968D82B892AF09042 /* Check Pods Manifest.lock */,
 				3B374C601C0262EA00B3919A /* Sources */,
 				3B374C611C0262EA00B3919A /* Frameworks */,
 				3B374C621C0262EA00B3919A /* Resources */,
+				89501C3ACDD39CE2E54F3E52 /* Embed Pods Frameworks */,
+				8BC04438EE2F44B8874683DC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -224,7 +258,7 @@
 		3B374C5C1C0262EA00B3919A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = DevWorms;
 				TargetAttributes = {
@@ -274,6 +308,7 @@
 			files = (
 				3B374C721C0262EB00B3919A /* LaunchScreen.storyboard in Resources */,
 				3B374C6F1C0262EB00B3919A /* Assets.xcassets in Resources */,
+				3B6E86841C2B1F5A00252DA8 /* Podfile in Resources */,
 				3B374C6D1C0262EB00B3919A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +328,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		89501C3ACDD39CE2E54F3E52 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8BC04438EE2F44B8874683DC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF8E5CF968D82B892AF09042 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3B374C601C0262EA00B3919A /* Sources */ = {
@@ -444,8 +527,10 @@
 		};
 		3B374C8D1C0262EC00B3919A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FDF15F558CE026B61E728C1 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HurryApp/HurryApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -459,13 +544,17 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.devworms.HurryAppSolution;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HurryApp/HurryApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		3B374C8E1C0262EC00B3919A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4210B288759C1BEC0B4E051 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HurryApp/HurryApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -479,6 +568,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.devworms.HurryAppSolution;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HurryApp/HurryApp-Bridging-Header.h";
 			};
 			name = Release;
 		};
