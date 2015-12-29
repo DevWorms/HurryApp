@@ -27,5 +27,6 @@ dependencies {
     compile 'com.android.support:design:22.2.0'
     compile 'com.loopj.android:android-async-http:1.4.9'
     compile 'com.facebook.android:facebook-android-sdk:4.1.0'
+    compile('com.paypal.sdk:paypal-android-sdk:2.12.4')
     compile files('C:/Users/salvador/Documents/github/HurryApp/HurryApp-Andoid/android-async-http-1.4.9.jar')
 }

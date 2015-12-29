@@ -25,6 +25,7 @@ public class Cuenta extends Fragment {
     Button logout;
     ProfilePictureView fotoper;
     MenuItem agreTar;
+    TextView saldo;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +35,13 @@ public class Cuenta extends Fragment {
         View view =inflater.inflate(R.layout.fragment_cuenta, container, false);
         name=(TextView)view.findViewById(R.id.cuentaNombre);
         logout=(Button)view.findViewById(R.id.logout);
+        saldo=(TextView)view.findViewById(R.id.cuentaSaldo);
         fotoper=(ProfilePictureView) view.findViewById(R.id.profilePicture);
         try {
             MenuActivity menua =(MenuActivity)getActivity();
             nom =menua.inifbnombre;
             fot = menua.inifbfoto;
+            saldo.setText(menua.saldo.getText());
             if (nom != null && nom != "")
                 name.setText(nom);
             if (fot != null && fot != "")
