@@ -69,7 +69,7 @@ public class MenuActivity extends AppCompatActivity
         try{
 
             Intent i=getIntent();
-
+            if (i.getExtras()!=null) {
 
                 inifbnombre = i.getExtras().getString("nombrefb");
                 inifbfoto = i.getExtras().getString("foto");
@@ -78,6 +78,7 @@ public class MenuActivity extends AppCompatActivity
                     name.setText(inifbnombre);
                 if (inifbfoto != null || inifbfoto != "")
                     fotoper.setProfileId(inifbfoto);
+            }
 
         }catch (Exception e){
            // Toast.makeText(this, conta, Toast.LENGTH_SHORT).show();

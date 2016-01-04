@@ -37,19 +37,7 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Cuenta"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".MetPago"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".Compra"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".Exp"
+            android:name=".Registro"
             android:label="@string/app_name"
             android:theme="@style/AppTheme" />
         <activity
