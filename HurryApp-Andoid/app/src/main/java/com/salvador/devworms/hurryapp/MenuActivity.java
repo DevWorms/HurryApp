@@ -22,10 +22,14 @@ public class MenuActivity extends AppCompatActivity
    public String inifbnombre;
    public String inifbfoto;
     String pantall;
+    ConecInternet conectado= new ConecInternet();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!conectado.verificaConexion(getApplicationContext())) {
+            conectado.dialgo(MenuActivity.this);
+        }
         setContentView(R.layout.activity_menu);
         saldo=(TextView)findViewById(R.id.saldo);
         name=(TextView)findViewById(R.id.nombreperfil);
@@ -95,7 +99,9 @@ public class MenuActivity extends AppCompatActivity
     }
     public void onResume(){
         super.onResume();
-
+        if (!conectado.verificaConexion(getApplicationContext())) {
+            conectado.dialgo(MenuActivity.this);
+        }
     }
 
     @Override
@@ -186,9 +192,10 @@ public class MenuActivity extends AppCompatActivity
             getFragmentManager().beginTransaction()
                     .replace(R.id.actividad, new Cuenta()).commit();
 
-        }  else if (id == R.id.nav_creditos) {
-            //getFragmentManager().beginTransaction()
-            //        .replace(R.id.actividad, new CreditosFragment()).commit();
+        }  else if (id == R.id.nav_historial) {
+            item.setTitle("Historial");
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.actividad, new Historial()).commit();
 
         }
 

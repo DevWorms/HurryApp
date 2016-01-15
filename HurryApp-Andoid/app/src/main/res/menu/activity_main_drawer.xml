@@ -14,8 +14,12 @@
         <item
             android:id="@+id/nav_cuenta"
             android:icon="@drawable/icn_perfil"
-            android:title="TU CUENTA" />
+            android:title="Perfil" />
 
+        <item
+            android:id="@+id/nav_historial"
+            android:icon="@drawable/icn_historial"
+            android:title="Historial" />
     </group>
 
     <item android:title="Acerca de">
