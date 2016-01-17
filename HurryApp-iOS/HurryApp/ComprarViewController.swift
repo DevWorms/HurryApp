@@ -33,24 +33,25 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let data = NSData(contentsOfFile: MyFile.Path )
         
-        if #available(iOS 8.0, *) {
+        if (data == nil) {
+            print("ño")
+                
+            let alert = UIAlertView(title: "Nos faltó algo", message: "Selecciona un archivo existente", delegate: nil, cancelButtonTitle: "Ok")
+            alert.show()
+                
+            return
+                
+        } else if (textFields[0].text == "" || textFields[0].text == " ") {
+            print("ño1")
             
-            if (data == nil) {
-                print("ño")
-                
-                let alert = UIAlertController(title: "Nos faltó algo", message: "Selecciona un archivo existente", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-                
-                return
-                
-            } else if (textFields[0].text == "" || textFields[0].text == " ") {
-                print("ño1")
-                
-                let alert = UIAlertController(title: "Nos faltó algo", message: "¿Cuantas hojas imprimiremos?", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-                
+            let alert = UIAlertView(title: "Nos faltó algo", message: "¿Cuantas hojas imprimiremos?", delegate: nil, cancelButtonTitle: "Ok")
+            alert.show()
+            
+            return
+            
+            /*
+            let alert = UIAlertController(title: "Nos faltó algo", message: "¿Cuantas hojas imprimiremos?", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                 /*
                 alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
                 switch action.style{
@@ -65,48 +66,59 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 }))
                 */
-                
-                return
-            }
+            self.presentViewController(alert, animated: true, completion: nil)
+            */
             
-        } else { }
+        }
         
         print("siguió")
         
-        
-        let boundary = generateBoundaryString()
-        
-        // Set Content-Type in HTTP header.
-        let contentType = "multipart/form-data; boundary=" + boundary
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://hurryapp.devworms.com/subir.php")!)
-        request.HTTPMethod = "POST"
-        
-        // Set the HTTPBody we'd like to submit
-        request.HTTPBody = HTTPPostToPHP().postToPHP(data!, fileName: MyFile.Name, boundary: boundary)
-        
-        request.setValue(contentType, forHTTPHeaderField: "Content-Type")
-        
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            data, response, error in
+        if Accesibilidad.isConnectedToNetwork() == true {
+            print("Internet connection OK")
             
-            if error != nil {
-                print("error=\(error)")
-                return
+            let boundary = generateBoundaryString()
+            
+            // Set Content-Type in HTTP header.
+            let contentType = "multipart/form-data; boundary=" + boundary
+            
+            let request = NSMutableURLRequest(URL: NSURL(string: "http://hurryapp.devworms.com/subir.php")!)
+            request.HTTPMethod = "POST"
+            
+            // Set the HTTPBody we'd like to submit
+            request.HTTPBody = HTTPPostToPHP().postToPHP(data!, fileName: MyFile.Name, boundary: boundary)
+            
+            request.setValue(contentType, forHTTPHeaderField: "Content-Type")
+            
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+                data, response, error in
+                
+                if error != nil {
+                    print("error=\(error)")
+                    return
+                }
+                
+                print("response = \(response)")
+                
+                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+                print("responseString = \(responseString)")
             }
+            task.resume()
             
-            print("response = \(response)")
-            
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("responseString = \(responseString)")
+        } else {
+            let alert = UIAlertView(title: "Sin conexón a internet", message: "Asegurate de estar conectado a internet.", delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
         }
-        task.resume()
-        
 
     }
     
     func generateBoundaryString() -> String {
         return "Boundary-\(NSUUID().UUIDString)"
+    }
+    
+    @IBAction func deleteFile(sender: AnyObject) {
+        
+        MyFile.url = NSURL(fileURLWithPath:" ")
+        self.nameDoc.setTitle("", forState: .Normal)
     }
     
     @IBAction func uploadFile(sender: AnyObject) {
@@ -118,6 +130,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             //documentMenu.modalPresentationStyle = UIModalPresentationStyle.FullScreen
             
+            /*
             documentMenu.addOptionWithTitle("iPhone", image: nil, order: .First,
                     handler: {
                         
@@ -153,6 +166,10 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                         }else { print("ni se pudo leer la ruta") }
                         
                         print("New Doc Requested") })
+            */
+            
+            //ipad
+            documentMenu.popoverPresentationController?.sourceView = self.view
             
             self.presentViewController(documentMenu, animated: true, completion: nil)
             
@@ -206,7 +223,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 self.nameDoc.setTitle(MyFile.Name, forState: .Normal)
                 
-                
             } catch {
                 print("Error: \(error)")
             }
@@ -242,14 +258,14 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCellWithIdentifier( stringIndex ) as UITableViewCell!
         
         switch (indexPath.row) {
-            case 1,2,8:
+            case 1,2:
                 //print("This number is between 1,2,8")
                 let txtF = cell.viewWithTag( indexPath.row ) as! UITextField
                 textFields += [txtF]
                 txtF.delegate = self
                 //print(textFields.count)
             
-            case 3...7:
+            case 3...8:
                 //print("This number is between 3 and 7")
                 let swtch = cell.viewWithTag( indexPath.row ) as! UISwitch
                 switches += [swtch]
@@ -269,26 +285,38 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         if switchState == switches[0] {
             if switchState.on {
                 switches[1].setOn(false, animated: true)
+                switches[2].setOn(false, animated: true)
             } else {
                 switches[1].setOn(true, animated: true)
+                switches[2].setOn(false, animated: true)
             }
         } else if switchState == switches[1] {
             if switchState.on {
                 switches[0].setOn(false, animated: true)
+                switches[2].setOn(false, animated: true)
             } else {
                 switches[0].setOn(true, animated: true)
+                switches[2].setOn(false, animated: true)
             }
         } else if switchState == switches[2] {
+            if switchState.on {
+                switches[0].setOn(true, animated: true)
+                switches[1].setOn(false, animated: true)
+            } else {
+                switches[0].setOn(true, animated: true)
+                switches[1].setOn(false, animated: true)
+            }
+        } else if switchState == switches[3] {
+            if switchState.on {
+                switches[4].setOn(false, animated: true)
+            } else {
+                switches[4].setOn(true, animated: true)
+            }
+        } else if switchState == switches[4] {
             if switchState.on {
                 switches[3].setOn(false, animated: true)
             } else {
                 switches[3].setOn(true, animated: true)
-            }
-        } else if switchState == switches[3] {
-            if switchState.on {
-                switches[2].setOn(false, animated: true)
-            } else {
-                switches[2].setOn(true, animated: true)
             }
         }
     }

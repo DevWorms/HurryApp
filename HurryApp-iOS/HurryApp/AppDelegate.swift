@@ -21,26 +21,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        if ((FBSDKAccessToken.currentAccessToken()) == nil){
-            print("Not logged in..")
+        
+        if Accesibilidad.isConnectedToNetwork() == true {
+            print("Internet connection OK")
             
-        }else{
-            print("Logged in..")
-            print("current: \(FBSDKAccessToken.currentAccessToken().userID)")
+            if ((FBSDKAccessToken.currentAccessToken()) == nil){
+                print("Not logged in..")
+                
+            }else{
+                print("Logged in..")
+                print("current: \(FBSDKAccessToken.currentAccessToken().userID)")
+                
+                /*
+                let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewControllerWithIdentifier("Principal") as! UITabBarController
+                vc.selectedIndex = 0 //optional
+                
+                self.window?.rootViewController = vc
+                */
+                
+                /*
+                let vc = storyboard.instantiateViewControllerWithIdentifier("someViewController") as! UIViewController
+                self.presentViewController(vc, animated: true, completion: nil)
+                */
+            }
             
-            /*
-            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("Principal") as! UITabBarController
-            vc.selectedIndex = 0 //optional
-            
-            self.window?.rootViewController = vc
-            */
-            
-            /*
-            let vc = storyboard.instantiateViewControllerWithIdentifier("someViewController") as! UIViewController
-            self.presentViewController(vc, animated: true, completion: nil)
-            */
-            
+        } else {
+            let alert = UIAlertView(title: "Sin conexón a internet", message: "Asegurate de estar conectado a internet.", delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
         }
         
         return true

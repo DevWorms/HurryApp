@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2F54CB5BA1197B9BD095294E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4320657DC23CBE043629C5 /* libPods.a */; };
+		3B11967F1C49AFC900E6B202 /* SucursalesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B11967E1C49AFC900E6B202 /* SucursalesViewController.swift */; };
 		3B1A3F501C2A3202002936AF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1A3F4E1C2A3202002936AF /* FBSDKCoreKit.framework */; };
 		3B1A3F511C2A3202002936AF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1A3F4F1C2A3202002936AF /* FBSDKLoginKit.framework */; };
 		3B374C681C0262EA00B3919A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C671C0262EA00B3919A /* AppDelegate.swift */; };
 		3B374C6A1C0262EA00B3919A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C691C0262EA00B3919A /* ViewController.swift */; };
 		3B374C6D1C0262EB00B3919A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B374C6B1C0262EB00B3919A /* Main.storyboard */; };
-		3B374C6F1C0262EB00B3919A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B374C6E1C0262EB00B3919A /* Assets.xcassets */; };
 		3B374C721C0262EB00B3919A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B374C701C0262EB00B3919A /* LaunchScreen.storyboard */; };
 		3B374C7D1C0262EB00B3919A /* HurryAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C7C1C0262EB00B3919A /* HurryAppTests.swift */; };
 		3B374C881C0262EC00B3919A /* HurryAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C871C0262EC00B3919A /* HurryAppUITests.swift */; };
@@ -21,6 +21,8 @@
 		3B374C981C02801E00B3919A /* PagoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C971C02801E00B3919A /* PagoViewController.swift */; };
 		3B55442C1C28EBA100041775 /* MyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55442B1C28EBA100041775 /* MyFile.swift */; };
 		3B6E86841C2B1F5A00252DA8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3B6E86831C2B1F5A00252DA8 /* Podfile */; };
+		3B702D1F1C46F605001B7DB0 /* HistorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702D1E1C46F604001B7DB0 /* HistorialViewController.swift */; };
+		3B702D211C47049F001B7DB0 /* Accesibilidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702D201C47049F001B7DB0 /* Accesibilidad.swift */; };
 		3B97AD9E1C02E375001C8947 /* ComprarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */; };
 		3BD9B1FC1C238AC400DB66D7 /* HTTPPostToPHP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */; };
 		3BD9B1FE1C23D7B800DB66D7 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD9B1FD1C23D7B700DB66D7 /* PerfilViewController.swift */; };
@@ -45,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		1A4320657DC23CBE043629C5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B11967E1C49AFC900E6B202 /* SucursalesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SucursalesViewController.swift; sourceTree = "<group>"; };
 		3B1A3F4E1C2A3202002936AF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		3B1A3F4F1C2A3202002936AF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		3B262F751C17CB1F00B174C3 /* HurryApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HurryApp.entitlements; sourceTree = "<group>"; };
@@ -52,7 +55,6 @@
 		3B374C671C0262EA00B3919A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B374C691C0262EA00B3919A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3B374C6C1C0262EB00B3919A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3B374C6E1C0262EB00B3919A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B374C711C0262EB00B3919A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B374C731C0262EB00B3919A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B374C781C0262EB00B3919A /* HurryAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HurryAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +67,8 @@
 		3B374C971C02801E00B3919A /* PagoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagoViewController.swift; sourceTree = "<group>"; };
 		3B55442B1C28EBA100041775 /* MyFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFile.swift; sourceTree = "<group>"; };
 		3B6E86831C2B1F5A00252DA8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		3B702D1E1C46F604001B7DB0 /* HistorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorialViewController.swift; sourceTree = "<group>"; };
+		3B702D201C47049F001B7DB0 /* Accesibilidad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accesibilidad.swift; sourceTree = "<group>"; };
 		3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComprarViewController.swift; sourceTree = "<group>"; };
 		3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPPostToPHP.swift; sourceTree = "<group>"; };
 		3BD9B1FD1C23D7B700DB66D7 /* PerfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
@@ -142,15 +146,17 @@
 				3B262F751C17CB1F00B174C3 /* HurryApp.entitlements */,
 				3B374C6B1C0262EB00B3919A /* Main.storyboard */,
 				3B374C671C0262EA00B3919A /* AppDelegate.swift */,
+				3B11967E1C49AFC900E6B202 /* SucursalesViewController.swift */,
 				3B374C691C0262EA00B3919A /* ViewController.swift */,
 				3B374C951C027F2500B3919A /* RegistroViewController.swift */,
 				3BD9B1FD1C23D7B700DB66D7 /* PerfilViewController.swift */,
 				3B374C971C02801E00B3919A /* PagoViewController.swift */,
 				3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */,
+				3B702D1E1C46F604001B7DB0 /* HistorialViewController.swift */,
 				3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */,
 				3B55442B1C28EBA100041775 /* MyFile.swift */,
+				3B702D201C47049F001B7DB0 /* Accesibilidad.swift */,
 				3BEE2FAC1C2B271100453EAA /* PayPal requires */,
-				3B374C6E1C0262EB00B3919A /* Assets.xcassets */,
 				3B374C701C0262EB00B3919A /* LaunchScreen.storyboard */,
 				3B374C731C0262EB00B3919A /* Info.plist */,
 			);
@@ -307,7 +313,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B374C721C0262EB00B3919A /* LaunchScreen.storyboard in Resources */,
-				3B374C6F1C0262EB00B3919A /* Assets.xcassets in Resources */,
 				3B6E86841C2B1F5A00252DA8 /* Podfile in Resources */,
 				3B374C6D1C0262EB00B3919A /* Main.storyboard in Resources */,
 			);
@@ -383,7 +388,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B374C6A1C0262EA00B3919A /* ViewController.swift in Sources */,
+				3B702D1F1C46F605001B7DB0 /* HistorialViewController.swift in Sources */,
+				3B11967F1C49AFC900E6B202 /* SucursalesViewController.swift in Sources */,
 				3BD9B1FC1C238AC400DB66D7 /* HTTPPostToPHP.swift in Sources */,
+				3B702D211C47049F001B7DB0 /* Accesibilidad.swift in Sources */,
 				3B374C981C02801E00B3919A /* PagoViewController.swift in Sources */,
 				3B97AD9E1C02E375001C8947 /* ComprarViewController.swift in Sources */,
 				3B374C961C027F2500B3919A /* RegistroViewController.swift in Sources */,
@@ -546,6 +554,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HurryApp/HurryApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -569,6 +578,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HurryApp/HurryApp-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
