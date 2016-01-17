@@ -53,11 +53,23 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:text="Aceptar"
-            android:id="@+id/boton1"
+            android:id="@+id/btn_acep"
             android:textColor="#fff"
             android:textSize="13dp"
             android:background="#13b586"
              />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Registrate aquí"
+                android:textColor="#2683c2"
+                android:id="@+id/txt_registro"
+                android:layout_gravity="left"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp" />
+
             <fragment xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/fragment"

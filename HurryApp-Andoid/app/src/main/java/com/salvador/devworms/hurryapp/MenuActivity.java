@@ -17,6 +17,7 @@ import com.facebook.login.widget.ProfilePictureView;
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView name;
+   public TextView saldo;
     ProfilePictureView fotoper;
    public String inifbnombre;
    public String inifbfoto;
@@ -26,6 +27,7 @@ public class MenuActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        saldo=(TextView)findViewById(R.id.saldo);
         name=(TextView)findViewById(R.id.nombreperfil);
         fotoper=(ProfilePictureView)findViewById(R.id.profilePicture);
        // Bundle args = getIntent().getExtras();
@@ -67,7 +69,7 @@ public class MenuActivity extends AppCompatActivity
         try{
 
             Intent i=getIntent();
-
+            if (i.getExtras()!=null) {
 
                 inifbnombre = i.getExtras().getString("nombrefb");
                 inifbfoto = i.getExtras().getString("foto");
@@ -76,6 +78,7 @@ public class MenuActivity extends AppCompatActivity
                     name.setText(inifbnombre);
                 if (inifbfoto != null || inifbfoto != "")
                     fotoper.setProfileId(inifbfoto);
+            }
 
         }catch (Exception e){
            // Toast.makeText(this, conta, Toast.LENGTH_SHORT).show();
