@@ -129,7 +129,7 @@ public class Compra extends Fragment {
 
                 ubicacion= "";
                 nombre="";
-                txtRuta.setText("");
+                txtRuta.setText("Archivo");
             }
         });
         btnMandar.setOnClickListener(new View.OnClickListener(){

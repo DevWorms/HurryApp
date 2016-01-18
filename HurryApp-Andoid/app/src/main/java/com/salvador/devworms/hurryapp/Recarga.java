@@ -12,15 +12,20 @@ import android.widget.Button;
  */
 public class Recarga extends Fragment {
     Button btnpaypal;
+    ConecInternet conectado=new ConecInternet();
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recarga, container, false);
         btnpaypal=(Button)view.findViewById(R.id.btn_paypal);
         btnpaypal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (!conectado.verificaConexion(getActivity().getApplicationContext())) {
+                    conectado.dialgo(getActivity());
 
+                }else{
                 getFragmentManager().beginTransaction()
                         .replace(R.id.actividad, new Cantidad_Recarga()).commit();
+                }
             }
 
         });
