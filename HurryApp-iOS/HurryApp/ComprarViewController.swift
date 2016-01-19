@@ -21,7 +21,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         // Do any additional setup after loading the view.
         self.nameDoc.setTitle(MyFile.Name, forState: .Normal)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -175,6 +174,16 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         } else {
             // Fallback on earlier versions
+            
+            
+            //self.myView.backgroundColor = UIColor(white: 1, alpha: 0.5)
+            
+            var popViewController : ExportarViewController!
+            popViewController = storyboard!.instantiateViewControllerWithIdentifier("ExportarViewController") as! ExportarViewController
+            popViewController.showInView( self.view , animated: true)
+            
+            //self.presentViewController(popViewController, animated: true, completion: nil)
+            
         }
         
     }
@@ -329,34 +338,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         return true
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        print("textFieldDidEndEditing")
-    }
-    
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        print("shouldChangeCharactersInRange")
-        return true
-    }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        print("textFieldDidBeginEditing")
-    }
-    
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        print("textFieldShouldBeginEditing")
-        return true
-    }
-    
-    func textFieldShouldClear(textField: UITextField) -> Bool {
-        print("textFieldShouldClear")
-        return true
-    }
-    
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        print("textFieldShouldEndEditing")
-        return true
-    }
-
     /*
     // MARK: - Navigation
 

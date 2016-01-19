@@ -8,9 +8,10 @@
 
 import UIKit
 import FBSDKCoreKit
+import Darwin
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
 
     var window: UIWindow?
 
@@ -32,13 +33,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Logged in..")
                 print("current: \(FBSDKAccessToken.currentAccessToken().userID)")
                 
-                /*
                 let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewControllerWithIdentifier("Principal") as! UITabBarController
                 vc.selectedIndex = 0 //optional
                 
                 self.window?.rootViewController = vc
-                */
                 
                 /*
                 let vc = storyboard.instantiateViewControllerWithIdentifier("someViewController") as! UIViewController
@@ -47,11 +46,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
         } else {
-            let alert = UIAlertView(title: "Sin conexón a internet", message: "Asegurate de estar conectado a internet.", delegate: nil, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "Sin conexón a internet", message: "Asegurate de estar conectado a internet.", delegate: self, cancelButtonTitle: "OK")
             alert.show()
         }
         
         return true
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+       
+        if buttonIndex == 0 {
+            exit(0)
+        }
     }
     
     //Open app from another app

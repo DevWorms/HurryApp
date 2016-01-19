@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2F54CB5BA1197B9BD095294E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4320657DC23CBE043629C5 /* libPods.a */; };
 		3B11967F1C49AFC900E6B202 /* SucursalesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B11967E1C49AFC900E6B202 /* SucursalesViewController.swift */; };
+		3B1196821C4D520000E6B202 /* ExportarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1196801C4D51FF00E6B202 /* ExportarViewController.swift */; };
+		3B1196851C4D53EE00E6B202 /* ContentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1196841C4D53EE00E6B202 /* ContentPageViewController.swift */; };
 		3B1A3F501C2A3202002936AF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1A3F4E1C2A3202002936AF /* FBSDKCoreKit.framework */; };
 		3B1A3F511C2A3202002936AF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1A3F4F1C2A3202002936AF /* FBSDKLoginKit.framework */; };
 		3B374C681C0262EA00B3919A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C671C0262EA00B3919A /* AppDelegate.swift */; };
@@ -26,6 +28,7 @@
 		3B97AD9E1C02E375001C8947 /* ComprarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */; };
 		3BD9B1FC1C238AC400DB66D7 /* HTTPPostToPHP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */; };
 		3BD9B1FE1C23D7B800DB66D7 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD9B1FD1C23D7B700DB66D7 /* PerfilViewController.swift */; };
+		3BDBD94E1C4DA7F6009849B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BDBD94D1C4DA7F6009849B2 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,8 @@
 /* Begin PBXFileReference section */
 		1A4320657DC23CBE043629C5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B11967E1C49AFC900E6B202 /* SucursalesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SucursalesViewController.swift; sourceTree = "<group>"; };
+		3B1196801C4D51FF00E6B202 /* ExportarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportarViewController.swift; sourceTree = "<group>"; };
+		3B1196841C4D53EE00E6B202 /* ContentPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentPageViewController.swift; sourceTree = "<group>"; };
 		3B1A3F4E1C2A3202002936AF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		3B1A3F4F1C2A3202002936AF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		3B262F751C17CB1F00B174C3 /* HurryApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HurryApp.entitlements; sourceTree = "<group>"; };
@@ -72,6 +77,7 @@
 		3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComprarViewController.swift; sourceTree = "<group>"; };
 		3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPPostToPHP.swift; sourceTree = "<group>"; };
 		3BD9B1FD1C23D7B700DB66D7 /* PerfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
+		3BDBD94D1C4DA7F6009849B2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3BEE2FAD1C2B277A00453EAA /* ZZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZAppDelegate.h; sourceTree = "<group>"; };
 		3BEE2FAE1C2B281900453EAA /* HurryApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HurryApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		4FDF15F558CE026B61E728C1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +112,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B1196861C4D540800E6B202 /* ExportarDocumentoTuto */ = {
+			isa = PBXGroup;
+			children = (
+				3B1196801C4D51FF00E6B202 /* ExportarViewController.swift */,
+				3B1196841C4D53EE00E6B202 /* ContentPageViewController.swift */,
+			);
+			name = ExportarDocumentoTuto;
+			sourceTree = "<group>";
+		};
 		3B163C4A1C1FAF4200290287 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,9 +171,11 @@
 				3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */,
 				3B55442B1C28EBA100041775 /* MyFile.swift */,
 				3B702D201C47049F001B7DB0 /* Accesibilidad.swift */,
+				3B1196861C4D540800E6B202 /* ExportarDocumentoTuto */,
 				3BEE2FAC1C2B271100453EAA /* PayPal requires */,
 				3B374C701C0262EB00B3919A /* LaunchScreen.storyboard */,
 				3B374C731C0262EB00B3919A /* Info.plist */,
+				3BDBD94D1C4DA7F6009849B2 /* Images.xcassets */,
 			);
 			path = HurryApp;
 			sourceTree = "<group>";
@@ -313,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B374C721C0262EB00B3919A /* LaunchScreen.storyboard in Resources */,
+				3BDBD94E1C4DA7F6009849B2 /* Images.xcassets in Resources */,
 				3B6E86841C2B1F5A00252DA8 /* Podfile in Resources */,
 				3B374C6D1C0262EB00B3919A /* Main.storyboard in Resources */,
 			);
@@ -392,12 +410,14 @@
 				3B11967F1C49AFC900E6B202 /* SucursalesViewController.swift in Sources */,
 				3BD9B1FC1C238AC400DB66D7 /* HTTPPostToPHP.swift in Sources */,
 				3B702D211C47049F001B7DB0 /* Accesibilidad.swift in Sources */,
+				3B1196851C4D53EE00E6B202 /* ContentPageViewController.swift in Sources */,
 				3B374C981C02801E00B3919A /* PagoViewController.swift in Sources */,
 				3B97AD9E1C02E375001C8947 /* ComprarViewController.swift in Sources */,
 				3B374C961C027F2500B3919A /* RegistroViewController.swift in Sources */,
 				3B55442C1C28EBA100041775 /* MyFile.swift in Sources */,
 				3BD9B1FE1C23D7B800DB66D7 /* PerfilViewController.swift in Sources */,
 				3B374C681C0262EA00B3919A /* AppDelegate.swift in Sources */,
+				3B1196821C4D520000E6B202 /* ExportarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +558,7 @@
 			baseConfigurationReference = 4FDF15F558CE026B61E728C1 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HurryApp/HurryApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -563,6 +584,7 @@
 			baseConfigurationReference = E4210B288759C1BEC0B4E051 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HurryApp/HurryApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
