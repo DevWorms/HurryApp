@@ -19,6 +19,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.facebook.login.widget.ProfilePictureView;
@@ -35,7 +36,7 @@ public   class MainActivityFragment extends Fragment {
     private AccessTokenTracker tokenTracker;
     private ProfileTracker profileTracker;
 
-
+    ConecInternet conectado= new ConecInternet();
     public MainActivityFragment() {
     }
 
@@ -84,7 +85,8 @@ public   class MainActivityFragment extends Fragment {
         public void onSuccess(LoginResult loginResult) {
             AccessToken accessToken = loginResult.getAccessToken();
             profile = Profile.getCurrentProfile();
-          //displayMessage(profile);
+           // displayMessage(profile);
+
 
 
         }
@@ -109,8 +111,14 @@ public   class MainActivityFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        if (!conectado.verificaConexion(getActivity().getApplicationContext())) {
+            conectado.dialgo(getActivity());
+            LoginManager.getInstance().logOut();
+
+        }else{
         Profile profile = Profile.getCurrentProfile();
        displayMessage(profile);
+        }
 
     }
 
@@ -122,12 +130,17 @@ public   class MainActivityFragment extends Fragment {
     }
 
     private void displayMessage(Profile profile) {
+        if (!conectado.verificaConexion(getActivity().getApplicationContext())) {
+            conectado.dialgo(getActivity());
 
-            if (profile != null ) {
+        }else {
+            if (profile != null) {
                 Intent i = new Intent(getActivity(), MenuActivity.class);
                 i.putExtra("nombrefb", profile.getName());
                 i.putExtra("foto", profile.getId());
                 startActivity(i);
+
+               // getActivity().finish();
                 //image.setProfileId(profile.getId());
                 //Intent myIntent = new Intent(getActivity(), MenuActivity.class);
                 //getActivity().startActivity(myIntent);
@@ -138,7 +151,8 @@ public   class MainActivityFragment extends Fragment {
             } else {
 
             }
-
+        }
     }
+
 
 }

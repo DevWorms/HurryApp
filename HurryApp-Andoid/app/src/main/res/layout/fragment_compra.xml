@@ -1,25 +1,28 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/greybackground"
+   >
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:background="#e8e8e7"
+            android:background="@drawable/margen"
+
             android:orientation="vertical" >
 
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#000000"
                 android:text="Sube tus archivos Word o PDF"
                 android:id="@+id/textView2"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
                 android:textSize="25dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:background="#4fa5d5" />
             <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -37,7 +40,43 @@
                     android:background="@drawable/greybackground"
                     >
                     <LinearLayout android:layout_width="fill_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="0dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_horizontal"
+                        android:background="@drawable/greybackground"
+                        >
+
+                        <TextView
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:text="No. de hojas"
+                            android:id="@+id/edt_nhojas"
+                            android:textSize="15dp"
+                            android:gravity="left"
+                            android:textAlignment="viewStart" />
+
+                        <EditText
+                            android:layout_width="37dp"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:id="@+id/edx_numhoj"
+                            android:textColor="#000000"
+                            android:textColorHint="#707070"
+                            android:background="#f3f3f3"
+                            android:hint="000"
+                            android:textSize="16dp"
+                            android:maxLength="3"
+                            android:textAlignment="center"
+                            android:gravity="left"/>
+
+
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="16dp"
@@ -53,25 +92,29 @@
                             android:textColor="#000000"
                             android:text="Hojas"
                             android:id="@+id/hojas"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:gravity="left"
+                            android:textAlignment="viewStart" />
 
                         <EditText
                             android:layout_width="37dp"
                             android:layout_height="wrap_content"
                             android:inputType="number"
-                            android:id="@+id/etx_numhoj"
+                            android:id="@+id/etx_hoj"
                             android:textColor="#000000"
                             android:textColorHint="#707070"
                             android:background="#f3f3f3"
-                            android:hint="000"
+                            android:hint="1-5"
                             android:textSize="16dp"
                             android:maxLength="3"
-                            android:textAlignment="center" />
+
+                            android:textAlignment="center"
+                            android:gravity="left"/>
 
 
                     </LinearLayout>
                     <LinearLayout android:layout_width="fill_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="fill_parent"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="16dp"
@@ -87,17 +130,19 @@
                             android:textColor="#000000"
                             android:text="Blanco y Negro"
                             android:id="@+id/textView3"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:gravity="left"/>
 
                         <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/switch1"
-                            android:layout_marginLeft="50dp" />
+                            android:id="@+id/sw_blayneg"
+                            android:layout_marginLeft="50dp"
+                            android:gravity="left"/>
                     </LinearLayout>
 
                     <LinearLayout android:layout_width="fill_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="fill_parent"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="16dp"
@@ -121,11 +166,39 @@
                         <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/switch2"
-                            android:layout_marginLeft="50dp" />
+                            android:id="@+id/sw_color"
+                            android:layout_marginLeft="50dp"
+                            android:gravity="left"/>
                     </LinearLayout>
                     <LinearLayout android:layout_width="fill_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="0dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_horizontal"
+                        android:background="@drawable/greybackground"
+                        >
+
+                        <TextView
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="#000000"
+                            android:text="Caratula a color"
+                            android:id="@+id/textView11"
+                            android:textSize="15dp"
+                            android:gravity="left"/>
+
+                        <Switch
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/sw_carcolor"
+                            android:layout_marginLeft="50dp"
+                            android:gravity="left"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="16dp"
@@ -146,12 +219,13 @@
                         <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/switch3"
-                            android:layout_marginLeft="50dp" />
+                            android:id="@+id/sw_amlad"
+                            android:layout_marginLeft="50dp"
+                            android:gravity="left"/>
                     </LinearLayout>
 
                     <LinearLayout android:layout_width="fill_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="fill_parent"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="16dp"
@@ -167,16 +241,18 @@
                             android:textColor="#000000"
                             android:text="Tamaño carta"
                             android:id="@+id/textView6"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:gravity="left"/>
 
                         <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/switch4"
-                            android:layout_marginLeft="50dp" />
+                            android:id="@+id/sw_carta"
+                            android:layout_marginLeft="50dp"
+                            android:gravity="left"/>
                     </LinearLayout>
                     <LinearLayout android:layout_width="fill_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="fill_parent"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="16dp"
@@ -192,45 +268,60 @@
                             android:textColor="#000000"
                             android:text="Tamaño oficio"
                             android:id="@+id/textView7"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:gravity="left"/>
 
                         <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/switch5"
-                            android:layout_marginLeft="50dp" />
+                            android:id="@+id/sw_oficio"
+                            android:layout_marginLeft="50dp"
+                            android:gravity="left"/>
                     </LinearLayout>
-                    <LinearLayout android:layout_width="fill_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="0dp"
-                        android:orientation="horizontal"
-                        android:gravity="center_horizontal"
-                        android:background="@drawable/greybackground"
-                        >
+
                         <TextView
-                            android:layout_width="110dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="Archivo"
                             android:id="@+id/ruta"
                             android:textSize="15dp"
                             android:textColor="#000000"
-                            android:textStyle="italic" />
+                            android:textStyle="italic"
+                            android:gravity="left"/>
+                <LinearLayout android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="0dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    android:background="@drawable/greybackground"
+                    >
+                        <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:text="Cancelar"
+                        android:id="@+id/btnCancelar"
+                        android:textColor="#fff"
+
+                        android:background="#d9534f"
+                        android:layout_gravity="center_horizontal"
+                            android:layout_marginRight="30dp" />
 
                         <Button
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="fill_parent"
                             android:text="Buscar "
                             android:id="@+id/btnBuscar"
                             android:textColor="#fff"
 
                             android:background="#13b586"
                             android:layout_gravity="center_horizontal" />
-                    </LinearLayout>
 
+
+                </LinearLayout>
                     <Button
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -238,7 +329,7 @@
                         android:id="@+id/mandar"
                         android:textColor="#fff"
                         android:textSize="13dp"
-                        android:background="#2683c2"
+                        android:background="@drawable/redondo"
                         android:layout_marginTop="10dp" />
                 </LinearLayout>
             </ScrollView>

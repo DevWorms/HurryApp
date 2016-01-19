@@ -53,7 +53,7 @@ public class Cantidad_Recarga extends Fragment {
     Button btn_re50;
     Button btn_re100;
     String cantidad;
-
+    ConecInternet conectado=new ConecInternet();
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cantidad_recarga, container, false);
         Intent intent = new Intent(getActivity(), PayPalService.class);
@@ -64,15 +64,20 @@ public class Cantidad_Recarga extends Fragment {
         btn_re30.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                thingToBuy = new PayPalPayment(new BigDecimal("30"), "MXN",
-                        "Recarga $30", PayPalPayment.PAYMENT_INTENT_SALE);
-                Intent intent = new Intent(getActivity(),
-                        PaymentActivity.class);
-                cantidad="30";
+                if (!conectado.verificaConexion(getActivity().getApplicationContext())) {
+                    conectado.dialgo(getActivity());
 
-                intent.putExtra(PaymentActivity.EXTRA_PAYMENT, thingToBuy);
+                }else {
+                    thingToBuy = new PayPalPayment(new BigDecimal("30"), "MXN",
+                            "Recarga $30", PayPalPayment.PAYMENT_INTENT_SALE);
+                    Intent intent = new Intent(getActivity(),
+                            PaymentActivity.class);
+                    cantidad = "30";
 
-                startActivityForResult(intent, REQUEST_CODE_PAYMENT);
+                    intent.putExtra(PaymentActivity.EXTRA_PAYMENT, thingToBuy);
+
+                    startActivityForResult(intent, REQUEST_CODE_PAYMENT);
+                }
             }
 
         });
@@ -80,31 +85,39 @@ public class Cantidad_Recarga extends Fragment {
         btn_re50.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                thingToBuy = new PayPalPayment(new BigDecimal("50"), "MXN",
-                        "Recarga $50", PayPalPayment.PAYMENT_INTENT_SALE);
-                Intent intent = new Intent(getActivity(),
-                        PaymentActivity.class);
-                cantidad="50";
-                intent.putExtra(PaymentActivity.EXTRA_PAYMENT, thingToBuy);
+                if (!conectado.verificaConexion(getActivity().getApplicationContext())) {
+                    conectado.dialgo(getActivity());
 
-                startActivityForResult(intent, REQUEST_CODE_PAYMENT);
+                } else {
+                    thingToBuy = new PayPalPayment(new BigDecimal("50"), "MXN",
+                            "Recarga $50", PayPalPayment.PAYMENT_INTENT_SALE);
+                    Intent intent = new Intent(getActivity(),
+                            PaymentActivity.class);
+                    cantidad = "50";
+                    intent.putExtra(PaymentActivity.EXTRA_PAYMENT, thingToBuy);
+
+                    startActivityForResult(intent, REQUEST_CODE_PAYMENT);
+                }
             }
-
         });
         btn_re100=(Button)view.findViewById(R.id.btn_cien);
         btn_re100.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                thingToBuy = new PayPalPayment(new BigDecimal("100"), "MXN",
-                        "Recarga $100", PayPalPayment.PAYMENT_INTENT_SALE);
-                Intent intent = new Intent(getActivity(),
-                        PaymentActivity.class);
-                cantidad="100";
-                intent.putExtra(PaymentActivity.EXTRA_PAYMENT, thingToBuy);
+                if (!conectado.verificaConexion(getActivity().getApplicationContext())) {
+                    conectado.dialgo(getActivity());
 
-                startActivityForResult(intent, REQUEST_CODE_PAYMENT);
+                } else {
+                    thingToBuy = new PayPalPayment(new BigDecimal("100"), "MXN",
+                            "Recarga $100", PayPalPayment.PAYMENT_INTENT_SALE);
+                    Intent intent = new Intent(getActivity(),
+                            PaymentActivity.class);
+                    cantidad = "100";
+                    intent.putExtra(PaymentActivity.EXTRA_PAYMENT, thingToBuy);
+
+                    startActivityForResult(intent, REQUEST_CODE_PAYMENT);
+                }
             }
-
         });
         return view;
 
