@@ -10,7 +10,7 @@ import UIKit
 
 class ExportarViewController: UIViewController, UIPageViewControllerDataSource {
     
-    var aView: UIView!
+    var popTransparentView: UIView!
     
     var pageViewController: UIPageViewController!
     var pageTitles: NSArray!
@@ -39,7 +39,7 @@ class ExportarViewController: UIViewController, UIPageViewControllerDataSource {
         self.pageViewController.setViewControllers(viewControllers as? [UIViewController] , direction: .Forward , animated: true, completion: nil)
         //
         
-        self.pageViewController.view.frame = CGRect(x: 0, y: 10, width: self.view.frame.width, height: self.view.frame.height - 60)
+        self.pageViewController.view.frame = CGRect(x: 0, y: 5, width: self.view.frame.width, height: self.view.frame.height - 60)
         
         self.addChildViewController(self.pageViewController)
         
@@ -56,35 +56,38 @@ class ExportarViewController: UIViewController, UIPageViewControllerDataSource {
         
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
-    
-    
+    // MARK: - PopUp
 
     @IBAction func closePopUp(sender: AnyObject) {
         
         self.removeAnimate()
     }
     
-    func showInView(aView: UIView!, animated: Bool) {
+    func showInView(aView: UIView!, animated: Bool, scaleX: CGFloat, scaleY: CGFloat) {
         
-        self.aView = aView
+        self.popTransparentView = UIView.init(frame:  aView.frame)
+        self.popTransparentView.backgroundColor = UIColor(white: 0.5, alpha: 0.6)
         
-        self.aView.backgroundColor = UIColor(white: 1, alpha: 0.5)
-        
-        self.aView.addSubview(self.view)
+        aView.addSubview( self.popTransparentView )
+        aView.addSubview(self.view)
         
         if animated {
             
-            self.showAnimate()
+            self.showAnimate(scaleX, sY: scaleY)
         }
     }
     
-    func showAnimate() {
+    func showAnimate(sX: CGFloat, sY: CGFloat) {
         self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
         self.view.alpha = 0.0;
         UIView.animateWithDuration(0.25, animations: {
             self.view.alpha = 1.0
-            self.view.transform = CGAffineTransformMakeScale(0.75, 0.75)
+            self.view.transform = CGAffineTransformMakeScale(sX, sY)
         });
     }
     
@@ -95,21 +98,10 @@ class ExportarViewController: UIViewController, UIPageViewControllerDataSource {
             }, completion:{(finished : Bool)  in
                 if (finished) {
                     
-                    self.aView.backgroundColor = UIColor(white: 1, alpha: 1)
                     self.view.removeFromSuperview()
+                    self.popTransparentView.removeFromSuperview()
                 }
         });
-    }
-    
-    
-    
-    
-    
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func viewControllerAtIndex(index: Int) ->  ContentPageViewController {
@@ -132,24 +124,18 @@ class ExportarViewController: UIViewController, UIPageViewControllerDataSource {
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         
-        print("viewControllerAfterViewController")
-        
         let vc = viewController as! ContentPageViewController
         var index = vc.pageIndex as Int
         
         if (index == NSNotFound){
-            print("viewControllerAfterViewController nil")
             return nil
         }
         
         index++
         
         if (index == self.pageTitles.count){
-            print("viewControllerAfterViewController nil nil")
             return nil
         }
-        
-        print("viewControllerAfterViewController index")
         
         return self.viewControllerAtIndex(index)
     }

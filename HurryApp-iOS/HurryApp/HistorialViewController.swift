@@ -13,6 +13,8 @@ class HistorialViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var tableView: UITableView!
     var refreshControl = UIRefreshControl()
     var dateFormatter = NSDateFormatter()
+    
+    var numberRows = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +54,8 @@ class HistorialViewController: UIViewController, UITableViewDataSource, UITableV
             self.refreshControl.endRefreshing()
         }
         
+        self.numberRows = 1
+        
         self.tableView?.reloadData()
 
     }
@@ -61,21 +65,30 @@ class HistorialViewController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     // MARK: - UITableViewDelegate
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        
+        if numberRows == 0 {
+            
+            let noDataLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: tableView.bounds.height))
+            noDataLabel.numberOfLines = 2
+            noDataLabel.font = UIFont.boldSystemFontOfSize(16)
+            noDataLabel.textColor = UIColor.blackColor()
+            noDataLabel.textAlignment = NSTextAlignment.Center
+            noDataLabel.backgroundColor = UIColor.lightGrayColor()
+            noDataLabel.text = "No tienes productos por recoger"
+            
+            tableView.backgroundView = noDataLabel
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+                        
+        } else {
+        
+            tableView.backgroundView = nil
+            tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+        }
+        
+        return self.numberRows
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -83,5 +96,15 @@ class HistorialViewController: UIViewController, UITableViewDataSource, UITableV
         let cell = tableView.dequeueReusableCellWithIdentifier("CellHistorial", forIndexPath: indexPath) as UITableViewCell
         return cell
     }
+    
+    /*
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
+    }
+    */
 
 }

@@ -16,6 +16,8 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     var switches: [UISwitch] = []
     var deleteUrl = true
     
+    var popViewController : ExportarViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -129,6 +131,10 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             //documentMenu.modalPresentationStyle = UIModalPresentationStyle.FullScreen
             
+            documentMenu.addOptionWithTitle("Desde otra aplicación", image: nil, order: .First, handler: { () -> Void in
+                self.openPopUpTutorial()
+            })
+            
             /*
             documentMenu.addOptionWithTitle("iPhone", image: nil, order: .First,
                     handler: {
@@ -173,19 +179,18 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.presentViewController(documentMenu, animated: true, completion: nil)
             
         } else {
-            // Fallback on earlier versions
+            // Fallback on earlier versions            
             
-            
-            //self.myView.backgroundColor = UIColor(white: 1, alpha: 0.5)
-            
-            var popViewController : ExportarViewController!
-            popViewController = storyboard!.instantiateViewControllerWithIdentifier("ExportarViewController") as! ExportarViewController
-            popViewController.showInView( self.view , animated: true)
-            
-            //self.presentViewController(popViewController, animated: true, completion: nil)
+            self.openPopUpTutorial()
             
         }
         
+    }
+    
+    func openPopUpTutorial() {
+        
+        self.popViewController = storyboard!.instantiateViewControllerWithIdentifier("ExportarViewController") as! ExportarViewController
+        self.popViewController.showInView( self.view , animated: true, scaleX: 0.72, scaleY: 0.72)
     }
     
     @IBAction func openFile(sender: AnyObject) {
@@ -227,7 +232,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                     fileSize = _attr.fileSize();
                     
                     print("fileSize: \(fileSize)")
-                    
                 }
                 
                 self.nameDoc.setTitle(MyFile.Name, forState: .Normal)
