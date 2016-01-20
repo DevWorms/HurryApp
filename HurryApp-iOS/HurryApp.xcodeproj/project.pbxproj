@@ -22,6 +22,7 @@
 		3B374C961C027F2500B3919A /* RegistroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C951C027F2500B3919A /* RegistroViewController.swift */; };
 		3B374C981C02801E00B3919A /* PagoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C971C02801E00B3919A /* PagoViewController.swift */; };
 		3B55442C1C28EBA100041775 /* MyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55442B1C28EBA100041775 /* MyFile.swift */; };
+		3B624D351C4EBA8000D68131 /* InfoHistorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B624D341C4EBA8000D68131 /* InfoHistorialViewController.swift */; };
 		3B6E86841C2B1F5A00252DA8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3B6E86831C2B1F5A00252DA8 /* Podfile */; };
 		3B702D1F1C46F605001B7DB0 /* HistorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702D1E1C46F604001B7DB0 /* HistorialViewController.swift */; };
 		3B702D211C47049F001B7DB0 /* Accesibilidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702D201C47049F001B7DB0 /* Accesibilidad.swift */; };
@@ -71,6 +72,7 @@
 		3B374C951C027F2500B3919A /* RegistroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistroViewController.swift; sourceTree = "<group>"; };
 		3B374C971C02801E00B3919A /* PagoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagoViewController.swift; sourceTree = "<group>"; };
 		3B55442B1C28EBA100041775 /* MyFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFile.swift; sourceTree = "<group>"; };
+		3B624D341C4EBA8000D68131 /* InfoHistorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoHistorialViewController.swift; sourceTree = "<group>"; };
 		3B6E86831C2B1F5A00252DA8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		3B702D1E1C46F604001B7DB0 /* HistorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorialViewController.swift; sourceTree = "<group>"; };
 		3B702D201C47049F001B7DB0 /* Accesibilidad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accesibilidad.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				3B374C971C02801E00B3919A /* PagoViewController.swift */,
 				3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */,
 				3B702D1E1C46F604001B7DB0 /* HistorialViewController.swift */,
+				3B624D341C4EBA8000D68131 /* InfoHistorialViewController.swift */,
 				3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */,
 				3B55442B1C28EBA100041775 /* MyFile.swift */,
 				3B702D201C47049F001B7DB0 /* Accesibilidad.swift */,
@@ -407,6 +410,7 @@
 			files = (
 				3B374C6A1C0262EA00B3919A /* ViewController.swift in Sources */,
 				3B702D1F1C46F605001B7DB0 /* HistorialViewController.swift in Sources */,
+				3B624D351C4EBA8000D68131 /* InfoHistorialViewController.swift in Sources */,
 				3B11967F1C49AFC900E6B202 /* SucursalesViewController.swift in Sources */,
 				3BD9B1FC1C238AC400DB66D7 /* HTTPPostToPHP.swift in Sources */,
 				3B702D211C47049F001B7DB0 /* Accesibilidad.swift in Sources */,
