@@ -33,8 +33,7 @@ public class Cantidad_Recarga extends Fragment {
 
 
     // private static final String CONFIG_CLIENT_ID = "client id of sandbox";
-    private static final String CONFIG_CLIENT_ID = "ASMbO0e1dlfLvzhzwWz42zfESbiaqyfR0rEX2TegvIsRzkzu1RURrDVVYgLcXBt86PrWH4lbuXUDb-DH";
-
+    private static final String CONFIG_CLIENT_ID = "ARz4NRRhyp7aszqRG1kj_1A2syw_Jp8nT8JwRnSpQqgD7c_bsMd6__bgXfrVsl9g7io9xCjy8kSqxWm1";
     private static final int REQUEST_CODE_PAYMENT = 1;
     private static final int REQUEST_CODE_FUTURE_PAYMENT = 2;
 
