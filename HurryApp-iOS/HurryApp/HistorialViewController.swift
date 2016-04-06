@@ -14,28 +14,25 @@ class HistorialViewController: UIViewController, UITableViewDataSource, UITableV
     var refreshControl = UIRefreshControl()
     var dateFormatter = NSDateFormatter()
     
+    var hurryPrintMethods = ConnectionHurryPrint()
     var numberRows = 0
-
+    var names = [String]()
+    var stats = [String]()
+    var noFolios = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if Accesibilidad.isConnectedToNetwork() == true {
-            print("Internet connection OK")
-            
-        } else {
-            let alert = UIAlertView(title: "Sin conexón a internet", message: "Asegurate de estar conectado a internet.", delegate: nil, cancelButtonTitle: "OK")
-            alert.show()
-        }
-        
         // set up the refresh control
         //https://grokswift.com/pull-to-refresh-swift-table-view/
         self.dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
         self.dateFormatter.timeStyle = NSDateFormatterStyle.LongStyle
         
         self.refreshControl.attributedTitle = NSAttributedString(string: "Actualizando...")
-        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(HistorialViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview( self.refreshControl )
         
+        self.loadStockQuoteItems()
     }
     
     func refresh(sender:AnyObject) {
@@ -54,10 +51,45 @@ class HistorialViewController: UIViewController, UITableViewDataSource, UITableV
             self.refreshControl.endRefreshing()
         }
         
-        self.numberRows = 1
+        //Completion Handler
+        self.hurryPrintMethods.connectionRestApi( "http://hurryprint.devworms.com/api/folios", type: "GET", headers: nil, parameters: nil, completion: { (resultData) -> Void in
+            
+            self.parseJSON( resultData )
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                
+                self.tableView.reloadData()
+            })
+            
+        })
         
-        self.tableView?.reloadData()
-
+    }
+    
+    func parseJSON(dataForJson: NSData) {
+        do {
+            let json = try NSJSONSerialization.JSONObjectWithData( dataForJson , options: .AllowFragments)
+            
+            if let folios = json["folios"] as? [[String: AnyObject]] {
+                for folio in folios {
+                    
+                    if let noFolio = folio["folio_documento"] as? String {
+                        self.noFolios.append(noFolio)
+                    }
+                    if let name = folio["nombre_documento"] as? String {
+                        self.names.append(name)
+                    }
+                    if let estatus = folio["descripcion"] as? String {
+                        self.stats.append(estatus)
+                    }
+                }
+                
+                if folios.count > 0 {
+                    self.numberRows = folios.count
+                }
+            }
+        } catch {
+            print("error serializing JSON: \(error)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,7 +126,24 @@ class HistorialViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("CellHistorial", forIndexPath: indexPath) as UITableViewCell
+        
+        let nameDocumento = cell.viewWithTag(1) as! UILabel
+        nameDocumento.text = self.names[ indexPath.row ]
+        
+        let folio = cell.viewWithTag(2) as! UILabel
+        folio.text = self.noFolios[ indexPath.row ]
+        
+        let estatus = cell.viewWithTag(3) as! UILabel
+        estatus.text = self.stats[ indexPath.row ]
+        
+        if self.self.stats[indexPath.row] == "esperando" {
+            estatus.textColor = UIColor.orangeColor()
+        } else {
+            estatus.textColor = UIColor.greenColor()
+        }
+        
         return cell
+        
     }
     
     /*

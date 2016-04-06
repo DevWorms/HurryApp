@@ -27,7 +27,7 @@
 		3B702D1F1C46F605001B7DB0 /* HistorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702D1E1C46F604001B7DB0 /* HistorialViewController.swift */; };
 		3B702D211C47049F001B7DB0 /* Accesibilidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702D201C47049F001B7DB0 /* Accesibilidad.swift */; };
 		3B97AD9E1C02E375001C8947 /* ComprarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */; };
-		3BD9B1FC1C238AC400DB66D7 /* HTTPPostToPHP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */; };
+		3BD9B1FC1C238AC400DB66D7 /* ConnectionHurryPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD9B1FB1C238AC400DB66D7 /* ConnectionHurryPrint.swift */; };
 		3BD9B1FE1C23D7B800DB66D7 /* PerfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD9B1FD1C23D7B700DB66D7 /* PerfilViewController.swift */; };
 		3BDBD94E1C4DA7F6009849B2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BDBD94D1C4DA7F6009849B2 /* Images.xcassets */; };
 /* End PBXBuildFile section */
@@ -77,7 +77,7 @@
 		3B702D1E1C46F604001B7DB0 /* HistorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorialViewController.swift; sourceTree = "<group>"; };
 		3B702D201C47049F001B7DB0 /* Accesibilidad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accesibilidad.swift; sourceTree = "<group>"; };
 		3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComprarViewController.swift; sourceTree = "<group>"; };
-		3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPPostToPHP.swift; sourceTree = "<group>"; };
+		3BD9B1FB1C238AC400DB66D7 /* ConnectionHurryPrint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionHurryPrint.swift; sourceTree = "<group>"; };
 		3BD9B1FD1C23D7B700DB66D7 /* PerfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerfilViewController.swift; sourceTree = "<group>"; };
 		3BDBD94D1C4DA7F6009849B2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3BEE2FAD1C2B277A00453EAA /* ZZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZAppDelegate.h; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 				3B97AD9D1C02E375001C8947 /* ComprarViewController.swift */,
 				3B702D1E1C46F604001B7DB0 /* HistorialViewController.swift */,
 				3B624D341C4EBA8000D68131 /* InfoHistorialViewController.swift */,
-				3BD9B1FB1C238AC400DB66D7 /* HTTPPostToPHP.swift */,
+				3BD9B1FB1C238AC400DB66D7 /* ConnectionHurryPrint.swift */,
 				3B55442B1C28EBA100041775 /* MyFile.swift */,
 				3B702D201C47049F001B7DB0 /* Accesibilidad.swift */,
 				3B1196861C4D540800E6B202 /* ExportarDocumentoTuto */,
@@ -412,7 +412,7 @@
 				3B702D1F1C46F605001B7DB0 /* HistorialViewController.swift in Sources */,
 				3B624D351C4EBA8000D68131 /* InfoHistorialViewController.swift in Sources */,
 				3B11967F1C49AFC900E6B202 /* SucursalesViewController.swift in Sources */,
-				3BD9B1FC1C238AC400DB66D7 /* HTTPPostToPHP.swift in Sources */,
+				3BD9B1FC1C238AC400DB66D7 /* ConnectionHurryPrint.swift in Sources */,
 				3B702D211C47049F001B7DB0 /* Accesibilidad.swift in Sources */,
 				3B1196851C4D53EE00E6B202 /* ContentPageViewController.swift in Sources */,
 				3B374C981C02801E00B3919A /* PagoViewController.swift in Sources */,

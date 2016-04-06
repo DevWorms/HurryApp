@@ -13,7 +13,9 @@ class PerfilViewController: UIViewController {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileName: UILabel!
-
+    @IBOutlet weak var saldo: UILabel!
+    
+    var hurryPrintMethods = ConnectionHurryPrint()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,30 @@ class PerfilViewController: UIViewController {
         } else {
             print("nil")
             
+        }
+        
+        //Completion Handler
+        self.hurryPrintMethods.connectionRestApi( "http://hurryprint.devworms.com/api/saldo", type: "GET", headers: nil, parameters: nil, completion: { (resultData) -> Void in
+            
+            self.parseJSON( resultData )
+            
+        })
+        
+    }
+    
+    func parseJSON(dataForJson: NSData) {
+        do {
+            let json = try NSJSONSerialization.JSONObjectWithData( dataForJson , options: .AllowFragments)
+            
+            if let saldoGral = json["saldo"]!!["SaldoRegalo"] as? String {
+                
+                dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
+                    
+                    self.saldo.text = saldoGral
+                })
+            }
+        } catch {
+            print("error serializing JSON: \(error)")
         }
         
     }

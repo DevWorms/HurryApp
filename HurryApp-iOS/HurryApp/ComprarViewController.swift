@@ -12,6 +12,8 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var nameDoc: UIButton!
     
+    var hurryPrintMethods = ConnectionHurryPrint()
+    
     var textFields: [UITextField] = []
     var switches: [UISwitch] = []
     var deleteUrl = true
@@ -86,7 +88,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             request.HTTPMethod = "POST"
             
             // Set the HTTPBody we'd like to submit
-            request.HTTPBody = HTTPPostToPHP().postToPHP(data!, fileName: MyFile.Name, boundary: boundary)
+            request.HTTPBody = self.hurryPrintMethods.postToPHP(data!, fileName: MyFile.Name, boundary: boundary)
             
             request.setValue(contentType, forHTTPHeaderField: "Content-Type")
             
@@ -282,7 +284,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 //print("This number is between 3 and 7")
                 let swtch = cell.viewWithTag( indexPath.row ) as! UISwitch
                 switches += [swtch]
-                swtch.addTarget(self, action: Selector("stateChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+                swtch.addTarget(self, action: #selector(ComprarViewController.stateChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
                 //print(switches.count)
             
             default:

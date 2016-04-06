@@ -23,9 +23,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
         
     }
-    
-    @IBAction func registrarseSegue(sender: AnyObject) {
-        self.performSegueWithIdentifier("RegistroSegue", sender: nil)
+
+    @IBAction func loginHurry(sender: AnyObject) {
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,7 +45,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         else {
             // Navigate to other view
             print("logIN")
-            self.performSegueWithIdentifier("InicioPagoSegue", sender: nil)
+            self.performSegueWithIdentifier("RegistroSegue", sender: nil)
+            //self.performSegueWithIdentifier("InicioPagoSegue", sender: nil)
             
         }
     }

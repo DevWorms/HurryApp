@@ -9,11 +9,63 @@
 import UIKit
 
 class InfoHistorialViewController: UIViewController {
+    
+    @IBOutlet weak var estatusLabel: UILabel!
+    @IBOutlet weak var folioLabel: UILabel!
+    @IBOutlet weak var docLabel: UILabel!
+    @IBOutlet weak var sucuLabel: UILabel!
+    @IBOutlet weak var precioLabel: UILabel!
+    @IBOutlet weak var horaLabel: UILabel!
+    @IBOutlet weak var fechaLabel: UILabel!
+    
+    var hurryPrintMethods = ConnectionHurryPrint()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let headers = [
+           "folio": "62165"
+        ]
+        
+        //Completion Handler
+        self.hurryPrintMethods.connectionRestApi( "http://hurryprint.devworms.com/api/folio", type: "GET", headers: headers, parameters: nil, completion: { (resultData) -> Void in
+            
+            self.parseJSON( resultData )
+            
+        })
+    }
+    
+    func parseJSON(dataForJson: NSData) {
+        
+        do {
+            let json = try NSJSONSerialization.JSONObjectWithData( dataForJson , options: .AllowFragments)
+            
+            print("holo")
+            print(dataForJson)
+            print(json)
+            
+            
+            if let folio = json["descripcion"]!!["Folio"] as? String {
+                
+                print("holo1")
+                
+                dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
+                    self.folioLabel.text = folio
+                    self.estatusLabel.text = json["descripcion"]!!["Status"] as? String
+                    self.docLabel.text = json["descripcion"]!!["Nombre"] as? String
+                    self.sucuLabel.text = json["descripcion"]!!["Sucursal"] as? String
+                    self.precioLabel.text = json["descripcion"]!!["Costo"] as? String
+                    self.horaLabel.text = json["descripcion"]!!["Fecha"] as? String
+                    self.fechaLabel.text = json["descripcion"]!!["Fecha"] as? String
+                    
+                })
+            }
+        } catch {
+            print("error serializing JSON: \(error)")
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,3 +85,6 @@ class InfoHistorialViewController: UIViewController {
     */
 
 }
+
+//http://stackoverflow.com/questions/22759167/how-to-make-a-push-segue-when-a-uitableviewcell-is-selected
+//https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/TableView_iPhone/ManageReorderRow/ManageReorderRow.html
