@@ -155,5 +155,15 @@ class HistorialViewController: UIViewController, UITableViewDataSource, UITableV
     // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "FolioSegue", let destination = segue.destinationViewController as? InfoHistorialViewController {
+            if let cell = sender as? UITableViewCell, let indexPath = self.tableView.indexPathForCell(cell) {
+                
+                destination.folioSearch = self.noFolios[ indexPath.row ]
+            }
+        }
+    }
 
 }

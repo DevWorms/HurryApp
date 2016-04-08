@@ -29,6 +29,13 @@ class RegistroViewController: UIViewController {
     
     @IBAction func registrarseHurry(sender: AnyObject) {
         
+        if !validate( self.telefonoTxt.text! ) {
+            let alert = UIAlertView(title: "Error en teléfono", message: "Asegurate de escribir correctamente tu teléfono.", delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
+            
+            return
+        }
+        
         if self.confirmarTxt.text != self.contrasenaTxt.text ||
            self.confirmarTxt.text == "" || self.contrasenaTxt.text == "" ||
            self.telefonoTxt.text == "" {
@@ -38,6 +45,8 @@ class RegistroViewController: UIViewController {
             
             return
         }
+        
+        
         
         let headers = [
             "content-type": "application/json",
@@ -77,14 +86,31 @@ class RegistroViewController: UIViewController {
                     })
                     
                 } else if registro == 3 {
-                    let alert = UIAlertView(title: "Usuario ya registrado", message: "Ya te registraste anteriormente.", delegate: nil, cancelButtonTitle: "OK")
-                    alert.show()
+                    
+                    dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
+                        
+                        let alert = UIAlertView(title: "Usuario ya registrado", message: "Ya te registraste anteriormente.", delegate: nil, cancelButtonTitle: "OK")
+                        alert.show()
+                    })
+                    
                 }
             }
             
         } catch {
             print("error serializing JSON: \(error)")
         }
+        
+    }
+    
+    func validate(value: String) -> Bool {
+        
+        let PHONE_REGEX = "^55\\d{8}"
+        
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        
+        let result =  phoneTest.evaluateWithObject(value)
+        
+        return result
         
     }
 

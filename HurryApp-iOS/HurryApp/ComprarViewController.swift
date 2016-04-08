@@ -76,46 +76,64 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         print("siguió")
         
-        if Accesibilidad.isConnectedToNetwork() == true {
-            print("Internet connection OK")
             
-            let boundary = generateBoundaryString()
-            
-            // Set Content-Type in HTTP header.
-            let contentType = "multipart/form-data; boundary=" + boundary
-            
-            let request = NSMutableURLRequest(URL: NSURL(string: "http://hurryapp.devworms.com/subir.php")!)
-            request.HTTPMethod = "POST"
-            
-            // Set the HTTPBody we'd like to submit
-            request.HTTPBody = self.hurryPrintMethods.postToPHP(data!, fileName: MyFile.Name, boundary: boundary)
-            
-            request.setValue(contentType, forHTTPHeaderField: "Content-Type")
-            
-            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-                data, response, error in
-                
-                if error != nil {
-                    print("error=\(error)")
-                    return
-                }
-                
-                print("response = \(response)")
-                
-                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print("responseString = \(responseString)")
-            }
-            task.resume()
-            
-        } else {
-            let alert = UIAlertView(title: "Sin conexón a internet", message: "Asegurate de estar conectado a internet.", delegate: nil, cancelButtonTitle: "OK")
-            alert.show()
-        }
-
+                    let parameters = [
+                        "usuario" : "@usuario",
+                        "folio" : "@folio",
+                        "nombre" : "@nombre",
+                        "url" : "@url",
+                        "ver" : "@ver",
+                        "sucursal" : "17",
+                        "hojas" : "2",
+                        "intervalo" : "",
+                        "blanconegro" : "1",
+                        "color" : "",
+                        "caratula" : "",
+                        "lados" : "",
+                        "carta" : "1",
+                        "oficio" : "",
+                        "total" : "2.2"
+                    ]
+                    
+                    //Completion Handler
+                    self.hurryPrintMethods.connectionRestApi( "http://hurryprint.devworms.com/class/SubirMovil.php", type: "POST1", headers: nil, parameters: parameters, completion: { (resultData) -> Void in
+                    
+                    //self.parseJSON( resultData )
+                    
+                    })
     }
     
-    func generateBoundaryString() -> String {
-        return "Boundary-\(NSUUID().UUIDString)"
+    
+    
+    func parseJSON(dataForJson: NSData) {
+        
+        do {
+            let json = try NSJSONSerialization.JSONObjectWithData( dataForJson , options: .AllowFragments)
+            
+            if let registro = json["estado"] as? Int {
+                if registro == 1 {
+                    
+                    dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
+                        
+                        let alert = UIAlertView(title: "HurryApp!", message: "Lánzate a la sucursal por tus impresiones.", delegate: nil, cancelButtonTitle: "OK")
+                        alert.show()
+                    })
+                    
+                } else if registro == 8 {
+                    
+                    dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
+                        
+                        let alert = UIAlertView(title: "Ocurrió algo", message: "No pudimos enviar tu archivo, intentalo de nuevo, asegúrate de que todo este bien.", delegate: nil, cancelButtonTitle: "OK")
+                        alert.show()
+                    })
+                    
+                }
+            }
+            
+        } catch {
+            print("error serializing JSON: \(error)")
+        }
+        
     }
     
     @IBAction func deleteFile(sender: AnyObject) {

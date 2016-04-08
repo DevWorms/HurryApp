@@ -59,8 +59,10 @@
                         <barButtonItem key="backBarButtonItem" title="Iniciar Sesión" id="3M2-w1-eP1"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="contrasenaTxt" destination="IQe-hd-axV" id="Lzs-sf-8hu"/>
+                        <outlet property="telefonoTxt" destination="N0b-qP-VWK" id="OfR-tn-ckZ"/>
                         <segue destination="hxl-6h-SUQ" kind="show" identifier="RegistroSegue" id="EE7-re-9Ae"/>
-                        <segue destination="Dp1-Wk-RaM" kind="presentation" identifier="InicioPagoSegue" modalTransitionStyle="flipHorizontal" id="fV7-TN-QNI"/>
+                        <segue destination="Dp1-Wk-RaM" kind="presentation" identifier="PagoSegue" modalTransitionStyle="flipHorizontal" id="fV7-TN-QNI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -370,7 +372,7 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellSucursal" rowHeight="77" id="SBp-5a-fni">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellSucursal" rowHeight="77" id="SBp-5a-fni">
                                         <rect key="frame" x="0.0" y="92" width="600" height="77"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SBp-5a-fni" id="7qq-MM-eAH">
@@ -378,39 +380,39 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sucursal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUs-R2-eOg">
-                                                    <rect key="frame" x="87" y="8" width="472" height="21"/>
+                                                    <rect key="frame" x="94" y="8" width="470" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blanco y Negro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wce-Cw-RCj">
-                                                    <rect key="frame" x="8" y="32" width="104" height="21"/>
+                                                    <rect key="frame" x="8" y="32" width="556" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R0u-uL-FEe">
-                                                    <rect key="frame" x="8" y="50" width="42" height="21"/>
+                                                    <rect key="frame" x="8" y="50" width="556" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sucursal:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pM-cg-Jja">
+                                                    <rect key="frame" x="8" y="11" width="78" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mS8-6U-FET">
-                                                    <rect key="frame" x="273" y="15" width="12" height="12"/>
+                                                    <rect key="frame" x="295" y="19" width="12" height="12"/>
                                                     <color key="backgroundColor" red="0.4883789275" green="1" blue="0.36572956270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="0.3"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sucursal:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9pM-cg-Jja">
-                                                    <rect key="frame" x="8" y="11" width="71" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <view tag="4" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNy-CT-wET">
-                                                    <rect key="frame" x="273" y="55" width="12" height="12"/>
+                                                    <rect key="frame" x="295" y="55" width="12" height="12"/>
                                                     <color key="backgroundColor" red="0.4883789275" green="1" blue="0.36572956270000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
@@ -418,7 +420,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SPJ-sn-4YA">
-                                                    <rect key="frame" x="273" y="36" width="12" height="12"/>
+                                                    <rect key="frame" x="295" y="37" width="12" height="12"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
@@ -440,10 +442,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="iSQ-MK-wGs" secondAttribute="trailing" id="IbU-u3-RQU"/>
-                            <constraint firstItem="iSQ-MK-wGs" firstAttribute="top" secondItem="Icf-ap-WGp" secondAttribute="top" constant="20" symbolic="YES" id="bbi-tI-46b"/>
-                            <constraint firstItem="iSQ-MK-wGs" firstAttribute="bottom" secondItem="a5A-9C-U8L" secondAttribute="top" id="jvh-jH-ldY"/>
-                            <constraint firstItem="iSQ-MK-wGs" firstAttribute="leading" secondItem="Icf-ap-WGp" secondAttribute="leading" id="kbW-c8-RLB"/>
+                            <constraint firstItem="iSQ-MK-wGs" firstAttribute="leading" secondItem="Icf-ap-WGp" secondAttribute="leading" id="6B1-6k-hrK"/>
+                            <constraint firstItem="iSQ-MK-wGs" firstAttribute="top" secondItem="Icf-ap-WGp" secondAttribute="top" constant="20" symbolic="YES" id="DYy-vE-rjc"/>
+                            <constraint firstItem="iSQ-MK-wGs" firstAttribute="bottom" secondItem="a5A-9C-U8L" secondAttribute="top" id="GjD-TD-27D"/>
+                            <constraint firstAttribute="trailing" secondItem="iSQ-MK-wGs" secondAttribute="trailing" id="J5e-Cs-Yg6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sucursales" id="ER5-Oy-jRs">
@@ -899,7 +901,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="rBW-nl-Kkp" kind="show" id="pl3-QA-ZCR"/>
+                                            <segue destination="rBW-nl-Kkp" kind="show" identifier="FolioSegue" id="pl3-QA-ZCR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -988,17 +990,17 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Folio" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ok-pF-24z">
-                                <rect key="frame" x="145" y="121" width="435" height="56"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Folio" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ok-pF-24z">
+                                <rect key="frame" x="85" y="121" width="495" height="56"/>
                                 <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="60"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Folio:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8To-vY-oYs">
-                                <rect key="frame" x="20" y="157" width="117" height="20"/>
+                                <rect key="frame" x="20" y="157" width="57" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="fAo-4D-TDW"/>
-                                    <constraint firstAttribute="width" constant="117" id="uWF-gJ-Wdc"/>
+                                    <constraint firstAttribute="width" constant="57" id="uWF-gJ-Wdc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -1067,7 +1069,7 @@
                             <constraint firstItem="fHK-cV-uZY" firstAttribute="top" secondItem="ZIr-ZU-UWz" secondAttribute="top" id="d8L-bb-mjw"/>
                             <constraint firstItem="Buv-Ri-3S1" firstAttribute="leading" secondItem="vL7-n5-iKp" secondAttribute="leading" id="dks-S6-E3f"/>
                             <constraint firstItem="PQX-ta-WvO" firstAttribute="leading" secondItem="jA5-jM-Rg3" secondAttribute="leading" id="fvz-oI-NSR"/>
-                            <constraint firstItem="2Ok-pF-24z" firstAttribute="leading" secondItem="fHK-cV-uZY" secondAttribute="leading" id="jOX-8k-9CM"/>
+                            <constraint firstItem="2Ok-pF-24z" firstAttribute="leading" secondItem="fHK-cV-uZY" secondAttribute="leading" constant="-60" id="jOX-8k-9CM"/>
                             <constraint firstItem="ugz-PP-NR0" firstAttribute="top" secondItem="ZQr-7q-fQS" secondAttribute="top" id="k1E-Bu-cCf"/>
                             <constraint firstItem="PQX-ta-WvO" firstAttribute="top" secondItem="ZQr-7q-fQS" secondAttribute="bottom" constant="12" id="kQP-2C-Kze"/>
                             <constraint firstItem="jA5-jM-Rg3" firstAttribute="bottom" secondItem="vL7-n5-iKp" secondAttribute="bottom" id="oum-PK-3lZ"/>
@@ -1222,6 +1224,6 @@
         <image name="agretar" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c3m-vn-u64"/>
+        <segue reference="fV7-TN-QNI"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,7 +10,7 @@ import Foundation
 
 class ConnectionHurryPrint {
     
-    func postToPHP(data: NSData, fileName: String, boundary: String) -> NSMutableData {
+    func prepareBodyDataToPHP(boundary: String) -> NSMutableData {
         
         // Set Content-Type in HTTP header.
         // http://www.sitepoint.com/web-foundations/mime-types-complete-list/
@@ -20,17 +20,61 @@ class ConnectionHurryPrint {
         let requestBodyData = NSMutableData()
         
         requestBodyData.appendString("--\(boundary)\r\n")
+        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "sucursal" )\"\r\n\r\n")
+        requestBodyData.appendString("\( 17 )\r\n")  // numero puede ser string o integer
+        
+        requestBodyData.appendString("--\(boundary)\r\n")
+        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "hojas" )\"\r\n\r\n")
+        requestBodyData.appendString("\( 2 )\r\n")  // numero puede ser string o integer
+        
+        requestBodyData.appendString("--\(boundary)\r\n")
+        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "intervalo" )\"\r\n\r\n")
+        requestBodyData.appendString("\( "1-7" )\r\n")  // numero puede ser string o integer
+        
+        requestBodyData.appendString("--\(boundary)\r\n")
+        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "totalimpresion" )\"\r\n\r\n")
+        requestBodyData.appendString("\( 1.7 )\r\n")  // numero puede ser string o integer
+        
+        requestBodyData.appendString("--\(boundary)\r\n")
+        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "blanconegro" )\"\r\n\r\n")
+        requestBodyData.appendString("\( 1 )\r\n")  // numero puede ser string o integer
+        
+        requestBodyData.appendString("--\(boundary)\r\n")
+        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "carta" )\"\r\n\r\n")
+        requestBodyData.appendString("\( 1 )\r\n")  // numero puede ser string o integer
+        
+        requestBodyData.appendString("--\(boundary)\r\n")
+        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "llave" )\"\r\n\r\n")
+        requestBodyData.appendString("\( NSUserDefaults.standardUserDefaults().stringForKey("ApiKey")! )\r\n")  // numero puede ser string o integer
+        
+        requestBodyData.appendString("--\(boundary)\r\n")
+        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "color" )\"\r\n\r\n")
+        requestBodyData.appendString("\( "" )\r\n")  // numero puede ser string o integer
+        
+        requestBodyData.appendString("--\(boundary)\r\n")
+        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "caratula" )\"\r\n\r\n")
+        requestBodyData.appendString("\( "" )\r\n")  // numero puede ser string o integer
+        
+        requestBodyData.appendString("--\(boundary)\r\n")
+        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "lados" )\"\r\n\r\n")
+        requestBodyData.appendString("\( "" )\r\n")  // numero puede ser string o integer
+        
+        requestBodyData.appendString("--\(boundary)\r\n")
         requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "numero" )\"\r\n\r\n")
         requestBodyData.appendString("\( true )\r\n")  // numero puede ser string o integer
         
         requestBodyData.appendString("--\(boundary)\r\n")
-        requestBodyData.appendString("Content-Disposition: form-data; name=\"\(fieldName)\"; filename=" + (fileName) + "\r\n")
+        requestBodyData.appendString("Content-Disposition: form-data; name=\"\(fieldName)\"; filename=" + ( MyFile.Name ) + "\r\n")
         requestBodyData.appendString("Content-Type: \(mimeType)\r\n\r\n")
-        requestBodyData.appendData( data )
+        requestBodyData.appendData( NSData(contentsOfFile: MyFile.Path )! )
         requestBodyData.appendString("\r\n")
         requestBodyData.appendString("--\(boundary)--\r\n")
         
         return requestBodyData
+    }
+    
+    func generateBoundaryString() -> String {
+        return "Boundary-\(NSUUID().UUIDString)"
     }
     
     //MARK: - Completion Handler
@@ -41,24 +85,46 @@ class ConnectionHurryPrint {
             print("Internet connection OK")
             
             let request = NSMutableURLRequest(URL: NSURL(string: url)!)
-            request.HTTPMethod = type            
             request.allHTTPHeaderFields = headers
             
             
             if type == "GET" {
+                request.HTTPMethod = type
+                
                 request.addValue( NSUserDefaults.standardUserDefaults().stringForKey("ApiKey")! , forHTTPHeaderField: "Apikey")
                 
-            } else{ // "POST"
+            } else if type == "POST" { // "POST1"
             
                 do {
                     let postData = try NSJSONSerialization.dataWithJSONObject(parameters!, options: .PrettyPrinted)
+                    
+                    request.HTTPMethod = type
                     
                     request.HTTPBody = postData
                     
                 } catch {
                     print("error serializing JSON: \(error)")
                 }
+            } else {
+                
+                print("entra")
+                
+                let boundary = generateBoundaryString()
+                
+                // Set Content-Type in HTTP header.
+                let contentType = "multipart/form-data; boundary=" + boundary
+                
+                request.HTTPMethod = "POST"
+                
+                // Set the HTTPBody we'd like to submit
+                request.HTTPBody = self.prepareBodyDataToPHP( boundary)
+                
+                request.setValue(contentType, forHTTPHeaderField: "Content-Type")
+                
+                
             }
+            
+            
             
             let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
                 data, response, error in

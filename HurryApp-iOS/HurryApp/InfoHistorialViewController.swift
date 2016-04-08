@@ -19,6 +19,8 @@ class InfoHistorialViewController: UIViewController {
     @IBOutlet weak var fechaLabel: UILabel!
     
     var hurryPrintMethods = ConnectionHurryPrint()
+    
+    var folioSearch = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,7 @@ class InfoHistorialViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let headers = [
-           "folio": "62165"
+           "folio": self.folioSearch
         ]
         
         //Completion Handler
@@ -42,14 +44,10 @@ class InfoHistorialViewController: UIViewController {
         do {
             let json = try NSJSONSerialization.JSONObjectWithData( dataForJson , options: .AllowFragments)
             
-            print("holo")
-            print(dataForJson)
-            print(json)
-            
-            
             if let folio = json["descripcion"]!!["Folio"] as? String {
                 
-                print("holo1")
+                let fullDate = json["descripcion"]!!["Fecha"] as? String
+                let fullDateArr = fullDate!.componentsSeparatedByString(" ")
                 
                 dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
                     self.folioLabel.text = folio
@@ -57,8 +55,8 @@ class InfoHistorialViewController: UIViewController {
                     self.docLabel.text = json["descripcion"]!!["Nombre"] as? String
                     self.sucuLabel.text = json["descripcion"]!!["Sucursal"] as? String
                     self.precioLabel.text = json["descripcion"]!!["Costo"] as? String
-                    self.horaLabel.text = json["descripcion"]!!["Fecha"] as? String
-                    self.fechaLabel.text = json["descripcion"]!!["Fecha"] as? String
+                    self.fechaLabel.text = fullDateArr[0]
+                    self.horaLabel.text = fullDateArr[1]
                     
                 })
             }
