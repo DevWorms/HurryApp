@@ -16,6 +16,7 @@ class SucursalesViewController: UIViewController, UITableViewDelegate, UITableVi
     var blanco_negro = [String]()
     var color = [String]()
     var sucursalesAbiertas = [String]()
+    var noSucursales = [String]()
     var numberRows = 0
     var hurryPrintMethods = ConnectionHurryPrint()
 
@@ -43,6 +44,9 @@ class SucursalesViewController: UIViewController, UITableViewDelegate, UITableVi
             
             if let sucursales = json["sucursal"] as? [[String: AnyObject]] {
                 for sucursal in sucursales {
+                    if let name = sucursal["id_tienda"] as? String {
+                        self.noSucursales.append(name)
+                    }
                     if let name = sucursal["nombre_tienda"] as? String {
                         self.names.append(name)
                     }
@@ -108,18 +112,26 @@ class SucursalesViewController: UIViewController, UITableViewDelegate, UITableVi
             disponibilidad_color?.backgroundColor = UIColor.grayColor()
         }
         
+        print("madres")
+        
         return cell
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "CompraSegue", let destination = segue.destinationViewController as? ComprarViewController {
+            if let cell = sender as? UITableViewCell, let indexPath = self.tableViewSucursales.indexPathForCell(cell) {
+                
+                destination.noSucursal = self.noSucursales[ indexPath.row ]
+            }
+        }
     }
-    */
+
+    
 
 }
 

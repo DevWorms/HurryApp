@@ -52,6 +52,13 @@ class InfoHistorialViewController: UIViewController {
                 dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
                     self.folioLabel.text = folio
                     self.estatusLabel.text = json["descripcion"]!!["Status"] as? String
+                    
+                    if self.estatusLabel.text == "esperando" {
+                        self.estatusLabel.textColor = UIColor.orangeColor()
+                    } else {
+                        self.estatusLabel.textColor = UIColor.greenColor()
+                    }                    
+                    
                     self.docLabel.text = json["descripcion"]!!["Nombre"] as? String
                     self.sucuLabel.text = json["descripcion"]!!["Sucursal"] as? String
                     self.precioLabel.text = json["descripcion"]!!["Costo"] as? String

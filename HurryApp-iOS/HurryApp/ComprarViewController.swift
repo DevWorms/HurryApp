@@ -16,7 +16,9 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var textFields: [UITextField] = []
     var switches: [UISwitch] = []
+    var switchesRespuesta: [String] = ["1","","","1","",""]
     var deleteUrl = true
+    var noSucursal = ""
     
     var popViewController : ExportarViewController!
     
@@ -37,91 +39,116 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         let data = NSData(contentsOfFile: MyFile.Path )
         
         if (data == nil) {
-            print("ño")
-                
             let alert = UIAlertView(title: "Nos faltó algo", message: "Selecciona un archivo existente", delegate: nil, cancelButtonTitle: "Ok")
             alert.show()
                 
             return
                 
-        } else if (textFields[0].text == "" || textFields[0].text == " ") {
-            print("ño1")
-            
+        } else if (textFields[0].text == "" || textFields[0].text == " " || textFields[0].text == "0") {
             let alert = UIAlertView(title: "Nos faltó algo", message: "¿Cuantas hojas imprimiremos?", delegate: nil, cancelButtonTitle: "Ok")
             alert.show()
             
             return
             
-            /*
-            let alert = UIAlertController(title: "Nos faltó algo", message: "¿Cuantas hojas imprimiremos?", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                /*
-                alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
-                switch action.style{
-                case .Default:
-                print("default")
+        } else if (textFields[1].text != "" || textFields[1].text != " "){
+            if !validate( textFields[1].text! ) {
+                let alert = UIAlertView(title: "Error en Intervalo", message: "Asegurate de escribir correctamente #-#.", delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
                 
-                case .Cancel:
-                print("cancel")
-                
-                case .Destructive:
-                print("destructive")
-                }
-                }))
-                */
-            self.presentViewController(alert, animated: true, completion: nil)
-            */
-            
+                //return
+            }
         }
         
         print("siguió")
         
+        print(switches.count)
+        
+        // ver el status de todos los switches
+        for (index, swc) in switches.enumerate() {
             
-                    let parameters = [
-                        "usuario" : "@usuario",
-                        "folio" : "@folio",
-                        "nombre" : "@nombre",
-                        "url" : "@url",
-                        "ver" : "@ver",
-                        "sucursal" : "17",
-                        "hojas" : "2",
-                        "intervalo" : "",
-                        "blanconegro" : "1",
-                        "color" : "",
-                        "caratula" : "",
-                        "lados" : "",
-                        "carta" : "1",
-                        "oficio" : "",
-                        "total" : "2.2"
-                    ]
-                    
-                    //Completion Handler
-                    self.hurryPrintMethods.connectionRestApi( "http://hurryprint.devworms.com/class/SubirMovil.php", type: "POST1", headers: nil, parameters: parameters, completion: { (resultData) -> Void in
-                    
-                    //self.parseJSON( resultData )
-                    
-                    })
+            print("holio \(index)")
+            
+            if swc.on {
+                switchesRespuesta[index] = "1"
+            } else {
+                switchesRespuesta[index] = ""
+            }
+        }
+        
+        let parameters = [
+            "sucursal" : self.noSucursal,
+            "hojas" : textFields[0].text!,
+            "intervalo" : textFields[1].text!,
+            "totalimpresion" : "1.7",
+            "blanconegro" : switchesRespuesta[0],
+            "color" : switchesRespuesta[1],
+            "caratula" : switchesRespuesta[2],
+            "carta" : switchesRespuesta[3],
+            "oficio" : switchesRespuesta[4],
+            "lados" : switchesRespuesta[5],
+            "juegos" : textFields[2].text!
+            ]
+        
+        
+        if #available(iOS 8.0, *) {
+            let alert = UIAlertController(title: nil, message: "Se están enviando tus archivos...", preferredStyle: .Alert)
+            alert.view.tintColor = UIColor.blackColor()
+            
+             /*
+             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+             alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
+             switch action.style{
+             case .Default:
+             print("default")
+             
+             case .Cancel:
+             print("cancel")
+             
+             case .Destructive:
+             print("destructive")
+             }
+             }))
+             */
+            
+            let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
+            loadingIndicator.hidesWhenStopped = true
+            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+            loadingIndicator.startAnimating();
+            
+            alert.view.addSubview(loadingIndicator)
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        //Completion Handler
+        self.hurryPrintMethods.connectionRestApi( "http://hurryprint.devworms.com/class/SubirMovil.php", type: "POST1", headers: nil, parameters: parameters, completion: { (resultData) -> Void in
+            
+            self.dismissViewControllerAnimated(false, completion: nil)
+            
+            self.parseJSON( resultData )
+            
+        })
+        
     }
-    
-    
     
     func parseJSON(dataForJson: NSData) {
         
         do {
             let json = try NSJSONSerialization.JSONObjectWithData( dataForJson , options: .AllowFragments)
             
-            if let registro = json["estado"] as? Int {
-                if registro == 1 {
+            if let estado = json["Estado"] as? Int {
+                if estado == 1 {
                     
-                    dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
+                    dispatch_async(dispatch_get_main_queue(), {
                         
                         let alert = UIAlertView(title: "HurryApp!", message: "Lánzate a la sucursal por tus impresiones.", delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
                     })
                     
-                } else if registro == 8 {
+                } else {
                     
-                    dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
+                    dispatch_async(dispatch_get_main_queue(), {
                         
                         let alert = UIAlertView(title: "Ocurrió algo", message: "No pudimos enviar tu archivo, intentalo de nuevo, asegúrate de que todo este bien.", delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
@@ -133,6 +160,16 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         } catch {
             print("error serializing JSON: \(error)")
         }
+        
+    }
+    
+    func validate(value: String) -> Bool {
+        
+        let test = NSPredicate(format: "SELF MATCHES %@", "^d-\\d")
+        
+        let result =  test.evaluateWithObject(value)
+        
+        return result
         
     }
     
@@ -279,7 +316,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return 10
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -291,22 +328,22 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = tableView.dequeueReusableCellWithIdentifier( stringIndex ) as UITableViewCell!
         
         switch (indexPath.row) {
-            case 1,2:
-                //print("This number is between 1,2,8")
+            case 1,2,9:
+                //print("This number is between 1,2,9")
                 let txtF = cell.viewWithTag( indexPath.row ) as! UITextField
                 textFields += [txtF]
                 txtF.delegate = self
                 //print(textFields.count)
             
             case 3...8:
-                //print("This number is between 3 and 7")
+                //print("This number is between 3 and 8")
                 let swtch = cell.viewWithTag( indexPath.row ) as! UISwitch
                 switches += [swtch]
                 swtch.addTarget(self, action: #selector(ComprarViewController.stateChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
-                //print(switches.count)
+                //print("jum "+String(switches.count))
             
-            default:
-                print("This number is not between 0 and 8")
+            default: break
+                //print("This number is not between 0 and 8")
         }
         
         return cell

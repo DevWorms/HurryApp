@@ -10,7 +10,7 @@ import Foundation
 
 class ConnectionHurryPrint {
     
-    func prepareBodyDataToPHP(boundary: String) -> NSMutableData {
+    func prepareBodyDataToPHP(parameters: [String: String], boundary: String) -> NSMutableData {
         
         // Set Content-Type in HTTP header.
         // http://www.sitepoint.com/web-foundations/mime-types-complete-list/
@@ -19,49 +19,17 @@ class ConnectionHurryPrint {
         
         let requestBodyData = NSMutableData()
         
-        requestBodyData.appendString("--\(boundary)\r\n")
-        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "sucursal" )\"\r\n\r\n")
-        requestBodyData.appendString("\( 17 )\r\n")  // numero puede ser string o integer
-        
-        requestBodyData.appendString("--\(boundary)\r\n")
-        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "hojas" )\"\r\n\r\n")
-        requestBodyData.appendString("\( 2 )\r\n")  // numero puede ser string o integer
-        
-        requestBodyData.appendString("--\(boundary)\r\n")
-        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "intervalo" )\"\r\n\r\n")
-        requestBodyData.appendString("\( "1-7" )\r\n")  // numero puede ser string o integer
-        
-        requestBodyData.appendString("--\(boundary)\r\n")
-        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "totalimpresion" )\"\r\n\r\n")
-        requestBodyData.appendString("\( 1.7 )\r\n")  // numero puede ser string o integer
-        
-        requestBodyData.appendString("--\(boundary)\r\n")
-        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "blanconegro" )\"\r\n\r\n")
-        requestBodyData.appendString("\( 1 )\r\n")  // numero puede ser string o integer
-        
-        requestBodyData.appendString("--\(boundary)\r\n")
-        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "carta" )\"\r\n\r\n")
-        requestBodyData.appendString("\( 1 )\r\n")  // numero puede ser string o integer
+        for (keys, values) in parameters {
+            
+            requestBodyData.appendString("--\(boundary)\r\n")
+            requestBodyData.appendString("Content-Disposition: form-data; name=" + keys + "\r\n\r\n")
+            requestBodyData.appendString("\( values )\r\n")  // numero puede ser string o integer
+            print("\(keys): \(values)")
+        }
         
         requestBodyData.appendString("--\(boundary)\r\n")
         requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "llave" )\"\r\n\r\n")
         requestBodyData.appendString("\( NSUserDefaults.standardUserDefaults().stringForKey("ApiKey")! )\r\n")  // numero puede ser string o integer
-        
-        requestBodyData.appendString("--\(boundary)\r\n")
-        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "color" )\"\r\n\r\n")
-        requestBodyData.appendString("\( "" )\r\n")  // numero puede ser string o integer
-        
-        requestBodyData.appendString("--\(boundary)\r\n")
-        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "caratula" )\"\r\n\r\n")
-        requestBodyData.appendString("\( "" )\r\n")  // numero puede ser string o integer
-        
-        requestBodyData.appendString("--\(boundary)\r\n")
-        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "lados" )\"\r\n\r\n")
-        requestBodyData.appendString("\( "" )\r\n")  // numero puede ser string o integer
-        
-        requestBodyData.appendString("--\(boundary)\r\n")
-        requestBodyData.appendString("Content-Disposition: form-data; name=\"\( "numero" )\"\r\n\r\n")
-        requestBodyData.appendString("\( true )\r\n")  // numero puede ser string o integer
         
         requestBodyData.appendString("--\(boundary)\r\n")
         requestBodyData.appendString("Content-Disposition: form-data; name=\"\(fieldName)\"; filename=" + ( MyFile.Name ) + "\r\n")
@@ -117,7 +85,7 @@ class ConnectionHurryPrint {
                 request.HTTPMethod = "POST"
                 
                 // Set the HTTPBody we'd like to submit
-                request.HTTPBody = self.prepareBodyDataToPHP( boundary)
+                request.HTTPBody = self.prepareBodyDataToPHP(parameters!, boundary: boundary)
                 
                 request.setValue(contentType, forHTTPHeaderField: "Content-Type")
                 
