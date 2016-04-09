@@ -14,6 +14,7 @@ class PerfilViewController: UIViewController {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileName: UILabel!
     @IBOutlet weak var saldo: UILabel!
+    @IBOutlet weak var saldoRegalo: UILabel!
     
     var hurryPrintMethods = ConnectionHurryPrint()
 
@@ -21,6 +22,9 @@ class PerfilViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.navigationItem.rightBarButtonItem?.target = self
+        self.navigationItem.rightBarButtonItem?.action = #selector(PerfilViewController.refresh(_:))
         
         if FBSDKProfile.currentProfile() != nil {
             let imageFB = FBSDKProfilePictureView(frame: self.profileImage.frame)
@@ -35,30 +39,39 @@ class PerfilViewController: UIViewController {
             
         }
         
+        self.getSaldo()
+    }
+    
+    func getSaldo() {
         //Completion Handler
         self.hurryPrintMethods.connectionRestApi( "http://hurryprint.devworms.com/api/saldo", type: "GET", headers: nil, parameters: nil, completion: { (resultData) -> Void in
             
             self.parseJSON( resultData )
             
         })
-        
     }
     
     func parseJSON(dataForJson: NSData) {
         do {
             let json = try NSJSONSerialization.JSONObjectWithData( dataForJson , options: .AllowFragments)
             
-            if let saldoGral = json["saldo"]!!["SaldoRegalo"] as? String {
+            if let saldo = json["saldo"]!!["Saldo"] as? String {
                 
-                dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
+                dispatch_async(dispatch_get_main_queue(), {
                     
-                    self.saldo.text = saldoGral
+                    self.saldo.text = "$ " + saldo
+                    self.saldoRegalo.text = "$ " + (json["saldo"]!!["SaldoRegalo"] as? String)!
+                    self.saldoRegalo.textColor = UIColor.purpleColor()
                 })
             }
         } catch {
             print("error serializing JSON: \(error)")
         }
         
+    }
+    
+    func refresh(sender:AnyObject) {
+        self.getSaldo()
     }
 
     override func didReceiveMemoryWarning() {

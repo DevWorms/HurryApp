@@ -64,11 +64,8 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         print(switches.count)
         
         // ver el status de todos los switches
-        for (index, swc) in switches.enumerate() {
-            
-            print("holio \(index)")
-            
-            if swc.on {
+        for index in 0...5 {
+            if switches[index].on {
                 switchesRespuesta[index] = "1"
             } else {
                 switchesRespuesta[index] = ""

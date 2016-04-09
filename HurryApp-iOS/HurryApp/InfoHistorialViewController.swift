@@ -61,7 +61,7 @@ class InfoHistorialViewController: UIViewController {
                     
                     self.docLabel.text = json["descripcion"]!!["Nombre"] as? String
                     self.sucuLabel.text = json["descripcion"]!!["Sucursal"] as? String
-                    self.precioLabel.text = json["descripcion"]!!["Costo"] as? String
+                    self.precioLabel.text = "$ " + (json["descripcion"]!!["Costo"] as? String)!
                     self.fechaLabel.text = fullDateArr[0]
                     self.horaLabel.text = fullDateArr[1]
                     
