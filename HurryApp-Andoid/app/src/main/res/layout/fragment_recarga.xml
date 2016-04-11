@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
+    android:background="#e8e8e7"
     xmlns:facebook="http://schemas.android.com/apk/res-auto"
     >
 
@@ -10,21 +11,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:background="#e8e8e7"
-        android:layout_centerHorizontal="true">
+
+        android:background="@drawable/margen"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical">
+
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tarjeta de credito/debito"
-            android:id="@+id/btn_tarjeta"
-            android:layout_gravity="center" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Paypal"
             android:id="@+id/btn_paypal"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:background="@drawable/btnpaypalimage" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_tarjeta"
+            android:layout_gravity="center"
+            android:background="@drawable/btnpagptarjeta" />
     </LinearLayout>
 </RelativeLayout>

@@ -2,17 +2,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
+
+    android:background="#e8e8e7"
     xmlns:facebook="http://schemas.android.com/apk/res-auto"
-    >
+    android:gravity="center_horizontal">
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:background="#e8e8e7"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp">
+        android:background="@drawable/margen"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
 
         <Button
             android:layout_width="300dp"
@@ -20,7 +27,8 @@
 
             android:id="@+id/btn_trienta"
             android:layout_gravity="center"
-            android:background="@drawable/recargatreinta" />
+            android:background="@drawable/recargatreinta"
+            android:layout_marginTop="10dp" />
 
         <Button
             android:layout_width="300dp"
