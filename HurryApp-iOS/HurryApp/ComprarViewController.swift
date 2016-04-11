@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIDocumentMenuDelegate, UIDocumentInteractionControllerDelegate, UITextFieldDelegate {
     
@@ -18,7 +19,10 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     var switches: [UISwitch] = []
     var switchesRespuesta: [String] = ["1","","","1","",""]
     var deleteUrl = true
+    
     var noSucursal = ""
+    var dispBlancoNegro = true
+    var dispColor = true
     
     var popViewController : ExportarViewController!
     
@@ -26,6 +30,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
         self.nameDoc.setTitle(MyFile.Name, forState: .Normal)
     }
 
@@ -82,7 +87,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         print("siguió")
         
-        /*
+    
         
         print(switches.count)
         
@@ -149,7 +154,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.parseJSON( resultData )
             
         })
-        */
+        
         
     }
     
@@ -165,6 +170,8 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                         
                         let alert = UIAlertView(title: "HurryApp!", message: "Lánzate a la sucursal por tus impresiones.", delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
+                        
+                        self.navigationController?.popViewControllerAnimated(true)
                     })
                     
                 } else {
@@ -180,12 +187,22 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         } catch {
             print("error serializing JSON: \(error)")
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                
+                let alert = UIAlertView(title: "Ocurrió algo", message: "No pudimos enviar tu archivo, intentalo de nuevo, asegúrate de que todo este bien.", delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+            })
         }
         
     }
     
     @IBAction func deleteFile(sender: AnyObject) {
         
+        self.deleteDocFile()
+    }
+    
+    func deleteDocFile() {
         MyFile.url = NSURL(fileURLWithPath:" ")
         self.nameDoc.setTitle("", forState: .Normal)
     }
@@ -193,7 +210,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func uploadFile(sender: AnyObject) {
         
         if #available(iOS 8.0, *) {
-            let documentMenu = UIDocumentMenuViewController(documentTypes: ["public.image","public.data"], inMode: UIDocumentPickerMode.Import)
+            let documentMenu = UIDocumentMenuViewController(documentTypes: [kUTTypePDF as String, "public.data"], inMode: UIDocumentPickerMode.Import)
             
             documentMenu.delegate = self
             
@@ -291,6 +308,19 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             MyFile.url = url
             
+            
+            let extencionDoc = MyFile.Name.componentsSeparatedByString(".")
+            
+            if extencionDoc[1] == "jpg" || extencionDoc[1] == "png" {
+                
+                self.deleteDocFile()
+                
+                let alert = UIAlertView(title: "Documento Inválido", message: "Sólo aceptamos .doc ó PDF.", delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+                
+                return
+            }            
+            
             var fileSize : UInt64 = 0
             
             do {
@@ -363,37 +393,67 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func stateChanged(switchState: UISwitch) {
         
-        if switchState == switches[0] {
+        if switchState == switches[0] { // blanco negro
             if switchState.on {
                 switches[1].setOn(false, animated: true)
                 switches[2].setOn(false, animated: true)
             } else {
+                
+                if dispColor == false {
+                    switches[0].setOn(true, animated: true)
+                    
+                    let alert = UIAlertView(title: "Sin disponibilidad", message: "No hay impresiones a color en esta sucursal.", delegate: nil, cancelButtonTitle: "OK")
+                    alert.show()
+                    
+                    return
+                }
+                
                 switches[1].setOn(true, animated: true)
                 switches[2].setOn(false, animated: true)
             }
-        } else if switchState == switches[1] {
+        } else if switchState == switches[1] { // Color
             if switchState.on {
+                
+                if dispColor == false {
+                    switches[1].setOn(false, animated: true)
+                    
+                    let alert = UIAlertView(title: "Sin disponibilidad", message: "No hay impresiones a color en esta sucursal.", delegate: nil, cancelButtonTitle: "OK")
+                    alert.show()
+                    
+                    return
+                }
+                
                 switches[0].setOn(false, animated: true)
                 switches[2].setOn(false, animated: true)
             } else {
                 switches[0].setOn(true, animated: true)
                 switches[2].setOn(false, animated: true)
             }
-        } else if switchState == switches[2] {
+        } else if switchState == switches[2] { // Cáratula color
             if switchState.on {
+                
+                if dispColor == false {
+                    switches[2].setOn(false, animated: true)
+                    
+                    let alert = UIAlertView(title: "Sin disponibilidad", message: "No hay impresiones a color en esta sucursal.", delegate: nil, cancelButtonTitle: "OK")
+                    alert.show()
+                    
+                    return
+                }
+                
                 switches[0].setOn(true, animated: true)
                 switches[1].setOn(false, animated: true)
             } else {
                 switches[0].setOn(true, animated: true)
                 switches[1].setOn(false, animated: true)
             }
-        } else if switchState == switches[3] {
+        } else if switchState == switches[3] { // Carta
             if switchState.on {
                 switches[4].setOn(false, animated: true)
             } else {
                 switches[4].setOn(true, animated: true)
             }
-        } else if switchState == switches[4] {
+        } else if switchState == switches[4] { // Oficio
             if switchState.on {
                 switches[3].setOn(false, animated: true)
             } else {
@@ -427,7 +487,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         // when ComprarViewController has been eliminated from a view hierarchy
         if animated && deleteUrl {
             print("elimina url")
-            MyFile.url = NSURL(fileURLWithPath:" ")
+            self.deleteDocFile()
         }
         
         deleteUrl = true

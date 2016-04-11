@@ -18,12 +18,15 @@ class SucursalesViewController: UIViewController, UITableViewDelegate, UITableVi
     var sucursalesAbiertas = [String]()
     var noSucursales = [String]()
     var numberRows = 0
+    var horaDeDormir = false
     var hurryPrintMethods = ConnectionHurryPrint()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.calcularHora()
         
         //Completion Handler
         self.hurryPrintMethods.connectionRestApi( "http://hurryprint.devworms.com/api/sucursales", type: "GET", headers: nil, parameters: nil, completion: { (resultData) -> Void in
@@ -36,6 +39,21 @@ class SucursalesViewController: UIViewController, UITableViewDelegate, UITableVi
             })
         })
         
+    }
+    
+    func calcularHora() {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "hh"
+        let hora: Int? = Int( dateFormatter.stringFromDate(NSDate()) )
+        dateFormatter.dateFormat = "mm"
+        let minuto: Int? = Int( dateFormatter.stringFromDate(NSDate()) )
+        if hora <= 6 && minuto <= 29 || hora >= 22 && minuto >= 00 {
+            
+            self.horaDeDormir = true
+            
+            let alert = UIAlertView(title: "Impresión para mañana", message: "Puedes mandar ahora tus impresiones sin restricciones y el día de mañana recogerlas.", delegate: nil, cancelButtonTitle: "OK")
+            alert.show()
+        }
     }
     
     func parseJSON(dataForJson: NSData) {
@@ -125,6 +143,27 @@ class SucursalesViewController: UIViewController, UITableViewDelegate, UITableVi
             if let cell = sender as? UITableViewCell, let indexPath = self.tableViewSucursales.indexPathForCell(cell) {
                 
                 destination.noSucursal = self.noSucursales[ indexPath.row ]
+                
+                if !self.horaDeDormir { // si estan abriertas las sucursales
+                    
+                    // disponibilidad en tienda
+                    if self.blanco_negro[indexPath.row] == "1" {
+                        destination.dispBlancoNegro = true
+                    }else {
+                        destination.dispBlancoNegro = false
+                    }
+                    
+                    if self.color[indexPath.row] == "1" {
+                        destination.dispColor = true
+                    }else {
+                        destination.dispColor = false
+                    }
+                } else {
+                    
+                    destination.dispBlancoNegro = true
+                    destination.dispColor = true
+                }
+                
             }
         }
     }
