@@ -35,7 +35,7 @@ class PerfilViewController: UIViewController {
             self.profileName.text = FBSDKProfile.currentProfile().name
             
         } else {
-            print("nil")
+            self.profileName.text = NSUserDefaults.standardUserDefaults().stringForKey("NombreUsuario")!
             
         }
         
@@ -81,6 +81,10 @@ class PerfilViewController: UIViewController {
     
     @IBAction func logOut(sender: AnyObject) {
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject("", forKey: "ApiKey")
+        defaults.setObject("", forKey: "NombreUsuario")
+        
         if FBSDKProfile.currentProfile() != nil {
             FBSDKLoginManager().logOut()
             
@@ -89,15 +93,5 @@ class PerfilViewController: UIViewController {
         let vc = storyboard!.instantiateViewControllerWithIdentifier("Inicio") 
         self.presentViewController( vc , animated: true, completion: nil)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

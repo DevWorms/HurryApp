@@ -16,7 +16,6 @@
 		3B374C681C0262EA00B3919A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C671C0262EA00B3919A /* AppDelegate.swift */; };
 		3B374C6A1C0262EA00B3919A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C691C0262EA00B3919A /* ViewController.swift */; };
 		3B374C6D1C0262EB00B3919A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B374C6B1C0262EB00B3919A /* Main.storyboard */; };
-		3B374C721C0262EB00B3919A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B374C701C0262EB00B3919A /* LaunchScreen.storyboard */; };
 		3B374C7D1C0262EB00B3919A /* HurryAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C7C1C0262EB00B3919A /* HurryAppTests.swift */; };
 		3B374C881C0262EC00B3919A /* HurryAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C871C0262EC00B3919A /* HurryAppUITests.swift */; };
 		3B374C961C027F2500B3919A /* RegistroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C951C027F2500B3919A /* RegistroViewController.swift */; };
@@ -61,7 +60,6 @@
 		3B374C671C0262EA00B3919A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B374C691C0262EA00B3919A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3B374C6C1C0262EB00B3919A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3B374C711C0262EB00B3919A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B374C731C0262EB00B3919A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B374C781C0262EB00B3919A /* HurryAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HurryAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B374C7C1C0262EB00B3919A /* HurryAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HurryAppTests.swift; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 				3B702D201C47049F001B7DB0 /* Accesibilidad.swift */,
 				3B1196861C4D540800E6B202 /* ExportarDocumentoTuto */,
 				3BEE2FAC1C2B271100453EAA /* PayPal requires */,
-				3B374C701C0262EB00B3919A /* LaunchScreen.storyboard */,
 				3B374C731C0262EB00B3919A /* Info.plist */,
 				3BDBD94D1C4DA7F6009849B2 /* Images.xcassets */,
 			);
@@ -332,7 +329,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B374C721C0262EB00B3919A /* LaunchScreen.storyboard in Resources */,
 				3BDBD94E1C4DA7F6009849B2 /* Images.xcassets in Resources */,
 				3B6E86841C2B1F5A00252DA8 /* Podfile in Resources */,
 				3B374C6D1C0262EB00B3919A /* Main.storyboard in Resources */,
@@ -463,14 +459,6 @@
 				3B374C6C1C0262EB00B3919A /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		3B374C701C0262EB00B3919A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3B374C711C0262EB00B3919A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

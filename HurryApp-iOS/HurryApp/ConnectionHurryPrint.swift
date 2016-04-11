@@ -92,8 +92,6 @@ class ConnectionHurryPrint {
                 
             }
             
-            
-            
             let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
                 data, response, error in
                 

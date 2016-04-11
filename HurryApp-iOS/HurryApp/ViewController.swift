@@ -22,6 +22,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         let loginButton = FBSDKLoginButton()
         loginButton.center.x = self.view.center.x
         loginButton.center.y = self.view.center.y + 20.0
+        loginButton.setTitle("Registrar con Facebook", forState: .Application)
         self.view.addSubview(loginButton)
         
         loginButton.delegate = self //important!
@@ -66,18 +67,20 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 if registro == 1 {
                     
                     let apiKey = json["usuario"]!!["APIkey"] as! String
+                    let nombreUsuario = json["usuario"]!!["Nombre"] as! String
                     
                     let defaults = NSUserDefaults.standardUserDefaults()
                     defaults.setObject(apiKey, forKey: "ApiKey")
+                    defaults.setObject(nombreUsuario, forKey: "NombreUsuario")
                     
-                    dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
+                    dispatch_async(dispatch_get_main_queue(), {
                         
                         self.performSegueWithIdentifier("PagoSegue", sender: nil)
                     })
                     
                 } else if registro == 8 {
                     
-                    dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
+                    dispatch_async(dispatch_get_main_queue(), {
                         
                         let alert = UIAlertView(title: "Error en Login", message: json["mensaje"] as? String, delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
@@ -111,7 +114,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             // Navigate to other view
             print("logIN")
             self.performSegueWithIdentifier("RegistroSegue", sender: nil)
-            //self.performSegueWithIdentifier("InicioPagoSegue", sender: nil)
             
         }
     }

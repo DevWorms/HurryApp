@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKCoreKit
+import FBSDKLoginKit
 import Darwin
 
 @UIApplicationMain
@@ -26,12 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
         if Accesibilidad.isConnectedToNetwork() == true {
             print("Internet connection OK")
             
-            if ((FBSDKAccessToken.currentAccessToken()) == nil){
+            //FBSDKAccessToken.currentAccessToken() == nil 
+            if ( NSUserDefaults.standardUserDefaults().stringForKey("ApiKey")! == "" ){
                 print("Not logged in..")
+                if FBSDKProfile.currentProfile() != nil {
+                    FBSDKLoginManager().logOut()
+                }
                 
             }else{
                 print("Logged in..")
-                print("current: \(FBSDKAccessToken.currentAccessToken().userID)")
+                //print("current fb: \(FBSDKAccessToken.currentAccessToken().userID)")
+                print("current key: \( NSUserDefaults.standardUserDefaults().stringForKey("ApiKey")!)")
                 
                 let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewControllerWithIdentifier("Principal") as! UITabBarController

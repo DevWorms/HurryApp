@@ -37,16 +37,13 @@ class RegistroViewController: UIViewController {
         }
         
         if self.confirmarTxt.text != self.contrasenaTxt.text ||
-           self.confirmarTxt.text == "" || self.contrasenaTxt.text == "" ||
-           self.telefonoTxt.text == "" {
+           self.confirmarTxt.text == "" || self.contrasenaTxt.text == "" {
             
             let alert = UIAlertView(title: "Error en campos", message: "Asegurate de escribir correctamente en los campos.", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
             
             return
         }
-        
-        
         
         let headers = [
             "content-type": "application/json",
@@ -79,6 +76,7 @@ class RegistroViewController: UIViewController {
                     //saber si es la primera vez o no
                     let defaults = NSUserDefaults.standardUserDefaults()
                     defaults.setObject(apiKey, forKey: "ApiKey")
+                    defaults.setObject(FBSDKProfile.currentProfile().name!, forKey: "NombreUsuario")
                     
                     dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
                         
@@ -117,6 +115,16 @@ class RegistroViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        if parent == nil {
+            
+            //Apretó btn back
+            if FBSDKProfile.currentProfile() != nil {
+                FBSDKLoginManager().logOut()
+            }
+        }
     }
     
 

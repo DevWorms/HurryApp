@@ -112,8 +112,6 @@ class SucursalesViewController: UIViewController, UITableViewDelegate, UITableVi
             disponibilidad_color?.backgroundColor = UIColor.grayColor()
         }
         
-        print("madres")
-        
         return cell
     }
 
@@ -130,8 +128,6 @@ class SucursalesViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
     }
-
-    
 
 }
 

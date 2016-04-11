@@ -34,6 +34,17 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
+    func validate(value: String) -> Bool {
+        
+        let param = "\\d+|\\d+-\\d+" // regex para un digito o más | para digito(mas) - digito (mas)
+        
+        let test = NSPredicate(format: "SELF MATCHES %@", param)
+        
+        let result =  test.evaluateWithObject(value)
+        
+        return result
+    }
+    
     @IBAction func mandarPHP(sender: AnyObject) {
         
         let data = NSData(contentsOfFile: MyFile.Path )
@@ -44,22 +55,34 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             return
                 
-        } else if (textFields[0].text == "" || textFields[0].text == " " || textFields[0].text == "0") {
+        } else if ( textFields[0].text == "0" || !validate( textFields[0].text! ) ) {
             let alert = UIAlertView(title: "Nos faltó algo", message: "¿Cuantas hojas imprimiremos?", delegate: nil, cancelButtonTitle: "Ok")
             alert.show()
             
             return
             
-        } else if (textFields[1].text != "" || textFields[1].text != " "){
+        } else if (textFields[1].text! != ""){
             if !validate( textFields[1].text! ) {
                 let alert = UIAlertView(title: "Error en Intervalo", message: "Asegurate de escribir correctamente #-#.", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                 
-                //return
+                return
+            }
+        } else if (textFields[2].text! != ""){
+            
+            print("entra no vacio")
+            
+            if (textFields[2].text == "0" || !validate( textFields[2].text! )) {
+                let alert = UIAlertView(title: "Error en Juegos", message: "Asegurate de escribir correctamente #.", delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+                
+                return
             }
         }
         
         print("siguió")
+        
+        /*
         
         print(switches.count)
         
@@ -126,6 +149,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.parseJSON( resultData )
             
         })
+        */
         
     }
     
@@ -157,16 +181,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         } catch {
             print("error serializing JSON: \(error)")
         }
-        
-    }
-    
-    func validate(value: String) -> Bool {
-        
-        let test = NSPredicate(format: "SELF MATCHES %@", "^d-\\d")
-        
-        let result =  test.evaluateWithObject(value)
-        
-        return result
         
     }
     
