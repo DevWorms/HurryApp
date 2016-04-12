@@ -96,8 +96,8 @@ class ConnectionHurryPrint {
                 data, response, error in
                 
                 if error != nil {
-                    print("error Sucursal =\(error)")
-                    //return
+                    print("error Request =\(error)")
+                    return
                 } else {
                     
                     let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)

@@ -24,6 +24,9 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     var dispBlancoNegro = true
     var dispColor = true
     
+    var precioImpresionBN = 1.10
+    var precioImpresionColor = 5.10
+    
     var popViewController : ExportarViewController!
     
     override func viewDidLoad() {
@@ -40,8 +43,9 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func validate(value: String) -> Bool {
-        
-        let param = "\\d+|\\d+-\\d+" // regex para un digito o más | para digito(mas) - digito (mas)
+        // "\\d+-\\d+" para digito(mas) - digito (mas)
+        // "^[1-9]\\d*"// que empiece desde el 1 al 9 y q pueda tener mas digitos o ninguno mas
+        let param = "^[1-9]\\d*|\\d+-\\d+"
         
         let test = NSPredicate(format: "SELF MATCHES %@", param)
         
@@ -60,7 +64,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
             return
                 
-        } else if ( textFields[0].text == "0" || !validate( textFields[0].text! ) ) {
+        } else if ( !validate( textFields[0].text! ) ) {
             let alert = UIAlertView(title: "Nos faltó algo", message: "¿Cuantas hojas imprimiremos?", delegate: nil, cancelButtonTitle: "Ok")
             alert.show()
             
@@ -73,11 +77,10 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 return
             }
-        } else if (textFields[2].text! != ""){
-            
-            print("entra no vacio")
-            
-            if (textFields[2].text == "0" || !validate( textFields[2].text! )) {
+        }
+        
+        if (textFields[2].text! != ""){
+            if (!validate( textFields[2].text! )) {
                 let alert = UIAlertView(title: "Error en Juegos", message: "Asegurate de escribir correctamente #.", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                 
@@ -86,10 +89,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         print("siguió")
-        
-    
-        
-        print(switches.count)
         
         // ver el status de todos los switches
         for index in 0...5 {
@@ -104,7 +103,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             "sucursal" : self.noSucursal,
             "hojas" : textFields[0].text!,
             "intervalo" : textFields[1].text!,
-            "totalimpresion" : "1.7",
+            "totalimpresion" : self.calcularTotalImpresion(),
             "blanconegro" : switchesRespuesta[0],
             "color" : switchesRespuesta[1],
             "caratula" : switchesRespuesta[2],
@@ -113,7 +112,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             "lados" : switchesRespuesta[5],
             "juegos" : textFields[2].text!
             ]
-        
         
         if #available(iOS 8.0, *) {
             let alert = UIAlertController(title: nil, message: "Se están enviando tus archivos...", preferredStyle: .Alert)
@@ -154,7 +152,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.parseJSON( resultData )
             
         })
-        
         
     }
     
@@ -197,11 +194,31 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
-    @IBAction func deleteFile(sender: AnyObject) {
+    func calcularTotalImpresion() -> String {
+
+        var precioPorHojas = 0.0
         
+        if self.switchesRespuesta[0] == "1" {
+            precioPorHojas = Double(self.textFields[0].text!)! * self.precioImpresionBN
+            if self.switchesRespuesta[2] == "1" { // impresiones con caratula a color
+                precioPorHojas = (precioPorHojas - self.precioImpresionBN) + self.precioImpresionColor
+            }
+        }
+        if self.switchesRespuesta[1] == "1" { // impresiones color
+            precioPorHojas = Double(self.textFields[0].text!)! * self.precioImpresionColor
+        }
+        if textFields[2].text! != "" { // multiplicar por juegos
+            precioPorHojas = precioPorHojas * Double(self.textFields[2].text!)!
+        }
+        
+        return String( precioPorHojas )
+    }
+ 
+    @IBAction func deleteFile(sender: AnyObject) {
+ 
         self.deleteDocFile()
     }
-    
+ 
     func deleteDocFile() {
         MyFile.url = NSURL(fileURLWithPath:" ")
         self.nameDoc.setTitle("", forState: .Normal)
