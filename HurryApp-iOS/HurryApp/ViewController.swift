@@ -68,10 +68,12 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                     
                     let apiKey = json["usuario"]!!["APIkey"] as! String
                     let nombreUsuario = json["usuario"]!!["Nombre"] as! String
+                    let tokenFBid = json["usuario"]!!["Token"] as! String
                     
                     let defaults = NSUserDefaults.standardUserDefaults()
                     defaults.setObject(apiKey, forKey: "ApiKey")
                     defaults.setObject(nombreUsuario, forKey: "NombreUsuario")
+                    defaults.setObject(tokenFBid, forKey: "TokenFB")
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         

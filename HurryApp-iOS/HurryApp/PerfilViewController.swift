@@ -37,9 +37,29 @@ class PerfilViewController: UIViewController {
         } else {
             self.profileName.text = NSUserDefaults.standardUserDefaults().stringForKey("NombreUsuario")!
             
+            self.requestGraphAPIFB()
+            
         }
         
         self.getSaldo()
+    }
+    
+    func requestGraphAPIFB() {
+        
+        let idFb = NSUserDefaults.standardUserDefaults().stringForKey("TokenFB")!
+        
+        let facebookProfileUrl = NSURL(string: "https://graph.facebook.com/\(idFb)/picture?type=large")
+        
+        if let data = NSData(contentsOfURL: facebookProfileUrl!) {
+            self.profileImage.image = UIImage(data: data)
+            self.profileImage.layer.borderWidth = 1
+            self.profileImage.layer.masksToBounds = false
+            self.profileImage.layer.borderColor = UIColor.blackColor().CGColor
+            self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
+            self.profileImage.clipsToBounds = true
+        } else {
+            print("no se pudo cargar la imagen")
+        }
     }
     
     func getSaldo() {
@@ -84,6 +104,7 @@ class PerfilViewController: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject("", forKey: "ApiKey")
         defaults.setObject("", forKey: "NombreUsuario")
+        defaults.setObject("", forKey: "TokenFB")
         
         if FBSDKProfile.currentProfile() != nil {
             FBSDKLoginManager().logOut()

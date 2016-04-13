@@ -36,8 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
                 
             }else{
                 print("Logged in..")
-                //print("current fb: \(FBSDKAccessToken.currentAccessToken().userID)")
-                print("current key: \( NSUserDefaults.standardUserDefaults().stringForKey("ApiKey")!)")
+                //print("current key: \( NSUserDefaults.standardUserDefaults().stringForKey("ApiKey")!)")
                 
                 let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewControllerWithIdentifier("Principal") as! UITabBarController
@@ -109,6 +108,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
                 
             } catch {
                 print("Error: \(error)")
+                let alert = UIAlertView(title: "Ocurrió algo", message: "No pudimos traer tu archivo.", delegate: self, cancelButtonTitle: "OK")
+                alert.show()
             }
 
         }
