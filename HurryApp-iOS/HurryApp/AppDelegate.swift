@@ -27,8 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
         if Accesibilidad.isConnectedToNetwork() == true {
             print("Internet connection OK")
             
+            let apiKeyHurry: String? = NSUserDefaults.standardUserDefaults().stringForKey("ApiKey")
+            
+            print("hello \( apiKeyHurry ) " )
+            
             //FBSDKAccessToken.currentAccessToken() == nil 
-            if ( NSUserDefaults.standardUserDefaults().stringForKey("ApiKey")! == "" ){
+            if ( apiKeyHurry == "" || apiKeyHurry == nil ){
                 print("Not logged in..")
                 if FBSDKProfile.currentProfile() != nil {
                     FBSDKLoginManager().logOut()

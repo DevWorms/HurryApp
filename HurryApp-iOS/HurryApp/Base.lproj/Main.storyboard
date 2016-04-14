@@ -105,7 +105,7 @@
                                     <action selector="registrarseHurry:" destination="hxl-6h-SUQ" eventType="touchUpInside" id="sUa-U9-8T2"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ow-AV-H0J">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre Usuario" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ow-AV-H0J">
                                 <rect key="frame" x="58" y="114" width="483" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -596,7 +596,7 @@
                                                         <constraint firstAttribute="width" constant="55" id="HYg-Sh-mrt"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No. de hojas:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Tu-CU-qwz">
                                                     <rect key="frame" x="8" y="11" width="100" height="21"/>
@@ -632,7 +632,7 @@
                                                         <constraint firstAttribute="width" constant="55" id="0aN-71-Fbj"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -807,7 +807,7 @@
                                                         <constraint firstAttribute="width" constant="55" id="01T-Td-xwv"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Juegos a imprimir" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HkX-fF-NeD">
                                                     <rect key="frame" x="8" y="14" width="137" height="21"/>
@@ -844,6 +844,7 @@
                     </view>
                     <connections>
                         <outlet property="nameDoc" destination="feK-Kf-UbI" id="oqW-4q-Of7"/>
+                        <outlet property="tableViewComprar" destination="IbV-FB-tnc" id="hi7-TT-Cvf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yb0-JJ-2KE" userLabel="First Responder" sceneMemberID="firstResponder"/>

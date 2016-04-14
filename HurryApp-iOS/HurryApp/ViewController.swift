@@ -9,7 +9,7 @@
 import UIKit
 import FBSDKLoginKit
 
-class ViewController: UIViewController, FBSDKLoginButtonDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
     
     @IBOutlet weak var telefonoTxt: UITextField!
     @IBOutlet weak var contrasenaTxt: UITextField!
@@ -19,9 +19,16 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.telefonoTxt.delegate = self
+        self.contrasenaTxt.delegate = self
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipeKeyBoard(_:)))
+        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
+        self.view.addGestureRecognizer(swipeDown)
+        
         let loginButton = FBSDKLoginButton()
         loginButton.center.x = self.view.center.x
-        loginButton.center.y = self.view.center.y + 20.0
+        loginButton.center.y = self.contrasenaTxt.center.y + 85.0
         loginButton.setTitle("Registrar con Facebook", forState: .Application)
         self.view.addSubview(loginButton)
         
@@ -101,6 +108,19 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - UITextFieldDelegate
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func swipeKeyBoard(sender:AnyObject) {
+        //Baja el textField
+        self.view.endEditing(true)
+    }
+    
     
     // MARK: - FBSDKLoginButtonDelegate
     

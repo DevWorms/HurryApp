@@ -9,8 +9,9 @@
 import UIKit
 import MobileCoreServices
 
-class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIDocumentMenuDelegate, UIDocumentInteractionControllerDelegate, UITextFieldDelegate {
+class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIDocumentMenuDelegate, UIDocumentInteractionControllerDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var tableViewComprar: UITableView!
     @IBOutlet weak var nameDoc: UIButton!
     
     var hurryPrintMethods = ConnectionHurryPrint()
@@ -33,6 +34,11 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(ComprarViewController.swipeKeyBoard(_:)))
+        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
+        swipeDown.delegate = self
+        self.tableViewComprar.addGestureRecognizer(swipeDown)
         
         self.nameDoc.setTitle(MyFile.Name, forState: .Normal)
     }
@@ -328,7 +334,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             let extencionDoc = MyFile.Name.componentsSeparatedByString(".")
             
-            if extencionDoc[1] == "jpg" || extencionDoc[1] == "png" {
+            if extencionDoc[1] != "doc" || extencionDoc[1] != "docx" || extencionDoc[1] != "pdf" {
                 
                 self.deleteDocFile()
                 
@@ -354,7 +360,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             } catch {
                 print("Error: \(error)")
             }
-            
         }
     }
     
@@ -381,8 +386,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let stringIndex = String( indexPath.row )
         
-        //print(stringIndex)
-        
         let cell = tableView.dequeueReusableCellWithIdentifier( stringIndex ) as UITableViewCell!
         
         switch (indexPath.row) {
@@ -391,7 +394,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let txtF = cell.viewWithTag( indexPath.row ) as! UITextField
                 textFields += [txtF]
                 txtF.delegate = self
-                //print(textFields.count)
             
             case 3...8:
                 //print("This number is between 3 and 8")
@@ -401,11 +403,9 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 //print("jum "+String(switches.count))
             
             default: break
-                //print("This number is not between 0 and 8")
         }
         
         return cell
-
     }
     
     func stateChanged(switchState: UISwitch) {
@@ -482,24 +482,38 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     // MARK: - UITextFieldDelegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        print("textFieldShouldReturn")
         textField.resignFirstResponder()
         return true
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func textFieldDidBeginEditing(textField: UITextField) {
+        //subir el table view para que se vea el campo textfield
+        if textField == self.textFields[2] {
+            self.tableViewComprar.setContentOffset(CGPointMake(0, 250), animated: true)
+        }
     }
-    */
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField == self.textFields[2] {
+            self.tableViewComprar.setContentOffset(CGPointMake(0, 0), animated: true)
+        }
+    }
+    
+    // MARK: - UIGestureRecognizerDelegate
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        //metodo para que detecte recognizer desde table view, ya que al parecer tiene scroll y recognizer propio
+        return true
+    }
+    
+    func swipeKeyBoard(sender:AnyObject) {
+        //Baja el textField
+        self.view.endEditing(true)
+    }
     
     // for delete path or keep it when open another view
     override func viewDidDisappear(animated: Bool) {
-        print("ComprarViewController DidDisappear: "+animated.description)
+        //print("ComprarViewController DidDisappear: "+animated.description)
         
         // when ComprarViewController has been eliminated from a view hierarchy
         if animated && deleteUrl {
