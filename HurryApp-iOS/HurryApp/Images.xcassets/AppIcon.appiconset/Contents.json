@@ -3,99 +3,109 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "icon-app-29-1.png",
+      "filename" : "logo.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "iphone",
       "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "logo copia.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "iphone",
       "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "logo copia 2.png",
       "scale" : "3x"
     },
     {
-      "idiom" : "iphone",
       "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "logo copia 3.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "iphone",
       "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "logo copia 4.png",
       "scale" : "3x"
     },
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "icon-app-57-1.png",
+      "filename" : "logo copia 6.png",
       "scale" : "1x"
     },
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "icon-app-114-1.png",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "iphone",
-      "size" : "60x60",
+      "filename" : "logo copia 8.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "icon-app-180.png",
+      "filename" : "logo copia 4-1.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "logo copia 7.png",
       "scale" : "3x"
     },
     {
-      "idiom" : "ipad",
       "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "logo-1.png",
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "icon-app-58-2.png",
+      "filename" : "logo copia-1.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "icon-app-40-4.png",
+      "filename" : "logo copia 5.png",
       "scale" : "1x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "icon-app-80-1.png",
+      "filename" : "logo copia 3-1.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "logo copia 10.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "ipad",
       "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "logo copia 11.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "ipad",
       "size" : "83.5x83.5",
+      "idiom" : "ipad",
+      "filename" : "logo copia 12.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "car",
-      "filename" : "icon-app-120-1-1.png",
+      "filename" : "logo copia 4-2.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "car",
       "size" : "60x60",
+      "idiom" : "car",
+      "filename" : "logo copia 7-1.png",
       "scale" : "3x"
     },
     {
@@ -115,19 +125,21 @@
     {
       "size" : "29x29",
       "idiom" : "watch",
+      "filename" : "logo copia-2.png",
       "role" : "companionSettings",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "watch",
-      "filename" : "icon-app-87-1.png",
+      "filename" : "logo copia 2-1.png",
       "role" : "companionSettings",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "watch",
+      "filename" : "logo copia 3-2.png",
       "scale" : "2x",
       "role" : "appLauncher",
       "subtype" : "38mm"

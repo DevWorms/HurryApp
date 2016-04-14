@@ -27,8 +27,8 @@ class ExportarViewController: UIViewController, UIPageViewControllerDataSource {
         pageController.currentPageIndicatorTintColor = UIColor.blackColor()
         pageController.backgroundColor = UIColor.whiteColor()
         
-        self.pageTitles = NSArray(objects: "Abrir otra aplicación", "Abrir el archivo", "Abrir opciones de compartir archivo", "Seleccionar HurryApp" )
-        self.pageImages = NSArray(objects: "i1","i1","i1","i1")
+        self.pageTitles = NSArray(objects: "Abrir otra aplicación", "Abrir el archivo", "Abrir opciones de compartir archivo", "Abrir en...", "Seleccionar HurryApp", "Selecciona sucursal", "Archivo cargado" )
+        self.pageImages = NSArray(objects: "i1","i2","i3","i4","i5","i6","i7")
         self.pageViewController = myStoryboard.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
         self.pageViewController.dataSource = self
         

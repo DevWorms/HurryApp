@@ -118,6 +118,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
 
         }
         
+        // Permitir .docx
+        //http://stackoverflow.com/questions/10995635/cannot-open-docx-file-through-webbrowser-in-app-using-openin-functionality
+        
         return boolean
         
     }
