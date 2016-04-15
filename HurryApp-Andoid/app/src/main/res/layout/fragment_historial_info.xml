@@ -27,23 +27,24 @@
             android:layout_marginTop="15dp">
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Folio:"
                 android:textColor="#000000"
                 android:id="@+id/textView12"
-                android:layout_gravity="left"
-                android:gravity="left" />
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center_horizontal" />
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="0129384756"
                 android:textColor="#000000"
                 android:id="@+id/txt_histo_info_folio"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:layout_marginLeft="50dp" />
+                android:layout_gravity="right|center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -54,23 +55,24 @@
             android:gravity="center_horizontal">
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Fecha:"
                 android:textColor="#000000"
                 android:id="@+id/textView14"
-                android:gravity="left"
-                android:layout_gravity="left"/>
+                android:gravity="center_horizontal"
+                android:layout_gravity="left|center_horizontal"
+                android:layout_weight="1" />
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="01/10/2016"
                 android:textColor="#000000"
                 android:id="@+id/txt_histo_info_fecha"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:layout_marginLeft="50dp"/>
+                android:layout_gravity="right|center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_weight="1" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -80,23 +82,24 @@
             android:gravity="center_horizontal">
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Hora:"
                 android:textColor="#000000"
                 android:id="@+id/textView15"
-                android:gravity="left"
-                android:layout_gravity="left"/>
+                android:gravity="center_horizontal"
+                android:layout_gravity="left|center_horizontal"
+                android:layout_weight="1" />
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="10:00"
                 android:textColor="#000000"
                 android:id="@+id/txt_histo_info_hora"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:layout_marginLeft="50dp"/>
+                android:layout_gravity="right|center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_weight="1" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -106,23 +109,24 @@
             android:gravity="center_horizontal">
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Precio:"
                 android:textColor="#000000"
                 android:id="@+id/textView16"
-                android:gravity="left"
-                android:layout_gravity="left"/>
+                android:gravity="center_horizontal"
+                android:layout_gravity="left|center_horizontal"
+                android:layout_weight="1" />
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="$5.50"
                 android:textColor="#000000"
                 android:id="@+id/txt_histo_info_precio"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:layout_marginLeft="50dp"/>
+                android:layout_gravity="right|center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_weight="1" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -132,23 +136,24 @@
             android:gravity="center_horizontal">
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sucursal:"
                 android:textColor="#000000"
                 android:id="@+id/textView17"
-                android:gravity="left"
-                android:layout_gravity="left"/>
+                android:gravity="center_horizontal"
+                android:layout_gravity="left|center_horizontal"
+                android:layout_weight="1" />
 
             <TextView
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Eart Canela"
                 android:textColor="#000000"
                 android:id="@+id/txt_histo_info_sucur"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:layout_marginLeft="50dp"/>
+                android:layout_gravity="right|center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_weight="1" />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -158,23 +163,24 @@
             android:gravity="center_horizontal">
 
             <TextView
-                android:layout_width="60dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nombre:"
                 android:textColor="#000000"
                 android:id="@+id/textView18"
-                android:gravity="left"
-                android:layout_gravity="left"/>
+                android:gravity="center_horizontal"
+                android:layout_gravity="left|center_horizontal"
+                android:layout_weight="1" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Documento"
                 android:textColor="#000000"
                 android:id="@+id/txt_histo_info_namedocu"
-                android:layout_gravity="right"
-                android:gravity="right"
-                android:layout_marginLeft="50dp"/>
+                android:layout_gravity="right|center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <Button

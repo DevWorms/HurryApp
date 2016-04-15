@@ -41,7 +41,7 @@ public class Cuenta extends Fragment {
             MenuActivity menua =(MenuActivity)getActivity();
             nom =menua.inifbnombre;
             fot = menua.inifbfoto;
-            saldo.setText(menua.saldo.getText());
+            saldo.setText(menua.txtSaldo.getText());
             if (nom != null && nom != "")
                 name.setText(nom);
             if (fot != null && fot != "")

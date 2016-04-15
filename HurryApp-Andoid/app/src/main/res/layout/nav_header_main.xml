@@ -60,6 +60,30 @@
             />
     </LinearLayout>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <TextView
+            android:layout_centerHorizontal="true"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Saldo de Regalo $"
+
+            />
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/saldoRegalo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="0"
+
+            />
+    </LinearLayout>
 
 
 </LinearLayout>
