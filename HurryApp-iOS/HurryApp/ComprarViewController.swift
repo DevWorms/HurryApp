@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MobileCoreServices
 
 class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIDocumentMenuDelegate, UIDocumentInteractionControllerDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
     
@@ -22,11 +21,12 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     var deleteUrl = true
     
     var noSucursal = ""
+    
     var dispBlancoNegro = true
     var dispColor = true
     
-    var precioImpresionBN = 1.10
-    var precioImpresionColor = 5.10
+    var precioImpresionBN = 0.0
+    var precioImpresionColor = 0.0
     
     var popViewController : ExportarViewController!
     
@@ -39,6 +39,14 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
         swipeDown.delegate = self
         self.tableViewComprar.addGestureRecognizer(swipeDown)
+        
+        let precioTiendaBN = 0.95
+        let precioTiendaColor = 4.95
+        let precioDevworms = 0.05
+        
+        self.precioImpresionBN = precioTiendaBN + precioDevworms
+        self.precioImpresionColor = precioTiendaColor + precioDevworms
+        
         
         self.nameDoc.setTitle(MyFile.Name, forState: .Normal)
     }
@@ -68,20 +76,20 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             let alert = UIAlertView(title: "Nos faltó algo", message: "Selecciona un archivo existente", delegate: nil, cancelButtonTitle: "Ok")
             alert.show()
                 
-            return
+            //return
                 
         } else if ( !validate( textFields[0].text! ) ) {
             let alert = UIAlertView(title: "Nos faltó algo", message: "¿Cuantas hojas imprimiremos?", delegate: nil, cancelButtonTitle: "Ok")
             alert.show()
             
-            return
+            //return
             
         } else if (textFields[1].text! != ""){
             if !validate( textFields[1].text! ) {
                 let alert = UIAlertView(title: "Error en Intervalo", message: "Asegurate de escribir correctamente #-#.", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                 
-                return
+                //return
             }
         }
         
@@ -90,7 +98,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let alert = UIAlertView(title: "Error en Juegos", message: "Asegurate de escribir correctamente #.", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                 
-                return
+                //return
             }
         }
         
@@ -118,6 +126,11 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             "lados" : switchesRespuesta[5],
             "juegos" : textFields[2].text!
             ]
+        
+        print("json:")
+        print(parameters)
+        
+        return
         
         if #available(iOS 8.0, *) {
             let alert = UIAlertController(title: nil, message: "Se están enviando tus archivos...", preferredStyle: .Alert)
@@ -206,6 +219,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if self.switchesRespuesta[0] == "1" {
             precioPorHojas = Double(self.textFields[0].text!)! * self.precioImpresionBN
+            
             if self.switchesRespuesta[2] == "1" { // impresiones con caratula a color
                 precioPorHojas = (precioPorHojas - self.precioImpresionBN) + self.precioImpresionColor
             }
@@ -216,6 +230,33 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         if textFields[2].text! != "" { // multiplicar por juegos
             precioPorHojas = precioPorHojas * Double(self.textFields[2].text!)!
         }
+        
+        /*
+        if self.switchesRespuesta[6] == "1" { // engargolado
+            
+            if ((Int(self.textFields[0].text!)) <= 40){
+                precioPorHojas = precioPorHojas + 18.00
+            }else if ((Int(self.textFields[0].text!)) > 40 && (Int(self.textFields[0].text!)) <= 80){
+                precioPorHojas = precioPorHojas + 20.00
+            }else if ((Int(self.textFields[0].text!)) > 80 && (Int(self.textFields[0].text!)) <= 110){
+                precioPorHojas = precioPorHojas + 22.00
+            }else if ((Int(self.textFields[0].text!)) > 110 && (Int(self.textFields[0].text!)) <= 150){
+                precioPorHojas = precioPorHojas + 24.00
+            }else if ((Int(self.textFields[0].text!)) > 150 && (Int(self.textFields[0].text!)) <= 200){
+                precioPorHojas = precioPorHojas + 26.00
+            }else {
+                let alert = UIAlertView(title: "Error en Engargolado", message: "No podremos engargolar.", delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+            }
+        }
+        */
+ 
+        
+        // Folders
+        precioPorHojas = precioPorHojas + MyFile.costoFolders
+        
+        print( "folders" )
+        print( MyFile.costoFolders )
         
         return String( precioPorHojas )
     }
@@ -233,7 +274,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func uploadFile(sender: AnyObject) {
         
         if #available(iOS 8.0, *) {
-            let documentMenu = UIDocumentMenuViewController(documentTypes: [kUTTypePDF as String, "public.data"], inMode: UIDocumentPickerMode.Import)
+            let documentMenu = UIDocumentMenuViewController(documentTypes: ["com.adobe.pdf", "com.microsoft.word.doc", "org.openxmlformats.wordprocessingml.document"], inMode: UIDocumentPickerMode.Import)
             
             documentMenu.delegate = self
             
@@ -331,19 +372,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             MyFile.url = url
             
-            
-            let extencionDoc = MyFile.Name.componentsSeparatedByString(".")
-            
-            if extencionDoc[1] != "doc" || extencionDoc[1] != "docx" || extencionDoc[1] != "pdf" {
-                
-                self.deleteDocFile()
-                
-                let alert = UIAlertView(title: "Documento Inválido", message: "Sólo aceptamos .doc ó PDF.", delegate: nil, cancelButtonTitle: "OK")
-                alert.show()
-                
-                return
-            }            
-            
             var fileSize : UInt64 = 0
             
             do {
@@ -379,7 +407,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 12
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -509,6 +537,18 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     func swipeKeyBoard(sender:AnyObject) {
         //Baja el textField
         self.view.endEditing(true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "FolderSegue" {
+            deleteUrl = false
+        } else if segue.identifier == "EngargoladoSegue", let destination = segue.destinationViewController as? EngargoladoTableViewController {
+            
+            deleteUrl = false
+            
+            destination.juegosAimprimir = self.textFields[2].text!
+        }
+        
     }
     
     // for delete path or keep it when open another view

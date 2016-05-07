@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F54CB5BA1197B9BD095294E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A4320657DC23CBE043629C5 /* libPods.a */; };
+		3B04478C1CD42BFA00C1B891 /* FolderTableViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B04478B1CD42BFA00C1B891 /* FolderTableViewController1.swift */; };
 		3B11967F1C49AFC900E6B202 /* SucursalesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B11967E1C49AFC900E6B202 /* SucursalesViewController.swift */; };
 		3B1196821C4D520000E6B202 /* ExportarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1196801C4D51FF00E6B202 /* ExportarViewController.swift */; };
 		3B1196851C4D53EE00E6B202 /* ContentPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1196841C4D53EE00E6B202 /* ContentPageViewController.swift */; };
@@ -22,6 +23,7 @@
 		3B374C981C02801E00B3919A /* PagoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B374C971C02801E00B3919A /* PagoViewController.swift */; };
 		3B55442C1C28EBA100041775 /* MyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55442B1C28EBA100041775 /* MyFile.swift */; };
 		3B624D351C4EBA8000D68131 /* InfoHistorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B624D341C4EBA8000D68131 /* InfoHistorialViewController.swift */; };
+		3B6AD4201CDD67D7008B5D78 /* EngargoladoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B6AD41F1CDD67D7008B5D78 /* EngargoladoTableViewController.swift */; };
 		3B6E86841C2B1F5A00252DA8 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3B6E86831C2B1F5A00252DA8 /* Podfile */; };
 		3B702D1F1C46F605001B7DB0 /* HistorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702D1E1C46F604001B7DB0 /* HistorialViewController.swift */; };
 		3B702D211C47049F001B7DB0 /* Accesibilidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B702D201C47049F001B7DB0 /* Accesibilidad.swift */; };
@@ -50,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		1A4320657DC23CBE043629C5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B04478B1CD42BFA00C1B891 /* FolderTableViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FolderTableViewController1.swift; sourceTree = "<group>"; };
 		3B11967E1C49AFC900E6B202 /* SucursalesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SucursalesViewController.swift; sourceTree = "<group>"; };
 		3B1196801C4D51FF00E6B202 /* ExportarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExportarViewController.swift; sourceTree = "<group>"; };
 		3B1196841C4D53EE00E6B202 /* ContentPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentPageViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 		3B374C971C02801E00B3919A /* PagoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagoViewController.swift; sourceTree = "<group>"; };
 		3B55442B1C28EBA100041775 /* MyFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFile.swift; sourceTree = "<group>"; };
 		3B624D341C4EBA8000D68131 /* InfoHistorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoHistorialViewController.swift; sourceTree = "<group>"; };
+		3B6AD41F1CDD67D7008B5D78 /* EngargoladoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngargoladoTableViewController.swift; sourceTree = "<group>"; };
 		3B6E86831C2B1F5A00252DA8 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		3B702D1E1C46F604001B7DB0 /* HistorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorialViewController.swift; sourceTree = "<group>"; };
 		3B702D201C47049F001B7DB0 /* Accesibilidad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accesibilidad.swift; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 			children = (
 				3B262F751C17CB1F00B174C3 /* HurryApp.entitlements */,
 				3B374C6B1C0262EB00B3919A /* Main.storyboard */,
+				3B6AD41F1CDD67D7008B5D78 /* EngargoladoTableViewController.swift */,
+				3B04478B1CD42BFA00C1B891 /* FolderTableViewController1.swift */,
 				3B374C671C0262EA00B3919A /* AppDelegate.swift */,
 				3B11967E1C49AFC900E6B202 /* SucursalesViewController.swift */,
 				3B374C691C0262EA00B3919A /* ViewController.swift */,
@@ -411,7 +417,9 @@
 				3BD9B1FC1C238AC400DB66D7 /* ConnectionHurryPrint.swift in Sources */,
 				3B702D211C47049F001B7DB0 /* Accesibilidad.swift in Sources */,
 				3B1196851C4D53EE00E6B202 /* ContentPageViewController.swift in Sources */,
+				3B04478C1CD42BFA00C1B891 /* FolderTableViewController1.swift in Sources */,
 				3B374C981C02801E00B3919A /* PagoViewController.swift in Sources */,
+				3B6AD4201CDD67D7008B5D78 /* EngargoladoTableViewController.swift in Sources */,
 				3B97AD9E1C02E375001C8947 /* ComprarViewController.swift in Sources */,
 				3B374C961C027F2500B3919A /* RegistroViewController.swift in Sources */,
 				3B55442C1C28EBA100041775 /* MyFile.swift in Sources */,

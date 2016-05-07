@@ -47,7 +47,7 @@ class SucursalesViewController: UIViewController, UITableViewDelegate, UITableVi
         let hora: Int? = Int( dateFormatter.stringFromDate(NSDate()) )
         dateFormatter.dateFormat = "mm"
         let minuto: Int? = Int( dateFormatter.stringFromDate(NSDate()) )
-        if hora <= 6 && minuto <= 29 || hora >= 22 && minuto >= 00 {
+        if hora <= 6 && minuto <= 31 || hora >= 21 && minuto >= 25 {
             
             self.horaDeDormir = true
             
