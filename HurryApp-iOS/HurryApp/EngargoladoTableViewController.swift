@@ -73,9 +73,6 @@ class EngargoladoTableViewController: UITableViewController {
                     self.juegos = (self.juegos + Int(labels[item].text!)!)
                 }
                 
-                print("self.juegos")
-                print(self.juegos)
-                
                 if self.juegos > self.limiteJuegos {
                     
                     let alert = UIAlertView(title: "", message: "No puedes marcar más engargolados que juegos.", delegate: nil, cancelButtonTitle: "OK")
@@ -155,14 +152,29 @@ class EngargoladoTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "SegueImprimir", let destination = segue.destinationViewController as? ComprarViewController {
+            
+            var noEngargolados = 0
+            
+            for item in 0...(labels.count-1) {
+                noEngargolados = (noEngargolados + Int(labels[item].text!)!)
+            }
+            
+            destination.noEngargolado = Double(noEngargolados)
+            
+        }
     }
-    */
 
 }
+
+//https://developer.apple.com/library/ios/technotes/tn2298/_index.html#//apple_ref/doc/uid/DTS40013591-CH1-DETDEST
+//https://spin.atomicobject.com/2014/10/25/ios-unwind-segues/
+//http://stackoverflow.com/questions/12561735/what-are-unwind-segues-for-and-how-do-you-use-them

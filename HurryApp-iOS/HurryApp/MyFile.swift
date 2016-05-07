@@ -36,7 +36,4 @@ struct MyFile {
             return nameDoc
         }
     }
-    
-    static var costoFolders: Double = 0.0
-    static var costoEngargolado: Double = 0.0
 }

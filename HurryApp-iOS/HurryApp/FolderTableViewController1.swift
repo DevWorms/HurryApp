@@ -140,51 +140,40 @@ class FolderTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "SegueImprimir", let destination = segue.destinationViewController as? ComprarViewController {
+            
+            var noFolder = 0
+            var noFolderFuerte = 0
+            var noFolders = 0
+            var costoTotalFolders = 0
+            
+            for lblFolder in labelsFolder {
+                noFolder += Int( lblFolder.text! )!
+            }
+            
+            costoTotalFolders = noFolder * precioFolder
+            
+            for lblFolderFuerte in labelsFolderFuerte {
+                noFolderFuerte += Int( lblFolderFuerte.text! )!
+            }
+            
+            noFolders = noFolder + noFolderFuerte
+            
+            costoTotalFolders = costoTotalFolders + (noFolderFuerte * precioFolderFuerte)
+            
+            destination.costoFolders = Double( costoTotalFolders )
+            
+        }
+        
+        
+        
     }
-    */
     
-    override func viewDidDisappear(animated: Bool) {
-        
-        var noFolder = 0
-        var noFolderFuerte = 0
-        var noFolders = 0
-        var costoTotalFolders = 0
-        
-        for lblFolder in labelsFolder {
-            noFolder += Int( lblFolder.text! )!
-        }
-        
-        costoTotalFolders = noFolder * precioFolder
-        
-        print("noFolder")
-        print(noFolder)
-        
-        for lblFolderFuerte in labelsFolderFuerte {
-            noFolderFuerte += Int( lblFolderFuerte.text! )!
-        }
-        
-        print("noFolderFuerte")
-        print(noFolderFuerte)
-        
-        noFolders = noFolder + noFolderFuerte
-        
-        print("noFolders")
-        print(noFolders)
-        
-        costoTotalFolders = costoTotalFolders + (noFolderFuerte * precioFolderFuerte)
-        
-        MyFile.costoFolders = Double( costoTotalFolders )
-        
-        print("costoTotalFolders")
-        print(costoTotalFolders)
-        
-    }
-
 }

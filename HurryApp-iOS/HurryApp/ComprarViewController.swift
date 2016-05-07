@@ -10,6 +10,11 @@ import UIKit
 
 class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIDocumentMenuDelegate, UIDocumentInteractionControllerDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
     
+    //variables desde otros controllers
+    var noSucursal = ""
+    var costoFolders = 0.0
+    var noEngargolado = 0.0
+    
     @IBOutlet weak var tableViewComprar: UITableView!
     @IBOutlet weak var nameDoc: UIButton!
     
@@ -19,8 +24,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     var switches: [UISwitch] = []
     var switchesRespuesta: [String] = ["1","","","1","",""]
     var deleteUrl = true
-    
-    var noSucursal = ""
     
     var dispBlancoNegro = true
     var dispColor = true
@@ -231,32 +234,26 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             precioPorHojas = precioPorHojas * Double(self.textFields[2].text!)!
         }
         
-        /*
-        if self.switchesRespuesta[6] == "1" { // engargolado
+        if self.noEngargolado > 0.0 { // engargolado
             
             if ((Int(self.textFields[0].text!)) <= 40){
-                precioPorHojas = precioPorHojas + 18.00
+                precioPorHojas = precioPorHojas + ( 18.00 * self.noEngargolado )
             }else if ((Int(self.textFields[0].text!)) > 40 && (Int(self.textFields[0].text!)) <= 80){
-                precioPorHojas = precioPorHojas + 20.00
+                precioPorHojas = precioPorHojas + ( 20.00 * self.noEngargolado )
             }else if ((Int(self.textFields[0].text!)) > 80 && (Int(self.textFields[0].text!)) <= 110){
-                precioPorHojas = precioPorHojas + 22.00
+                precioPorHojas = precioPorHojas + ( 22.00 * self.noEngargolado )
             }else if ((Int(self.textFields[0].text!)) > 110 && (Int(self.textFields[0].text!)) <= 150){
-                precioPorHojas = precioPorHojas + 24.00
+                precioPorHojas = precioPorHojas + ( 24.00 * self.noEngargolado )
             }else if ((Int(self.textFields[0].text!)) > 150 && (Int(self.textFields[0].text!)) <= 200){
-                precioPorHojas = precioPorHojas + 26.00
+                precioPorHojas = precioPorHojas + ( 26.00 * self.noEngargolado )
             }else {
                 let alert = UIAlertView(title: "Error en Engargolado", message: "No podremos engargolar.", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
             }
         }
-        */
- 
         
         // Folders
-        precioPorHojas = precioPorHojas + MyFile.costoFolders
-        
-        print( "folders" )
-        print( MyFile.costoFolders )
+        precioPorHojas = precioPorHojas + self.costoFolders
         
         return String( precioPorHojas )
     }
@@ -562,6 +559,12 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         deleteUrl = true
-    }    
+    }
+    
+    @IBAction func unwindToImprimir(sender: UIStoryboardSegue)
+    {
+        //aqui manda el exit de otro view controller con (ctrl+obj)
+        // Pull any data from the view controller which initiated the unwind segue.
+    }
 
 }
