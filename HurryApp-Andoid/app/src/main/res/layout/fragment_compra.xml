@@ -62,11 +62,11 @@
                             android:id="@+id/edt_nhojas"
                             android:textSize="15dp"
                             android:gravity="left"
-                            android:textAlignment="viewStart" />
+                            android:layout_weight="1" />
 
                         <EditText
-                            android:layout_width="37dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
                             android:inputType="number"
                             android:id="@+id/edx_numhoj"
                             android:textColor="#000000"
@@ -76,7 +76,8 @@
                             android:textSize="16dp"
                             android:maxLength="3"
                             android:textAlignment="center"
-                            android:gravity="left"/>
+                            android:gravity="left"
+                            android:layout_weight="1" />
 
 
                     </LinearLayout>
@@ -99,11 +100,12 @@
                             android:id="@+id/hojas"
                             android:textSize="15dp"
                             android:gravity="left"
-                            android:textAlignment="viewStart" />
+
+                            android:layout_weight="1" />
 
                         <EditText
-                            android:layout_width="37dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
                             android:inputType="number"
                             android:id="@+id/etx_hoj"
                             android:textColor="#000000"
@@ -114,7 +116,8 @@
                             android:maxLength="3"
 
                             android:textAlignment="center"
-                            android:gravity="left"/>
+                            android:gravity="left"
+                            android:layout_weight="1" />
 
 
                     </LinearLayout>
@@ -130,20 +133,22 @@
                         >
 
                         <TextView
-                            android:layout_width="110dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="#000000"
                             android:text="Blanco y Negro"
                             android:id="@+id/textView3"
                             android:textSize="15dp"
-                            android:gravity="left"/>
+                            android:gravity="left"
+                            android:layout_weight="1" />
 
                         <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/sw_blayneg"
                             android:layout_marginLeft="50dp"
-                            android:gravity="left"/>
+                            android:gravity="left"
+                            android:layout_weight="1" />
                     </LinearLayout>
 
                     <LinearLayout android:layout_width="fill_parent"
@@ -164,7 +169,8 @@
                             android:text="Color"
                             android:id="@+id/textView4"
                             android:layout_gravity="left"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:layout_weight="1" />
 
 
 
@@ -173,7 +179,8 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/sw_color"
                             android:layout_marginLeft="50dp"
-                            android:gravity="left"/>
+                            android:gravity="left"
+                            android:layout_weight="1" />
                     </LinearLayout>
                     <LinearLayout android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
@@ -193,14 +200,16 @@
                             android:text="Caratula a color"
                             android:id="@+id/textView11"
                             android:textSize="15dp"
-                            android:gravity="left"/>
+                            android:gravity="left"
+                            android:layout_weight="1" />
 
                         <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/sw_carcolor"
                             android:layout_marginLeft="50dp"
-                            android:gravity="left"/>
+                            android:gravity="left"
+                            android:layout_weight="1" />
                     </LinearLayout>
                     <LinearLayout android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
@@ -219,14 +228,16 @@
                             android:textColor="#000000"
                             android:text="Ambos lados   "
                             android:id="@+id/textView5"
-                            android:textSize="15dp" />
+                            android:textSize="15dp"
+                            android:layout_weight="1" />
 
                         <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/sw_amlad"
                             android:layout_marginLeft="50dp"
-                            android:gravity="left"/>
+                            android:gravity="left"
+                            android:layout_weight="1" />
                     </LinearLayout>
 
                     <LinearLayout android:layout_width="fill_parent"
@@ -247,14 +258,16 @@
                             android:text="Tamaño carta"
                             android:id="@+id/textView6"
                             android:textSize="15dp"
-                            android:gravity="left"/>
+                            android:gravity="left"
+                            android:layout_weight="1" />
 
                         <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/sw_carta"
                             android:layout_marginLeft="50dp"
-                            android:gravity="left"/>
+                            android:gravity="left"
+                            android:layout_weight="1" />
                     </LinearLayout>
                     <LinearLayout android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
@@ -274,18 +287,20 @@
                             android:text="Tamaño oficio"
                             android:id="@+id/textView7"
                             android:textSize="15dp"
-                            android:gravity="left"/>
+                            android:gravity="left"
+                            android:layout_weight="1" />
 
                         <Switch
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/sw_oficio"
                             android:layout_marginLeft="50dp"
-                            android:gravity="left"/>
+                            android:gravity="left"
+                            android:layout_weight="1" />
                     </LinearLayout>
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="fill_parent"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:text="Archivo"
@@ -293,7 +308,8 @@
                             android:textSize="15dp"
                             android:textColor="#000000"
                             android:textStyle="italic"
-                            android:gravity="left"/>
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal" />
                 <LinearLayout android:layout_width="fill_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="16dp"
@@ -305,7 +321,7 @@
                     android:background="@drawable/greybackground"
                     >
                         <Button
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="fill_parent"
                         android:text="Cancelar"
                         android:id="@+id/btnCancelar"
@@ -313,22 +329,24 @@
 
                         android:background="#d9534f"
                         android:layout_gravity="center_horizontal"
-                            android:layout_marginRight="30dp" />
+                            android:layout_marginRight="30dp"
+                            android:layout_weight="1" />
 
                         <Button
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="fill_parent"
                             android:text="Buscar "
                             android:id="@+id/btnBuscar"
                             android:textColor="#fff"
 
                             android:background="#13b586"
-                            android:layout_gravity="center_horizontal" />
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1" />
 
 
                 </LinearLayout>
                     <Button
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Mandar Archivo"
                         android:id="@+id/mandar"

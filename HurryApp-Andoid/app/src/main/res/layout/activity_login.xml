@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/margen"
 
     tools:context=".MainActivity">
 
@@ -29,8 +28,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:hint="Usuario"
-            android:id="@+id/User"
+            android:hint="Telefono"
+            android:id="@+id/Tel"
             android:textColor="#000000"
             android:textColorHint="#707070"
             android:background="@drawable/editredondo"
@@ -54,7 +53,7 @@
             />
 
 
-        <Button
+            <Button
             android:layout_width="190dp"
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
@@ -73,9 +72,9 @@
                 android:text="Registrate aquí"
                 android:textColor="#2683c2"
                 android:id="@+id/txt_registro"
-                android:layout_gravity="left"
                 android:layout_marginTop="10dp"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:layout_gravity="center_horizontal" />
 
             <fragment xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"

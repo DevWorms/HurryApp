@@ -1,6 +1,9 @@
 package com.salvador.devworms.hurryapp;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -8,20 +11,28 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.facebook.login.widget.ProfilePictureView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView name;
-   public TextView saldo;
+   public TextView txtSaldo;
+    TextView txtSaldoReg;
     ProfilePictureView fotoper;
    public String inifbnombre;
    public String inifbfoto;
     String pantall;
+    String Apikey;
+    String Saldo ;
+    String SaldoRegalo;
     ConecInternet conectado= new ConecInternet();
 
     @Override
@@ -31,9 +42,19 @@ public class MenuActivity extends AppCompatActivity
             conectado.dialgo(MenuActivity.this);
         }
         setContentView(R.layout.activity_menu);
-        saldo=(TextView)findViewById(R.id.saldo);
+        txtSaldo=(TextView)findViewById(R.id.saldo);
+        txtSaldoReg=(TextView)findViewById(R.id.saldoRegalo);
         name=(TextView)findViewById(R.id.nombreperfil);
         fotoper=(ProfilePictureView)findViewById(R.id.profilePicture);
+        SharedPreferences sp = getSharedPreferences("prefe", Activity.MODE_PRIVATE);
+        Apikey = sp.getString("APIkey","");
+        name.setText(sp.getString("Nombre","nombre"));
+        //Log.d("Preference : ", "> " + Apikey);
+        //getSaldo();
+        new getSaldoAT().execute();
+
+
+
        // Bundle args = getIntent().getExtras();
 
        // name= args.getString("nombre");
@@ -88,6 +109,78 @@ public class MenuActivity extends AppCompatActivity
            // Toast.makeText(this, conta, Toast.LENGTH_SHORT).show();
 
              finish();
+
+        }
+    }
+
+
+    class getSaldoAT extends AsyncTask<String, String, String> {
+
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        /**
+         * getting Albums JSON
+         * */
+        protected String doInBackground(String... args) {
+            // Building Parameters
+            //add your data
+            Log.d("Entro : ", "> SI");
+            JSONParser jsp= new JSONParser();
+            String body= Apikey;
+            Log.d("Apikey : ", "> " + Apikey);
+            String respuesta= jsp.makeHttpRequest("http://hurryprint.devworms.com/api/saldo","GET",body);
+            Log.d("Respuesta : ", "> " + respuesta);
+            if(respuesta!="error"){
+                try {
+                    JSONObject json = new JSONObject(respuesta);
+
+                    String datoUsuario = json.getString("saldo");
+
+                    JSONObject jsonUsuario = new JSONObject(datoUsuario);
+                    Saldo = jsonUsuario.getString("Saldo");
+                    SaldoRegalo = jsonUsuario.getString("SaldoRegalo");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+
+                        }
+                    });
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }else{
+
+
+            }
+
+
+            return null;
+        }
+
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog after getting all albums
+            Log.d("Entro final : ", "> SI");
+            // updating UI from Background Thread
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    txtSaldo.setText(Saldo);
+                    txtSaldoReg.setText(SaldoRegalo);
+
+                }
+            });
 
         }
     }
