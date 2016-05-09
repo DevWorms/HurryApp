@@ -14,6 +14,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     var noSucursal = ""
     var costoFolders = 0.0
     var noEngargolado = 0.0
+    var foldersRespuesta: [String] = ["0","0","0","0","0","0","0","0","0"]
     
     @IBOutlet weak var tableViewComprar: UITableView!
     @IBOutlet weak var nameDoc: UIButton!
@@ -127,7 +128,19 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             "carta" : switchesRespuesta[3],
             "oficio" : switchesRespuesta[4],
             "lados" : switchesRespuesta[5],
-            "juegos" : textFields[2].text!
+            "juegos" : textFields[2].text!,
+            
+            //Folders
+            "FolderBeige" : foldersRespuesta[0],
+            "FolderAzul" : foldersRespuesta[1],
+            "FolderRosa" : foldersRespuesta[2],
+            "FolderVerde" : foldersRespuesta[3],
+            "FolderGuinda" : foldersRespuesta[4],
+            "FolderAzulIntenso" : foldersRespuesta[5],
+            "FolderRojo" : foldersRespuesta[6],
+            "FolderNegro" : foldersRespuesta[7],
+            "FolderMorado" : foldersRespuesta[8],
+            
             ]
         
         print("json:")

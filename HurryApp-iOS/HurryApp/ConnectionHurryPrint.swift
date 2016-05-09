@@ -50,8 +50,6 @@ class ConnectionHurryPrint {
     func connectionRestApi(url: String, type: String, headers: [String: String]?, parameters: [String: String]?, completion: (resultData: NSData) -> Void) {
         
         if Accesibilidad.isConnectedToNetwork() == true {
-            print("Internet connection OK")
-            
             let request = NSMutableURLRequest(URL: NSURL(string: url)!)
             request.allHTTPHeaderFields = headers
             
@@ -74,8 +72,6 @@ class ConnectionHurryPrint {
                     print("error serializing JSON: \(error)")
                 }
             } else {
-                
-                print("entra")
                 
                 let boundary = generateBoundaryString()
                 

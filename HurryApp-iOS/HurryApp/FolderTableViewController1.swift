@@ -38,6 +38,8 @@ class FolderTableViewController: UITableViewController {
     var labelsFolder: [UILabel] = []
     var labelsFolderFuerte: [UILabel] = []
     
+    var contadorFolders: [String] = ["0","0","0","0","0","0","0","0","0"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -139,6 +141,26 @@ class FolderTableViewController: UITableViewController {
         return true
     }
     */
+    
+    func calculoCostoFolders() -> Double {
+        var noFolder = 0
+        var noFolderFuerte = 0
+        var costoTotalFolders = 0
+        
+        for lblFolder in labelsFolder {
+            noFolder += Int( lblFolder.text! )!
+        }
+        
+        costoTotalFolders = noFolder * precioFolder
+        
+        for lblFolderFuerte in labelsFolderFuerte {
+            noFolderFuerte += Int( lblFolderFuerte.text! )!
+        }
+        
+        costoTotalFolders = costoTotalFolders + (noFolderFuerte * precioFolderFuerte)
+        
+        return Double( costoTotalFolders )
+    }
 
     // MARK: - Navigation
 
@@ -149,26 +171,14 @@ class FolderTableViewController: UITableViewController {
         
         if segue.identifier == "SegueImprimir", let destination = segue.destinationViewController as? ComprarViewController {
             
-            var noFolder = 0
-            var noFolderFuerte = 0
-            var noFolders = 0
-            var costoTotalFolders = 0
+            destination.costoFolders = self.calculoCostoFolders()
             
-            for lblFolder in labelsFolder {
-                noFolder += Int( lblFolder.text! )!
+            //Cuales fonders seran
+            for item in 0...(labels.count-1) {
+                self.contadorFolders[item] = labels[item].text!
             }
             
-            costoTotalFolders = noFolder * precioFolder
-            
-            for lblFolderFuerte in labelsFolderFuerte {
-                noFolderFuerte += Int( lblFolderFuerte.text! )!
-            }
-            
-            noFolders = noFolder + noFolderFuerte
-            
-            costoTotalFolders = costoTotalFolders + (noFolderFuerte * precioFolderFuerte)
-            
-            destination.costoFolders = Double( costoTotalFolders )
+            destination.foldersRespuesta = self.contadorFolders
             
         }
         
