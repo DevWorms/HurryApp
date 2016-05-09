@@ -1,5 +1,5 @@
 //
-//  PagoViewController.swift
+//  RecargaViewController.swift
 //  HurryApp
 //
 //  Created by Emmanuel Valentín Granados López on 22/11/15.
@@ -8,16 +8,12 @@
 
 import UIKit
 
-class PagoViewController: UIViewController, PayPalPaymentDelegate {
+class RecargaViewController: UIViewController, PayPalPaymentDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func usuarioSegue(sender: AnyObject) {
-        self.performSegueWithIdentifier("PerfilSegue", sender: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +21,21 @@ class PagoViewController: UIViewController, PayPalPaymentDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func recagra30(sender: AnyObject) {
+        
+        self.payPal("Recarga $30+comisión", precio: "30.0")
+    }
+    
+    @IBAction func recarga50(sender: AnyObject) {
+        
+        self.payPal("Recarga $50+comisión", precio: "50.0")
+    }
+    
+    @IBAction func recarga100(sender: AnyObject) {
+        
+        self.payPal("Recarga $100+comisión ($115)", precio: "100.0")
+    }
 
     /*
     // MARK: - Navigation
@@ -44,20 +55,19 @@ class PagoViewController: UIViewController, PayPalPaymentDelegate {
         PayPalMobile.preconnectWithEnvironment(PayPalEnvironmentNoNetwork)
     }
     
-    @IBAction func payPal(sender: AnyObject) {
+    func payPal(descripcion: String, precio: String) {
         
         let paypalConf = PayPalConfiguration() //paypalconfiguration.h
         
-        //example
         //paypalConf.acceptCreditCards = true
         
         // Create a PayPalPayment
         let payment = PayPalPayment()
         
         // Amount, currency, and description
-        payment.amount = NSDecimalNumber(string: "39.95")
+        payment.amount = NSDecimalNumber(string: precio)
         payment.currencyCode = "USD"
-        payment.shortDescription = "Awesome saws"
+        payment.shortDescription = descripcion
         
         // Use the intent property to indicate that this is a "sale" payment,
         // meaning combined Authorization + Capture.
@@ -98,7 +108,8 @@ class PagoViewController: UIViewController, PayPalPaymentDelegate {
             // send completed confirmaion to your server
             print("Here is your proof of payment:\n\n\(completedPayment.confirmation)\n\nSend this to your server for confirmation and fulfillment.")
             
-            self.performSegueWithIdentifier("PerfilSegue", sender: nil)
+            //PerfilViewController().getSaldo()
+            
         })
     }
 

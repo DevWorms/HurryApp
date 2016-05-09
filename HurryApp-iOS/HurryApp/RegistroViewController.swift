@@ -88,7 +88,10 @@ class RegistroViewController: UIViewController, UITextFieldDelegate {
                     
                     dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
                         
-                        self.performSegueWithIdentifier("PagoSegue", sender: nil)
+                        let alert = UIAlertView(title: "", message: "Te regalamos SALDO para tus primeras impresiones, después podrás regargar el mismo en las sucursales o por PayPal*.", delegate: nil, cancelButtonTitle: "OK")
+                        alert.show()
+                        
+                        self.performSegueWithIdentifier("PrincipalSegue", sender: nil)
                     })
                     
                 } else if registro == 3 {

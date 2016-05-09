@@ -148,9 +148,8 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return
         
-        if #available(iOS 8.0, *) {
-            let alert = UIAlertController(title: nil, message: "Se están enviando tus archivos...", preferredStyle: .Alert)
-            alert.view.tintColor = UIColor.blackColor()
+        let alert = UIAlertController(title: nil, message: "Se están enviando tus archivos...", preferredStyle: .Alert)
+        alert.view.tintColor = UIColor.blackColor()
             
              /*
              alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
@@ -168,16 +167,14 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
              }))
              */
             
-            let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
-            loadingIndicator.hidesWhenStopped = true
-            loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-            loadingIndicator.startAnimating();
+        let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        loadingIndicator.startAnimating();
             
-            alert.view.addSubview(loadingIndicator)
-            self.presentViewController(alert, animated: true, completion: nil)
-        } else {
-            // Fallback on earlier versions
-        }
+        alert.view.addSubview(loadingIndicator)
+        self.presentViewController(alert, animated: true, completion: nil)
+        
         
         //Completion Handler
         self.hurryPrintMethods.connectionRestApi( "http://hurryprint.devworms.com/class/SubirMovil.php", type: "POST1", headers: nil, parameters: parameters, completion: { (resultData) -> Void in
@@ -283,16 +280,15 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func uploadFile(sender: AnyObject) {
         
-        if #available(iOS 8.0, *) {
-            let documentMenu = UIDocumentMenuViewController(documentTypes: ["com.adobe.pdf", "com.microsoft.word.doc", "org.openxmlformats.wordprocessingml.document"], inMode: UIDocumentPickerMode.Import)
+        let documentMenu = UIDocumentMenuViewController(documentTypes: ["com.adobe.pdf", "com.microsoft.word.doc", "org.openxmlformats.wordprocessingml.document"], inMode: UIDocumentPickerMode.Import)
             
-            documentMenu.delegate = self
+        documentMenu.delegate = self
             
-            //documentMenu.modalPresentationStyle = UIModalPresentationStyle.FullScreen
+        //documentMenu.modalPresentationStyle = UIModalPresentationStyle.FullScreen
             
-            documentMenu.addOptionWithTitle("Desde otra aplicación", image: nil, order: .First, handler: { () -> Void in
-                self.openPopUpTutorial()
-            })
+        documentMenu.addOptionWithTitle("Desde otra aplicación", image: nil, order: .First, handler: { () -> Void in
+            self.openPopUpTutorial()
+        })
             
             /*
             documentMenu.addOptionWithTitle("iPhone", image: nil, order: .First,
@@ -332,18 +328,10 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                         print("New Doc Requested") })
             */
             
-            //ipad
-            documentMenu.popoverPresentationController?.sourceView = self.view
+        //ipad
+        documentMenu.popoverPresentationController?.sourceView = self.view
             
-            self.presentViewController(documentMenu, animated: true, completion: nil)
-            
-        } else {
-            // Fallback on earlier versions            
-            
-            self.openPopUpTutorial()
-            
-        }
-        
+        self.presentViewController(documentMenu, animated: true, completion: nil)
     }
     
     func openPopUpTutorial() {

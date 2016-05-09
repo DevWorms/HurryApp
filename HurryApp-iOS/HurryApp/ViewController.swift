@@ -84,7 +84,7 @@ class ViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDel
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         
-                        self.performSegueWithIdentifier("PagoSegue", sender: nil)
+                        self.performSegueWithIdentifier("PrincipalSegue", sender: nil)
                     })
                     
                 } else if registro == 8 {

@@ -9,7 +9,7 @@
 import UIKit
 import FBSDKLoginKit
 
-class PerfilViewController: UIViewController {
+class PerfilViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileName: UILabel!
@@ -115,4 +115,24 @@ class PerfilViewController: UIViewController {
         self.presentViewController( vc , animated: true, completion: nil)
     }
 
+    @IBAction func showPopOver(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("showViewPopover", sender: nil) //showViewPopover
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showViewPopover" {
+            let vc = segue.destinationViewController as UIViewController
+            
+            let controller = vc.popoverPresentationController
+            
+            if controller != nil {
+                controller?.delegate = self
+            }
+        }
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .None
+    }
 }

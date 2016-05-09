@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -56,20 +55,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="HurryPrint" id="mI3-GM-5tJ">
-                        <barButtonItem key="backBarButtonItem" title="Iniciar Sesión" id="3M2-w1-eP1"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="zXM-0P-21y"/>
                     </navigationItem>
                     <connections>
                         <outlet property="contrasenaTxt" destination="IQe-hd-axV" id="Lzs-sf-8hu"/>
                         <outlet property="telefonoTxt" destination="N0b-qP-VWK" id="OfR-tn-ckZ"/>
                         <segue destination="hxl-6h-SUQ" kind="show" identifier="RegistroSegue" id="EE7-re-9Ae"/>
-                        <segue destination="Dp1-Wk-RaM" kind="presentation" identifier="PagoSegue" modalTransitionStyle="flipHorizontal" id="fV7-TN-QNI"/>
+                        <segue destination="iqa-bu-kUl" kind="presentation" identifier="PrincipalSegue" modalTransitionStyle="flipHorizontal" id="nuF-7o-HbL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1817" y="307"/>
         </scene>
-        <!--Registro View Controller-->
+        <!--Registro de Usuario-->
         <scene sceneID="Smq-Gh-SDm">
             <objects>
                 <viewController storyboardIdentifier="Registro" id="hxl-6h-SUQ" customClass="RegistroViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -131,121 +130,81 @@
                             <constraint firstItem="d2k-n1-yAN" firstAttribute="trailing" secondItem="SD8-Hs-OqW" secondAttribute="trailing" id="ubY-X2-Wg6"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Registro de Usuario" id="mPC-II-ulE"/>
                     <connections>
                         <outlet property="confirmarTxt" destination="SD8-Hs-OqW" id="pF6-7m-v6m"/>
                         <outlet property="contrasenaTxt" destination="4sC-On-nyD" id="cUl-mt-W7x"/>
                         <outlet property="name" destination="7ow-AV-H0J" id="qcD-pE-bOY"/>
                         <outlet property="telefonoTxt" destination="dBa-Iq-8yo" id="LlN-bB-ikF"/>
-                        <segue destination="Dp1-Wk-RaM" kind="presentation" identifier="PagoSegue" modalTransitionStyle="flipHorizontal" id="c3m-vn-u64"/>
+                        <segue destination="iqa-bu-kUl" kind="presentation" identifier="PrincipalSegue" modalTransitionStyle="flipHorizontal" id="4uw-nt-b7f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iqh-n3-nZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2566" y="-79"/>
         </scene>
-        <!--Pago View Controller-->
+        <!--Recarga View Controller-->
         <scene sceneID="Fe8-Db-Na0">
             <objects>
-                <viewController id="Dp1-Wk-RaM" customClass="PagoViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Pago" id="Dp1-Wk-RaM" customClass="RecargaViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EBw-Cj-A7G"/>
                         <viewControllerLayoutGuide type="bottom" id="AaX-0A-QSG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gQL-ba-HbO">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="125"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Número de tarjeta de crédito/débito" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bDd-St-x41">
-                                <rect key="frame" x="20" y="92" width="560" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z74-zr-pFD">
-                                <rect key="frame" x="20" y="144" width="180" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="0UZ-nl-oTi"/>
-                                    <constraint firstAttribute="width" secondItem="Z74-zr-pFD" secondAttribute="height" multiplier="6:1" id="IvF-xO-IOT"/>
-                                    <constraint firstAttribute="width" constant="180" id="hqP-xP-Lzi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="AA" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8lS-fq-Fz3">
-                                <rect key="frame" x="210" y="144" width="180" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="5nx-BT-dnA"/>
-                                    <constraint firstAttribute="width" secondItem="8lS-fq-Fz3" secondAttribute="height" multiplier="6:1" id="7cY-0Q-N51"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVV" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="exl-6U-JYR">
-                                <rect key="frame" x="400" y="144" width="180" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="ea9-4L-pmm"/>
-                                    <constraint firstAttribute="width" secondItem="exl-6U-JYR" secondAttribute="height" multiplier="6:1" id="tgM-Hk-vfo"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3OZ-fL-V2h">
-                                <rect key="frame" x="20" y="272" width="560" height="30"/>
+                                <rect key="frame" x="15" y="8" width="170" height="30"/>
                                 <color key="backgroundColor" red="0.70077836513519287" green="0.087833277881145477" blue="0.68692910671234131" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Agregar método de pago"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUO-2G-sYR">
-                                <rect key="frame" x="20" y="411" width="560" height="30"/>
-                                <color key="backgroundColor" red="0.99159914255142212" green="0.75748246908187866" blue="0.016123032197356224" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Prepago"/>
+                                <state key="normal" title="Recarga $30"/>
                                 <connections>
-                                    <action selector="usuarioSegue:" destination="Dp1-Wk-RaM" eventType="touchUpInside" id="LCa-g3-rgB"/>
+                                    <action selector="recagra30:" destination="Dp1-Wk-RaM" eventType="touchUpInside" id="0Yf-gF-Tt2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ex3-5S-SW3">
-                                <rect key="frame" x="20" y="342" width="560" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="15" y="46" width="170" height="30"/>
+                                <color key="backgroundColor" red="0.87566105769230773" green="0.15052814012889648" blue="0.10130386902831003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="PayPal"/>
+                                <state key="normal" title="Recarga $50"/>
                                 <connections>
-                                    <action selector="payPal:" destination="Dp1-Wk-RaM" eventType="touchUpInside" id="Zaj-WD-099"/>
+                                    <action selector="recarga50:" destination="Dp1-Wk-RaM" eventType="touchUpInside" id="lof-6i-zxB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUO-2G-sYR">
+                                <rect key="frame" x="15" y="84" width="170" height="30"/>
+                                <color key="backgroundColor" red="0.41212223310925039" green="0.85236378205128205" blue="0.31325568596176623" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Recarga $100"/>
+                                <connections>
+                                    <action selector="recarga100:" destination="Dp1-Wk-RaM" eventType="touchUpInside" id="ruY-x5-xav"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="exl-6U-JYR" firstAttribute="baseline" secondItem="8lS-fq-Fz3" secondAttribute="baseline" id="0d6-qC-SNr"/>
-                            <constraint firstItem="8lS-fq-Fz3" firstAttribute="leading" secondItem="Z74-zr-pFD" secondAttribute="trailing" constant="10" id="6FD-Lj-4rY"/>
-                            <constraint firstItem="3OZ-fL-V2h" firstAttribute="leading" secondItem="VUO-2G-sYR" secondAttribute="leading" id="6uQ-Q1-o7a"/>
-                            <constraint firstItem="ex3-5S-SW3" firstAttribute="leading" secondItem="VUO-2G-sYR" secondAttribute="leading" id="D2w-68-VcB"/>
-                            <constraint firstItem="bDd-St-x41" firstAttribute="leading" secondItem="Z74-zr-pFD" secondAttribute="leading" id="GJr-a7-7KB"/>
-                            <constraint firstItem="3OZ-fL-V2h" firstAttribute="leading" secondItem="Z74-zr-pFD" secondAttribute="leading" id="Grw-tn-GNt"/>
-                            <constraint firstItem="VUO-2G-sYR" firstAttribute="top" secondItem="3OZ-fL-V2h" secondAttribute="bottom" constant="109" id="Hf9-KA-wwO"/>
-                            <constraint firstItem="bDd-St-x41" firstAttribute="top" secondItem="EBw-Cj-A7G" secondAttribute="bottom" constant="72" id="I3M-V1-jMx"/>
-                            <constraint firstItem="3OZ-fL-V2h" firstAttribute="top" secondItem="Z74-zr-pFD" secondAttribute="bottom" constant="98" id="QeR-Gt-s7B"/>
-                            <constraint firstItem="3OZ-fL-V2h" firstAttribute="trailing" secondItem="VUO-2G-sYR" secondAttribute="trailing" id="V1H-JM-pMS"/>
-                            <constraint firstItem="exl-6U-JYR" firstAttribute="trailing" secondItem="gQL-ba-HbO" secondAttribute="trailingMargin" id="aeF-5P-e1G"/>
-                            <constraint firstItem="ex3-5S-SW3" firstAttribute="trailing" secondItem="VUO-2G-sYR" secondAttribute="trailing" id="aec-qY-Vb1"/>
-                            <constraint firstItem="Z74-zr-pFD" firstAttribute="baseline" secondItem="8lS-fq-Fz3" secondAttribute="baseline" id="cLC-z6-QUL"/>
-                            <constraint firstItem="exl-6U-JYR" firstAttribute="width" secondItem="Z74-zr-pFD" secondAttribute="width" id="dEe-bY-hbq"/>
-                            <constraint firstItem="VUO-2G-sYR" firstAttribute="top" secondItem="ex3-5S-SW3" secondAttribute="bottom" constant="39" id="f2J-Hf-3Va"/>
-                            <constraint firstItem="exl-6U-JYR" firstAttribute="trailing" secondItem="3OZ-fL-V2h" secondAttribute="trailing" id="mED-WX-jvT"/>
-                            <constraint firstItem="Z74-zr-pFD" firstAttribute="top" secondItem="bDd-St-x41" secondAttribute="bottom" constant="22" id="o9p-xW-cDf"/>
-                            <constraint firstItem="bDd-St-x41" firstAttribute="trailing" secondItem="exl-6U-JYR" secondAttribute="trailing" id="of3-ws-oDf"/>
-                            <constraint firstItem="8lS-fq-Fz3" firstAttribute="width" secondItem="Z74-zr-pFD" secondAttribute="width" id="sw3-14-xgi"/>
-                            <constraint firstItem="3OZ-fL-V2h" firstAttribute="leading" secondItem="gQL-ba-HbO" secondAttribute="leadingMargin" id="uSM-uU-bNk"/>
-                            <constraint firstItem="8lS-fq-Fz3" firstAttribute="centerX" secondItem="bDd-St-x41" secondAttribute="centerX" id="yGK-NP-SCd"/>
-                            <constraint firstItem="exl-6U-JYR" firstAttribute="leading" secondItem="8lS-fq-Fz3" secondAttribute="trailing" constant="10" id="z6k-E4-YQD"/>
+                            <constraint firstItem="ex3-5S-SW3" firstAttribute="trailing" secondItem="VUO-2G-sYR" secondAttribute="trailing" id="Dgc-NF-ePW"/>
+                            <constraint firstItem="VUO-2G-sYR" firstAttribute="top" secondItem="ex3-5S-SW3" secondAttribute="bottom" constant="8" symbolic="YES" id="GLE-sU-2Cs"/>
+                            <constraint firstItem="3OZ-fL-V2h" firstAttribute="leading" secondItem="gQL-ba-HbO" secondAttribute="leadingMargin" constant="-1" id="ZeV-s2-1Sl"/>
+                            <constraint firstItem="3OZ-fL-V2h" firstAttribute="leading" secondItem="ex3-5S-SW3" secondAttribute="leading" id="gJQ-T0-8jw"/>
+                            <constraint firstItem="3OZ-fL-V2h" firstAttribute="top" secondItem="EBw-Cj-A7G" secondAttribute="bottom" constant="8" symbolic="YES" id="h1K-H4-f9g"/>
+                            <constraint firstItem="ex3-5S-SW3" firstAttribute="leading" secondItem="VUO-2G-sYR" secondAttribute="leading" id="iRA-T4-U9p"/>
+                            <constraint firstItem="3OZ-fL-V2h" firstAttribute="centerX" secondItem="gQL-ba-HbO" secondAttribute="centerX" id="mAF-7s-KeF"/>
+                            <constraint firstItem="ex3-5S-SW3" firstAttribute="top" secondItem="3OZ-fL-V2h" secondAttribute="bottom" constant="8" symbolic="YES" id="opp-yP-SuR"/>
+                            <constraint firstItem="3OZ-fL-V2h" firstAttribute="trailing" secondItem="ex3-5S-SW3" secondAttribute="trailing" id="ot6-VC-gwg"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <segue destination="iqa-bu-kUl" kind="presentation" identifier="PerfilSegue" modalTransitionStyle="flipHorizontal" id="dAD-Uy-Aiw"/>
-                    </connections>
+                    <value key="contentSizeForViewInPopover" type="size" width="200" height="125"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="200" height="125"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s6c-kD-sDU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3299" y="307"/>
+            <point key="canvasLocation" x="5309" y="-487.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="cde-Rg-eFo">
@@ -264,9 +223,9 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1eT-D5-3OP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4055" y="307"/>
+            <point key="canvasLocation" x="3303" y="277"/>
         </scene>
-        <!--Perfil View Controller-->
+        <!--Perfil-->
         <scene sceneID="3E4-RU-rDH">
             <objects>
                 <viewController id="pcX-5h-r8L" customClass="PerfilViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -335,12 +294,26 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="k0G-At-Fe2"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILT-NK-NPg">
+                                <rect key="frame" x="225" y="337" width="150" height="30"/>
+                                <color key="backgroundColor" red="0.078386969864368439" green="0.56945967674255371" blue="0.99728924036026001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="MbW-W1-VKU"/>
+                                </constraints>
+                                <state key="normal" title="Recarga PayPal">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="showPopOver:" destination="pcX-5h-r8L" eventType="touchUpInside" id="ee7-8X-ie7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ukZ-We-Osa" firstAttribute="baseline" secondItem="jzk-uy-EMH" secondAttribute="baseline" id="5uF-HL-6wo"/>
                             <constraint firstItem="zrJ-VN-HqY" firstAttribute="centerY" secondItem="5Mg-nI-NJg" secondAttribute="centerY" id="Bej-4D-uaI"/>
                             <constraint firstItem="jzk-uy-EMH" firstAttribute="leading" secondItem="ukZ-We-Osa" secondAttribute="trailing" constant="8" symbolic="YES" id="CMn-gk-B13"/>
+                            <constraint firstItem="ILT-NK-NPg" firstAttribute="top" secondItem="hOA-5W-CfB" secondAttribute="bottom" constant="44" id="Hda-Bq-GjF"/>
                             <constraint firstItem="zrJ-VN-HqY" firstAttribute="leading" secondItem="5Ai-j6-DwT" secondAttribute="leadingMargin" id="Iyf-JX-Mdu"/>
                             <constraint firstItem="5Mg-nI-NJg" firstAttribute="top" secondItem="fSE-qj-Nti" secondAttribute="bottom" constant="47" id="Jhg-rj-fDs"/>
                             <constraint firstItem="ukZ-We-Osa" firstAttribute="leading" secondItem="794-kR-ZPe" secondAttribute="leading" id="LEF-xt-0Ig"/>
@@ -360,11 +333,12 @@
                             <constraint firstItem="zrJ-VN-HqY" firstAttribute="centerX" secondItem="gmh-OM-rSc" secondAttribute="centerX" constant="-20" id="oqp-Ea-IDA"/>
                             <constraint firstItem="D9L-MZ-u9g" firstAttribute="top" secondItem="Tjy-oJ-o5Z" secondAttribute="bottom" constant="21" id="tC7-EF-9CD"/>
                             <constraint firstItem="ukZ-We-Osa" firstAttribute="top" secondItem="gmh-OM-rSc" secondAttribute="bottom" constant="8" symbolic="YES" id="teG-Jw-cTo"/>
+                            <constraint firstItem="ILT-NK-NPg" firstAttribute="centerX" secondItem="Tjy-oJ-o5Z" secondAttribute="centerX" id="wsn-lE-AHo"/>
                             <constraint firstItem="gmh-OM-rSc" firstAttribute="leading" secondItem="5Ai-j6-DwT" secondAttribute="leadingMargin" id="xhC-B9-3Id"/>
                             <constraint firstItem="gmh-OM-rSc" firstAttribute="leading" secondItem="ukZ-We-Osa" secondAttribute="leading" id="zqF-eM-WmM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="lkh-Px-rRA">
+                    <navigationItem key="navigationItem" title="Perfil" id="lkh-Px-rRA">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="lVE-Cp-Zxm">
                             <color key="tintColor" red="0.42254114192738901" green="0.69937527585358661" blue="0.71960331232119823" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
@@ -374,11 +348,14 @@
                         <outlet property="profileName" destination="5Mg-nI-NJg" id="xjJ-mR-OQS"/>
                         <outlet property="saldo" destination="jzk-uy-EMH" id="EN3-RC-VbU"/>
                         <outlet property="saldoRegalo" destination="hOA-5W-CfB" id="0yF-bE-Ivb"/>
+                        <segue destination="Dp1-Wk-RaM" kind="popoverPresentation" identifier="showViewPopover" popoverAnchorView="ILT-NK-NPg" id="R4D-Ct-R3r">
+                            <popoverArrowDirection key="popoverArrowDirection" down="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9w-Tn-hrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5582" y="-457"/>
+            <point key="canvasLocation" x="4830" y="-487"/>
         </scene>
         <!--Sucursales-->
         <scene sceneID="ZA3-8V-jDJ">
@@ -475,7 +452,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RSd-kG-gKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5582" y="307"/>
+            <point key="canvasLocation" x="4830" y="277"/>
         </scene>
         <!--Impresión-->
         <scene sceneID="GV9-0X-V3u">
@@ -904,7 +881,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yb0-JJ-2KE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6306" y="307"/>
+            <point key="canvasLocation" x="5554" y="277"/>
         </scene>
         <!--Engargolados-->
         <scene sceneID="doW-SX-rxI">
@@ -1271,7 +1248,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vTk-Yp-FaW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="O9Z-1m-OtR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7077" y="-79"/>
+            <point key="canvasLocation" x="6325" y="-109"/>
         </scene>
         <!--Folder-->
         <scene sceneID="Dki-Ph-IRq">
@@ -1684,7 +1661,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uzr-Sb-Eo1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="uii-SB-WjG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7077" y="629"/>
+            <point key="canvasLocation" x="6325" y="599"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="z8p-wo-6rx">
@@ -1703,7 +1680,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9k-NB-fr0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4778" y="-457"/>
+            <point key="canvasLocation" x="4026" y="-487"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="APS-3q-Qcp">
@@ -1724,7 +1701,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n3g-RE-qvR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4778" y="307"/>
+            <point key="canvasLocation" x="4026" y="277"/>
         </scene>
         <!--Historial-->
         <scene sceneID="s5T-CW-beH">
@@ -1812,9 +1789,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6xc-HY-oep" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5582" y="1010"/>
+            <point key="canvasLocation" x="4830" y="980"/>
         </scene>
-        <!--Info Historial View Controller-->
+        <!--Folio-->
         <scene sceneID="KCc-HE-nxT">
             <objects>
                 <viewController storyboardIdentifier="InfoHistorialViewController" id="rBW-nl-Kkp" customClass="InfoHistorialViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -1967,6 +1944,7 @@
                             <constraint firstItem="ugz-PP-NR0" firstAttribute="trailing" secondItem="fHK-cV-uZY" secondAttribute="trailing" id="zpz-cT-B9g"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Folio" id="w62-7Y-no4"/>
                     <connections>
                         <outlet property="docLabel" destination="geG-q0-6lY" id="TGF-yQ-KsM"/>
                         <outlet property="estatusLabel" destination="Buv-Ri-3S1" id="5Hm-P0-c1N"/>
@@ -1979,7 +1957,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2My-92-xfu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6306" y="1010"/>
+            <point key="canvasLocation" x="5554" y="980"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kgz-eM-azm">
@@ -2020,7 +1998,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zQ5-fS-Zpe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4778" y="1010"/>
+            <point key="canvasLocation" x="4026" y="980"/>
         </scene>
         <!--Content Page View Controller-->
         <scene sceneID="8eC-YO-xA5">
@@ -2106,6 +2084,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="c3m-vn-u64"/>
+        <segue reference="nuF-7o-HbL"/>
     </inferredMetricsTieBreakers>
 </document>
