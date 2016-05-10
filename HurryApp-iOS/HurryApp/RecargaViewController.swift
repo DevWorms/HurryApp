@@ -9,6 +9,9 @@
 import UIKit
 
 class RecargaViewController: UIViewController, PayPalPaymentDelegate {
+    
+    var hurryPrintMethods = ConnectionHurryPrint()
+    var saldoArecargar = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +28,22 @@ class RecargaViewController: UIViewController, PayPalPaymentDelegate {
     @IBAction func recagra30(sender: AnyObject) {
         
         self.payPal("Recarga $30+comisión", precio: "30.0")
+        
+        saldoArecargar = 30
     }
     
     @IBAction func recarga50(sender: AnyObject) {
         
         self.payPal("Recarga $50+comisión", precio: "50.0")
+        
+        saldoArecargar = 50
     }
     
     @IBAction func recarga100(sender: AnyObject) {
         
         self.payPal("Recarga $100+comisión ($115)", precio: "100.0")
+        
+        saldoArecargar = 100
     }
 
     /*
@@ -105,10 +114,21 @@ class RecargaViewController: UIViewController, PayPalPaymentDelegate {
         
         print("PayPal Payment Success !")
         paymentViewController.dismissViewControllerAnimated(true, completion: { () -> Void in
+            
             // send completed confirmaion to your server
             print("Here is your proof of payment:\n\n\(completedPayment.confirmation)\n\nSend this to your server for confirmation and fulfillment.")
             
-            //PerfilViewController().getSaldo()
+            let parameters = [
+                "Saldo": String( self.saldoArecargar ),
+                "Apikey": NSUserDefaults.standardUserDefaults().stringForKey("ApiKey")!
+            ]
+            
+            //Completion Handler
+            self.hurryPrintMethods.connectionRestApi( "http://hurryprint.devworms.com/api/usuarios/recarga", type: "POST", headers: nil, parameters: parameters, completion: { (resultData) -> Void in
+                
+                self.parseJSON( resultData )
+                
+            })
             
         })
     }
@@ -116,6 +136,36 @@ class RecargaViewController: UIViewController, PayPalPaymentDelegate {
     func payPalPaymentDidCancel(paymentViewController: PayPalPaymentViewController!) {
         print("PayPal Payment Cancelled")
         paymentViewController.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func parseJSON(dataForJson: NSData) {
+        
+        do {
+            let json = try NSJSONSerialization.JSONObjectWithData( dataForJson , options: .AllowFragments)
+            
+            if let registro = json["estado"] as? Int {
+                if registro == 1 {
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        
+                        let alert = UIAlertView(title: "", message: json["mensaje"] as? String, delegate: nil, cancelButtonTitle: "OK")
+                        alert.show()
+                    })
+                    
+                } else { //if registro == 8 {
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        
+                        let alert = UIAlertView(title: "Error en recarga", message: json["mensaje"] as? String, delegate: nil, cancelButtonTitle: "OK")
+                        alert.show()
+                    })
+                    
+                }
+            }
+            
+        } catch {
+            print("error serializing JSON: \(error)")
+        }
     }
     
 }

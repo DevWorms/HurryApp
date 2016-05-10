@@ -117,7 +117,7 @@ class PerfilViewController: UIViewController, UIPopoverPresentationControllerDel
 
     @IBAction func showPopOver(sender: AnyObject) {
         
-        self.performSegueWithIdentifier("showViewPopover", sender: nil) //showViewPopover
+        self.performSegueWithIdentifier("showViewPopover", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
