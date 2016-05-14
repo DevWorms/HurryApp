@@ -22,6 +22,8 @@ class EngargoladoTableViewController: UITableViewController {
     @IBOutlet weak var lbl6: UILabel!
     @IBOutlet weak var lbl7: UILabel!
     @IBOutlet weak var lbl8: UILabel!
+    @IBOutlet weak var lbl9: UILabel!
+    @IBOutlet weak var lbl10: UILabel!
     
     @IBOutlet weak var stp1: UIStepper!
     @IBOutlet weak var stp2: UIStepper!
@@ -31,9 +33,12 @@ class EngargoladoTableViewController: UITableViewController {
     @IBOutlet weak var stp6: UIStepper!
     @IBOutlet weak var stp7: UIStepper!
     @IBOutlet weak var stp8: UIStepper!
+    @IBOutlet weak var stp9: UIStepper!
+    @IBOutlet weak var stp10: UIStepper!
     
     var labels: [UILabel] = []
     var steppers: [UIStepper] = []
+    var contadorEngargolados: [String] = ["0","0","0","0","0","0","0","0","0","0"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,10 +56,10 @@ class EngargoladoTableViewController: UITableViewController {
         }
         
         //steppers
-        labels = [lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8]
-        steppers = [stp1, stp2, stp3, stp4, stp5, stp6, stp7, stp8]
+        labels = [lbl1, lbl2, lbl3, lbl4, lbl5, lbl6, lbl7, lbl8, lbl9, lbl10]
+        steppers = [stp1, stp2, stp3, stp4, stp5, stp6, stp7, stp8, stp9, stp10]
         
-        for index in 0...7 {
+        for index in 0...9 {
             steppers[index].addTarget(self, action: #selector(EngargoladoTableViewController.stepperValueChanged(_:)), forControlEvents: .ValueChanged)
             
             steppers[index].maximumValue = Double(self.limiteJuegos)
@@ -104,7 +109,7 @@ class EngargoladoTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 8
+        return 10
     }
 
     /*
@@ -169,6 +174,14 @@ class EngargoladoTableViewController: UITableViewController {
             }
             
             destination.noEngargolado = Double(noEngargolados)
+            
+            
+            //Cuales engargolados seran
+            for item in 0...(labels.count-1) {
+                self.contadorEngargolados[item] = labels[item].text!
+            }
+            
+            destination.engargoladosRespuesta = self.contadorEngargolados
             
         }
     }

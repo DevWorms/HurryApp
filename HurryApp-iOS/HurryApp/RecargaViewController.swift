@@ -150,6 +150,11 @@ class RecargaViewController: UIViewController, PayPalPaymentDelegate {
                         
                         let alert = UIAlertView(title: "", message: json["mensaje"] as? String, delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
+                        
+                        // https://www.andrewcbancroft.com/2014/10/08/fundamentals-of-nsnotificationcenter-in-swift/
+                        NSNotificationCenter.defaultCenter().postNotificationName("refreshSaldo", object: nil)
+                        
+                        
                     })
                     
                 } else { //if registro == 8 {

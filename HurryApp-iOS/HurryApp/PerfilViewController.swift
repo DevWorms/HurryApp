@@ -20,6 +20,9 @@ class PerfilViewController: UIViewController, UIPopoverPresentationControllerDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // NSNotificationCenter para pasarnos valores o observadores de que pasa en otras vistas
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PerfilViewController.refresh(_:)), name: "refreshSaldo", object: nil)
 
         // Do any additional setup after loading the view.
         

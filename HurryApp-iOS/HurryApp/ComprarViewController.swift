@@ -15,6 +15,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     var costoFolders = 0.0
     var noEngargolado = 0.0
     var foldersRespuesta: [String] = ["0","0","0","0","0","0","0","0","0"]
+    var engargoladosRespuesta: [String] = ["0","0","0","0","0","0","0","0","0","0"]
     
     @IBOutlet weak var tableViewComprar: UITableView!
     @IBOutlet weak var nameDoc: UIButton!
@@ -80,20 +81,20 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             let alert = UIAlertView(title: "Nos faltó algo", message: "Selecciona un archivo existente", delegate: nil, cancelButtonTitle: "Ok")
             alert.show()
                 
-            //return
+            return
                 
         } else if ( !validate( textFields[0].text! ) ) {
             let alert = UIAlertView(title: "Nos faltó algo", message: "¿Cuantas hojas imprimiremos?", delegate: nil, cancelButtonTitle: "Ok")
             alert.show()
             
-            //return
+            return
             
         } else if (textFields[1].text! != ""){
             if !validate( textFields[1].text! ) {
                 let alert = UIAlertView(title: "Error en Intervalo", message: "Asegurate de escribir correctamente #-#.", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                 
-                //return
+                return
             }
         }
         
@@ -102,7 +103,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let alert = UIAlertView(title: "Error en Juegos", message: "Asegurate de escribir correctamente #.", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                 
-                //return
+                return
             }
         }
         
@@ -141,12 +142,24 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             "FolderNegro" : foldersRespuesta[7],
             "FolderMorado" : foldersRespuesta[8],
             
+            //Engargolados
+            "pGuinda" : engargoladosRespuesta[0],
+            "pNegro" : engargoladosRespuesta[1],
+            "pRojo" : engargoladosRespuesta[2],
+            "pAzul" : engargoladosRespuesta[3],
+            "pVerde" : engargoladosRespuesta[4],
+            "pAmarillo" : engargoladosRespuesta[5],
+            "pMorado" : engargoladosRespuesta[6],
+            "pGris" : engargoladosRespuesta[7],
+            "pBlanco" : engargoladosRespuesta[8],
+            "pAzulFuerte" : engargoladosRespuesta[9],
+            
             ]
         
-        print("json:")
-        print(parameters)
+        //print("json:")
+        //print(parameters)
         
-        return
+        //return
         
         let alert = UIAlertController(title: nil, message: "Se están enviando tus archivos...", preferredStyle: .Alert)
         alert.view.tintColor = UIColor.blackColor()
@@ -207,7 +220,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         
-                        let alert = UIAlertView(title: "Ocurrió algo", message: "No pudimos enviar tu archivo, intentalo de nuevo, asegúrate de que todo este bien.", delegate: nil, cancelButtonTitle: "OK")
+                        let alert = UIAlertView(title: "Ocurrió algo", message: json["Descripcion"] as? String, delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
                     })
                     
