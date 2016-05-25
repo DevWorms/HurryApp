@@ -10,7 +10,6 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/margen"
         android:gravity="center_vertical|center_horizontal"
         style="@style/Animation.AppCompat.Dialog"
         android:layout_alignParentTop="true"
@@ -24,26 +23,28 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="15dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Folio:"
                 android:textColor="#000000"
                 android:id="@+id/textView12"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:gravity="center_horizontal" />
+                android:layout_weight="0"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="30dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0129384756"
                 android:textColor="#000000"
                 android:id="@+id/txt_histo_info_folio"
                 android:layout_gravity="right|center_horizontal"
-                android:gravity="center_horizontal"
+                android:gravity="left"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -52,80 +53,58 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fecha:"
                 android:textColor="#000000"
                 android:id="@+id/textView14"
                 android:gravity="center_horizontal"
                 android:layout_gravity="left|center_horizontal"
-                android:layout_weight="1" />
+                android:layout_weight="0"
+                android:layout_marginRight="23dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="01/10/2016"
                 android:textColor="#000000"
                 android:id="@+id/txt_histo_info_fecha"
                 android:layout_gravity="right|center_horizontal"
-                android:gravity="center_horizontal"
+                android:gravity="left"
                 android:layout_weight="1" />
         </LinearLayout>
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Hora:"
-                android:textColor="#000000"
-                android:id="@+id/textView15"
-                android:gravity="center_horizontal"
-                android:layout_gravity="left|center_horizontal"
-                android:layout_weight="1" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="10:00"
-                android:textColor="#000000"
-                android:id="@+id/txt_histo_info_hora"
-                android:layout_gravity="right|center_horizontal"
-                android:gravity="center_horizontal"
-                android:layout_weight="1" />
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
-
-            <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Precio:"
                 android:textColor="#000000"
                 android:id="@+id/textView16"
                 android:gravity="center_horizontal"
                 android:layout_gravity="left|center_horizontal"
-                android:layout_weight="1" />
+                android:layout_weight="0"
+                android:layout_marginRight="23dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="$5.50"
                 android:textColor="#000000"
                 android:id="@+id/txt_histo_info_precio"
                 android:layout_gravity="right|center_horizontal"
-                android:gravity="center_horizontal"
+                android:gravity="left"
                 android:layout_weight="1" />
         </LinearLayout>
         <LinearLayout
@@ -133,53 +112,90 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sucursal:"
                 android:textColor="#000000"
                 android:id="@+id/textView17"
                 android:gravity="center_horizontal"
                 android:layout_gravity="left|center_horizontal"
-                android:layout_weight="1" />
+                android:layout_weight="0"
+                android:layout_marginRight="10dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Eart Canela"
                 android:textColor="#000000"
                 android:id="@+id/txt_histo_info_sucur"
                 android:layout_gravity="right|center_horizontal"
-                android:gravity="center_horizontal"
-                android:layout_weight="1" />
+                android:gravity="left"
+                android:layout_weight="1"
+                />
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            >
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nombre:"
                 android:textColor="#000000"
                 android:id="@+id/textView18"
                 android:gravity="center_horizontal"
                 android:layout_gravity="left|center_horizontal"
-                android:layout_weight="1" />
+                android:layout_weight="0"
+                android:layout_marginRight="14dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Documento"
                 android:textColor="#000000"
                 android:id="@+id/txt_histo_info_namedocu"
                 android:layout_gravity="right|center_horizontal"
+                android:gravity="left"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status:"
+                android:textColor="#000000"
+                android:id="@+id/textView15"
                 android:gravity="center_horizontal"
+                android:layout_gravity="left|center_horizontal"
+                android:layout_weight="0"
+                android:layout_marginRight="25dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:id="@+id/txt_histo_info_hora"
+                android:layout_gravity="right|center_horizontal"
+                android:gravity="left"
                 android:layout_weight="1" />
         </LinearLayout>
 

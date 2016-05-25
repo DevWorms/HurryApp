@@ -14,7 +14,8 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:paddingBottom="10dp">
 
 
             <TextView
@@ -28,12 +29,60 @@
                 android:gravity="center_horizontal"
 
                 android:background="#4fa5d5" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Archivo"
+                android:id="@+id/ruta"
+                android:textSize="15dp"
+                android:textColor="#000000"
+                android:textStyle="italic"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp" />
+
+            <LinearLayout android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="0dp"
+                android:orientation="horizontal"
+                android:gravity="center_horizontal"
+                android:background="@drawable/greybackground"
+                >
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:text="Cancelar"
+                    android:id="@+id/btnCancelar"
+                    android:textColor="#fff"
+
+                    android:background="#d9534f"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginRight="30dp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:text="Buscar "
+                    android:id="@+id/btnBuscar"
+                    android:textColor="#fff"
+
+                    android:background="#13b586"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
             <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="10dp"
-                android:fillViewport="false">
+                android:fillViewport="false"
+                android:id="@+id/scrCompra">
+
                 <LinearLayout android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="16dp"
@@ -44,6 +93,7 @@
                     android:gravity="center_horizontal"
                     android:background="@drawable/greybackground"
                     >
+
                     <LinearLayout android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
@@ -68,7 +118,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:inputType="number"
-                            android:id="@+id/edx_numhoj"
+                            android:id="@+id/edt_numhoj"
                             android:textColor="#000000"
                             android:textColorHint="#707070"
                             android:background="#f3f3f3"
@@ -76,8 +126,9 @@
                             android:textSize="16dp"
                             android:maxLength="3"
                             android:textAlignment="center"
-                            android:gravity="left"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center" />
 
 
                     </LinearLayout>
@@ -107,7 +158,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:inputType="number"
-                            android:id="@+id/etx_hoj"
+                            android:id="@+id/edt_hoj"
                             android:textColor="#000000"
                             android:textColorHint="#707070"
                             android:background="#f3f3f3"
@@ -116,8 +167,8 @@
                             android:maxLength="3"
 
                             android:textAlignment="center"
-                            android:gravity="left"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:gravity="center" />
 
 
                     </LinearLayout>
@@ -299,52 +350,46 @@
                             android:layout_weight="1" />
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="0dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_horizontal"
+                        android:background="@drawable/greybackground" >
+
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="fill_parent"
-                            android:textAppearance="?android:attr/textAppearanceLarge"
-                            android:text="Archivo"
-                            android:id="@+id/ruta"
-                            android:textSize="15dp"
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
                             android:textColor="#000000"
-                            android:textStyle="italic"
-                            android:layout_gravity="center_horizontal"
-                            android:gravity="center_horizontal" />
-                <LinearLayout android:layout_width="fill_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="0dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_horizontal"
-                    android:background="@drawable/greybackground"
-                    >
-                        <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="fill_parent"
-                        android:text="Cancelar"
-                        android:id="@+id/btnCancelar"
-                        android:textColor="#fff"
-
-                        android:background="#d9534f"
-                        android:layout_gravity="center_horizontal"
-                            android:layout_marginRight="30dp"
+                            android:text="Juegos a imprimir"
+                            android:id="@+id/textView8"
+                            android:textSize="15dp"
+                            android:gravity="left"
                             android:layout_weight="1" />
 
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="fill_parent"
-                            android:text="Buscar "
-                            android:id="@+id/btnBuscar"
-                            android:textColor="#fff"
-
-                            android:background="#13b586"
-                            android:layout_gravity="center_horizontal"
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:inputType="number"
+                            android:id="@+id/edt_juegos"
+                            android:textColor="#000000"
+                            android:textColorHint="#707070"
+                            android:background="#f3f3f3"
+                            android:hint="000"
+                            android:textSize="16dp"
+                            android:maxLength="3"
+                            android:textAlignment="center"
+                            android:gravity="center"
                             android:layout_weight="1" />
+                    </LinearLayout>
 
 
-                </LinearLayout>
+
+
+
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -354,7 +399,20 @@
                         android:textSize="13dp"
                         android:background="@drawable/redondo"
                         android:layout_marginTop="10dp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Folder"
+                        android:id="@+id/btnFolder" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Engargolados"
+                        android:id="@+id/btnEngar" />
                 </LinearLayout>
             </ScrollView>
+
         </LinearLayout>
     </RelativeLayout>

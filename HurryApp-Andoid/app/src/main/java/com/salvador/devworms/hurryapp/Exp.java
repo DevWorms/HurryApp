@@ -1,9 +1,12 @@
 package com.salvador.devworms.hurryapp;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -47,10 +51,17 @@ public class Exp extends Fragment {
 
                     nombrearchi=archivo.getName();
                     ubicacion=archivo.getPath();
+                    String newName= nombrearchi.replace(".",",");
 
-                    Compra fragment = new Compra();
+                  String []nomArch = newName.split(",");
+                    Log.d("TipiArch : ", "> "+ nombrearchi);
 
-                    Bundle parametro = new Bundle();
+
+                   if(nomArch[1].equals("pdf")|| nomArch[1].equals("doc")|| nomArch[1].equals("docx")) {
+
+                        Compra fragment = new Compra();
+
+                        Bundle parametro = new Bundle();
 
 
                   /*  fragment.setArguments(parametro);
@@ -58,17 +69,24 @@ public class Exp extends Fragment {
                             .replace(R.id.actividad, new Compra()).commit();*/
 
 
-                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                       SharedPreferences sp = getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
+                       SharedPreferences.Editor editor = sp.edit();
+                       editor.putString("nombrearch", nombrearchi);
+                       editor.putString("ubicacion", ubicacion);
+                       editor.commit();
+                        parametro.putString("nombrearch", nombrearchi);
+                        parametro.putString("ubicacion", ubicacion);
+                        fragment.setArguments(parametro);
 
-                    parametro.putString("nombrearch", nombrearchi);
-                    parametro.putString("ubicacion", ubicacion);
-                    fragment.setArguments(parametro);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.replace(R.id.actividad, fragment);
+                        fragmentTransaction.commit();
 
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.replace(R.id.actividad, fragment);
-                    fragmentTransaction.commit();
-
-
+                    }else{
+                        Toast.makeText(getActivity().getApplicationContext(), "Solo puede elegir Archivos Pdf, Doc o Docx",
+                                Toast.LENGTH_SHORT).show();
+                    }
 
 
            /* Intent i= new Intent(this, MenuActivity.class);

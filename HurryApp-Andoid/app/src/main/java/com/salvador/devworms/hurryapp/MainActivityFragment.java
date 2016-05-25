@@ -4,9 +4,12 @@ package com.salvador.devworms.hurryapp;
  * Created by salvador on 20/12/2015.
  */
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -116,7 +119,8 @@ public   class MainActivityFragment extends Fragment {
             LoginManager.getInstance().logOut();
 
         }else{
-        Profile profile = Profile.getCurrentProfile();
+
+       Profile profile = Profile.getCurrentProfile();
        displayMessage(profile);
         }
 
@@ -135,10 +139,23 @@ public   class MainActivityFragment extends Fragment {
 
         }else {
             if (profile != null) {
-                Intent i = new Intent(getActivity(), MenuActivity.class);
-                i.putExtra("nombrefb", profile.getName());
-                i.putExtra("foto", profile.getId());
+
+                Log.d("Token : ", "> " + AccessToken.getCurrentAccessToken().getToken());
+                Log.d("UserId : ", "> " + profile.getId());
+
+
+
+                Intent i = new Intent(getActivity(), Registro.class);
+
+                SharedPreferences sp = getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("fbtoken", AccessToken.getCurrentAccessToken().getToken());
+                editor.putString("fbuserid",  AccessToken.getCurrentAccessToken().getUserId());
+                editor.putString("Nombre",  profile.getName().toString());
+                editor.commit();
                 startActivity(i);
+
+
 
                // getActivity().finish();
                 //image.setProfileId(profile.getId());

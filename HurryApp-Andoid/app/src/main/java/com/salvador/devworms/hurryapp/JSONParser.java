@@ -33,8 +33,8 @@ public class JSONParser {
 
     // function get json from url
     // by making HTTP POST or GET mehtod
-    public String makeHttpRequest(String url, String method,String bd) {
-
+    public String makeHttpRequest(String url, String method,String bd,String bd2) {
+        Log.d("metho : ", "> " + method);
         // Making HTTP request
         try {
 
@@ -64,6 +64,18 @@ public class JSONParser {
                         .url(url)
                         .get()
                         .addHeader("apikey",bd )
+                        .build();
+
+                respuesta = client.newCall(request).execute();
+            } else if(method == "GETF") {
+                OkHttpClient client = new OkHttpClient();
+                Log.d("URL : ", "> " + url);
+                Log.d("bd : ", "> " + bd2);
+                Request request = new Request.Builder()
+                        .url(url)
+                        .get()
+                        .addHeader("apikey", bd)
+                        .addHeader("folio", bd2)
                         .build();
 
                 respuesta = client.newCall(request).execute();
