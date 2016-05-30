@@ -293,7 +293,7 @@
 				TargetAttributes = {
 					3B374C631C0262EA00B3919A = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = LP65999SC2;
+						DevelopmentTeam = FN75477QMR;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -570,7 +570,7 @@
 				INFOPLIST_FILE = HurryApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.devworms.HurryAppSolution;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devworms.HurryPrint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HurryApp/HurryApp-Bridging-Header.h";
@@ -596,7 +596,7 @@
 				INFOPLIST_FILE = HurryApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.devworms.HurryAppSolution;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devworms.HurryPrint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HurryApp/HurryApp-Bridging-Header.h";

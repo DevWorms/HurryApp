@@ -10,6 +10,8 @@ import Foundation
 
 class ConnectionHurryPrint {
     
+    var task : NSURLSessionDataTask?
+    
     func prepareBodyDataToPHP(parameters: [String: String], boundary: String) -> NSMutableData {
         
         // Set Content-Type in HTTP header.
@@ -88,7 +90,7 @@ class ConnectionHurryPrint {
                 
             }
             
-            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+            self.task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
                 data, response, error in
                 
                 if error != nil {
@@ -104,12 +106,20 @@ class ConnectionHurryPrint {
                 }
                 
             }
-            task.resume()
+            self.task!.resume()
             
         } else {
             let alert = UIAlertView(title: "Sin conexón a internet", message: "Asegurate de estar conectado a internet.", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
         }
+    }
+    
+    func cancelConnection() {
+        
+        if self.task != nil {
+            self.task!.cancel()
+        }
+        
     }
     
 }

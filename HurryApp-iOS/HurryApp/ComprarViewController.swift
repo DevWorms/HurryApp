@@ -109,6 +109,25 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         print("siguió")
         
+        let alert = UIAlertController(title: nil, message: "Se están enviando tus archivos...", preferredStyle: .Alert)
+        alert.view.tintColor = UIColor.blackColor()
+        
+        let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        loadingIndicator.startAnimating();
+        
+        let callAction = UIAlertAction(title: "Cancel", style: .Default, handler: {
+            action in
+            
+            self.hurryPrintMethods.cancelConnection()
+            return
+            })
+        alert.addAction(callAction)
+        
+        alert.view.addSubview(loadingIndicator)
+        self.presentViewController(alert, animated: true, completion: nil)
+        
         // ver el status de todos los switches
         for index in 0...5 {
             if switches[index].on {
@@ -160,34 +179,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         //print(parameters)
         
         //return
-        
-        let alert = UIAlertController(title: nil, message: "Se están enviando tus archivos...", preferredStyle: .Alert)
-        alert.view.tintColor = UIColor.blackColor()
-            
-             /*
-             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-             alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
-             switch action.style{
-             case .Default:
-             print("default")
-             
-             case .Cancel:
-             print("cancel")
-             
-             case .Destructive:
-             print("destructive")
-             }
-             }))
-             */
-            
-        let loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(10, 5, 50, 50)) as UIActivityIndicatorView
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        loadingIndicator.startAnimating();
-            
-        alert.view.addSubview(loadingIndicator)
-        self.presentViewController(alert, animated: true, completion: nil)
-        
         
         //Completion Handler
         self.hurryPrintMethods.connectionRestApi( "http://hurryprint.devworms.com/class/SubirMovil.php", type: "POST1", headers: nil, parameters: parameters, completion: { (resultData) -> Void in
