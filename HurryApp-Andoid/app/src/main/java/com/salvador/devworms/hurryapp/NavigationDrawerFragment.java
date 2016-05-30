@@ -3,6 +3,7 @@ package com.salvador.devworms.hurryapp;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -11,6 +12,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,13 +23,19 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
  * design guidelines</a> for a complete explanation of the behaviors implemented here.
  */
 public class NavigationDrawerFragment extends Fragment {
-
+    String Apikey;
+    String Saldo ;
+    String SaldoRegalo;
+    String idUser;
     /**
      * Remember the position of the selected item.
      */
@@ -110,9 +118,82 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     public boolean isDrawerOpen() {
+        new getSaldoAT().execute();
         return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mFragmentContainerView);
     }
+    class getSaldoAT extends AsyncTask<String, String, String> {
 
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        /**
+         * getting Albums JSON
+         * */
+        protected String doInBackground(String... args) {
+            // Building Parameters
+            //add your data
+            Log.d("Entro : ", "> SI");
+            JSONParser jsp= new JSONParser();
+            SharedPreferences sp =getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
+            Apikey = sp.getString("APIkey","");
+            String body= Apikey;
+            Log.d("Apikey : ", "> " + Apikey);
+            String respuesta= jsp.makeHttpRequest("http://hurryprint.devworms.com/api/saldo","GET",body,"");
+            Log.d("Respuesta : ", "> " + respuesta);
+            if(respuesta!="error"){
+                try {
+                    JSONObject json = new JSONObject(respuesta);
+
+                    String datoUsuario = json.getString("saldo");
+
+                    JSONObject jsonUsuario = new JSONObject(datoUsuario);
+                    Saldo = jsonUsuario.getString("Saldo");
+                    SaldoRegalo = jsonUsuario.getString("SaldoRegalo");
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+
+                        }
+                    });
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }else{
+
+
+            }
+
+
+            return null;
+        }
+
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog after getting all albums
+            Log.d("Entro final : ", "> SI");
+            // updating UI from Background Thread
+           getActivity().runOnUiThread(new Runnable() {
+                public void run() {
+                    MenuActivity menu= new MenuActivity();
+                    menu.txtSaldo.setText(Saldo);
+                    menu.txtSaldoReg.setText(SaldoRegalo);
+
+                }
+            });
+
+        }
+    }
     /**
      * Users of this fragment must call this method to set up the navigation drawer interactions.
      *

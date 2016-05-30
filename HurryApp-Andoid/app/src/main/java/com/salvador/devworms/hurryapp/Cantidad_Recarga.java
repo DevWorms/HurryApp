@@ -2,8 +2,11 @@ package com.salvador.devworms.hurryapp;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,9 +24,13 @@ import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by salvador on 28/12/2015.
@@ -36,7 +43,7 @@ public class Cantidad_Recarga extends Fragment {
     private static final String CONFIG_CLIENT_ID = "ARz4NRRhyp7aszqRG1kj_1A2syw_Jp8nT8JwRnSpQqgD7c_bsMd6__bgXfrVsl9g7io9xCjy8kSqxWm1";
     private static final int REQUEST_CODE_PAYMENT = 1;
     private static final int REQUEST_CODE_FUTURE_PAYMENT = 2;
-
+    private ProgressDialog pDialog;
     private static PayPalConfiguration config = new PayPalConfiguration()
             .environment(CONFIG_ENVIRONMENT)
             .clientId(CONFIG_CLIENT_ID)
@@ -133,11 +140,13 @@ public class Cantidad_Recarga extends Fragment {
                         System.out.println(confirm.toJSONObject().toString(4));
                         System.out.println(confirm.getPayment().toJSONObject()
                                 .toString(4));
+                        new getSaldAT().execute();
 
-                        Toast.makeText(getActivity(), "Recarga realizda con exito",
-                                Toast.LENGTH_LONG).show();
-                        TextView txt =(TextView)getActivity().findViewById(R.id.saldo);
-                        txt.setText(cantidad);
+
+
+
+                       // TextView txt =(TextView)getActivity().findViewById(R.id.saldo);
+                       // txt.setText(cantidad);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -184,6 +193,78 @@ public class Cantidad_Recarga extends Fragment {
 
     }
 
+    class getSaldAT extends AsyncTask<String, String, String> {
+
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setMessage("Cargando...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
+        }
+
+        /**
+         * getting Albums JSON
+         * */
+        protected String doInBackground(String... args) {
+            // Building Parameters
+            //add your data
+
+
+            JSONParser jsp= new JSONParser();
+            SharedPreferences sp =getActivity().getSharedPreferences("prefe", getActivity().MODE_PRIVATE);
+            String Apikey = sp.getString("APIkey","");
+            String body="{\n    \"Apikey\" : \""+Apikey+"\",\n    \"Saldo\" : \""+cantidad+"\"\n}";
+            String respuesta= jsp.makeHttpRequest("http://hurryprint.devworms.com/api/usuarios/recarga","POST",body,"");
+            //  Log.d("Tiendas : ", "> " + respuesta);
+            if(respuesta!="error"){
+                try {
+                    JSONObject json = new JSONObject(respuesta);
+                    Log.i("Recarga", respuesta);
+
+
+
+
+
+
+                } catch (JSONException e){
+                    e.printStackTrace();
+                }
+
+
+            }else {}
+
+
+
+            return null;
+        }
+
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog after getting all albums
+            pDialog.dismiss();
+            // updating UI from Background Thread
+            getActivity().runOnUiThread(new Runnable() {
+                public void run() {
+                    Toast.makeText(getActivity(), "Recarga realizda con exito",
+                            Toast.LENGTH_LONG).show();
+
+
+
+
+                }
+            });
+
+        }
+    }
 
 
     @Override

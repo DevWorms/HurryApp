@@ -40,12 +40,16 @@ public class Login extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
-
+        SharedPreferences sp = getSharedPreferences("prefe", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("nombrearch", "");
+        editor.putString("ubicacion", "");
+        editor.commit();
         TextView texto=(TextView)findViewById(R.id.txt_registro);
         txtTel=(TextView)findViewById(R.id.Tel);
         txtPass=(TextView)findViewById(R.id.Pass);
 
-        SharedPreferences sp = getSharedPreferences("prefe", Activity.MODE_PRIVATE);
+
         String myStriValue = sp.getString("APIkey","");
         Log.d("Preference : ", "> " + myStriValue);
         if (myStriValue!=""){
@@ -88,7 +92,7 @@ public class Login extends AppCompatActivity {
                         //add your data
                     JSONParser jsp= new JSONParser();
                     String body= "{\r\n\"contrasena\": \""+txtPass.getText()+"\",\r\n\"telefono\": \""+txtTel.getText()+"\"\r\n}\r\n";
-                    String respuesta= jsp.makeHttpRequest("http://hurryprint.devworms.com/api/usuarios/login","POST",body);
+                    String respuesta= jsp.makeHttpRequest("http://hurryprint.devworms.com/api/usuarios/login","POST",body,"");
                    // Log.d("Respuesta : ", "> " + respuesta);
                     if(respuesta!="error"){
                         try {
@@ -99,10 +103,12 @@ public class Login extends AppCompatActivity {
                             JSONObject jsonUsuario = new JSONObject(datoUsuario);
                             String apikey = jsonUsuario.getString("APIkey");
                             String nombre = jsonUsuario.getString("Nombre");
+                            String idUser= jsonUsuario.getString("Token");
                             SharedPreferences sp = getSharedPreferences("prefe", Activity.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sp.edit();
                             editor.putString("APIkey", apikey);
                             editor.putString("Nombre", nombre);
+                            editor.putString("fbuserid", idUser);
                             editor.commit();
                             Intent intent = new Intent(Login.this, MenuActivity.class);
 

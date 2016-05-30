@@ -1,7 +1,6 @@
 package com.salvador.devworms.hurryapp;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -25,7 +24,7 @@ public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView name;
    public TextView txtSaldo;
-    TextView txtSaldoReg;
+   public TextView txtSaldoReg;
     ProfilePictureView fotoper;
    public String inifbnombre;
    public String inifbfoto;
@@ -33,6 +32,7 @@ public class MenuActivity extends AppCompatActivity
     String Apikey;
     String Saldo ;
     String SaldoRegalo;
+    String idUser;
     ConecInternet conectado= new ConecInternet();
 
     @Override
@@ -48,9 +48,12 @@ public class MenuActivity extends AppCompatActivity
         fotoper=(ProfilePictureView)findViewById(R.id.profilePicture);
         SharedPreferences sp = getSharedPreferences("prefe", Activity.MODE_PRIVATE);
         Apikey = sp.getString("APIkey","");
+        idUser = sp.getString("fbuserid","");
         name.setText(sp.getString("Nombre","nombre"));
         //Log.d("Preference : ", "> " + Apikey);
         //getSaldo();
+        Log.d("idUser : ", "> "+idUser);
+        fotoper.setProfileId(idUser);
         new getSaldoAT().execute();
 
 
@@ -91,26 +94,7 @@ public class MenuActivity extends AppCompatActivity
         getFragmentManager().beginTransaction().addToBackStack(null);
         ///***************Fragment***************************************************
 
-        try{
 
-            Intent i=getIntent();
-            if (i.getExtras()!=null) {
-
-                inifbnombre = i.getExtras().getString("nombrefb");
-                inifbfoto = i.getExtras().getString("foto");
-
-                if (inifbnombre != null || inifbnombre != "")
-                    name.setText(inifbnombre);
-                if (inifbfoto != null || inifbfoto != "")
-                    fotoper.setProfileId(inifbfoto);
-            }
-
-        }catch (Exception e){
-           // Toast.makeText(this, conta, Toast.LENGTH_SHORT).show();
-
-             finish();
-
-        }
     }
 
 
@@ -132,9 +116,10 @@ public class MenuActivity extends AppCompatActivity
             //add your data
             Log.d("Entro : ", "> SI");
             JSONParser jsp= new JSONParser();
+
             String body= Apikey;
             Log.d("Apikey : ", "> " + Apikey);
-            String respuesta= jsp.makeHttpRequest("http://hurryprint.devworms.com/api/saldo","GET",body);
+            String respuesta= jsp.makeHttpRequest("http://hurryprint.devworms.com/api/saldo","GET",body,"");
             Log.d("Respuesta : ", "> " + respuesta);
             if(respuesta!="error"){
                 try {
@@ -195,24 +180,19 @@ public class MenuActivity extends AppCompatActivity
         if (!conectado.verificaConexion(getApplicationContext())) {
             conectado.dialgo(MenuActivity.this);
         }
+
     }
 
     @Override
     protected void onSaveInstanceState(Bundle guardarEstado) {
         super.onSaveInstanceState(guardarEstado);
-        if (inifbnombre != null || inifbnombre != "")
-        guardarEstado.putString("nomfb", inifbnombre);
-        if (inifbfoto != null || inifbfoto != "")
-        guardarEstado.putString("fotofb", inifbfoto);
+
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle recEstado) {
         super.onRestoreInstanceState(recEstado);
-        if (inifbnombre == null || inifbnombre == "")
-            inifbnombre = recEstado.getString("variable");
-        if (inifbfoto == null || inifbfoto == "")
-            inifbfoto = recEstado.getString("posicion");
+
     }
     public void onBackPressed() {
 
@@ -252,6 +232,7 @@ public class MenuActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement

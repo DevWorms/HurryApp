@@ -1,8 +1,13 @@
 package com.salvador.devworms.hurryapp;
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,17 +20,25 @@ import android.widget.TextView;
 import com.facebook.login.LoginManager;
 import com.facebook.login.widget.ProfilePictureView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by salvador on 02/12/2015.
  */
 public class Cuenta extends Fragment {
     TextView name;
     String nom;
+    private ProgressDialog pDialog;
     String fot;
     Button logout;
     ProfilePictureView fotoper;
     MenuItem agreTar;
-    TextView saldo;
+    TextView saldo,saldoR;
+    String Apikey;
+    String Saldo ;
+    String SaldoRegalo;
+    String idUser;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,25 +47,24 @@ public class Cuenta extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_cuenta, container, false);
         name=(TextView)view.findViewById(R.id.cuentaNombre);
+        saldoR=(TextView)view.findViewById(R.id.cuentaSaldoReg);
         logout=(Button)view.findViewById(R.id.logout);
         saldo=(TextView)view.findViewById(R.id.cuentaSaldo);
         fotoper=(ProfilePictureView) view.findViewById(R.id.profilePicture);
-        try {
-            MenuActivity menua =(MenuActivity)getActivity();
-            nom =menua.inifbnombre;
-            fot = menua.inifbfoto;
-            saldo.setText(menua.txtSaldo.getText());
-            if (nom != null && nom != "")
-                name.setText(nom);
-            if (fot != null && fot != "")
-                fotoper.setProfileId(fot);
-        }catch (Exception e){}
+        SharedPreferences sp = getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
+        Apikey = sp.getString("APIkey","");
+        idUser = sp.getString("fbuserid","");
+        String nombre = sp.getString("Nombre","");
+        name.setText(nombre);
+        fotoper.setProfileId(idUser);
+        new getSaldoAT().execute();
        /*Bundle args = this.getActivity().getExtras();
          name= args.getString("nombre");
          fotoper= args.getString("foto");
 */      logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getActivity().getSharedPreferences("prefe",0).edit().clear().commit();
 
                 LoginManager.getInstance().logOut();
                 Intent salida = new Intent(Intent.ACTION_MAIN); //Llamando a la activity principal
@@ -65,6 +77,85 @@ public class Cuenta extends Fragment {
 
     return view;
     }
+    class getSaldoAT extends AsyncTask<String, String, String> {
+
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setMessage("Cargando...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
+        }
+
+        /**
+         * getting Albums JSON
+         * */
+
+        protected String doInBackground(String... args) {
+            // Building Parameters
+            //add your data
+            Log.d("Entro : ", "> SI");
+            JSONParser jsp= new JSONParser();
+
+            String body= Apikey;
+            Log.d("Apikey : ", "> " + Apikey);
+            String respuesta= jsp.makeHttpRequest("http://hurryprint.devworms.com/api/saldo","GET",body,"");
+            Log.d("Respuesta : ", "> " + respuesta);
+            if(respuesta!="error"){
+                try {
+                    JSONObject json = new JSONObject(respuesta);
+
+                    String datoUsuario = json.getString("saldo");
+
+                    JSONObject jsonUsuario = new JSONObject(datoUsuario);
+                    Saldo = jsonUsuario.getString("Saldo");
+                    SaldoRegalo = jsonUsuario.getString("SaldoRegalo");
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+
+                        }
+                    });
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }else{
+
+
+            }
+
+
+            return null;
+        }
+
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog after getting all albums
+            Log.d("Entro final : ", "> SI");
+            pDialog.dismiss();
+            // updating UI from Background Thread
+            getActivity().runOnUiThread(new Runnable() {
+                public void run() {
+                    saldo.setText(Saldo);
+                    saldoR.setText(SaldoRegalo);
+
+                }
+            });
+
+        }
+    }
+
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // TODO Add your menu entries here
         super.onCreateOptionsMenu(menu, inflater);
@@ -76,8 +167,7 @@ public class Cuenta extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.ade:
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.actividad, new MetPago()).commit();
+                new getSaldoAT().execute();
                 return true;
 
             default:
