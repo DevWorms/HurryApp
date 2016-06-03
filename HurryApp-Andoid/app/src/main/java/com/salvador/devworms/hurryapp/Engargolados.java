@@ -9,12 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by salva on 24/05/2016.
  */
 public class Engargolados extends Fragment{
     TextView txtFBla,txtFAz,txtFRed,txtFVer,txtFAma,txtFMor,txtFGri,txtFGin,txtFAzf,txtFNeg;
+    int hojas,juegos;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_engarglado, container, false);
         txtFBla=(TextView)view.findViewById(R.id.txtFolBlan);
@@ -27,6 +29,8 @@ public class Engargolados extends Fragment{
         txtFGin=(TextView)view.findViewById(R.id.txtFolGin);
         txtFGri=(TextView)view.findViewById(R.id.txtFolGri);
         txtFMor=(TextView)view.findViewById(R.id.txtFolMor);
+        hojas= Integer.parseInt(((Application) getActivity().getApplication()).getnumeroHojas());
+        juegos=Integer.parseInt(((Application) getActivity().getApplication()).getnumeroJuegos());
 
         Button btnMasFbl=(Button)view.findViewById(R.id.btnMasBlan);
         btnMasFbl.setOnClickListener(new View.OnClickListener() {
@@ -229,7 +233,33 @@ public class Engargolados extends Fragment{
         btnAcepEnga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                ((Application) getActivity().getApplication()).setEngarArray(txtFBla.getText().toString(),0);
+                ((Application) getActivity().getApplication()).setEngarArray(txtFAz.getText().toString(),1);
+                ((Application) getActivity().getApplication()).setEngarArray(txtFRed.getText().toString(),2);
+                ((Application) getActivity().getApplication()).setEngarArray(txtFVer.getText().toString(),3);
+                ((Application) getActivity().getApplication()).setEngarArray(txtFAma.getText().toString(),4);
+                ((Application) getActivity().getApplication()).setEngarArray(txtFNeg.getText().toString(),5);
+                ((Application) getActivity().getApplication()).setEngarArray(txtFAzf.getText().toString(),6);
+                ((Application) getActivity().getApplication()).setEngarArray(txtFGin.getText().toString(),7);
+                ((Application) getActivity().getApplication()).setEngarArray(txtFGri.getText().toString(),8);
+                ((Application) getActivity().getApplication()).setEngarArray(txtFMor.getText().toString(),9);
+                int juegosEngar= Integer.parseInt(txtFBla.getText().toString())+Integer.parseInt( txtFAz.getText().toString())+Integer.parseInt( txtFRed.getText().toString())+Integer.parseInt( txtFVer.getText().toString())+Integer.parseInt( txtFAma.getText().toString())+Integer.parseInt( txtFNeg.getText().toString())+Integer.parseInt( txtFAzf.getText().toString())+Integer.parseInt( txtFGin.getText().toString())+Integer.parseInt( txtFGri.getText().toString())+Integer.parseInt( txtFMor.getText().toString());
+                if(hojas>=1 &&hojas<41){
+                    Log.d("Precio 1 : ", "> Precio 18 " +juegosEngar);
+                    ((Application) getActivity().getApplication()).setCostoEngargolado(juegosEngar*18);
+                }else if(hojas>=41 &&hojas<81){
+                    Log.d("Precio 2 : ", "> Precio 20 "+juegosEngar);
+                    ((Application) getActivity().getApplication()).setCostoEngargolado(juegosEngar*20);
+                }else if(hojas>=81 &&hojas<111){
+                    Log.d("Precio 3 : ", "> Precio 22 "+juegosEngar);
+                    ((Application) getActivity().getApplication()).setCostoEngargolado(juegosEngar*22);
+                }else if(hojas>=111 &&hojas<151){
+                    Log.d("Precio 4 : ", "> Precio 24 "+juegosEngar);
+                    ((Application) getActivity().getApplication()).setCostoEngargolado(juegosEngar*24);
+                }else if(hojas>=151 &&hojas<200){
+                    Log.d("Precio 5 : ", "> Precio 26 "+juegosEngar);
+                    ((Application) getActivity().getApplication()).setCostoEngargolado(juegosEngar*26);
+                }
 
                 getFragmentManager().beginTransaction()
                         .replace(R.id.actividad, new Compra()).commit();
@@ -246,7 +276,16 @@ public class Engargolados extends Fragment{
     }
     public int sumarEnga(String txtFolder){
         int suma= Integer.parseInt(txtFolder);
-        suma= suma+1;
+        int toltalEngar= Integer.parseInt(txtFBla.getText().toString())+Integer.parseInt( txtFAz.getText().toString())+Integer.parseInt( txtFRed.getText().toString())+Integer.parseInt( txtFVer.getText().toString())+Integer.parseInt( txtFAma.getText().toString())+Integer.parseInt( txtFNeg.getText().toString())+Integer.parseInt( txtFAzf.getText().toString())+Integer.parseInt( txtFGin.getText().toString())+Integer.parseInt( txtFGri.getText().toString())+Integer.parseInt( txtFMor.getText().toString());
+        if(toltalEngar<juegos){
+
+            suma= suma+1;
+        }else{
+            Toast.makeText(getActivity().getApplicationContext(),"No puedes engargolar más de "+juegos+" juegos.",// respsuesta,
+                    Toast.LENGTH_SHORT).show();
+        }
+
+
         return suma;
     }
     public  int restarEnga(String resFolder){

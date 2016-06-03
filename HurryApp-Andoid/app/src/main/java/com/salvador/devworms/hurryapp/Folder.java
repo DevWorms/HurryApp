@@ -23,7 +23,7 @@ import com.facebook.login.widget.ProfilePictureView;
  * Created by salva on 13/05/2016.
  */
 public class Folder extends Fragment {
-    TextView txtFBla,txtFAz,txtFRed,txtFVer,txtFAma,txtFMor,txtFGri,txtFGin,txtFAzf,txtFNeg;
+    TextView txtFBla,txtFAz,txtFRed,txtFVer,txtFRosa,txtFMor,txtFGin,txtFAzf,txtFNeg;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
@@ -34,12 +34,12 @@ public class Folder extends Fragment {
         txtFAz=(TextView)view.findViewById(R.id.txtFolAzul);
         txtFRed=(TextView)view.findViewById(R.id.txtFolRed);
         txtFVer=(TextView)view.findViewById(R.id.txtFolVer);
-        txtFAma=(TextView)view.findViewById(R.id.txtFolAma);
+        txtFRosa=(TextView)view.findViewById(R.id.txtFolRosa);
         txtFNeg=(TextView)view.findViewById(R.id.txtFolNeg);
         txtFAzf=(TextView)view.findViewById(R.id.txtFolAzF);
         txtFGin=(TextView)view.findViewById(R.id.txtFolGin);
-        txtFGri=(TextView)view.findViewById(R.id.txtFolGri);
         txtFMor=(TextView)view.findViewById(R.id.txtFolMor);
+
 
         Button btnMasFbl=(Button)view.findViewById(R.id.btnMasBlan);
         btnMasFbl.setOnClickListener(new View.OnClickListener() {
@@ -118,22 +118,22 @@ public class Folder extends Fragment {
             }
 
         });
-        Button btnMasFama=(Button)view.findViewById(R.id.btnMasAma);
-        btnMasFama.setOnClickListener(new View.OnClickListener() {
+        Button btnMasFrosa=(Button)view.findViewById(R.id.btnMasRosa);
+        btnMasFrosa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("Bonton : ", "> " + "ama");
-                txtFAma.setText(String.valueOf(sumarFolder(txtFAma.getText().toString())));
+                txtFRosa.setText(String.valueOf(sumarFolder(txtFRosa.getText().toString())));
             }
 
         });
 
-        Button bntMenFama=(Button)view.findViewById(R.id.btnMenAma);
-        bntMenFama.setOnClickListener(new View.OnClickListener() {
+        Button bntMenFrosa=(Button)view.findViewById(R.id.btnMenRosa);
+        bntMenFrosa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("Bonton : ", "> " + "azul");
-                txtFAma.setText(String.valueOf(restarFolder(txtFAma.getText().toString())));
+                txtFRosa.setText(String.valueOf(restarFolder(txtFRosa.getText().toString())));
             }
 
         });
@@ -196,25 +196,7 @@ public class Folder extends Fragment {
             }
 
         });
-        Button btnMasFgri=(Button)view.findViewById(R.id.btnMasGri);
-        btnMasFgri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("Bonton : ", "> " + "gri");
-                txtFGri.setText(String.valueOf(sumarFolder(txtFGri.getText().toString())));
-            }
 
-        });
-
-        Button bntMenFgri=(Button)view.findViewById(R.id.btnMenGri);
-        bntMenFgri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("Bonton : ", "> " + "gri");
-                txtFGri.setText(String.valueOf(restarFolder(txtFGri.getText().toString())));
-            }
-
-        });
         Button btnMasFmor=(Button)view.findViewById(R.id.btnMasMor);
         btnMasFmor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -243,7 +225,21 @@ public class Folder extends Fragment {
             @Override
             public void onClick(View view) {
 
+                ((Application) getActivity().getApplication()).setFolderArray(txtFBla.getText().toString(),0);
+                ((Application) getActivity().getApplication()).setFolderArray(txtFAz.getText().toString(),1);
+                ((Application) getActivity().getApplication()).setFolderArray(txtFRed.getText().toString(),2);
+                ((Application) getActivity().getApplication()).setFolderArray(txtFVer.getText().toString(),3);
+                ((Application) getActivity().getApplication()).setFolderArray(txtFRosa.getText().toString(),4);
+                int folderClaro= Integer.parseInt(txtFBla.getText().toString())+ Integer.parseInt(txtFAz.getText().toString())+ Integer.parseInt(txtFRed.getText().toString())+ Integer.parseInt(txtFVer.getText().toString())+ Integer.parseInt(txtFVer.getText().toString())+ Integer.parseInt(txtFRosa.getText().toString());
+                folderClaro= folderClaro*3;
+                ((Application) getActivity().getApplication()).setFolderArray(txtFNeg.getText().toString(),5);
+                ((Application) getActivity().getApplication()).setFolderArray(txtFAzf.getText().toString(),6);
+                ((Application) getActivity().getApplication()).setFolderArray(txtFGin.getText().toString(),7);
+                ((Application) getActivity().getApplication()).setFolderArray(txtFMor.getText().toString(),8);
+                int folderIntenso=Integer.parseInt(txtFNeg.getText().toString())+Integer.parseInt(txtFAzf.getText().toString())+Integer.parseInt(txtFGin.getText().toString())+Integer.parseInt(txtFMor.getText().toString());
+                folderIntenso=folderIntenso*5;
 
+                ((Application) getActivity().getApplication()).setCostoFolder(folderIntenso+folderClaro);
                getFragmentManager().beginTransaction()
                         .replace(R.id.actividad, new Compra()).commit();
 

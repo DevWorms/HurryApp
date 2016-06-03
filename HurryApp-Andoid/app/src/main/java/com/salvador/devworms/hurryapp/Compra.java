@@ -42,8 +42,8 @@ public class Compra extends Fragment {
     String SaldoRegalo;
     double saldototal;
     double costo;
-    double impBlaNeg=1.1;
-    double impColor=5.1;
+    double impBlaNeg=1;
+    double impColor=5;
     String numHojas,interval,juegos,blaNeg,colorE,caratula,lados,tamCarta,tamOfi;
     public TextView txtRuta;
     TextView txtContenido;
@@ -56,6 +56,8 @@ public class Compra extends Fragment {
     EditText edtxnohojas;
     EditText edtInterval;
     EditText edtJuegosImp;
+    String respCom;
+    String [] FolderArray,EngargoArray;
     private ProgressDialog pDialog;
    public String ubicacion;
     ScrollView scr;
@@ -73,12 +75,13 @@ public class Compra extends Fragment {
     }
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_compra, container, false);
-        new getSaldoAT().execute();
+
         btnBuscar=(Button)view.findViewById(R.id.btnBuscar);
         edtxnohojas=(EditText)view.findViewById(R.id.edt_numhoj);
         edtInterval=(EditText)view.findViewById(R.id.edt_hoj);
         edtJuegosImp=(EditText)view.findViewById(R.id.edt_juegos);
-
+        edtxnohojas.setText(((Application) getActivity().getApplication()).getnumeroHojas());
+        edtJuegosImp.setText(((Application) getActivity().getApplication()).getnumeroJuegos());
         blaNeg="1";
         tamCarta="1";
         colorE="0";
@@ -103,7 +106,8 @@ public class Compra extends Fragment {
         btnFolder.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-
+                ((Application) getActivity().getApplication()).setnumeroHojas(edtxnohojas.getText().toString());
+                ((Application) getActivity().getApplication()).setnumeroJuegos(edtJuegosImp.getText().toString());
                 getFragmentManager().beginTransaction()
                         .add(R.id.actividad, new Folder()).addToBackStack("compra").commit();
             }
@@ -115,13 +119,14 @@ public class Compra extends Fragment {
         btnEnga.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-
+                ((Application) getActivity().getApplication()).setnumeroHojas(edtxnohojas.getText().toString());
+                ((Application) getActivity().getApplication()).setnumeroJuegos(edtJuegosImp.getText().toString());
                 getFragmentManager().beginTransaction()
                         .add(R.id.actividad, new Engargolados()).commit();
             }
 
         });
-        Log.d("ubicacion : ", "> " + txtRuta.getText().toString());
+
 
         swBlayneg.setChecked(true);
         swAmblad.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -239,21 +244,22 @@ public class Compra extends Fragment {
                     }else {
                         if(swBlayneg.isChecked()==true){
                             costo=Double.parseDouble(numHojas) * impBlaNeg *Double.parseDouble(juegos);
+                            costo=costo + ((Application) getActivity().getApplication()).getCostoFolder() + ((Application) getActivity().getApplication()).getCostoEngargolado();
                         }else{
 
 
                             costo=Double.parseDouble(numHojas) * impColor *Double.parseDouble(juegos);
+                            costo=costo + ((Application) getActivity().getApplication()).getCostoFolder() +((Application) getActivity().getApplication()).getCostoEngargolado();
                         }
-                        new getSaldoAT().execute();
-                        Log.d("saldototal : ", "> "+ saldototal);
-                        Log.d("costo : ", "> "+ costo);
-                        if(costo<=saldototal){
-                            new postCompraAT().execute();
-                        }else{
 
-                            Toast.makeText(getActivity().getApplicationContext(), "Saldo insuficiente",
-                                    Toast.LENGTH_SHORT).show();
-                        }
+
+                        Log.d("costo : ", "> "+ costo);
+                        Log.d("costo folder : ", "> "+ ((Application) getActivity().getApplication()).getCostoFolder());
+                        Log.d("costo engargo : ", "> "+ ((Application) getActivity().getApplication()).getCostoEngargolado());
+
+                            new postCompraAT().execute();
+
+
 
 
 
@@ -271,29 +277,16 @@ public class Compra extends Fragment {
             }
 
         });
-        try {
 
-            // Exp exp=new Exp();
+            nombre = ((Application) getActivity().getApplication()).getArchivo();
+            ubicacion = ((Application) getActivity().getApplication()).getUbicacion();
 
-           // Bundle bundle = this.getArguments();
-            SharedPreferences sp = getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
-            nombre = sp.getString("nombrearch","");
-            ubicacion = sp.getString("ubicacion","");
-            //ubicacion= bundle.getString("ubicacion");
-            //nombre= bundle.getString("nombrearch");
 
-            //ubicacion = getArguments().getString("ubicacion");
-            //nombre= getArguments().getString("nombrearch");
-            // Intent i=getIntent();
-            //  ubicacion=i.getExtras().getString("ubicacion");
-        }catch (Exception e){
 
-        }
-        Log.d("nombre : ", "> "+ nombre);
-        if(nombre!= null||nombre.equals("") ) {
+        if(nombre!= null ) {
             txtRuta.setText(nombre);
         }
-        Log.d("txtRuta : ", "> "+ txtRuta.getText().toString());
+
         if (txtRuta.getText().toString().equals("Archivo")||(txtRuta.getText().toString().equals(""))) {
             scr.setVisibility(View.INVISIBLE);
         }else{
@@ -336,19 +329,10 @@ public class Compra extends Fragment {
                 idTienda=sp.getString("idTienda","");
                 SyncHttpClient client = new SyncHttpClient();
                 RequestParams params = new RequestParams();
+                FolderArray= ((Application) getActivity().getApplication()).getFolderArray();
+                EngargoArray=((Application) getActivity().getApplication()).getEngarArray();
 
-
-                Log.d("sucursal : ", "> " + idTienda);
-                Log.d("juegos : ", "> "  + juegos);
-                Log.d("hojas : ", "> " + numHojas);
-                Log.d("intervalo : ", "> " + interval);
                 Log.d("totalimpresion : ", "> "  + costo);
-                Log.d("blanconegro : ", "> " + blaNeg);
-                Log.d("carta : ", "> " + tamCarta);
-                Log.d("color : ", "> "  + colorE);
-                Log.d("caratula : ", "> "  + caratula);
-                Log.d("lados : ", "> "  + lados);
-                Log.d("tamOfi : ", "> "  + tamOfi);
 
                 params.put("documento", new File(ubicacion));
                 params.put("llave", Apikey);
@@ -364,7 +348,28 @@ public class Compra extends Fragment {
                 params.put("lados", lados);
                 params.put("oficio", tamOfi);
 
+                //Folders
 
+                params.put("FolderBeige" , FolderArray[0]);
+                params.put("FolderAzul" , FolderArray[1]);
+                params.put("FolderRosa" , FolderArray[4]);
+                params.put("FolderVerde" , FolderArray[3]);
+                params.put("FolderGuinda" , FolderArray[6]);
+                params.put("FolderAzulIntenso" , FolderArray[7]);
+                params.put("FolderRojo" , FolderArray[2]);
+                params.put("FolderNegro" , FolderArray[5]);
+                params.put("FolderMorado" , FolderArray[8]);
+                //Engargolados
+                params.put("pBlanco" , EngargoArray[0]);
+                params.put("pAzul" , EngargoArray[1]);
+                params.put("pRojo" , EngargoArray[2]);
+                params.put("pVerde" , EngargoArray[3]);
+                params.put("pAmarillo" , EngargoArray[4]);
+                params.put("pNegro" , EngargoArray[5]);
+                params.put("pGuinda" , EngargoArray[6]);
+                params.put("pAzulFuerte" , EngargoArray[7]);
+                params.put("pGris" , EngargoArray[8]);
+                params.put("pMorado" , EngargoArray[9]);
 
 
                 client.post("http://hurryprint.devworms.com/class/SubirMovil.php", params, new TextHttpResponseHandler() {
@@ -380,6 +385,7 @@ public class Compra extends Fragment {
                         respsuesta = responseString;
                         Message mesa = new Message();
                         vistaHandler.sendMessage(mesa);
+                        respCom="1";
                     }
 
 
@@ -387,9 +393,11 @@ public class Compra extends Fragment {
 
 
             } catch (Exception ex) {
+                Log.d("Error : ", "> error");
                 Message mesa = new Message();
                 respsuesta = ex.toString();
                 vistaHandler.sendMessage(mesa);
+                respCom="Error al enviar, vuelva a intendarlo";
             }
 
 
@@ -404,76 +412,26 @@ public class Compra extends Fragment {
         protected void onPostExecute(String file_url) {
             // dismiss the dialog after getting all albums
             Log.d("Entro final : ", "> SI");
+
             pDialog.dismiss();
             // updating UI from Background Thread
             getActivity().runOnUiThread(new Runnable() {
                 public void run() {
                     txtRuta.setText("Archivo");
                     scr.setVisibility(View.INVISIBLE);
-                }
-            });
-
-        }
-    }
-
-    class getSaldoAT extends AsyncTask<String, String, String> {
-
-        /**
-         * Before starting background thread Show Progress Dialog
-         * */
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        /**
-         * getting Albums JSON
-         * */
-        protected String doInBackground(String... args) {
-            // Building Parameters
-            //add your data
-            Log.d("Entro : ", "> SI");
-            JSONParser jsp= new JSONParser();
-            SharedPreferences sp = getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
-            String body = sp.getString("APIkey","");
-
-
-            String respuesta= jsp.makeHttpRequest("http://hurryprint.devworms.com/api/saldo","GET",body,"");
-            Log.d("Respuesta : ", "> " + respuesta);
-            if(respuesta!="error"){
-                try {
-                    JSONObject json = new JSONObject(respuesta);
-
-                    String datoUsuario = json.getString("saldo");
-
-                    JSONObject jsonUsuario = new JSONObject(datoUsuario);
-                    Saldo = jsonUsuario.getString("Saldo");
-                    SaldoRegalo = jsonUsuario.getString("SaldoRegalo");
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }else{
-
-
-            }
-
-
-            return null;
-        }
-
-
-        /**
-         * After completing background task Dismiss the progress dialog
-         * **/
-        protected void onPostExecute(String file_url) {
-            // dismiss the dialog after getting all albums
-            Log.d("Entro final : ", "> SI");
-            // updating UI from Background Thread
-            getActivity().runOnUiThread(new Runnable() {
-                public void run() {
-                    saldototal= Double.parseDouble(Saldo)+ Double.parseDouble(SaldoRegalo);
+                    for(int i=0;i<=9;i++) {
+                        Log.d("borrar array : ", ">"+i);
+                        ((Application) getActivity().getApplication()).setFolderArray("0", i);
+                        FolderArray[i]="0";
+                        ((Application) getActivity().getApplication()).setEngarArray("0", i);
+                        EngargoArray[i]="0";
+                    }
+                    ((Application) getActivity().getApplication()).setArchivo("");
+                    ((Application) getActivity().getApplication()).setUbicacion("");
+                    ((Application) getActivity().getApplication()).setCostoFolder(0);
+                    ((Application) getActivity().getApplication()).setCostoEngargolado(0);
+                    ((Application) getActivity().getApplication()).setnumeroHojas("0");
+                    ((Application) getActivity().getApplication()).setnumeroJuegos("0");
 
                 }
             });
@@ -482,19 +440,28 @@ public class Compra extends Fragment {
     }
 
 
-    private Handler puente = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            Toast.makeText(getActivity().getApplicationContext(), "Enviando...",
-                    Toast.LENGTH_SHORT).show();
-        }
-    };
+
 
 
     Handler vistaHandler = new Handler() {
         public void handleMessage(Message msg) {
-            Toast.makeText(getActivity().getApplicationContext(),"Enviado correctamente",// respsuesta,
-                   Toast.LENGTH_SHORT).show();
+            try {
+                if(respCom.equals("1")){
+                JSONObject json = new JSONObject(respsuesta);
+                    Log.d("respsuesta: ", ">"+respsuesta);
+                Toast.makeText(getActivity().getApplicationContext(),json.getString("Descripcion"),// respsuesta,
+                        Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getActivity().getApplicationContext(),respCom,// respsuesta,
+                            Toast.LENGTH_SHORT).show();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+
+
             ubicacion="";
             nombre="";
             txtRuta.setText(nombre);
@@ -513,14 +480,5 @@ public class Compra extends Fragment {
 
     }
 
-    private void abrirArchivo(){
-        try{
-            txtRuta.setText(nombre);
-            File f= new File(ubicacion);
-            if(f==null)
-                txtContenido.setText("archivo no valido");
 
-
-        }catch (Exception e){}
-    }
 }

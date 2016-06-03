@@ -70,11 +70,10 @@ public class Exp extends Fragment {
 
 
                         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                       SharedPreferences sp = getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
-                       SharedPreferences.Editor editor = sp.edit();
-                       editor.putString("nombrearch", nombrearchi);
-                       editor.putString("ubicacion", ubicacion);
-                       editor.commit();
+
+                       ((Application) getActivity().getApplication()).setArchivo(nombrearchi);
+                       ((Application) getActivity().getApplication()).setUbicacion(ubicacion);
+
                         parametro.putString("nombrearch", nombrearchi);
                         parametro.putString("ubicacion", ubicacion);
                         fragment.setArguments(parametro);
