@@ -35,7 +35,11 @@
             android:background="@drawable/editredondo"
             android:paddingLeft="5dp"
             android:layout_marginTop="30dp"
-             />
+            android:maxLines="10"
+            android:textAlignment="center"
+            android:phoneNumber="false"
+            android:gravity="center"
+            android:inputType="number" />
 
         <EditText
             android:layout_width="fill_parent"
@@ -50,7 +54,8 @@
             android:paddingLeft="5dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/editredondo"
-            />
+            android:textAlignment="center"
+            android:gravity="center" />
 
 
             <Button

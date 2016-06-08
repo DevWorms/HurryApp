@@ -7,17 +7,21 @@ import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.CalendarView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 /**
@@ -49,23 +53,42 @@ public class Tiendas extends Fragment {
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.actividad, new Compra()).commit();
-                //Log.d("tienda : ", "> " + "Entro" + idarray[position]);
-                SharedPreferences  sp = getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sp.edit();
-                editor.putString("idTienda",idarray[position] );
-                editor.commit();
-
-                Compra fragment = new Compra();
 
 
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                Log.d("tienda : ", "Color> " + colorarray[position] +" BLanco y negro>"+  bnarray[position]);
+                if(colorarray[position].equals("0") &&  bnarray[position].equals("0")){
+                    Toast.makeText(getActivity().getApplicationContext(),"Por el momento no contamos con impresiones en esta sucursal",// respsuesta,
+                            Toast.LENGTH_SHORT).show();
+                }else{
+                    Calendar c1 = Calendar.getInstance();
+                    Log.d("Hora del dia : ", "hora> "+c1.get(Calendar.HOUR_OF_DAY) );
+                    if(c1.get(Calendar.HOUR_OF_DAY)> 21){
+                        Toast.makeText(getActivity().getApplicationContext(),"Sus impresiones estaran al otro dia",// respsuesta,
+                                Toast.LENGTH_SHORT).show();
+                    }else if(c1.get(Calendar.HOUR_OF_DAY)< 6){
+                        Toast.makeText(getActivity().getApplicationContext(),"Sus impresiones estaran encuanto abra la tienda",// respsuesta,
+                                Toast.LENGTH_SHORT).show();
+                    }
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.actividad, new Compra()).commit();
+                    SharedPreferences  sp = getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putString("idTienda",idarray[position] );
+                    editor.commit();
+                    ((Application) getActivity().getApplication()).sethBlancoNegro(bnarray[position]);
+                    ((Application) getActivity().getApplication()).sethColor(colorarray[position]);
 
 
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.replace(R.id.actividad, fragment);
-                fragmentTransaction.commit();
+                    Compra fragment = new Compra();
+
+
+                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+
+
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.replace(R.id.actividad, fragment);
+                    fragmentTransaction.commit();
+                }
             }
         });
         new getTiendasAT().execute();
@@ -99,7 +122,7 @@ public class Tiendas extends Fragment {
             JSONParser jsp= new JSONParser();
             String body= Apikey;
             String respuesta= jsp.makeHttpRequest("http://hurryprint.devworms.com/api/sucursales","GET",body,"");
-          //  Log.d("Tiendas : ", "> " + respuesta);
+           Log.d("Tiendas : ", "> " + respuesta);
             if(respuesta!="error"){
                 try {
                     JSONObject json = new JSONObject(respuesta);

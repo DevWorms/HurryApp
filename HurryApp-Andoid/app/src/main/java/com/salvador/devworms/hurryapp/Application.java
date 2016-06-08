@@ -98,6 +98,28 @@ public class Application extends android.app.Application {
     public void setnumeroJuegos(String numjue) {
         this.numeroJuegos = numjue;
     }
+
+    private String hBlancoNegro;
+
+    public String gethBlancoNegro() {
+        return hBlancoNegro;
+    }
+
+    public void sethBlancoNegro(String bn) {
+        this.hBlancoNegro = bn;
+    }
+
+    private String hColor;
+
+    public String gethColor() {
+        return hColor;
+    }
+
+    public void sethColor(String color) {
+        this.hColor = color;
+    }
+
+
     public void gettingHashKey(){
 
         // Add code to print out the key hash

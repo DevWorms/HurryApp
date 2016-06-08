@@ -10,7 +10,7 @@
         <item>Colombia</item>
 
     </string-array>
-    <string name="title_activity_menu">HurryApp</string>
+    <string name="title_activity_menu">HurryPrint</string>
 
     <string name="title_section1">Perfil</string>
     <string name="title_section2">Recarga</string>

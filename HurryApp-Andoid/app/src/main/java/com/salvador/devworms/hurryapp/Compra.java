@@ -56,8 +56,9 @@ public class Compra extends Fragment {
     EditText edtxnohojas;
     EditText edtInterval;
     EditText edtJuegosImp;
-    String respCom;
+    String respCom,permitirColor,permitirBlaNeg;
     String [] FolderArray,EngargoArray;
+
     private ProgressDialog pDialog;
    public String ubicacion;
     ScrollView scr;
@@ -88,7 +89,8 @@ public class Compra extends Fragment {
         caratula="0";
         lados="0";
         tamOfi="0";
-
+        permitirColor=((Application) getActivity().getApplication()).gethColor();
+        permitirBlaNeg=((Application) getActivity().getApplication()).gethBlancoNegro();
         txtRuta=(TextView)view.findViewById(R.id.ruta);
         btnMandar=(Button)view.findViewById(R.id.mandar);
         btnCancelar=(Button)view.findViewById(R.id.btnCancelar);
@@ -127,8 +129,16 @@ public class Compra extends Fragment {
 
         });
 
+       if(permitirBlaNeg.equals("1")){
+           swBlayneg.setChecked(true);
+           blaNeg="1";
+       }else{
+           swBlayneg.setEnabled(false);
+           swColor.setEnabled(false);
+           swColor.setChecked(true);
+           blaNeg="0";
+       }
 
-        swBlayneg.setChecked(true);
         swAmblad.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -155,6 +165,17 @@ public class Compra extends Fragment {
                 }
             }
         });
+        if(permitirColor.equals("1") && permitirBlaNeg.equals("0")){
+            swColor.setChecked(true);
+            colorE="1";
+        }else{
+            swBlayneg.setChecked(true);
+            colorE="0";
+        }
+        if(permitirColor.equals("0")){
+            swColor.setEnabled(false);
+            swBlayneg.setEnabled(false);
+        }
         swColor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
