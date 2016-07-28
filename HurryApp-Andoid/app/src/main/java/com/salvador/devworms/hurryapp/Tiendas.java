@@ -34,7 +34,7 @@ public class Tiendas extends Fragment {
     String[] dispoarray;
     String[] bnarray;
     String[] colorarray;
-
+    ConecInternet conectado= new ConecInternet();
     ListViewAdapter adapter;
     private ProgressDialog pDialog;
     JSONArray tienda = null;
@@ -44,55 +44,59 @@ public class Tiendas extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tiendas, container, false);
-         myListView = (ListView) rootView.findViewById(R.id.mytiendas);
+        myListView = (ListView) rootView.findViewById(R.id.mytiendas);
+        if (!conectado.verificaConexion(getActivity().getApplicationContext())) {
 
-        SharedPreferences sp =getActivity().getSharedPreferences("prefe", getActivity().MODE_PRIVATE);
-        Apikey = sp.getString("APIkey","");
+            conectado.dialgo(getActivity());
 
-        idarray = new String[10];
-        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        } else{
+            SharedPreferences sp = getActivity().getSharedPreferences("prefe", getActivity().MODE_PRIVATE);
+            Apikey = sp.getString("APIkey", "");
+
+            idarray = new String[10];
+            myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-                Log.d("tienda : ", "Color> " + colorarray[position] +" BLanco y negro>"+  bnarray[position]);
-                if(colorarray[position].equals("0") &&  bnarray[position].equals("0")){
-                    Toast.makeText(getActivity().getApplicationContext(),"Por el momento no contamos con impresiones en esta sucursal",// respsuesta,
-                            Toast.LENGTH_SHORT).show();
-                }else{
-                    Calendar c1 = Calendar.getInstance();
-                    Log.d("Hora del dia : ", "hora> "+c1.get(Calendar.HOUR_OF_DAY) );
-                    if(c1.get(Calendar.HOUR_OF_DAY)> 21){
-                        Toast.makeText(getActivity().getApplicationContext(),"Sus impresiones estaran al otro dia",// respsuesta,
+                    Log.d("tienda : ", "Color> " + colorarray[position] + " BLanco y negro>" + bnarray[position]);
+                    if (colorarray[position].equals("0") && bnarray[position].equals("0")) {
+                        Toast.makeText(getActivity().getApplicationContext(), "Por el momento no contamos con impresiones en esta sucursal",// respsuesta,
                                 Toast.LENGTH_SHORT).show();
-                    }else if(c1.get(Calendar.HOUR_OF_DAY)< 6){
-                        Toast.makeText(getActivity().getApplicationContext(),"Sus impresiones estaran encuanto abra la tienda",// respsuesta,
-                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Calendar c1 = Calendar.getInstance();
+                        Log.d("Hora del dia : ", "hora> " + c1.get(Calendar.HOUR_OF_DAY));
+                        if (c1.get(Calendar.HOUR_OF_DAY) > 21) {
+                            Toast.makeText(getActivity().getApplicationContext(), "Sus impresiones estaran al otro dia",// respsuesta,
+                                    Toast.LENGTH_SHORT).show();
+                        } else if (c1.get(Calendar.HOUR_OF_DAY) < 6) {
+                            Toast.makeText(getActivity().getApplicationContext(), "Sus impresiones estaran encuanto abra la tienda",// respsuesta,
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                        getFragmentManager().beginTransaction()
+                                .replace(R.id.actividad, new Compra()).commit();
+                        SharedPreferences sp = getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putString("idTienda", idarray[position]);
+                        editor.commit();
+                        ((Application) getActivity().getApplication()).sethBlancoNegro(bnarray[position]);
+                        ((Application) getActivity().getApplication()).sethColor(colorarray[position]);
+
+
+                        Compra fragment = new Compra();
+
+
+                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+
+
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.replace(R.id.actividad, fragment);
+                        fragmentTransaction.commit();
                     }
-                    getFragmentManager().beginTransaction()
-                            .replace(R.id.actividad, new Compra()).commit();
-                    SharedPreferences  sp = getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sp.edit();
-                    editor.putString("idTienda",idarray[position] );
-                    editor.commit();
-                    ((Application) getActivity().getApplication()).sethBlancoNegro(bnarray[position]);
-                    ((Application) getActivity().getApplication()).sethColor(colorarray[position]);
-
-
-                    Compra fragment = new Compra();
-
-
-                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-
-
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.replace(R.id.actividad, fragment);
-                    fragmentTransaction.commit();
                 }
-            }
-        });
-        new getTiendasAT().execute();
-
+            });
+            new getTiendasAT().execute();
+        }
 
                 return rootView;
     }

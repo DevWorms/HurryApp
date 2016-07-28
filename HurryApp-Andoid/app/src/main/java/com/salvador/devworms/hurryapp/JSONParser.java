@@ -56,14 +56,14 @@ public class JSONParser {
 
 
             } else if (method == "GET") {
+
                 // request method is GET
                 OkHttpClient client = new OkHttpClient();
-                Log.d("URL : ", "> " + url);
-                Request request = new Request.Builder()
 
+                Request request = new Request.Builder()
                         .url(url)
                         .get()
-                        .addHeader("apikey",bd )
+                        .addHeader("apikey", bd)
                         .build();
 
                 respuesta = client.newCall(request).execute();

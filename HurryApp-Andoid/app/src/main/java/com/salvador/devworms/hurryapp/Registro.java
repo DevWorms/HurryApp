@@ -46,11 +46,15 @@ public class Registro extends AppCompatActivity{
                 pas=pass.getText().toString();
                 pas2=pass2.getText().toString();
                 cel= celu.getText().toString();
-                if(pas.equals(pas2)){
-
-                    new getRegstroAT().execute();
+                if(nom.equals("") || nom == null || pas.equals("") || pas == null ||cel.equals("") || cel == null ) {
+                    Toast.makeText(Registro.this,"Falta llenar campos.",Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(Registro.this,"La contraseña no coincide",Toast.LENGTH_SHORT).show();
+                    if(pas.equals(pas2)){
+
+                       new getRegstroAT().execute();
+                    }else{
+                        Toast.makeText(Registro.this,"La contraseña no coincide",Toast.LENGTH_SHORT).show();
+                    }
                 }
 
 

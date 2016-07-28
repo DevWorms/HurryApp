@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/greybackground"
+    android:background="@drawable/fondo"
 
     >
 
@@ -16,15 +16,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="ELIGE UNA TIENDA"
+            android:text="Elige una tienda"
             android:id="@+id/textView"
             android:layout_gravity="center_horizontal"
-            android:textSize="20dp"
+            android:textSize="30dp"
             android:textIsSelectable="false"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal"
-            android:background="#4fa5d5" />
+            android:background="#ff0037" />
 
         <ListView
             android:layout_width="wrap_content"

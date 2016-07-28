@@ -145,7 +145,7 @@ public   class MainActivityFragment extends Fragment {
 
 
 
-                Intent i = new Intent(getActivity(), Registro.class);
+                Intent i = new Intent(getActivity().getApplicationContext(), Registro.class);
 
                 SharedPreferences sp = getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sp.edit();
@@ -153,17 +153,10 @@ public   class MainActivityFragment extends Fragment {
                 editor.putString("fbuserid",  AccessToken.getCurrentAccessToken().getUserId());
                 editor.putString("Nombre",  profile.getName().toString());
                 editor.commit();
+                getActivity().finish();
                 startActivity(i);
 
 
-
-               // getActivity().finish();
-                //image.setProfileId(profile.getId());
-                //Intent myIntent = new Intent(getActivity(), MenuActivity.class);
-                //getActivity().startActivity(myIntent);
-                // stringBuilder.append("Logged In " + profile.getFirstName());
-                //  Toast.makeText(getActivity(), "Inicio facebook" + profile.getFirstName(), Toast.LENGTH_SHORT).show();
-                //image.setProfileId(profile.getId());
 
             } else {
 
