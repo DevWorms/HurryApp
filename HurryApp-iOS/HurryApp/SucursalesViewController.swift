@@ -167,6 +167,28 @@ class SucursalesViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
     }
+    
+    //Pasar a la siguiente pantalla o no
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        
+        if let cell = sender as? UITableViewCell, let indexPath = self.tableViewSucursales.indexPathForCell(cell) {
+                
+            if !self.horaDeDormir { // si estan abriertas las sucursales
+                    
+                // disponibilidad en tienda
+                if ( (self.blanco_negro[indexPath.row] != "1") && (self.color[indexPath.row] != "1") ||
+                        (self.sucursalesAbiertas[indexPath.row] != "1") ) {
+                    
+                    let alert = UIAlertView(title: "Sin disponibilidad", message: "No hay impresiones en esta sucursal.", delegate: nil, cancelButtonTitle: "OK")
+                    alert.show()
+                    
+                    return false
+                }
+            }
+        }
+        
+        return true
+    }
 
 }
 

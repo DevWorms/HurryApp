@@ -28,7 +28,7 @@ class InfoHistorialViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let headers = [
-           "folio": self.folioSearch
+           "Folio": self.folioSearch
         ]
         
         //Completion Handler
@@ -54,7 +54,7 @@ class InfoHistorialViewController: UIViewController {
                     self.estatusLabel.text = json["descripcion"]!!["Status"] as? String
                     
                     if self.estatusLabel.text == "esperando" {
-                        self.estatusLabel.textColor = UIColor.orangeColor()
+                        self.estatusLabel.textColor = UIColor.redColor()
                     } else {
                         self.estatusLabel.textColor = UIColor.greenColor()
                     }                    

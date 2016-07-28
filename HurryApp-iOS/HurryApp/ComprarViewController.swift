@@ -430,6 +430,20 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let swtch = cell.viewWithTag( indexPath.row ) as! UISwitch
                 switches += [swtch]
                 swtch.addTarget(self, action: #selector(ComprarViewController.stateChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
+            
+                if indexPath.row == 3 {
+                    swtch.setOn(dispBlancoNegro, animated: true)
+                }
+            
+                if indexPath.row == 4 {
+                    if dispBlancoNegro == true && dispColor == true {
+                        swtch.setOn(false, animated: true)
+                    } else {
+                        swtch.setOn(dispColor, animated: true)
+                    }
+                    
+                }
+            
                 //print("jum "+String(switches.count))
             
             default: break
@@ -442,6 +456,16 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if switchState == switches[0] { // blanco negro
             if switchState.on {
+                
+                if dispBlancoNegro == false {
+                    switches[0].setOn(false, animated: true)
+                    
+                    let alert = UIAlertView(title: "Sin disponibilidad", message: "No hay impresiones a B/N en esta sucursal.", delegate: nil, cancelButtonTitle: "OK")
+                    alert.show()
+                    
+                    return
+                }
+                
                 switches[1].setOn(false, animated: true)
                 switches[2].setOn(false, animated: true)
             } else {
@@ -473,16 +497,26 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 switches[0].setOn(false, animated: true)
                 switches[2].setOn(false, animated: true)
             } else {
+                
+                if dispBlancoNegro == false {
+                    switches[1].setOn(true, animated: true)
+                    
+                    let alert = UIAlertView(title: "Sin disponibilidad", message: "No hay impresiones a B/N en esta sucursal.", delegate: nil, cancelButtonTitle: "OK")
+                    alert.show()
+                    
+                    return
+                }
+
                 switches[0].setOn(true, animated: true)
                 switches[2].setOn(false, animated: true)
             }
         } else if switchState == switches[2] { // Cáratula color
             if switchState.on {
                 
-                if dispColor == false {
+                if dispColor == false || dispBlancoNegro == false {
                     switches[2].setOn(false, animated: true)
                     
-                    let alert = UIAlertView(title: "Sin disponibilidad", message: "No hay impresiones a color en esta sucursal.", delegate: nil, cancelButtonTitle: "OK")
+                    let alert = UIAlertView(title: "Sin disponibilidad", message: "No hay impresiones a color o b/n en esta sucursal.", delegate: nil, cancelButtonTitle: "OK")
                     alert.show()
                     
                     return

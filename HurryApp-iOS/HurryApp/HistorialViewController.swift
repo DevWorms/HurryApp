@@ -108,7 +108,7 @@ class HistorialViewController: UIViewController, UITableViewDataSource, UITableV
             noDataLabel.font = UIFont.boldSystemFontOfSize(16)
             noDataLabel.textColor = UIColor.blackColor()
             noDataLabel.textAlignment = NSTextAlignment.Center
-            noDataLabel.backgroundColor = UIColor.lightGrayColor()
+            noDataLabel.backgroundColor = UIColor.clearColor()//UIColor.lightGrayColor()
             noDataLabel.text = "No tienes productos por recoger"
             
             tableView.backgroundView = noDataLabel
@@ -137,7 +137,7 @@ class HistorialViewController: UIViewController, UITableViewDataSource, UITableV
         estatus.text = self.stats[ indexPath.row ]
         
         if self.self.stats[indexPath.row] == "esperando" {
-            estatus.textColor = UIColor.orangeColor()
+            estatus.textColor = UIColor.redColor()
         } else {
             estatus.textColor = UIColor.greenColor()
         }

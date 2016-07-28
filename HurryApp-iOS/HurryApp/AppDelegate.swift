@@ -24,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         
+        //fondo en todas las views transparentes (background clearColor)
+        self.window!.backgroundColor = UIColor(patternImage: UIImage(named: "fondo.png")!)
+        
+        
         if Accesibilidad.isConnectedToNetwork() == true {
             print("Internet connection OK")
             

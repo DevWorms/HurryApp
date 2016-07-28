@@ -3,109 +3,109 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "logo.png",
+      "filename" : "29 _fondo-1.png",
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "logo copia.png",
+      "filename" : "58_fondo-1.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "logo copia 2.png",
+      "filename" : "87_fondo-1.png",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "logo copia 3.png",
+      "filename" : "80_fondo-1.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "logo copia 4.png",
+      "filename" : "120_fondo.png",
       "scale" : "3x"
     },
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "logo copia 6.png",
+      "filename" : "57 _fondo.png",
       "scale" : "1x"
     },
     {
       "size" : "57x57",
       "idiom" : "iphone",
-      "filename" : "logo copia 8.png",
+      "filename" : "114_fondo.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "logo copia 4-1.png",
+      "filename" : "120_fondo-1.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "logo copia 7.png",
+      "filename" : "180_fondo.png",
       "scale" : "3x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "logo-1.png",
+      "filename" : "29 _fondo.png",
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "logo copia-1.png",
+      "filename" : "58_fondo-2.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "logo copia 5.png",
+      "filename" : "40 _fondo.png",
       "scale" : "1x"
     },
     {
       "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "logo copia 3-1.png",
+      "filename" : "80_fondo.png",
       "scale" : "2x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "logo copia 10.png",
+      "filename" : "76_fondo.png",
       "scale" : "1x"
     },
     {
       "size" : "76x76",
       "idiom" : "ipad",
-      "filename" : "logo copia 11.png",
+      "filename" : "152 _fondo.png",
       "scale" : "2x"
     },
     {
       "size" : "83.5x83.5",
       "idiom" : "ipad",
-      "filename" : "logo copia 12.png",
+      "filename" : "167_fondo.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "car",
-      "filename" : "logo copia 4-2.png",
+      "filename" : "120_fondo-2.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "car",
-      "filename" : "logo copia 7-1.png",
+      "filename" : "180_fondo-1.png",
       "scale" : "3x"
     },
     {
@@ -125,21 +125,21 @@
     {
       "size" : "29x29",
       "idiom" : "watch",
-      "filename" : "logo copia-2.png",
+      "filename" : "58_fondo.png",
       "role" : "companionSettings",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "watch",
-      "filename" : "logo copia 2-1.png",
+      "filename" : "87_fondo.png",
       "role" : "companionSettings",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "watch",
-      "filename" : "logo copia 3-2.png",
+      "filename" : "80_fondo-2.png",
       "scale" : "2x",
       "role" : "appLauncher",
       "subtype" : "38mm"
