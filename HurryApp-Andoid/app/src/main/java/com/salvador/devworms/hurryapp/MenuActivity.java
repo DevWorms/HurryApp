@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.login.widget.ProfilePictureView;
 
@@ -254,8 +255,10 @@ public class MenuActivity extends AppCompatActivity
 
         if (id == R.id.nav_recarga) {
             item.setTitle("Recarga");
-             getFragmentManager().beginTransaction()
-                    .replace(R.id.actividad, new Recarga()).commit();
+           /*  getFragmentManager().beginTransaction()
+                    .replace(R.id.actividad, new Recarga()).commit();*/
+            Toast.makeText(getApplicationContext(), "Próximamente",// respsuesta,
+                    Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_imprime) {
             item.setTitle("Imprimir");
             getFragmentManager().beginTransaction()

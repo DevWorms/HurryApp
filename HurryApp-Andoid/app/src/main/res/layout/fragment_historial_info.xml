@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#ffb000"
+    android:layout_height="200dp"
+    android:background="@drawable/fondo"
     android:layout_gravity="center_horizontal|center_vertical"
     android:gravity="center_horizontal">
 
@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Folio:"
-                android:textColor="#000000"
+                android:textColor="#f5f5f5"
                 android:id="@+id/textView12"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="0"
@@ -41,7 +41,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="#f5f5f5"
                 android:id="@+id/txt_histo_info_folio"
                 android:layout_gravity="right|center_horizontal"
                 android:gravity="left"
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fecha:"
-                android:textColor="#000000"
+                android:textColor="#f5f5f5"
                 android:id="@+id/textView14"
                 android:gravity="center_horizontal"
                 android:layout_gravity="left|center_horizontal"
@@ -71,7 +71,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="#f5f5f5"
                 android:id="@+id/txt_histo_info_fecha"
                 android:layout_gravity="right|center_horizontal"
                 android:gravity="left"
@@ -91,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Precio:"
-                android:textColor="#000000"
+                android:textColor="#f5f5f5"
                 android:id="@+id/textView16"
                 android:gravity="center_horizontal"
                 android:layout_gravity="left|center_horizontal"
@@ -101,7 +101,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="#f5f5f5"
                 android:id="@+id/txt_histo_info_precio"
                 android:layout_gravity="right|center_horizontal"
                 android:gravity="left"
@@ -120,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sucursal:"
-                android:textColor="#000000"
+                android:textColor="#f5f5f5"
                 android:id="@+id/textView17"
                 android:gravity="center_horizontal"
                 android:layout_gravity="left|center_horizontal"
@@ -130,7 +130,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="#f5f5f5"
                 android:id="@+id/txt_histo_info_sucur"
                 android:layout_gravity="right|center_horizontal"
                 android:gravity="left"
@@ -151,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nombre:"
-                android:textColor="#000000"
+                android:textColor="#f5f5f5"
                 android:id="@+id/textView18"
                 android:gravity="center_horizontal"
                 android:layout_gravity="left|center_horizontal"
@@ -161,7 +161,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="#f5f5f5"
                 android:id="@+id/txt_histo_info_namedocu"
                 android:layout_gravity="right|center_horizontal"
                 android:gravity="left"
@@ -182,7 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Status:"
-                android:textColor="#000000"
+                android:textColor="#f5f5f5"
                 android:id="@+id/textView15"
                 android:gravity="center_horizontal"
                 android:layout_gravity="left|center_horizontal"
@@ -192,7 +192,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
+                android:textColor="#f5f5f5"
                 android:id="@+id/txt_histo_info_hora"
                 android:layout_gravity="right|center_horizontal"
                 android:gravity="left"
@@ -203,12 +203,13 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="OK"
-            android:textColor="#FFFFFF"
+            android:textColor="#ffb000"
             android:id="@+id/btn_ok"
-            android:background="@drawable/redondo"
+            android:background="#ff0037"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:textSize="20dp" />
     </LinearLayout>
 
 </RelativeLayout>

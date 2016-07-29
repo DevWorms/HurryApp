@@ -59,11 +59,11 @@ public class JSONParser {
 
                 // request method is GET
                 OkHttpClient client = new OkHttpClient();
-
+                Log.d("URL : ", "> " + url);
                 Request request = new Request.Builder()
                         .url(url)
                         .get()
-                        .addHeader("apikey", bd)
+                        .addHeader("Apikey", bd)
                         .build();
 
                 respuesta = client.newCall(request).execute();
@@ -74,8 +74,8 @@ public class JSONParser {
                 Request request = new Request.Builder()
                         .url(url)
                         .get()
-                        .addHeader("apikey", bd)
-                        .addHeader("folio", bd2)
+                        .addHeader("Apikey", bd)
+                        .addHeader("Folio", bd2)
                         .build();
 
                 respuesta = client.newCall(request).execute();

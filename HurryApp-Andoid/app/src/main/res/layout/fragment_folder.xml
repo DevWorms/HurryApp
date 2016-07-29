@@ -62,7 +62,8 @@
                     android:text="FOLDER COLOR CLARO"
                     android:id="@+id/textView23"
                     android:textSize="20dp"
-                    android:textColor="#f5f5f5" />
+                    android:textColor="#f5f5f5"
+                    android:layout_marginLeft="10dp" />
 
                 <LinearLayout
                     android:orientation="vertical"
@@ -71,7 +72,9 @@
                     android:divider="#000000"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:paddingBottom="5dp">
+                    android:paddingBottom="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
 
                     <LinearLayout
                         android:orientation="horizontal"
@@ -94,7 +97,8 @@
                             android:text="0"
                             android:id="@+id/txtFolBlan"
                             android:layout_weight="4"
-                            android:textSize="25dp" />
+                            android:textSize="25dp"
+                            android:textColor="#5f769a" />
 
                         <Button
                             style="?android:attr/buttonStyleSmall"
@@ -102,7 +106,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/btnMenBlan"
                             android:layout_weight="4"
-                            android:background="@android:drawable/presence_busy" />
+                            android:background="@drawable/ic_menos" />
 
                         <Button
                             android:layout_width="match_parent"
@@ -110,7 +114,7 @@
                             android:id="@+id/btnMasBlan"
                             android:layout_weight="4"
                             android:singleLine="false"
-                            android:background="@android:drawable/ic_menu_add"
+                            android:background="@drawable/ic_mas"
                             style="@style/MessengerButton.Blue" />
 
                     </LinearLayout>
@@ -136,7 +140,8 @@
                             android:text="0"
                             android:id="@+id/txtFolAzul"
                             android:layout_weight="4"
-                            android:textSize="25dp" />
+                            android:textSize="25dp"
+                            android:textColor="#5f769a" />
 
                         <Button
                             style="?android:attr/buttonStyleSmall"
@@ -144,7 +149,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/btnMenAzul"
                             android:layout_weight="4"
-                            android:background="@android:drawable/presence_busy" />
+                            android:background="@drawable/ic_menos" />
 
                         <Button
                             android:layout_width="match_parent"
@@ -152,7 +157,7 @@
                             android:id="@+id/btnMasAzul"
                             android:layout_weight="4"
                             android:singleLine="false"
-                            android:background="@android:drawable/ic_menu_add"
+                            android:background="@drawable/ic_mas"
                             style="@style/MessengerButton.Blue" />
 
                     </LinearLayout>
@@ -178,7 +183,8 @@
                             android:text="0"
                             android:id="@+id/txtFolRed"
                             android:layout_weight="4"
-                            android:textSize="25dp" />
+                            android:textSize="25dp"
+                            android:textColor="#5f769a" />
 
                         <Button
                             style="?android:attr/buttonStyleSmall"
@@ -186,7 +192,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/btnMenRed"
                             android:layout_weight="4"
-                            android:background="@android:drawable/presence_busy" />
+                            android:background="@drawable/ic_menos" />
 
                         <Button
                             android:layout_width="match_parent"
@@ -194,7 +200,7 @@
                             android:id="@+id/btnMasRed"
                             android:layout_weight="4"
                             android:singleLine="false"
-                            android:background="@android:drawable/ic_menu_add"
+                            android:background="@drawable/ic_mas"
                             style="@style/MessengerButton.Blue" />
 
                     </LinearLayout>
@@ -220,7 +226,8 @@
                             android:text="0"
                             android:id="@+id/txtFolVer"
                             android:layout_weight="4"
-                            android:textSize="25dp" />
+                            android:textSize="25dp"
+                            android:textColor="#5f769a" />
 
                         <Button
                             style="?android:attr/buttonStyleSmall"
@@ -228,7 +235,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/btnMenVer"
                             android:layout_weight="4"
-                            android:background="@android:drawable/presence_busy" />
+                            android:background="@drawable/ic_menos" />
 
                         <Button
                             android:layout_width="match_parent"
@@ -236,7 +243,7 @@
                             android:id="@+id/btnMasVer"
                             android:layout_weight="4"
                             android:singleLine="false"
-                            android:background="@android:drawable/ic_menu_add"
+                            android:background="@drawable/ic_mas"
                             style="@style/MessengerButton.Blue" />
 
                     </LinearLayout>
@@ -262,7 +269,8 @@
                             android:text="0"
                             android:id="@+id/txtFolRosa"
                             android:layout_weight="4"
-                            android:textSize="25dp" />
+                            android:textSize="25dp"
+                            android:textColor="#5f769a" />
 
                         <Button
                             style="?android:attr/buttonStyleSmall"
@@ -270,7 +278,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/btnMenRosa"
                             android:layout_weight="4"
-                            android:background="@android:drawable/presence_busy" />
+                            android:background="@drawable/ic_menos" />
 
                         <Button
                             android:layout_width="match_parent"
@@ -278,7 +286,7 @@
                             android:id="@+id/btnMasRosa"
                             android:layout_weight="4"
                             android:singleLine="false"
-                            android:background="@android:drawable/ic_menu_add"
+                            android:background="@drawable/ic_mas"
                             style="@style/MessengerButton.Blue" />
 
                     </LinearLayout>
@@ -291,7 +299,8 @@
                     android:id="@+id/textView21"
                     android:textSize="15dp"
                     android:layout_marginBottom="20dp"
-                    android:textColor="#f5f5f5" />
+                    android:textColor="#f5f5f5"
+                    android:layout_marginLeft="10dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -299,7 +308,8 @@
                     android:text="FOLDER COLOR INTENSO"
                     android:id="@+id/textView22"
                     android:textSize="20dp"
-                    android:textColor="#f5f5f5" />
+                    android:textColor="#f5f5f5"
+                    android:layout_marginLeft="10dp" />
 
                 <LinearLayout
                     android:orientation="vertical"
@@ -308,7 +318,9 @@
                     android:divider="#000000"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:paddingBottom="5dp">
+                    android:paddingBottom="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
 
                     <LinearLayout
                         android:orientation="horizontal"
@@ -332,7 +344,8 @@
                             android:text="0"
                             android:id="@+id/txtFolNeg"
                             android:layout_weight="4"
-                            android:textSize="25dp" />
+                            android:textSize="25dp"
+                            android:textColor="#5f769a" />
 
                         <Button
                             style="?android:attr/buttonStyleSmall"
@@ -340,7 +353,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/btnMenNeg"
                             android:layout_weight="4"
-                            android:background="@android:drawable/presence_busy" />
+                            android:background="@drawable/ic_menos" />
 
                         <Button
                             android:layout_width="match_parent"
@@ -348,7 +361,7 @@
                             android:id="@+id/btnMasNeg"
                             android:layout_weight="4"
                             android:singleLine="false"
-                            android:background="@android:drawable/ic_menu_add"
+                            android:background="@drawable/ic_mas"
                             style="@style/MessengerButton.Blue" />
 
                     </LinearLayout>
@@ -374,7 +387,8 @@
                             android:text="0"
                             android:id="@+id/txtFolGin"
                             android:layout_weight="4"
-                            android:textSize="25dp" />
+                            android:textSize="25dp"
+                            android:textColor="#5f769a" />
 
                         <Button
                             style="?android:attr/buttonStyleSmall"
@@ -382,7 +396,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/btnMenGin"
                             android:layout_weight="4"
-                            android:background="@android:drawable/presence_busy" />
+                            android:background="@drawable/ic_menos" />
 
                         <Button
                             android:layout_width="match_parent"
@@ -390,7 +404,7 @@
                             android:id="@+id/btnMasGin"
                             android:layout_weight="4"
                             android:singleLine="false"
-                            android:background="@android:drawable/ic_menu_add"
+                            android:background="@drawable/ic_mas"
                             style="@style/MessengerButton.Blue" />
 
                     </LinearLayout>
@@ -416,7 +430,8 @@
                             android:text="0"
                             android:id="@+id/txtFolAzF"
                             android:layout_weight="4"
-                            android:textSize="25dp" />
+                            android:textSize="25dp"
+                            android:textColor="#5f769a" />
 
                         <Button
                             style="?android:attr/buttonStyleSmall"
@@ -424,7 +439,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/btnMenAzF"
                             android:layout_weight="4"
-                            android:background="@android:drawable/presence_busy" />
+                            android:background="@drawable/ic_menos" />
 
                         <Button
                             android:layout_width="match_parent"
@@ -432,7 +447,7 @@
                             android:id="@+id/btnMasAzF"
                             android:layout_weight="4"
                             android:singleLine="false"
-                            android:background="@android:drawable/ic_menu_add"
+                            android:background="@drawable/ic_mas"
                             style="@style/MessengerButton.Blue" />
 
                     </LinearLayout>
@@ -458,7 +473,8 @@
                             android:text="0"
                             android:id="@+id/txtFolMor"
                             android:layout_weight="4"
-                            android:textSize="25dp" />
+                            android:textSize="25dp"
+                            android:textColor="#5f769a" />
 
                         <Button
                             style="?android:attr/buttonStyleSmall"
@@ -466,7 +482,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/btnMenMor"
                             android:layout_weight="4"
-                            android:background="@android:drawable/presence_busy" />
+                            android:background="@drawable/ic_menos" />
 
                         <Button
                             android:layout_width="match_parent"
@@ -474,7 +490,7 @@
                             android:id="@+id/btnMasMor"
                             android:layout_weight="4"
                             android:singleLine="false"
-                            android:background="@android:drawable/ic_menu_add"
+                            android:background="@drawable/ic_mas"
                             style="@style/MessengerButton.Blue" />
 
                     </LinearLayout>
@@ -487,14 +503,21 @@
                     android:id="@+id/textView24"
                     android:textSize="15dp"
                     android:layout_marginBottom="20dp"
-                    android:textColor="#f5f5f5" />
+                    android:textColor="#f5f5f5"
+                    android:layout_marginLeft="10dp" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Aceptar"
+                    android:text="  Aceptar  "
                     android:id="@+id/btnAceptFolder"
-                    android:gravity="center_horizontal" />
+                    android:gravity="center_vertical|center_horizontal"
+                    android:background="#ff0037"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="20dp"
+                    android:textColor="#ffb000"
+                    android:textAlignment="center" />
+
 
             </LinearLayout>
         </ScrollView>

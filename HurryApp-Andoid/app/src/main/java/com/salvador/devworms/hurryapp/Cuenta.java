@@ -5,8 +5,12 @@ import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.login.LoginManager;
@@ -50,13 +55,31 @@ public class Cuenta extends Fragment {
         saldoR=(TextView)view.findViewById(R.id.cuentaSaldoReg);
         logout=(Button)view.findViewById(R.id.logout);
         saldo=(TextView)view.findViewById(R.id.cuentaSaldo);
+        ImageView imageView = (ImageView) view.findViewById(R.id.imvFotoPerfil);
+
+
         fotoper=(ProfilePictureView) view.findViewById(R.id.profilePicture);
         SharedPreferences sp = getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
         Apikey = sp.getString("APIkey","");
         idUser = sp.getString("fbuserid","");
         String nombre = sp.getString("Nombre","");
         name.setText(nombre);
-        fotoper.setProfileId(idUser);
+
+         fotoper.setProfileId(idUser);
+        fotoper.setDrawingCacheEnabled(true);
+
+      /*  ImageView fbImage = ( ( ImageView)fotoper.getChildAt(0));
+        Bitmap    originalBitmap  = ( ( BitmapDrawable) fbImage.getDrawable()).getBitmap();
+
+
+           //creamos el drawable redondeado
+        RoundedBitmapDrawable roundedDrawable =
+                RoundedBitmapDrawableFactory.create(getResources(), originalBitmap);
+
+        //asignamos el CornerRadius
+        roundedDrawable.setCornerRadius(originalBitmap.getHeight());
+        imageView.setImageDrawable(roundedDrawable);*/
+
         new getSaldoAT().execute();
        /*Bundle args = this.getActivity().getExtras();
          name= args.getString("nombre");

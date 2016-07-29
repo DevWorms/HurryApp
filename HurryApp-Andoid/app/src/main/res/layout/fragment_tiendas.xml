@@ -24,7 +24,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:gravity="center_horizontal"
-            android:background="#ff0037" />
+            android:background="#ff0037"
+            android:textColor="#f5f5f5" />
 
         <ListView
             android:layout_width="wrap_content"
