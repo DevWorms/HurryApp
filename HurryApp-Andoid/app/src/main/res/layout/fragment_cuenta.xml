@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:text="nombre"
             android:id="@+id/cuentaNombre"
-            android:textSize="16dp"
+            android:textSize="20dp"
             android:textColor="#ff0037"
             android:textStyle="bold"
             android:layout_gravity="center"
@@ -122,11 +122,11 @@
             android:text="Cerrar Sesión"
             android:id="@+id/logout"
             android:textSize="13dp"
-            android:textColor="#fff"
+            android:textColor="#ffb000"
 
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:background="@drawable/redondo"/>
+            android:background="#ff0037"/>
 
         <ImageView
             android:layout_width="wrap_content"

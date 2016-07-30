@@ -20,16 +20,11 @@
             android:id="@+id/nav_historial"
             android:icon="@drawable/icn_historial"
             android:title="Historial" />
+        <item
+            android:id="@+id/nav_acercade"
+            android:icon="@drawable/acercade"
+            android:title="Acerca de" />
     </group>
 
-    <item android:title="Acerca de">
-        <menu>
-
-            <item
-                android:id="@+id/nav_creditos"
-
-                android:title="CREDITOS" />
-        </menu>
-    </item>
 
 </menu>

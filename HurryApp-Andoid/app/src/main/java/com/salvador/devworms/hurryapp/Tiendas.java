@@ -63,7 +63,11 @@ public class Tiendas extends Fragment {
                     if (colorarray[position].equals("0") && bnarray[position].equals("0")) {
                         Toast.makeText(getActivity().getApplicationContext(), "Por el momento no contamos con impresiones en esta sucursal",// respsuesta,
                                 Toast.LENGTH_SHORT).show();
-                    } else {
+
+                    }else if(dispoarray[position].equals("0")){
+                        Toast.makeText(getActivity().getApplicationContext(), "Por el momento no se encuentra disponible esta sucursal",// respsuesta,
+                                Toast.LENGTH_SHORT).show();
+                    }else {
                         Calendar c1 = Calendar.getInstance();
                         Log.d("Hora del dia : ", "hora> " + c1.get(Calendar.HOUR_OF_DAY));
                         if (c1.get(Calendar.HOUR_OF_DAY) > 21) {

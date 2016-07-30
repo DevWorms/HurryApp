@@ -77,6 +77,7 @@ public   class MainActivityFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
+
         loginButton.setCompoundDrawables(null, null, null, null);
         loginButton.setReadPermissions("user_friends");
         loginButton.setFragment(this);
@@ -89,8 +90,6 @@ public   class MainActivityFragment extends Fragment {
             AccessToken accessToken = loginResult.getAccessToken();
             profile = Profile.getCurrentProfile();
            // displayMessage(profile);
-
-
 
         }
 

@@ -10,59 +10,16 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/txtNom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="15dp"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:text="Tienda"
-            android:layout_weight="3"
-            android:textColor="#1e2747" />
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="nombre"
             android:id="@+id/txtNomTienda"
-            android:textColor="#1e2747"
-            android:textSize="20dp"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Disponible"
-            android:id="@+id/txtDes"
+            android:textColor="#ff0037"
+            android:textSize="25dp"
             android:layout_weight="1"
-            android:textColor="#1e2747"
-            android:gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Blanco y Negro"
-            android:id="@+id/textView19"
-            android:layout_weight="1"
-            android:textColor="#1e2747"
-            android:gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Color"
-            android:id="@+id/textView20"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textColor="#1e2747"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -74,22 +31,58 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/imgTiDispo"
-            android:src="@drawable/tidispo"
+            android:src="@drawable/disponible"
             android:layout_weight="1" />
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:id="@+id/imgImpBN"
-            android:src="@drawable/bn"
+            android:src="@drawable/disponible"
             android:layout_weight="1" />
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:id="@+id/imgImpColor"
-            android:src="@drawable/color"
+            android:src="@drawable/disponible"
             android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Disponible"
+            android:id="@+id/txtDes"
+            android:layout_weight="1"
+            android:textColor="#5f769a"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Blanco y Negro"
+            android:id="@+id/textView19"
+            android:layout_weight="1"
+            android:textColor="#5f769a"
+            android:gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Color"
+            android:id="@+id/textView20"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:textColor="#5f769a"
+            android:gravity="center_horizontal" />
     </LinearLayout>
 
 </LinearLayout>

@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -243,7 +244,13 @@ public class MenuActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Log.e("back key pressed","Back key pressed");
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
 
 
@@ -273,6 +280,11 @@ public class MenuActivity extends AppCompatActivity
             item.setTitle("Historial");
             getFragmentManager().beginTransaction()
                     .replace(R.id.actividad, new Historial()).commit();
+
+        } else if (id == R.id.nav_acercade) {
+
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.actividad, new AcercaDe()).commit();
 
         }
 
