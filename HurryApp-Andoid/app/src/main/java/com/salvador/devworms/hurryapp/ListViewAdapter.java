@@ -1,6 +1,7 @@
 package com.salvador.devworms.hurryapp;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,9 @@ public class ListViewAdapter extends BaseAdapter {
         ImageView imgBN;
         ImageView imgColor;
         TextView txtTienda;
+        TextView txtDis;
+        TextView txtBn;
+        TextView txtColor;
 
 
 
@@ -62,14 +66,21 @@ public class ListViewAdapter extends BaseAdapter {
          imgBN=(ImageView) itemView.findViewById(R.id.imgImpBN);
          imgColor= (ImageView) itemView.findViewById(R.id.imgImpColor);
          txtTienda= (TextView) itemView.findViewById(R.id.txtNomTienda);
+         txtBn= (TextView) itemView.findViewById(R.id.txtBn);
+         txtColor= (TextView) itemView.findViewById(R.id.txtCol);
+         txtDis= (TextView) itemView.findViewById(R.id.txtDes);
+
          if("0".equals(dispo[position])){
-            imgDis.setVisibility(itemView.INVISIBLE);
+            imgDis.setImageResource(R.drawable.ic_x);
+            txtDis.setTextColor(Color.parseColor("#ff0037"));
         }
         if("0".equals(color[position])){
-            imgColor.setVisibility(itemView.INVISIBLE);
+            imgColor.setImageResource(R.drawable.ic_x);
+            txtColor.setTextColor(Color.parseColor("#ff0037"));
         }
         if("0".equals( blaneg[position])){
-            imgBN.setVisibility(itemView.INVISIBLE);
+            imgBN.setImageResource(R.drawable.ic_x);
+            txtBn.setTextColor(Color.parseColor("#ff0037"));
         }
 
 
