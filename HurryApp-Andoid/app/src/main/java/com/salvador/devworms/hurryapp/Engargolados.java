@@ -31,7 +31,7 @@ public class Engargolados extends Fragment{
         txtFMor=(TextView)view.findViewById(R.id.txtFolMor);
         hojas= Integer.parseInt(((Application) getActivity().getApplication()).getnumeroHojas());
         juegos=Integer.parseInt(((Application) getActivity().getApplication()).getnumeroJuegos());
-
+        ((Application) getActivity().getApplication()).setnavFragment("engargolado");
         Button btnMasFbl=(Button)view.findViewById(R.id.btnMasBlan);
         btnMasFbl.setOnClickListener(new View.OnClickListener() {
             @Override

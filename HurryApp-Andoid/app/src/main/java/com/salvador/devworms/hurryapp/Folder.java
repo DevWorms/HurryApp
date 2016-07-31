@@ -39,7 +39,7 @@ public class Folder extends Fragment {
         txtFAzf=(TextView)view.findViewById(R.id.txtFolAzF);
         txtFGin=(TextView)view.findViewById(R.id.txtFolGin);
         txtFMor=(TextView)view.findViewById(R.id.txtFolMor);
-
+        ((Application) getActivity().getApplication()).setnavFragment("folder");
 
         Button btnMasFbl=(Button)view.findViewById(R.id.btnMasBlan);
         btnMasFbl.setOnClickListener(new View.OnClickListener() {

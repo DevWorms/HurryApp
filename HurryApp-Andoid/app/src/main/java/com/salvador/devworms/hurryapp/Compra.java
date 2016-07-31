@@ -76,7 +76,7 @@ public class Compra extends Fragment {
     }
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_compra, container, false);
-
+        ((Application) getActivity().getApplication()).setnavFragment("compra");
         btnBuscar=(Button)view.findViewById(R.id.btnBuscar);
         edtxnohojas=(EditText)view.findViewById(R.id.edt_numhoj);
         edtInterval=(EditText)view.findViewById(R.id.edt_hoj);
@@ -327,9 +327,9 @@ public class Compra extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Enviando... ");
+            pDialog.setMessage("Enviando... si desea cancelar presione fuera ");
             pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
+            //pDialog.setCancelable(false);
             pDialog.show();
 
         }

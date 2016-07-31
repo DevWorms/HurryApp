@@ -44,7 +44,9 @@ public class Tiendas extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tiendas, container, false);
+        ((Application) getActivity().getApplication()).setnavFragment("tienda");
         myListView = (ListView) rootView.findViewById(R.id.mytiendas);
+
         if (!conectado.verificaConexion(getActivity().getApplicationContext())) {
 
             conectado.dialgo(getActivity());

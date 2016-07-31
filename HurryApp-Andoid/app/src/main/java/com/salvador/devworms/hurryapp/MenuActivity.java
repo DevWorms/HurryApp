@@ -1,6 +1,8 @@
 package com.salvador.devworms.hurryapp;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,7 +59,7 @@ public class MenuActivity extends AppCompatActivity
         //getSaldo();
         Log.d("idUser : ", "> "+idUser);
         fotoper.setProfileId(idUser);
-        new getSaldoAT().execute();
+       // new getSaldoAT().execute();
 
 
 
@@ -175,10 +178,12 @@ public class MenuActivity extends AppCompatActivity
     @Override
     protected void onStart(){
         super.onStart();
+        Log.e("key pressed","Star");
 
     }
     public void onResume(){
         super.onResume();
+        Log.e("key pressed","Resumen");
         if (!conectado.verificaConexion(getApplicationContext())) {
             conectado.dialgo(MenuActivity.this);
         }
@@ -188,16 +193,17 @@ public class MenuActivity extends AppCompatActivity
     @Override
     protected void onSaveInstanceState(Bundle guardarEstado) {
         super.onSaveInstanceState(guardarEstado);
-
+        Log.e("key pressed","Save");
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle recEstado) {
         super.onRestoreInstanceState(recEstado);
-
+        Log.e("key pressed","Restore");
     }
-    public void onBackPressed() {
 
+    public void onBackPressed() {
+        Log.e("key pressed","Back");
         if(getFragmentManager().getBackStackEntryCount() == 0) {
             super.onBackPressed();
         }
@@ -230,6 +236,25 @@ public class MenuActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onPostResume() {
+        super.onPostResume();
+
+    }
+
+    @Override
+    public void openOptionsMenu() {
+        super.openOptionsMenu();
+
+    }
+    @SuppressLint("SetTextI18n")
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        Log.e("key pressed","actualiza saldo");
+        new getSaldoAT().execute();
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -247,6 +272,14 @@ public class MenuActivity extends AppCompatActivity
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             Log.e("back key pressed","Back key pressed");
+            String fragmentActual=((Application) this.getApplication()).getnavFragment();
+            if(fragmentActual.equals("compra")){
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.actividad, new Tiendas()).commit();
+            }else if (fragmentActual.equals("folder") ||fragmentActual.equals("engargolado") ||fragmentActual.equals("busca")  ){
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.actividad, new Compra()).commit();
+            }
             return true;
         }
         return super.onKeyDown(keyCode, event);

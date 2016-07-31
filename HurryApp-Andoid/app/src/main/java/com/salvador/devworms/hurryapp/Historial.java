@@ -46,7 +46,7 @@ public class Historial extends Fragment {
     TextView txtfecha;
     TextView txttienda;
     TextView txtstatus;
-
+    ConecInternet conectado= new ConecInternet();
     FoliosAdapter adapter;
     int pot;
     public void onCreate(Bundle savedInstanceState) {
@@ -56,55 +56,58 @@ public class Historial extends Fragment {
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_historial, container, false);
+        if (!conectado.verificaConexion(getActivity().getApplicationContext())) {
+
+            conectado.dialgo(getActivity());
+
+        }else {
+
+            ((Application) getActivity().getApplication()).setnavFragment("historial");
+
+            miLista = (ListView) view.findViewById(R.id.list);
+
+            new getHistorialAT().execute();
 
 
+            miLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    final Dialog dialog = new Dialog(getActivity());
+                    dialog.setContentView(R.layout.fragment_historial_info);
+                    dismissButton = (Button) dialog.findViewById(R.id.btn_ok);
+                    txtfol = (TextView) dialog.findViewById(R.id.txt_histo_info_folio);
+                    txtnom = (TextView) dialog.findViewById(R.id.txt_histo_info_namedocu);
+                    txtcost = (TextView) dialog.findViewById(R.id.txt_histo_info_precio);
+                    txtfecha = (TextView) dialog.findViewById(R.id.txt_histo_info_fecha);
+                    txttienda = (TextView) dialog.findViewById(R.id.txt_histo_info_sucur);
+                    txtstatus = (TextView) dialog.findViewById(R.id.txt_histo_info_hora);
+
+                    new getFolioEspAT().execute();
+                    //Aqui haces que tu layout se muestre como dialog
 
 
-         miLista = (ListView) view.findViewById(R.id.list);
+                    dialog.setTitle("DATOS DE FOLIO");
+                    pot = position;
+                    dismissButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
-        new getHistorialAT().execute();
-
-
-
-        miLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                final Dialog dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.fragment_historial_info);
-                dismissButton = (Button) dialog.findViewById(R.id.btn_ok);
-                txtfol=(TextView)dialog.findViewById(R.id.txt_histo_info_folio);
-                txtnom=(TextView)dialog.findViewById(R.id.txt_histo_info_namedocu);
-                txtcost=(TextView)dialog.findViewById(R.id.txt_histo_info_precio);
-                txtfecha=(TextView)dialog.findViewById(R.id.txt_histo_info_fecha);
-                txttienda=(TextView)dialog.findViewById(R.id.txt_histo_info_sucur);
-                txtstatus=(TextView)dialog.findViewById(R.id.txt_histo_info_hora);
-
-                new getFolioEspAT().execute();
-                //Aqui haces que tu layout se muestre como dialog
+                            txtfol.setText("");
+                            txtnom.setText("");
+                            txtcost.setText("");
+                            txtfecha.setText("");
+                            txttienda.setText("");
+                            txtstatus.setText("");
+                            dialog.dismiss();
+                        }
+                    });
 
 
-                dialog.setTitle("DATOS DE FOLIO");
-                pot=position;
-                dismissButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                    dialog.show();
 
-                        txtfol.setText("");
-                        txtnom.setText("");
-                        txtcost.setText("");
-                        txtfecha.setText("");
-                        txttienda.setText("");
-                        txtstatus.setText("");
-                        dialog.dismiss();
-                    }
-                });
-
-
-                dialog.show();
-
-            }
-        });
-
+                }
+            });
+        }
         return view;
     }
     class getHistorialAT extends AsyncTask<String, String, String> {
@@ -116,9 +119,9 @@ public class Historial extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(getActivity());
-            pDialog.setMessage("Cargando...");
+            pDialog.setMessage("Cargando... si desea cancelar presione fuera");
             pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
+           // pDialog.setCancelable(false);
             pDialog.show();
         }
 
@@ -209,7 +212,9 @@ public class Historial extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // TODO Add your menu entries here
         super.onCreateOptionsMenu(menu, inflater);
-        getActivity().getMenuInflater().inflate(R.menu.menu, menu);
+        if( getActivity().getMenuInflater()== null) {
+            getActivity().getMenuInflater().inflate(R.menu.menu, menu);
+        }
         // agreTar = menu.add("agregar tarjeta").setIcon(R.drawable.icn_tar);
 
     }

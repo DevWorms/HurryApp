@@ -44,6 +44,7 @@ public class Cuenta extends Fragment {
     String Saldo ;
     String SaldoRegalo;
     String idUser;
+    ConecInternet conectado= new ConecInternet();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,22 +52,27 @@ public class Cuenta extends Fragment {
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_cuenta, container, false);
-        name=(TextView)view.findViewById(R.id.cuentaNombre);
-        saldoR=(TextView)view.findViewById(R.id.cuentaSaldoReg);
-        logout=(Button)view.findViewById(R.id.logout);
-        saldo=(TextView)view.findViewById(R.id.cuentaSaldo);
-        ImageView imageView = (ImageView) view.findViewById(R.id.imvFotoPerfil);
+        if (!conectado.verificaConexion(getActivity().getApplicationContext())) {
 
+            conectado.dialgo(getActivity());
 
-        fotoper=(ProfilePictureView) view.findViewById(R.id.profilePicture);
-        SharedPreferences sp = getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
-        Apikey = sp.getString("APIkey","");
-        idUser = sp.getString("fbuserid","");
-        String nombre = sp.getString("Nombre","");
-        name.setText(nombre);
+        }else {
+            name = (TextView) view.findViewById(R.id.cuentaNombre);
+            saldoR = (TextView) view.findViewById(R.id.cuentaSaldoReg);
+            logout = (Button) view.findViewById(R.id.logout);
+            saldo = (TextView) view.findViewById(R.id.cuentaSaldo);
+            ImageView imageView = (ImageView) view.findViewById(R.id.imvFotoPerfil);
+            ((Application) getActivity().getApplication()).setnavFragment("cuenta");
 
-         fotoper.setProfileId(idUser);
-        fotoper.setDrawingCacheEnabled(true);
+            fotoper = (ProfilePictureView) view.findViewById(R.id.profilePicture);
+            SharedPreferences sp = getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
+            Apikey = sp.getString("APIkey", "");
+            idUser = sp.getString("fbuserid", "");
+            String nombre = sp.getString("Nombre", "");
+            name.setText(nombre);
+
+            fotoper.setProfileId(idUser);
+            fotoper.setDrawingCacheEnabled(true);
 
       /*  ImageView fbImage = ( ( ImageView)fotoper.getChildAt(0));
         Bitmap    originalBitmap  = ( ( BitmapDrawable) fbImage.getDrawable()).getBitmap();
@@ -80,24 +86,25 @@ public class Cuenta extends Fragment {
         roundedDrawable.setCornerRadius(originalBitmap.getHeight());
         imageView.setImageDrawable(roundedDrawable);*/
 
-        new getSaldoAT().execute();
+            new getSaldoAT().execute();
        /*Bundle args = this.getActivity().getExtras();
          name= args.getString("nombre");
          fotoper= args.getString("foto");
-*/      logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().getSharedPreferences("prefe",0).edit().clear().commit();
+*/
+            logout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getActivity().getSharedPreferences("prefe", 0).edit().clear().commit();
 
-                LoginManager.getInstance().logOut();
-                Intent salida = new Intent(Intent.ACTION_MAIN); //Llamando a la activity principal
-                getActivity().finish(); // La cerramos.
+                    LoginManager.getInstance().logOut();
+                    Intent salida = new Intent(Intent.ACTION_MAIN); //Llamando a la activity principal
+                    getActivity().finish(); // La cerramos.
 
 
-            }
+                }
 
-        });
-
+            });
+        }
     return view;
     }
     class getSaldoAT extends AsyncTask<String, String, String> {
@@ -182,7 +189,9 @@ public class Cuenta extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // TODO Add your menu entries here
         super.onCreateOptionsMenu(menu, inflater);
-       getActivity().getMenuInflater().inflate(R.menu.menu, menu);
+        if( getActivity().getMenuInflater()== null) {
+            getActivity().getMenuInflater().inflate(R.menu.menu, menu);
+        }
        // agreTar = menu.add("agregar tarjeta").setIcon(R.drawable.icn_tar);
 
     }

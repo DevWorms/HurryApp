@@ -37,7 +37,7 @@ public class Exp extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.activity_buscar, container, false);
 
-
+        ((Application) getActivity().getApplication()).setnavFragment("busca");
         carpetaActual=(TextView)view.findViewById(R.id.rutaAcual);
         list=(ListView)view.findViewById(R.id.list);
         directprioRaiz= Environment.getExternalStorageDirectory().getPath();
@@ -117,7 +117,7 @@ public class Exp extends Fragment {
         File[] listaArchivos= directorioActual.listFiles();
         int x=0;
         if(!rutaDrectorio.equals(directprioRaiz)){
-            listaNombresArchivos.add("../");
+            listaNombresArchivos.add("<--Regresar");
             listaRutasArchivos.add(directorioActual.getParent());
             x=1;
         }

@@ -119,6 +119,16 @@ public class Application extends android.app.Application {
         this.hColor = color;
     }
 
+    private String navFragment;
+
+    public String getnavFragment() {
+        return navFragment;
+    }
+
+    public void setnavFragment(String actualFrag) {
+        this.navFragment = actualFrag;
+    }
+
 
     public void gettingHashKey(){
 
