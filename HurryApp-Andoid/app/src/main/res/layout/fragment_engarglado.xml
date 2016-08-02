@@ -89,7 +89,7 @@
                         android:textColor="#5f769a" />
 
                     <Button
-                        style="?android:attr/buttonStyleSmall"
+                        style="4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/btnMenBlan"
@@ -102,8 +102,7 @@
                         android:id="@+id/btnMasBlan"
                         android:layout_weight="4"
                         android:singleLine="false"
-                        android:background="@drawable/ic_mas"
-                        style="@style/MessengerButton.Blue" />
+                        android:background="@drawable/ic_mas" />
 
                 </LinearLayout>
 

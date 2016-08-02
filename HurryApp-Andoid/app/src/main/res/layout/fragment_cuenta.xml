@@ -14,31 +14,14 @@
         android:layout_alignWithParentIfMissing="false"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Perfil"
-            android:id="@+id/Perfil"
-            android:textSize="30dp"
-            android:textColor="#f5f5f5"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:background="#ff0037"/>
-        <com.facebook.login.widget.ProfilePictureView
-            android:id="@+id/profilePicture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            facebook:com_facebook_preset_size="large"
-            android:layout_gravity="center"
+        android:layout_alignParentStart="true"
+        android:gravity="center_vertical">
 
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="10dp" />
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/imvFotoPerfil"
+            android:layout_gravity="center_horizontal" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -128,12 +111,20 @@
             android:layout_marginTop="10dp"
             android:background="#ff0037"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imvFotoPerfil"
-            android:layout_gravity="center_horizontal" />
-
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Perfil"
+        android:id="@+id/Perfil"
+        android:textSize="30dp"
+        android:textColor="#f5f5f5"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#ff0037"/>
 </RelativeLayout>

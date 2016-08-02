@@ -4,9 +4,13 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,6 +21,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +29,9 @@ import com.facebook.login.widget.ProfilePictureView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.URL;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -38,6 +46,8 @@ public class MenuActivity extends AppCompatActivity
     String Saldo ;
     String SaldoRegalo;
     String idUser;
+    Bitmap bitmapProfile;
+    ImageView imageViewFacebookPicture;
     ConecInternet conectado= new ConecInternet();
 
     @Override
@@ -50,23 +60,16 @@ public class MenuActivity extends AppCompatActivity
         txtSaldo=(TextView)findViewById(R.id.saldo);
         txtSaldoReg=(TextView)findViewById(R.id.saldoRegalo);
         name=(TextView)findViewById(R.id.nombreperfil);
-        fotoper=(ProfilePictureView)findViewById(R.id.profilePicture);
+        imageViewFacebookPicture=(ImageView)findViewById(R.id.imageViewFacebookPicture);
+        //fotoper=(ProfilePictureView)findViewById(R.id.profilePicture);
         SharedPreferences sp = getSharedPreferences("prefe", Activity.MODE_PRIVATE);
         Apikey = sp.getString("APIkey","");
         idUser = sp.getString("fbuserid","");
         name.setText(sp.getString("Nombre","nombre"));
-        //Log.d("Preference : ", "> " + Apikey);
-        //getSaldo();
+
         Log.d("idUser : ", "> "+idUser);
-        fotoper.setProfileId(idUser);
-       // new getSaldoAT().execute();
-
-
-
-       // Bundle args = getIntent().getExtras();
-
-       // name= args.getString("nombre");
-       // fotoper= args.getString("foto");
+        new getFacebookPicture().execute();
+       // fotoper.setProfileId(idUser);
 
         ///***************Barra***************************************************
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -102,7 +105,65 @@ public class MenuActivity extends AppCompatActivity
 
     }
 
+    class getFacebookPicture extends AsyncTask<String, String, String> {
 
+        /**
+         * Before starting background thread Show Progress Dialog
+         * */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+
+        protected String doInBackground(String... args) {
+            // Building Parameters
+            //add your data
+
+
+            try {
+                bitmapProfile = getFacebookProfilePicture(idUser);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+
+        /**
+         * After completing background task Dismiss the progress dialog
+         * **/
+        protected void onPostExecute(String file_url) {
+            // dismiss the dialog after getting all albums
+            Log.d("Entro final : ", "> SI");
+
+            // updating UI from Background Thread
+            runOnUiThread(new Runnable() {
+                public void run() {
+
+                    Bitmap originalBitmap  = bitmapProfile;
+                    //creamos el drawable redondeado
+                    RoundedBitmapDrawable roundedDrawable =
+                            RoundedBitmapDrawableFactory.create(getResources(), originalBitmap);
+
+                    //asignamos el CornerRadius
+                    roundedDrawable.setCornerRadius(originalBitmap.getHeight());
+                    imageViewFacebookPicture.setImageDrawable(roundedDrawable);
+
+                }
+            });
+
+        }
+    }
+    public static Bitmap getFacebookProfilePicture(String userID) throws IOException {
+        URL imageUrl = new URL("https://graph.facebook.com/" + userID + "/picture?type=large");
+        Bitmap bitmap = BitmapFactory.decodeStream(imageUrl.openConnection().getInputStream());
+
+        return bitmap;
+    }
     class getSaldoAT extends AsyncTask<String, String, String> {
 
         /**

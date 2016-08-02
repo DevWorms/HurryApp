@@ -54,10 +54,10 @@ public class Exp extends Fragment {
                     String newName= nombrearchi.replace(".",",");
 
                   String []nomArch = newName.split(",");
-                    Log.d("TipiArch : ", "> "+ nombrearchi);
+                    Log.d("TipiArch : ", "> "+ nomArch.length);
 
 
-                   if(nomArch[1].equals("pdf")|| nomArch[1].equals("doc")|| nomArch[1].equals("docx")) {
+                   if(nomArch[nomArch.length-1].equals("pdf")|| nomArch[nomArch.length-1].equals("doc")|| nomArch[nomArch.length-1].equals("docx")) {
 
                         Compra fragment = new Compra();
 
