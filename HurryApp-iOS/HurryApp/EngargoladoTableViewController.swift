@@ -1,6 +1,6 @@
 //
 //  EngargoladoTableViewController.swift
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 06/05/16.
 //  Copyright © 2016 DevWorms. All rights reserved.
@@ -42,6 +42,8 @@ class EngargoladoTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "fondo.png")!)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

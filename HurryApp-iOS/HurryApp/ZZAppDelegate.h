@@ -1,6 +1,6 @@
 //
 //  ZZAppDelegate.h
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 23/12/15.
 //  Copyright © 2015 DevWorms. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  PerfilViewController.swift
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 17/12/15.
 //  Copyright © 2015 DevWorms. All rights reserved.
@@ -30,9 +30,11 @@ class PerfilViewController: UIViewController, UIPopoverPresentationControllerDel
         self.navigationItem.rightBarButtonItem?.action = #selector(PerfilViewController.refresh(_:))
         
         if FBSDKProfile.currentProfile() != nil {
+            
+            self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
             let imageFB = FBSDKProfilePictureView(frame: self.profileImage.frame)
             imageFB.profileID = FBSDKAccessToken.currentAccessToken().userID // "me"
-            imageFB.pictureMode = FBSDKProfilePictureMode.Square
+            //imageFB.pictureMode = FBSDKProfilePictureMode.
             self.view.addSubview(imageFB)
             
             self.profileName.text = FBSDKProfile.currentProfile().name
@@ -84,7 +86,6 @@ class PerfilViewController: UIViewController, UIPopoverPresentationControllerDel
                     
                     self.saldo.text = "$ " + saldo
                     self.saldoRegalo.text = "$ " + (json["saldo"]!!["SaldoRegalo"] as? String)!
-                    self.saldoRegalo.textColor = UIColor.purpleColor()
                 })
             }
         } catch {

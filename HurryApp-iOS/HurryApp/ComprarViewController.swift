@@ -1,6 +1,6 @@
 //
 //  ComprarViewController.swift
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 23/11/15.
 //  Copyright © 2015 DevWorms. All rights reserved.
@@ -40,6 +40,8 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         // Do any additional setup after loading the view.
         
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "fondo.png")!)
+        
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(ComprarViewController.swipeKeyBoard(_:)))
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
         swipeDown.delegate = self
@@ -51,7 +53,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.precioImpresionBN = precioTiendaBN + precioDevworms
         self.precioImpresionColor = precioTiendaColor + precioDevworms
-        
         
         self.nameDoc.setTitle(MyFile.Name, forState: .Normal)
     }
@@ -84,14 +85,14 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             return
                 
         } else if ( !validate( textFields[0].text! ) ) {
-            let alert = UIAlertView(title: "Nos faltó algo", message: "¿Cuantas hojas imprimiremos?", delegate: nil, cancelButtonTitle: "Ok")
+            let alert = UIAlertView(title: "Nos faltó algo", message: "¿Cuántas hojas imprimiremos?", delegate: nil, cancelButtonTitle: "Ok")
             alert.show()
             
             return
             
         } else if (textFields[1].text! != ""){
             if !validate( textFields[1].text! ) {
-                let alert = UIAlertView(title: "Error en Intervalo", message: "Asegurate de escribir correctamente #-#.", delegate: nil, cancelButtonTitle: "OK")
+                let alert = UIAlertView(title: "Error en Intervalo", message: "Asegúrate de escribir correctamente #-#.", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                 
                 return
@@ -100,7 +101,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if (textFields[2].text! != ""){
             if (!validate( textFields[2].text! )) {
-                let alert = UIAlertView(title: "Error en Juegos", message: "Asegurate de escribir correctamente #.", delegate: nil, cancelButtonTitle: "OK")
+                let alert = UIAlertView(title: "Error en Juegos", message: "Asegúrate de escribir correctamente #.", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                 
                 return
@@ -201,7 +202,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         
-                        let alert = UIAlertView(title: "HurryApp!", message: "Lánzate a la sucursal por tus impresiones.", delegate: nil, cancelButtonTitle: "OK")
+                        let alert = UIAlertView(title: "HurryPrint!", message: "Lánzate a la sucursal por tus impresiones.", delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
                         
                         self.navigationController?.popViewControllerAnimated(true)

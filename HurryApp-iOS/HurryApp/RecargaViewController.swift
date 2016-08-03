@@ -1,6 +1,6 @@
 //
 //  RecargaViewController.swift
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 22/11/15.
 //  Copyright © 2015 DevWorms. All rights reserved.

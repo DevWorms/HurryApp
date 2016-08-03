@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 22/11/15.
 //  Copyright © 2015 DevWorms. All rights reserved.
@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
         
         //fondo en todas las views transparentes (background clearColor)
         self.window!.backgroundColor = UIColor(patternImage: UIImage(named: "fondo.png")!)
+        
+        //transparencia en todas las cells
+        UITableViewCell.appearance().backgroundColor = UIColor.clearColor()
         
         
         if Accesibilidad.isConnectedToNetwork() == true {
@@ -59,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
             }
             
         } else {
-            let alert = UIAlertView(title: "Sin conexón a internet", message: "Asegurate de estar conectado a internet.", delegate: self, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "Sin conexión a internet", message: "Asegúrate de estar conectado a internet.", delegate: self, cancelButtonTitle: "OK")
             alert.show()
         }
         

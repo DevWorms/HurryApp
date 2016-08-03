@@ -9,7 +9,7 @@
         <!--HurryPrint-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HurryPrint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -88,7 +88,7 @@
         <!--Registro de Usuario-->
         <scene sceneID="Smq-Gh-SDm">
             <objects>
-                <viewController storyboardIdentifier="Registro" id="hxl-6h-SUQ" customClass="RegistroViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Registro" id="hxl-6h-SUQ" customClass="RegistroViewController" customModule="HurryPrint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2lI-j4-vyp"/>
                         <viewControllerLayoutGuide type="bottom" id="KeW-jC-YjF"/>
@@ -187,7 +187,7 @@
         <!--Recarga View Controller-->
         <scene sceneID="Fe8-Db-Na0">
             <objects>
-                <viewController storyboardIdentifier="Pago" id="Dp1-Wk-RaM" customClass="RecargaViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Pago" id="Dp1-Wk-RaM" customClass="RecargaViewController" customModule="HurryPrint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EBw-Cj-A7G"/>
                         <viewControllerLayoutGuide type="bottom" id="AaX-0A-QSG"/>
@@ -279,7 +279,7 @@
         <!--Perfil-->
         <scene sceneID="3E4-RU-rDH">
             <objects>
-                <viewController id="pcX-5h-r8L" customClass="PerfilViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pcX-5h-r8L" customClass="PerfilViewController" customModule="HurryPrint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fSE-qj-Nti"/>
                         <viewControllerLayoutGuide type="bottom" id="D9L-MZ-u9g"/>
@@ -417,7 +417,7 @@
         <!--Sucursales-->
         <scene sceneID="ZA3-8V-jDJ">
             <objects>
-                <viewController id="EIq-ki-ned" customClass="SucursalesViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EIq-ki-ned" customClass="SucursalesViewController" customModule="HurryPrint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jb3-kd-c2J"/>
                         <viewControllerLayoutGuide type="bottom" id="a5A-9C-U8L"/>
@@ -458,7 +458,7 @@
                                                 </label>
                                                 <view tag="4" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YNy-CT-wET">
                                                     <rect key="frame" x="111" y="65" width="12" height="12"/>
-                                                    <color key="backgroundColor" red="0.4883789275" green="1" blue="0.36572956270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.37254901960784315" green="0.46274509803921571" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="0.3"/>
@@ -466,7 +466,7 @@
                                                 </view>
                                                 <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SPJ-sn-4YA">
                                                     <rect key="frame" x="111" y="39" width="12" height="12"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" red="0.37254901960784315" green="0.46274509803921571" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="0.3"/>
@@ -474,7 +474,7 @@
                                                 </view>
                                                 <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mS8-6U-FET">
                                                     <rect key="frame" x="274" y="14" width="12" height="12"/>
-                                                    <color key="backgroundColor" red="0.4883789275" green="1" blue="0.36572956270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.37254901960784315" green="0.46274509803921571" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="0.3"/>
@@ -518,7 +518,7 @@
         <!--Impresión-->
         <scene sceneID="GV9-0X-V3u">
             <objects>
-                <viewController storyboardIdentifier="ComprarViewController" id="gIa-qe-QXM" customClass="ComprarViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ComprarViewController" id="gIa-qe-QXM" customClass="ComprarViewController" customModule="HurryPrint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ine-nD-R1Z"/>
                         <viewControllerLayoutGuide type="bottom" id="Qf7-CV-xbJ"/>
@@ -980,7 +980,7 @@
         <!--Engargolados-->
         <scene sceneID="doW-SX-rxI">
             <objects>
-                <tableViewController id="0h3-gM-seb" customClass="EngargoladoTableViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="0h3-gM-seb" customClass="EngargoladoTableViewController" customModule="HurryPrint" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="mLY-CH-uZW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1451,7 +1451,7 @@
         <!--Folder-->
         <scene sceneID="Dki-Ph-IRq">
             <objects>
-                <tableViewController id="eLh-aB-HbW" customClass="FolderTableViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="eLh-aB-HbW" customClass="FolderTableViewController" customModule="HurryPrint" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="czk-Zl-Co2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1885,7 +1885,7 @@
         <scene sceneID="z8p-wo-6rx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qX7-P4-l9U" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="8if-Kv-wfK"/>
+                    <tabBarItem key="tabBarItem" image="perfil_IOS" id="8if-Kv-wfK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vWK-Zs-77a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1904,9 +1904,7 @@
         <scene sceneID="APS-3q-Qcp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U8T-gl-beq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" systemItem="bookmarks" id="Wx3-gu-wJ9">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" image="imprimir_IOS" id="Wx3-gu-wJ9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UMl-1l-G2e">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1924,7 +1922,7 @@
         <!--Historial-->
         <scene sceneID="s5T-CW-beH">
             <objects>
-                <viewController id="OJK-yK-v4K" customClass="HistorialViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="OJK-yK-v4K" customClass="HistorialViewController" customModule="HurryPrint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="loZ-y5-iWX"/>
                         <viewControllerLayoutGuide type="bottom" id="Xyk-7B-rqU"/>
@@ -1951,8 +1949,8 @@
                                                     <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre producto" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-ri-ns3">
-                                                    <rect key="frame" x="8" y="8" width="551" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre producto" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-ri-ns3">
+                                                    <rect key="frame" x="45" y="8" width="514" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="enV-Is-We8"/>
                                                     </constraints>
@@ -1963,20 +1961,29 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estatus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnW-KE-yXc">
                                                     <rect key="frame" x="8" y="76" width="551" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconHisto" translatesAutoresizingMaskIntoConstraints="NO" id="osv-GH-jbM">
+                                                    <rect key="frame" x="8" y="8" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="efO-rS-uAh"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="hsh-ri-ns3" firstAttribute="trailing" secondItem="3rj-84-gcy" secondAttribute="trailing" id="05u-EH-RUS"/>
                                                 <constraint firstItem="hsh-ri-ns3" firstAttribute="trailing" secondItem="TNo-Bl-jO9" secondAttribute="trailingMargin" id="2Bw-tw-WXc"/>
-                                                <constraint firstItem="hsh-ri-ns3" firstAttribute="leading" secondItem="TNo-Bl-jO9" secondAttribute="leadingMargin" id="51z-aJ-1RN"/>
+                                                <constraint firstItem="hsh-ri-ns3" firstAttribute="leading" secondItem="TNo-Bl-jO9" secondAttribute="leadingMargin" constant="37" id="51z-aJ-1RN"/>
+                                                <constraint firstItem="hsh-ri-ns3" firstAttribute="leading" secondItem="osv-GH-jbM" secondAttribute="trailing" constant="7" id="B4S-8P-mI8"/>
                                                 <constraint firstItem="3rj-84-gcy" firstAttribute="top" secondItem="hsh-ri-ns3" secondAttribute="bottom" constant="8" symbolic="YES" id="CPg-EO-NWo"/>
                                                 <constraint firstItem="hsh-ri-ns3" firstAttribute="top" secondItem="TNo-Bl-jO9" secondAttribute="topMargin" id="GkJ-0a-wR3"/>
                                                 <constraint firstItem="nnW-KE-yXc" firstAttribute="trailing" secondItem="3rj-84-gcy" secondAttribute="trailing" id="RxJ-J3-n3Y"/>
+                                                <constraint firstItem="osv-GH-jbM" firstAttribute="top" secondItem="hsh-ri-ns3" secondAttribute="top" id="ayg-xW-B8b"/>
                                                 <constraint firstItem="nnW-KE-yXc" firstAttribute="leading" secondItem="3rj-84-gcy" secondAttribute="leading" id="hzQ-sy-5bP"/>
                                                 <constraint firstItem="nnW-KE-yXc" firstAttribute="bottom" secondItem="TNo-Bl-jO9" secondAttribute="bottomMargin" id="ir8-4c-kbL"/>
-                                                <constraint firstItem="hsh-ri-ns3" firstAttribute="leading" secondItem="3rj-84-gcy" secondAttribute="leading" id="s49-Av-i22"/>
+                                                <constraint firstItem="osv-GH-jbM" firstAttribute="leading" secondItem="3rj-84-gcy" secondAttribute="leading" id="mYd-NK-Trk"/>
+                                                <constraint firstItem="hsh-ri-ns3" firstAttribute="leading" secondItem="3rj-84-gcy" secondAttribute="leading" constant="37" id="s49-Av-i22"/>
                                                 <constraint firstItem="3rj-84-gcy" firstAttribute="centerY" secondItem="TNo-Bl-jO9" secondAttribute="centerY" id="sOc-Qv-juK"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1994,10 +2001,10 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Xyk-7B-rqU" firstAttribute="top" secondItem="fcI-72-BEy" secondAttribute="bottom" constant="8" symbolic="YES" id="6be-cF-fQ1"/>
-                            <constraint firstItem="fcI-72-BEy" firstAttribute="top" secondItem="5mh-gO-dKe" secondAttribute="top" constant="20" symbolic="YES" id="952-Gd-9sm"/>
-                            <constraint firstItem="fcI-72-BEy" firstAttribute="leading" secondItem="5mh-gO-dKe" secondAttribute="leading" id="gKM-e5-J8L"/>
-                            <constraint firstAttribute="trailing" secondItem="fcI-72-BEy" secondAttribute="trailing" id="sZ6-gR-YPX"/>
+                            <constraint firstItem="fcI-72-BEy" firstAttribute="leading" secondItem="5mh-gO-dKe" secondAttribute="leading" id="DDN-S1-AJC"/>
+                            <constraint firstItem="Xyk-7B-rqU" firstAttribute="top" secondItem="fcI-72-BEy" secondAttribute="bottom" constant="8" symbolic="YES" id="Igx-rq-pnT"/>
+                            <constraint firstAttribute="trailing" secondItem="fcI-72-BEy" secondAttribute="trailing" id="a0S-KP-arS"/>
+                            <constraint firstItem="fcI-72-BEy" firstAttribute="top" secondItem="5mh-gO-dKe" secondAttribute="top" constant="20" symbolic="YES" id="f0t-uB-N8w"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Historial" id="bke-IO-Kl2">
@@ -2014,7 +2021,7 @@
         <!--Folio-->
         <scene sceneID="KCc-HE-nxT">
             <objects>
-                <viewController storyboardIdentifier="InfoHistorialViewController" id="rBW-nl-Kkp" customClass="InfoHistorialViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InfoHistorialViewController" id="rBW-nl-Kkp" customClass="InfoHistorialViewController" customModule="HurryPrint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mzz-Aj-KkS"/>
                         <viewControllerLayoutGuide type="bottom" id="507-Lz-iw3"/>
@@ -2096,7 +2103,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estatus" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buv-Ri-3S1">
                                 <rect key="frame" x="145" y="317" width="435" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Documento " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geG-q0-6lY">
@@ -2205,7 +2212,7 @@
         <scene sceneID="qfP-T8-Yak">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hum-tn-JwH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="history" id="xKo-x9-6o5"/>
+                    <tabBarItem key="tabBarItem" image="historial_IOS" id="xKo-x9-6o5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0Lv-CZ-LK9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2223,7 +2230,7 @@
         <!--Content Page View Controller-->
         <scene sceneID="8eC-YO-xA5">
             <objects>
-                <viewController storyboardIdentifier="ContentPageViewController" id="5Qd-BO-yw6" customClass="ContentPageViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContentPageViewController" id="5Qd-BO-yw6" customClass="ContentPageViewController" customModule="HurryPrint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="s4z-SF-1yq"/>
                         <viewControllerLayoutGuide type="bottom" id="4Ot-dP-F7m"/>
@@ -2274,7 +2281,7 @@
         <!--Exportar View Controller-->
         <scene sceneID="Ny3-gm-90Z">
             <objects>
-                <viewController storyboardIdentifier="ExportarViewController" id="9E2-XJ-vok" customClass="ExportarViewController" customModule="HurryApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExportarViewController" id="9E2-XJ-vok" customClass="ExportarViewController" customModule="HurryPrint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5gV-hV-yet"/>
                         <viewControllerLayoutGuide type="bottom" id="c2q-RY-L4u"/>
@@ -2303,6 +2310,12 @@
             <point key="canvasLocation" x="1005" y="1039"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="historial_IOS" width="40" height="40"/>
+        <image name="iconHisto" width="40" height="40"/>
+        <image name="imprimir_IOS" width="40" height="40"/>
+        <image name="perfil_IOS" width="40" height="40"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="nuF-7o-HbL"/>
     </inferredMetricsTieBreakers>

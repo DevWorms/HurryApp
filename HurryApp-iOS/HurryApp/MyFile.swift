@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 21/12/15.
 //  Copyright © 2015 DevWorms. All rights reserved.

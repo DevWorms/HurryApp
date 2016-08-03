@@ -58,16 +58,16 @@
 		3B1196841C4D53EE00E6B202 /* ContentPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentPageViewController.swift; sourceTree = "<group>"; };
 		3B1A3F4E1C2A3202002936AF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		3B1A3F4F1C2A3202002936AF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		3B262F751C17CB1F00B174C3 /* HurryApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HurryApp.entitlements; sourceTree = "<group>"; };
-		3B374C641C0262EA00B3919A /* HurryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HurryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B262F751C17CB1F00B174C3 /* HurryPrint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HurryPrint.entitlements; sourceTree = "<group>"; };
+		3B374C641C0262EA00B3919A /* HurryPrint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HurryPrint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B374C671C0262EA00B3919A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B374C691C0262EA00B3919A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3B374C6C1C0262EB00B3919A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B374C731C0262EB00B3919A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3B374C781C0262EB00B3919A /* HurryAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HurryAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B374C781C0262EB00B3919A /* HurryPrint.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HurryPrint.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B374C7C1C0262EB00B3919A /* HurryAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HurryAppTests.swift; sourceTree = "<group>"; };
 		3B374C7E1C0262EC00B3919A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3B374C831C0262EC00B3919A /* HurryAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HurryAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B374C831C0262EC00B3919A /* HurryPrint.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HurryPrint.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B374C871C0262EC00B3919A /* HurryAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HurryAppUITests.swift; sourceTree = "<group>"; };
 		3B374C891C0262EC00B3919A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B374C951C027F2500B3919A /* RegistroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistroViewController.swift; sourceTree = "<group>"; };
@@ -152,9 +152,9 @@
 		3B374C651C0262EA00B3919A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3B374C641C0262EA00B3919A /* HurryApp.app */,
-				3B374C781C0262EB00B3919A /* HurryAppTests.xctest */,
-				3B374C831C0262EC00B3919A /* HurryAppUITests.xctest */,
+				3B374C641C0262EA00B3919A /* HurryPrint.app */,
+				3B374C781C0262EB00B3919A /* HurryPrint.xctest */,
+				3B374C831C0262EC00B3919A /* HurryPrint.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,7 +162,7 @@
 		3B374C661C0262EA00B3919A /* HurryApp */ = {
 			isa = PBXGroup;
 			children = (
-				3B262F751C17CB1F00B174C3 /* HurryApp.entitlements */,
+				3B262F751C17CB1F00B174C3 /* HurryPrint.entitlements */,
 				3B374C6B1C0262EB00B3919A /* Main.storyboard */,
 				3B374C671C0262EA00B3919A /* AppDelegate.swift */,
 				3B374C691C0262EA00B3919A /* ViewController.swift */,
@@ -181,6 +181,7 @@
 				3B1196861C4D540800E6B202 /* ExportarDocumentoTuto */,
 				3BEE2FAC1C2B271100453EAA /* PayPal requires */,
 				3B374C731C0262EB00B3919A /* Info.plist */,
+				3BCDD9D81CC02A1F00FB295C /* Images.xcassets */,
 			);
 			path = HurryApp;
 			sourceTree = "<group>";
@@ -206,7 +207,6 @@
 		3BEE2FAC1C2B271100453EAA /* PayPal requires */ = {
 			isa = PBXGroup;
 			children = (
-				3BCDD9D81CC02A1F00FB295C /* Images.xcassets */,
 				3BEE2FAD1C2B277A00453EAA /* ZZAppDelegate.h */,
 				3BEE2FAE1C2B281900453EAA /* HurryApp-Bridging-Header.h */,
 			);
@@ -225,9 +225,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3B374C631C0262EA00B3919A /* HurryApp */ = {
+		3B374C631C0262EA00B3919A /* HurryPrint */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3B374C8C1C0262EC00B3919A /* Build configuration list for PBXNativeTarget "HurryApp" */;
+			buildConfigurationList = 3B374C8C1C0262EC00B3919A /* Build configuration list for PBXNativeTarget "HurryPrint" */;
 			buildPhases = (
 				BF8E5CF968D82B892AF09042 /* Check Pods Manifest.lock */,
 				3B374C601C0262EA00B3919A /* Sources */,
@@ -240,14 +240,14 @@
 			);
 			dependencies = (
 			);
-			name = HurryApp;
+			name = HurryPrint;
 			productName = HurryApp;
-			productReference = 3B374C641C0262EA00B3919A /* HurryApp.app */;
+			productReference = 3B374C641C0262EA00B3919A /* HurryPrint.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3B374C771C0262EB00B3919A /* HurryAppTests */ = {
+		3B374C771C0262EB00B3919A /* HurryPrintTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3B374C8F1C0262EC00B3919A /* Build configuration list for PBXNativeTarget "HurryAppTests" */;
+			buildConfigurationList = 3B374C8F1C0262EC00B3919A /* Build configuration list for PBXNativeTarget "HurryPrintTests" */;
 			buildPhases = (
 				3B374C741C0262EB00B3919A /* Sources */,
 				3B374C751C0262EB00B3919A /* Frameworks */,
@@ -258,14 +258,14 @@
 			dependencies = (
 				3B374C7A1C0262EB00B3919A /* PBXTargetDependency */,
 			);
-			name = HurryAppTests;
+			name = HurryPrintTests;
 			productName = HurryAppTests;
-			productReference = 3B374C781C0262EB00B3919A /* HurryAppTests.xctest */;
+			productReference = 3B374C781C0262EB00B3919A /* HurryPrint.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3B374C821C0262EC00B3919A /* HurryAppUITests */ = {
+		3B374C821C0262EC00B3919A /* HurryPrintUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3B374C921C0262EC00B3919A /* Build configuration list for PBXNativeTarget "HurryAppUITests" */;
+			buildConfigurationList = 3B374C921C0262EC00B3919A /* Build configuration list for PBXNativeTarget "HurryPrintUITests" */;
 			buildPhases = (
 				3B374C7F1C0262EC00B3919A /* Sources */,
 				3B374C801C0262EC00B3919A /* Frameworks */,
@@ -276,9 +276,9 @@
 			dependencies = (
 				3B374C851C0262EC00B3919A /* PBXTargetDependency */,
 			);
-			name = HurryAppUITests;
+			name = HurryPrintUITests;
 			productName = HurryAppUITests;
-			productReference = 3B374C831C0262EC00B3919A /* HurryAppUITests.xctest */;
+			productReference = 3B374C831C0262EC00B3919A /* HurryPrint.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -310,7 +310,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3B374C5F1C0262EA00B3919A /* Build configuration list for PBXProject "HurryApp" */;
+			buildConfigurationList = 3B374C5F1C0262EA00B3919A /* Build configuration list for PBXProject "HurryPrint" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -323,9 +323,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3B374C631C0262EA00B3919A /* HurryApp */,
-				3B374C771C0262EB00B3919A /* HurryAppTests */,
-				3B374C821C0262EC00B3919A /* HurryAppUITests */,
+				3B374C631C0262EA00B3919A /* HurryPrint */,
+				3B374C771C0262EB00B3919A /* HurryPrintTests */,
+				3B374C821C0262EC00B3919A /* HurryPrintUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -450,12 +450,12 @@
 /* Begin PBXTargetDependency section */
 		3B374C7A1C0262EB00B3919A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3B374C631C0262EA00B3919A /* HurryApp */;
+			target = 3B374C631C0262EA00B3919A /* HurryPrint */;
 			targetProxy = 3B374C791C0262EB00B3919A /* PBXContainerItemProxy */;
 		};
 		3B374C851C0262EC00B3919A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3B374C631C0262EA00B3919A /* HurryApp */;
+			target = 3B374C631C0262EA00B3919A /* HurryPrint */;
 			targetProxy = 3B374C841C0262EC00B3919A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -560,7 +560,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = HurryApp/HurryApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HurryApp/HurryPrint.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -571,7 +571,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devworms.HurryPrint;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HurryPrint;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HurryApp/HurryApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -586,7 +586,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = HurryApp/HurryApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HurryApp/HurryPrint.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -597,7 +597,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devworms.HurryPrint;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HurryPrint;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HurryApp/HurryApp-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -611,8 +611,8 @@
 				INFOPLIST_FILE = HurryAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devworms.HurryAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HurryApp.app/HurryApp";
+				PRODUCT_NAME = HurryPrint;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HurryPrint.app/HurryPrint";
 			};
 			name = Debug;
 		};
@@ -623,8 +623,8 @@
 				INFOPLIST_FILE = HurryAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devworms.HurryAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HurryApp.app/HurryApp";
+				PRODUCT_NAME = HurryPrint;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HurryPrint.app/HurryPrint";
 			};
 			name = Release;
 		};
@@ -634,7 +634,7 @@
 				INFOPLIST_FILE = HurryAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devworms.HurryAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HurryPrint;
 				TEST_TARGET_NAME = HurryApp;
 				USES_XCTRUNNER = YES;
 			};
@@ -646,7 +646,7 @@
 				INFOPLIST_FILE = HurryAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devworms.HurryAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HurryPrint;
 				TEST_TARGET_NAME = HurryApp;
 				USES_XCTRUNNER = YES;
 			};
@@ -655,7 +655,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3B374C5F1C0262EA00B3919A /* Build configuration list for PBXProject "HurryApp" */ = {
+		3B374C5F1C0262EA00B3919A /* Build configuration list for PBXProject "HurryPrint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B374C8A1C0262EC00B3919A /* Debug */,
@@ -664,7 +664,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3B374C8C1C0262EC00B3919A /* Build configuration list for PBXNativeTarget "HurryApp" */ = {
+		3B374C8C1C0262EC00B3919A /* Build configuration list for PBXNativeTarget "HurryPrint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B374C8D1C0262EC00B3919A /* Debug */,
@@ -673,7 +673,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3B374C8F1C0262EC00B3919A /* Build configuration list for PBXNativeTarget "HurryAppTests" */ = {
+		3B374C8F1C0262EC00B3919A /* Build configuration list for PBXNativeTarget "HurryPrintTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B374C901C0262EC00B3919A /* Debug */,
@@ -682,7 +682,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3B374C921C0262EC00B3919A /* Build configuration list for PBXNativeTarget "HurryAppUITests" */ = {
+		3B374C921C0262EC00B3919A /* Build configuration list for PBXNativeTarget "HurryPrintUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3B374C931C0262EC00B3919A /* Debug */,

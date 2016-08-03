@@ -1,6 +1,6 @@
 //
 //  FolderTableViewController.swift
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 29/04/16.
 //  Copyright © 2016 DevWorms. All rights reserved.
@@ -42,6 +42,8 @@ class FolderTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "fondo.png")!)
         
         labels = [lblBeige, lblAzul, lblRosa, lblVerde, lblGuinda, lblAzulFuerte, lblRojo, lblNegro, lblMorado]
         

@@ -1,6 +1,6 @@
 //
 //  HTTPPostToPHP.swift
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 17/12/15.
 //  Copyright © 2015 DevWorms. All rights reserved.
@@ -109,7 +109,7 @@ class ConnectionHurryPrint {
             self.task!.resume()
             
         } else {
-            let alert = UIAlertView(title: "Sin conexón a internet", message: "Asegurate de estar conectado a internet.", delegate: nil, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "Sin conexión a internet", message: "Asegúrate de estar conectado a internet.", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
         }
     }

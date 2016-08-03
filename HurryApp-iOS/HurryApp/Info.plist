@@ -10,7 +10,7 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeName</key>
-			<string></string>
+			<string>archivos</string>
 			<key>LSHandlerRank</key>
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
@@ -53,7 +53,7 @@
 	<key>FacebookAppID</key>
 	<string>1082695295104745</string>
 	<key>FacebookDisplayName</key>
-	<string>HurryApp</string>
+	<string>HurryPrint</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbauth2</string>

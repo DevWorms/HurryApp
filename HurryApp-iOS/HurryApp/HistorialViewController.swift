@@ -1,6 +1,6 @@
 //
 //  HistorialViewController.swift
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 13/01/16.
 //  Copyright © 2016 DevWorms. All rights reserved.
@@ -136,9 +136,7 @@ class HistorialViewController: UIViewController, UITableViewDataSource, UITableV
         let estatus = cell.viewWithTag(3) as! UILabel
         estatus.text = self.stats[ indexPath.row ]
         
-        if self.self.stats[indexPath.row] == "esperando" {
-            estatus.textColor = UIColor.redColor()
-        } else {
+        if self.self.stats[indexPath.row] != "esperando" {
             estatus.textColor = UIColor.greenColor()
         }
         

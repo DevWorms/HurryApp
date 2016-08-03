@@ -1,6 +1,6 @@
 //
 //  Accesibilidad.swift
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 13/01/16.
 //  Copyright © 2016 DevWorms. All rights reserved.
