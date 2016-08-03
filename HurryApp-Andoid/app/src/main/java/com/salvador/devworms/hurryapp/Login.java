@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -39,13 +40,13 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         SharedPreferences sp = getSharedPreferences("prefe", Activity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString("nombrearch", "");
         editor.putString("ubicacion", "");
         editor.commit();
-        TextView texto=(TextView)findViewById(R.id.txt_registro);
+
         txtTel=(TextView)findViewById(R.id.Tel);
         txtPass=(TextView)findViewById(R.id.Pass);
 
@@ -59,23 +60,7 @@ public class Login extends AppCompatActivity {
             finish();
 
         }
-        texto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!conectado.verificaConexion(getApplicationContext())) {
 
-                    conectado.dialgo(Login.this);
-
-                }else {
-                Intent intent = new Intent(Login.this, Registro.class);
-
-                    startActivity(intent);
-                    finish();
-
-                }
-
-            }
-        });
         findViewById(R.id.btn_acep).setOnClickListener(new ActionButton1());
 
 

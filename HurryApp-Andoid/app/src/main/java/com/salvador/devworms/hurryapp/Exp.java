@@ -37,7 +37,7 @@ public class Exp extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.activity_buscar, container, false);
 
-
+        ((Application) getActivity().getApplication()).setnavFragment("busca");
         carpetaActual=(TextView)view.findViewById(R.id.rutaAcual);
         list=(ListView)view.findViewById(R.id.list);
         directprioRaiz= Environment.getExternalStorageDirectory().getPath();
@@ -54,10 +54,10 @@ public class Exp extends Fragment {
                     String newName= nombrearchi.replace(".",",");
 
                   String []nomArch = newName.split(",");
-                    Log.d("TipiArch : ", "> "+ nombrearchi);
+                    Log.d("TipiArch : ", "> "+ nomArch.length);
 
 
-                   if(nomArch[1].equals("pdf")|| nomArch[1].equals("doc")|| nomArch[1].equals("docx")) {
+                   if(nomArch[nomArch.length-1].equals("pdf")|| nomArch[nomArch.length-1].equals("doc")|| nomArch[nomArch.length-1].equals("docx")) {
 
                         Compra fragment = new Compra();
 
@@ -70,11 +70,10 @@ public class Exp extends Fragment {
 
 
                         FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                       SharedPreferences sp = getActivity().getSharedPreferences("prefe", Activity.MODE_PRIVATE);
-                       SharedPreferences.Editor editor = sp.edit();
-                       editor.putString("nombrearch", nombrearchi);
-                       editor.putString("ubicacion", ubicacion);
-                       editor.commit();
+
+                       ((Application) getActivity().getApplication()).setArchivo(nombrearchi);
+                       ((Application) getActivity().getApplication()).setUbicacion(ubicacion);
+
                         parametro.putString("nombrearch", nombrearchi);
                         parametro.putString("ubicacion", ubicacion);
                         fragment.setArguments(parametro);
@@ -118,7 +117,7 @@ public class Exp extends Fragment {
         File[] listaArchivos= directorioActual.listFiles();
         int x=0;
         if(!rutaDrectorio.equals(directprioRaiz)){
-            listaNombresArchivos.add("../");
+            listaNombresArchivos.add("<--Regresar");
             listaRutasArchivos.add(directorioActual.getParent());
             x=1;
         }

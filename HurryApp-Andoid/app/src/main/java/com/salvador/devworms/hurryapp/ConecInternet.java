@@ -37,11 +37,7 @@ public class ConecInternet {
 
                         }                  }
                 })
-                .setNegativeButton("SALIR", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // do nothing
-                    }
-                })
+
 
                 .show();
     }
