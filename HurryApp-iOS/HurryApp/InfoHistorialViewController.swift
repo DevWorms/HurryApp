@@ -1,6 +1,6 @@
 //
 //  InfoHistorialViewController.swift
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 19/01/16.
 //  Copyright © 2016 DevWorms. All rights reserved.
@@ -27,8 +27,10 @@ class InfoHistorialViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "fondo.png")!)
+        
         let headers = [
-           "folio": self.folioSearch
+           "Folio": self.folioSearch
         ]
         
         //Completion Handler
@@ -53,9 +55,7 @@ class InfoHistorialViewController: UIViewController {
                     self.folioLabel.text = folio
                     self.estatusLabel.text = json["descripcion"]!!["Status"] as? String
                     
-                    if self.estatusLabel.text == "esperando" {
-                        self.estatusLabel.textColor = UIColor.orangeColor()
-                    } else {
+                    if self.estatusLabel.text != "esperando" {
                         self.estatusLabel.textColor = UIColor.greenColor()
                     }                    
                     

@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 22/11/15.
 //  Copyright © 2015 DevWorms. All rights reserved.
@@ -29,7 +29,7 @@ class ViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDel
         let loginButton = FBSDKLoginButton()
         loginButton.center.x = self.view.center.x
         loginButton.center.y = self.contrasenaTxt.center.y + 85.0
-        loginButton.setTitle("Registrar con Facebook", forState: .Application)
+        loginButton.setAttributedTitle( NSAttributedString(string: "Registrarte") , forState: .Normal)
         self.view.addSubview(loginButton)
         
         loginButton.delegate = self //important!
@@ -41,7 +41,7 @@ class ViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDel
         
         if self.contrasenaTxt.text == "" || self.telefonoTxt.text == "" {
             
-            let alert = UIAlertView(title: "Error en campos", message: "Asegurate de escribir correctamente en los campos.", delegate: nil, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "Error en campos", message: "Asegúrate de escribir correctamente en los campos.", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
             
             return

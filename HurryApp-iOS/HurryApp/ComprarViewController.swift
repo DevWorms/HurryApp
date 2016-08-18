@@ -1,6 +1,6 @@
 //
 //  ComprarViewController.swift
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 23/11/15.
 //  Copyright © 2015 DevWorms. All rights reserved.
@@ -40,6 +40,8 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         // Do any additional setup after loading the view.
         
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "fondo.png")!)
+        
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(ComprarViewController.swipeKeyBoard(_:)))
         swipeDown.direction = UISwipeGestureRecognizerDirection.Down
         swipeDown.delegate = self
@@ -51,7 +53,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         self.precioImpresionBN = precioTiendaBN + precioDevworms
         self.precioImpresionColor = precioTiendaColor + precioDevworms
-        
         
         self.nameDoc.setTitle(MyFile.Name, forState: .Normal)
     }
@@ -84,14 +85,14 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             return
                 
         } else if ( !validate( textFields[0].text! ) ) {
-            let alert = UIAlertView(title: "Nos faltó algo", message: "¿Cuantas hojas imprimiremos?", delegate: nil, cancelButtonTitle: "Ok")
+            let alert = UIAlertView(title: "Nos faltó algo", message: "¿Cuántas hojas imprimiremos?", delegate: nil, cancelButtonTitle: "Ok")
             alert.show()
             
             return
             
         } else if (textFields[1].text! != ""){
             if !validate( textFields[1].text! ) {
-                let alert = UIAlertView(title: "Error en Intervalo", message: "Asegurate de escribir correctamente #-#.", delegate: nil, cancelButtonTitle: "OK")
+                let alert = UIAlertView(title: "Error en Intervalo", message: "Asegúrate de escribir correctamente #-#.", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                 
                 return
@@ -100,7 +101,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if (textFields[2].text! != ""){
             if (!validate( textFields[2].text! )) {
-                let alert = UIAlertView(title: "Error en Juegos", message: "Asegurate de escribir correctamente #.", delegate: nil, cancelButtonTitle: "OK")
+                let alert = UIAlertView(title: "Error en Juegos", message: "Asegúrate de escribir correctamente #.", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
                 
                 return
@@ -201,7 +202,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         
-                        let alert = UIAlertView(title: "HurryApp!", message: "Lánzate a la sucursal por tus impresiones.", delegate: nil, cancelButtonTitle: "OK")
+                        let alert = UIAlertView(title: "HurryPrint!", message: "Lánzate a la sucursal por tus impresiones.", delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
                         
                         self.navigationController?.popViewControllerAnimated(true)
@@ -430,6 +431,20 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let swtch = cell.viewWithTag( indexPath.row ) as! UISwitch
                 switches += [swtch]
                 swtch.addTarget(self, action: #selector(ComprarViewController.stateChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
+            
+                if indexPath.row == 3 {
+                    swtch.setOn(dispBlancoNegro, animated: true)
+                }
+            
+                if indexPath.row == 4 {
+                    if dispBlancoNegro == true && dispColor == true {
+                        swtch.setOn(false, animated: true)
+                    } else {
+                        swtch.setOn(dispColor, animated: true)
+                    }
+                    
+                }
+            
                 //print("jum "+String(switches.count))
             
             default: break
@@ -442,6 +457,16 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if switchState == switches[0] { // blanco negro
             if switchState.on {
+                
+                if dispBlancoNegro == false {
+                    switches[0].setOn(false, animated: true)
+                    
+                    let alert = UIAlertView(title: "Sin disponibilidad", message: "No hay impresiones a B/N en esta sucursal.", delegate: nil, cancelButtonTitle: "OK")
+                    alert.show()
+                    
+                    return
+                }
+                
                 switches[1].setOn(false, animated: true)
                 switches[2].setOn(false, animated: true)
             } else {
@@ -473,16 +498,26 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
                 switches[0].setOn(false, animated: true)
                 switches[2].setOn(false, animated: true)
             } else {
+                
+                if dispBlancoNegro == false {
+                    switches[1].setOn(true, animated: true)
+                    
+                    let alert = UIAlertView(title: "Sin disponibilidad", message: "No hay impresiones a B/N en esta sucursal.", delegate: nil, cancelButtonTitle: "OK")
+                    alert.show()
+                    
+                    return
+                }
+
                 switches[0].setOn(true, animated: true)
                 switches[2].setOn(false, animated: true)
             }
         } else if switchState == switches[2] { // Cáratula color
             if switchState.on {
                 
-                if dispColor == false {
+                if dispColor == false || dispBlancoNegro == false {
                     switches[2].setOn(false, animated: true)
                     
-                    let alert = UIAlertView(title: "Sin disponibilidad", message: "No hay impresiones a color en esta sucursal.", delegate: nil, cancelButtonTitle: "OK")
+                    let alert = UIAlertView(title: "Sin disponibilidad", message: "No hay impresiones a color o b/n en esta sucursal.", delegate: nil, cancelButtonTitle: "OK")
                     alert.show()
                     
                     return

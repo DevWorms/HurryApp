@@ -1,6 +1,6 @@
 //
 //  SucursalesViewController.swift
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 15/01/16.
 //  Copyright © 2016 DevWorms. All rights reserved.
@@ -43,10 +43,14 @@ class SucursalesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func calcularHora() {
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "hh"
+        dateFormatter.dateFormat = "HH"
         let hora: Int? = Int( dateFormatter.stringFromDate(NSDate()) )
         dateFormatter.dateFormat = "mm"
         let minuto: Int? = Int( dateFormatter.stringFromDate(NSDate()) )
+        //dateFormatter.dateFormat = "a"
+        //let period = dateFormatter.stringFromDate(NSDate())
+        //print("hora: \(hora)"+", minuto: \(minuto)"+", period: \(period)")
+        
         if hora <= 6 && minuto <= 31 || hora >= 21 && minuto >= 25 {
             
             self.horaDeDormir = true
@@ -108,26 +112,20 @@ class SucursalesViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let disponibilidad_sucAbierta = cell.viewWithTag(2)
         
-        if self.sucursalesAbiertas[indexPath.row] == "1" {
-            disponibilidad_sucAbierta?.backgroundColor = UIColor.greenColor()
-        }else {
-            disponibilidad_sucAbierta?.backgroundColor = UIColor.grayColor()
+        if self.sucursalesAbiertas[indexPath.row] != "1" {
+            disponibilidad_sucAbierta?.backgroundColor = UIColor.redColor()
         }
         
         let disponibilidad_b_n = cell.viewWithTag(3)
         
-        if self.blanco_negro[indexPath.row] == "1" {
-            disponibilidad_b_n?.backgroundColor = UIColor.greenColor()
-        }else {
-            disponibilidad_b_n?.backgroundColor = UIColor.grayColor()
+        if self.blanco_negro[indexPath.row] != "1" {
+            disponibilidad_b_n?.backgroundColor = UIColor.redColor()
         }
         
         let disponibilidad_color = cell.viewWithTag(4)
         
-        if self.color[indexPath.row] == "1" {
-            disponibilidad_color?.backgroundColor = UIColor.greenColor()
-        }else {
-            disponibilidad_color?.backgroundColor = UIColor.grayColor()
+        if self.color[indexPath.row] != "1" {
+            disponibilidad_color?.backgroundColor = UIColor.redColor()
         }
         
         return cell
@@ -166,6 +164,28 @@ class SucursalesViewController: UIViewController, UITableViewDelegate, UITableVi
                 
             }
         }
+    }
+    
+    //Pasar a la siguiente pantalla o no
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        
+        if let cell = sender as? UITableViewCell, let indexPath = self.tableViewSucursales.indexPathForCell(cell) {
+                
+            if !self.horaDeDormir { // si estan abriertas las sucursales
+                    
+                // disponibilidad en tienda
+                if ( (self.blanco_negro[indexPath.row] != "1") && (self.color[indexPath.row] != "1") ||
+                        (self.sucursalesAbiertas[indexPath.row] != "1") ) {
+                    
+                    let alert = UIAlertView(title: "Sin disponibilidad", message: "No hay impresiones en esta sucursal.", delegate: nil, cancelButtonTitle: "OK")
+                    alert.show()
+                    
+                    return false
+                }
+            }
+        }
+        
+        return true
     }
 
 }

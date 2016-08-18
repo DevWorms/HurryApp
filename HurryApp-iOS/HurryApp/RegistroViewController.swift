@@ -1,6 +1,6 @@
 //
 //  RegistroViewController.swift
-//  HurryApp
+//  HurryPrint
 //
 //  Created by Emmanuel Valentín Granados López on 22/11/15.
 //  Copyright © 2015 DevWorms. All rights reserved.
@@ -38,7 +38,7 @@ class RegistroViewController: UIViewController, UITextFieldDelegate {
     @IBAction func registrarseHurry(sender: AnyObject) {
         
         if !validate( self.telefonoTxt.text! ) {
-            let alert = UIAlertView(title: "Error en teléfono", message: "Asegurate de escribir correctamente tu teléfono.", delegate: nil, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "Error en teléfono", message: "Asegúrate de escribir correctamente tu teléfono.", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
             
             return
@@ -47,7 +47,7 @@ class RegistroViewController: UIViewController, UITextFieldDelegate {
         if self.confirmarTxt.text != self.contrasenaTxt.text ||
            self.confirmarTxt.text == "" || self.contrasenaTxt.text == "" {
             
-            let alert = UIAlertView(title: "Error en campos", message: "Asegurate de escribir correctamente en los campos.", delegate: nil, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "Error en campos", message: "Asegúrate de escribir correctamente en los campos.", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
             
             return
@@ -88,7 +88,7 @@ class RegistroViewController: UIViewController, UITextFieldDelegate {
                     
                     dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
                         
-                        let alert = UIAlertView(title: "", message: "Te regalamos SALDO para tus primeras impresiones, después podrás regargar el mismo en las sucursales o por PayPal*.", delegate: nil, cancelButtonTitle: "OK")
+                        let alert = UIAlertView(title: "", message: "Te regalamos SALDO para tus primeras impresiones, después podrás regargar en las sucursales o por PayPal*.", delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
                         
                         self.performSegueWithIdentifier("PrincipalSegue", sender: nil)
