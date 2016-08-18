@@ -14,10 +14,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.Profile;
+import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Arrays;
 
 /**
  * Created by salvador on 03/01/2016.
@@ -28,10 +39,57 @@ public class Registro extends AppCompatActivity{
     EditText pass,pass2;
     TextView txtNombre;
     String nom,pas,pas2,cel,resp;
+    CallbackManager callbackManager;
+
+    private Profile pendingUpdateForUser;
+
+    private ProfileTracker profileTracker;
+      private AccessTokenTracker accessTokenTracker;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_registro);
+
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
+
+        callbackManager = CallbackManager.Factory.create();
+        profileTracker = new ProfileTracker() {
+            @Override
+            protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
+                              setProfile(currentProfile);
+                            }
+                  };
+
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        AccessToken accessToken = loginResult.getAccessToken();
+                        Log.e("FB", String.valueOf(accessToken));
+                        Profile profile = Profile.getCurrentProfile();
+
+                        if (profile != null) {
+
+                            Log.e("FB",  profile.getName());
+                        }
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        // App code
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        // App code
+                    }
+                });
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+        Profile.fetchProfileForCurrentAccessToken();
+        setProfile(Profile.getCurrentProfile());
+
         SharedPreferences sp = getSharedPreferences("prefe", Activity.MODE_PRIVATE);
         String nombre = sp.getString("Nombre","");
         txtNombre= (TextView)findViewById(R.id.txtNomRegis);
@@ -57,7 +115,7 @@ public class Registro extends AppCompatActivity{
                     finish();
                 }
         });
-        txtNombre.setText(nombre);
+
         btnRegis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,6 +140,36 @@ public class Registro extends AppCompatActivity{
 
         });
 
+    }
+    private void setProfile(Profile profile) {
+
+                 if (profile == null) {
+
+                     } else {
+                     Log.d("fb : ", "> " + profile.getCurrentProfile().getFirstName());
+                     if (txtNombre != null) {
+                         txtNombre.setText(profile.getCurrentProfile().getName());
+                         SharedPreferences sp =
+                                 getSharedPreferences("prefe", Activity.MODE_PRIVATE);
+                         SharedPreferences.Editor editor = sp.edit();
+                         editor.putString("fbtoken", AccessToken.getCurrentAccessToken().getToken());
+                         editor.putString("fbuserid",  AccessToken.getCurrentAccessToken().getUserId());
+                         editor.putString("Nombre",  profile.getCurrentProfile().getName().toString());
+                         editor.commit();
+                     }
+                 }
+
+            }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+        if(Profile.getCurrentProfile() != null) {
+            Profile.getCurrentProfile().getFirstName();
+            Log.d("Resuult : ", "> " + Profile.getCurrentProfile().getFirstName());
+        }
     }
     class getRegstroAT extends AsyncTask<String, String, String> {
 

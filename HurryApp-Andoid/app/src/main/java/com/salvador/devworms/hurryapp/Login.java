@@ -13,6 +13,14 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.Profile;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -20,6 +28,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -34,6 +44,8 @@ public class Login extends AppCompatActivity {
     TextView txtPass;
     TextView txtError;
     String encontro;
+    CallbackManager callbackManager;
+    List<String> list= Arrays.asList("public_profile") ;
     JSONParser jsonParser = new JSONParser();
     private ArrayList<NameValuePair> nameValuePairs;
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +75,20 @@ public class Login extends AppCompatActivity {
 
         findViewById(R.id.btn_acep).setOnClickListener(new ActionButton1());
 
+        findViewById(R.id.btnFb).setOnClickListener(new ActionButton2());
 
 
+    }
+    class ActionButton2 implements View.OnClickListener {
+        public void onClick(View v) {
+
+
+            Intent intent = new Intent(Login.this, Registro.class);
+            startActivity(intent);
+            finish();
+
+
+        }
     }
 
     class ActionButton1 implements View.OnClickListener {
