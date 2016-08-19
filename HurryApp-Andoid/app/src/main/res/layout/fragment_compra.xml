@@ -393,6 +393,12 @@
                     </LinearLayout>
 
                     <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Visualizar"
+                        android:id="@+id/btnVisua" />
+
+                    <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Mandar Archivo"

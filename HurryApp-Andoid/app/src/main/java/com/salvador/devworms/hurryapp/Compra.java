@@ -3,7 +3,9 @@ package com.salvador.devworms.hurryapp;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -58,7 +60,7 @@ public class Compra extends Fragment {
     EditText edtJuegosImp;
     String respCom,permitirColor,permitirBlaNeg;
     String [] FolderArray,EngargoArray;
-
+    String type;
     private ProgressDialog pDialog;
    public String ubicacion;
     ScrollView scr;
@@ -81,8 +83,18 @@ public class Compra extends Fragment {
         edtxnohojas=(EditText)view.findViewById(R.id.edt_numhoj);
         edtInterval=(EditText)view.findViewById(R.id.edt_hoj);
         edtJuegosImp=(EditText)view.findViewById(R.id.edt_juegos);
-        edtxnohojas.setText(((Application) getActivity().getApplication()).getnumeroHojas());
-        edtJuegosImp.setText(((Application) getActivity().getApplication()).getnumeroJuegos());
+        if(((Application) getActivity().getApplication()).getnumeroHojas().equals("0")){
+
+        }else{
+            edtxnohojas.setText(((Application) getActivity().getApplication()).getnumeroHojas());
+        }
+        if(((Application) getActivity().getApplication()).getnumeroJuegos().equals("0")){
+
+        }else{
+            edtJuegosImp.setText(((Application) getActivity().getApplication()).getnumeroJuegos());
+        }
+
+
         blaNeg="1";
         tamCarta="1";
         colorE="0";
@@ -103,6 +115,29 @@ public class Compra extends Fragment {
         swOficio=(Switch)view.findViewById(R.id.sw_oficio);
         swBlayneg=(Switch)view.findViewById(R.id.sw_blayneg);
         scr= (ScrollView) view.findViewById(R.id.scrCompra);
+        Button btnVisuaizar=(Button)view.findViewById(R.id.btnVisua);
+        btnVisuaizar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setAction(Intent.ACTION_VIEW);
+                String newName= nombre.replace(".",",");
+
+                String []nomArch = newName.split(",");
+                if(nomArch[nomArch.length-1].equals("pdf")){
+                    type ="application/pdf";
+                }else {
+
+                    type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                }
+                Uri uri = Uri.parse("file://"+ubicacion);
+                intent.setDataAndType(uri, type);
+                startActivity(intent);
+            }
+
+        });
+
         Button btnFolder=(Button)view.findViewById(R.id.btnFolder);
 
         btnFolder.setOnClickListener(new View.OnClickListener(){
@@ -233,7 +268,10 @@ public class Compra extends Fragment {
                 scr.setVisibility(View.INVISIBLE);
                 ubicacion= "";
                 nombre="";
+                ((Application) getActivity().getApplication()).setnumeroHojas("0");
+                ((Application) getActivity().getApplication()).setnumeroJuegos("0");
                 txtRuta.setText("Archivo");
+
             }
         });
         btnMandar.setOnClickListener(new View.OnClickListener(){
