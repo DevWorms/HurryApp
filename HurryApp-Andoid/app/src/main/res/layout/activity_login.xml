@@ -16,7 +16,7 @@
         android:layout_alignParentEnd="true">
 
         <LinearLayout android:layout_width="fill_parent"
-            android:layout_height="374dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
@@ -59,37 +59,32 @@
 
 
             <Button
-            android:layout_width="150dp"
+            android:layout_width="160dp"
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
-            android:text="Aceptar"
+            android:text="Iniciar sesión"
             android:id="@+id/btn_acep"
             android:textColor="#ffb000"
             android:textSize="20dp"
             android:background="#ff0037"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginBottom="100dp" />
 
-            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:id="@+id/fragment"
-                android:name="com.salvador.devworms.hurryapp.MainActivityFragment"
-                android:layout_width="190dp"
+            <Button
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:text="Regístrate"
+                android:id="@+id/btnFb"
+                android:layout_gravity="center_horizontal"
+                android:background="#3b5998"
+                android:textColor="#ffffff"
+                android:textSize="20dp" /><![CDATA[
 
-                tools:layout="@layout/fragment_main"
-                android:layout_gravity="center_horizontal" />
+            />
 
-                 />
-
+        ]]>
         </LinearLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Registro"
-            android:id="@+id/btnFb"
-            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
 </RelativeLayout>

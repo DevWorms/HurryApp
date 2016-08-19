@@ -94,7 +94,10 @@ public class Cuenta extends Fragment {
                     getActivity().getSharedPreferences("prefe", 0).edit().clear().commit();
 
                     LoginManager.getInstance().logOut();
-                    Intent salida = new Intent(Intent.ACTION_MAIN); //Llamando a la activity principal
+
+                    Intent intent = new Intent(getActivity(), Login.class);
+
+                    startActivity(intent);
                     getActivity().finish(); // La cerramos.
 
 
