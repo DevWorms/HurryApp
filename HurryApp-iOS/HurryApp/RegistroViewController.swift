@@ -23,6 +23,8 @@ class RegistroViewController: UIViewController, UITextFieldDelegate {
 
         // Do any additional setup after loading the view.
         
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "fondo.png")!)
+        
         self.telefonoTxt.delegate = self
         self.contrasenaTxt.delegate = self
         self.confirmarTxt.delegate = self
@@ -45,9 +47,10 @@ class RegistroViewController: UIViewController, UITextFieldDelegate {
         }
         
         if self.confirmarTxt.text != self.contrasenaTxt.text ||
-           self.confirmarTxt.text == "" || self.contrasenaTxt.text == "" {
+           self.confirmarTxt.text == "" || self.contrasenaTxt.text == "" ||
+            !validatePassword( self.contrasenaTxt.text! ) {
             
-            let alert = UIAlertView(title: "Error en campos", message: "Asegúrate de escribir correctamente en los campos.", delegate: nil, cancelButtonTitle: "OK")
+            let alert = UIAlertView(title: "Error en campos", message: "Asegúrate de escribir correctamente la contraseña, se requiere al menos 1 letra ó 1 número, no se aceptan carácteres especiales |!()-,*/?.", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
             
             return
@@ -88,7 +91,7 @@ class RegistroViewController: UIViewController, UITextFieldDelegate {
                     
                     dispatch_async(dispatch_get_main_queue(), { // swift 3, This application is modifying the autolayout engine from a background thread, which can lead to engine corruption and weird crashes.  This will cause an exception in a future release.
                         
-                        let alert = UIAlertView(title: "", message: "Te regalamos SALDO para tus primeras impresiones, después podrás regargar en las sucursales o por PayPal*.", delegate: nil, cancelButtonTitle: "OK")
+                        let alert = UIAlertView(title: "", message: "Te regalamos SALDO para tus primeras impresiones, después podrás recargar en las sucursales o por PayPal*.", delegate: nil, cancelButtonTitle: "OK")
                         alert.show()
                         
                         self.performSegueWithIdentifier("PrincipalSegue", sender: nil)
@@ -112,15 +115,19 @@ class RegistroViewController: UIViewController, UITextFieldDelegate {
     }
     
     func validate(value: String) -> Bool {
-        
         let PHONE_REGEX = "^55\\d{8}"
-        
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
-        
         let result =  phoneTest.evaluateWithObject(value)
         
         return result
+    }
+    
+    func validatePassword(value: String) -> Bool {
+        let PHONE_REGEX = "[a-zA-Z0-9]+"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result =  phoneTest.evaluateWithObject(value)
         
+        return result
     }
 
     override func didReceiveMemoryWarning() {
