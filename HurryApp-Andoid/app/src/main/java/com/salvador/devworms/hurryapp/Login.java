@@ -44,10 +44,12 @@ public class Login extends AppCompatActivity {
     TextView txtPass;
     TextView txtError;
     String encontro;
+
     CallbackManager callbackManager;
     List<String> list= Arrays.asList("public_profile") ;
     JSONParser jsonParser = new JSONParser();
     private ArrayList<NameValuePair> nameValuePairs;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -61,7 +63,9 @@ public class Login extends AppCompatActivity {
 
         txtTel=(TextView)findViewById(R.id.Tel);
         txtPass=(TextView)findViewById(R.id.Pass);
-
+        if (!conectado.verificaConexion(getApplicationContext())) {
+            conectado.dialgo(this);
+        }
 
         String myStriValue = sp.getString("APIkey","");
         Log.d("Preference : ", "> " + myStriValue);
@@ -81,7 +85,9 @@ public class Login extends AppCompatActivity {
     }
     class ActionButton2 implements View.OnClickListener {
         public void onClick(View v) {
-
+            if (!conectado.verificaConexion(getApplicationContext())) {
+                conectado.dialgo(Login.this);
+            }
 
             Intent intent = new Intent(Login.this, Registro.class);
             startActivity(intent);
@@ -93,7 +99,9 @@ public class Login extends AppCompatActivity {
 
     class ActionButton1 implements View.OnClickListener {
         public void onClick(View v) {
-
+            if (!conectado.verificaConexion(getApplicationContext())) {
+                conectado.dialgo(Login.this);
+            }
 
             new Thread() {
                 public void run() {

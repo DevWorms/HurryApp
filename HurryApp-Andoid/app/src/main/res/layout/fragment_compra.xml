@@ -42,39 +42,57 @@
                 android:gravity="center_horizontal"
                 android:layout_marginTop="20dp" />
 
-            <LinearLayout android:layout_width="fill_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal">
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Cancelar"
-                    android:id="@+id/btnCancelar"
-                    android:textColor="#ffb000"
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                    android:background="#ff0037"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginRight="30dp"
-                    android:layout_weight="1"
-                    android:textSize="20dp" />
+                <LinearLayout android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="16dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:text="Cancelar"
+                        android:id="@+id/btnCancelar"
+                        android:textColor="#ffb000"
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="Buscar "
-                    android:id="@+id/btnBuscar"
-                    android:textColor="#ffb000"
+                        android:background="#ff0037"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginRight="30dp"
+                        android:layout_weight="1"
+                        android:textSize="20dp" />
 
-                    android:background="#5f769a"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="1"
-                    android:textSize="20dp" />
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:text="Buscar "
+                        android:id="@+id/btnBuscar"
+                        android:textColor="#ffb000"
+
+                        android:background="#5f769a"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:textSize="20dp" />
+                </LinearLayout>
             </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Visualizar"
+                android:id="@+id/btnVisua"
+                android:textColor="#ffb000"
+                android:textSize="20dp"
+                android:background="#208003"
+                android:layout_marginBottom="10dp"
+                android:visibility="visible"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
 
             <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
@@ -393,15 +411,9 @@
                     </LinearLayout>
 
                     <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Visualizar"
-                        android:id="@+id/btnVisua" />
-
-                    <Button
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Mandar Archivo"
+                        android:text="Imprimir"
                         android:id="@+id/mandar"
                         android:textColor="#f5f5f5"
                         android:textSize="20dp"

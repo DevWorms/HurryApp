@@ -3,6 +3,7 @@ package com.salvador.devworms.hurryapp;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,6 +63,7 @@ public class Compra extends Fragment {
     String respCom,permitirColor,permitirBlaNeg;
     String [] FolderArray,EngargoArray;
     String type;
+    Button btnVisuaizar;
     private ProgressDialog pDialog;
    public String ubicacion;
     ScrollView scr;
@@ -115,7 +118,8 @@ public class Compra extends Fragment {
         swOficio=(Switch)view.findViewById(R.id.sw_oficio);
         swBlayneg=(Switch)view.findViewById(R.id.sw_blayneg);
         scr= (ScrollView) view.findViewById(R.id.scrCompra);
-        Button btnVisuaizar=(Button)view.findViewById(R.id.btnVisua);
+        btnVisuaizar=(Button)view.findViewById(R.id.btnVisua);
+
         btnVisuaizar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -156,8 +160,20 @@ public class Compra extends Fragment {
         btnEnga.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                ((Application) getActivity().getApplication()).setnumeroHojas(edtxnohojas.getText().toString());
-                ((Application) getActivity().getApplication()).setnumeroJuegos(edtJuegosImp.getText().toString());
+                String numeroHojas;
+                String numeroJuegos;
+                if(edtxnohojas.getText().toString().equals("")){
+                    numeroHojas="0";
+                }else{
+                    numeroHojas= edtxnohojas.getText().toString();
+                }
+                if(edtJuegosImp.getText().toString().equals("")){
+                    numeroJuegos="0";
+                }else{
+                    numeroJuegos= edtJuegosImp.getText().toString();
+                }
+                ((Application) getActivity().getApplication()).setnumeroHojas(numeroHojas);
+                ((Application) getActivity().getApplication()).setnumeroJuegos(numeroJuegos);
                 getFragmentManager().beginTransaction()
                         .add(R.id.actividad, new Engargolados()).commit();
             }
@@ -268,6 +284,7 @@ public class Compra extends Fragment {
                 scr.setVisibility(View.INVISIBLE);
                 ubicacion= "";
                 nombre="";
+                btnVisuaizar.setVisibility(View.INVISIBLE);
                 ((Application) getActivity().getApplication()).setnumeroHojas("0");
                 ((Application) getActivity().getApplication()).setnumeroJuegos("0");
                 txtRuta.setText("Archivo");
@@ -282,6 +299,8 @@ public class Compra extends Fragment {
 
 
                 }else {
+
+                    double costoporhoja;
                     juegos= edtJuegosImp.getText().toString();
                     numHojas=edtxnohojas.getText().toString();
                     interval=edtInterval.getText().toString();
@@ -291,23 +310,25 @@ public class Compra extends Fragment {
                         nhojas = 0;
                     }
                     if (ubicacion == "" || ubicacion == null) {
-                        Toast.makeText(getActivity().getApplicationContext(), "Debe de seleccionar un archivo",
+                        Toast.makeText(getActivity().getApplicationContext(), "Por favor seleccione un archivo",
                                 Toast.LENGTH_SHORT).show();
                     } else if (nhojas == 0 || edtxnohojas.getText().toString() == "") {
-                        Toast.makeText(getActivity().getApplicationContext(), "Debe de poner numero de hojas a imprimir",
+                        Toast.makeText(getActivity().getApplicationContext(), "Por favor ingresa el número de hojas a imprimir",
                                 Toast.LENGTH_SHORT).show();
                     } else if(juegos.equals("")||edtJuegosImp.getText().toString()==""){
 
-                        Toast.makeText(getActivity().getApplicationContext(), "Debe de poner numero de juegos a imprimir",
+                        Toast.makeText(getActivity().getApplicationContext(), "Por favor ingresa el número de juegos a imprimir",
                                 Toast.LENGTH_SHORT).show();
                     }else {
                         if(swBlayneg.isChecked()==true){
                             costo=Double.parseDouble(numHojas) * impBlaNeg *Double.parseDouble(juegos);
+                            costoporhoja=costo;
                             costo=costo + ((Application) getActivity().getApplication()).getCostoFolder() + ((Application) getActivity().getApplication()).getCostoEngargolado();
                         }else{
 
 
                             costo=Double.parseDouble(numHojas) * impColor *Double.parseDouble(juegos);
+                            costoporhoja=costo;
                             costo=costo + ((Application) getActivity().getApplication()).getCostoFolder() +((Application) getActivity().getApplication()).getCostoEngargolado();
                         }
 
@@ -315,8 +336,20 @@ public class Compra extends Fragment {
                         Log.d("costo : ", "> "+ costo);
                         Log.d("costo folder : ", "> "+ ((Application) getActivity().getApplication()).getCostoFolder());
                         Log.d("costo engargo : ", "> "+ ((Application) getActivity().getApplication()).getCostoEngargolado());
-
-                            new postCompraAT().execute();
+                        new AlertDialog.Builder(getActivity())
+                                .setTitle("Resumen de compra")
+                                .setMessage("Tu impresión total sera: $"+costo+"\n"+"   ·Costo de impresión: $"+costoporhoja+"\n"+"   ·Costo por folders: $"+((Application) getActivity().getApplication()).getCostoFolder()+"\n"+"   ·Costo por engargolados: $"+((Application) getActivity().getApplication()).getCostoEngargolado())
+                                .setNegativeButton(android.R.string.cancel, null) // dismisses by default
+                                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                    @Override public void onClick(DialogInterface dialog, int which) {
+                                        // do the acknowledged action, beware, this is run on UI thread
+                                        new postCompraAT().execute();
+                                    }
+                                })
+                                .create()
+                                .show();
+                           //
+                        // new postCompraAT().execute();
 
 
 
@@ -348,8 +381,10 @@ public class Compra extends Fragment {
 
         if (txtRuta.getText().toString().equals("Archivo")||(txtRuta.getText().toString().equals(""))) {
             scr.setVisibility(View.INVISIBLE);
+            btnVisuaizar.setVisibility(View.INVISIBLE);
         }else{
             scr.setVisibility(View.VISIBLE);
+            btnVisuaizar.setVisibility(View.VISIBLE);
         }
 
 
@@ -508,7 +543,7 @@ public class Compra extends Fragment {
                 if(respCom.equals("1")){
                 JSONObject json = new JSONObject(respsuesta);
                     Log.d("respsuesta: ", ">"+respsuesta);
-                Toast.makeText(getActivity().getApplicationContext(),json.getString("Descripcion"),// respsuesta,
+                Toast.makeText(getActivity().getApplicationContext(),"Lánzate a la sucursal por tus impresiones",// respsuesta,
                         Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(getActivity().getApplicationContext(),respCom,// respsuesta,
@@ -524,6 +559,7 @@ public class Compra extends Fragment {
             ubicacion="";
             nombre="";
             txtRuta.setText(nombre);
+            btnVisuaizar.setVisibility(View.INVISIBLE);
 
 
         }
