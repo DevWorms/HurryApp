@@ -33,6 +33,8 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     var precioImpresionBN = 0.0
     var precioImpresionColor = 0.0
     
+    var costoEngargolado = 0.0
+    
     var popViewController : ExportarViewController!
     
     override func viewDidLoad() {
@@ -66,9 +68,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         // "\\d+-\\d+" para digito(mas) - digito (mas)
         // "^[1-9]\\d*"// que empiece desde el 1 al 9 y q pueda tener mas digitos o ninguno mas
         let param = "^[1-9]\\d*|\\d+-\\d+"
-        
         let test = NSPredicate(format: "SELF MATCHES %@", param)
-        
         let result =  test.evaluateWithObject(value)
         
         return result
@@ -110,6 +110,39 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         print("siguió")
         
+        // se ejecuta el metodo y obtiene valores para mostrar
+        let precioFinalEnviar = self.calcularTotalImpresion()
+        
+        let message = textoConfirmación(precioFinalEnviar)
+        
+        let alertController = UIAlertController(title: "Resumen de compra", message: message, preferredStyle: .Alert)
+        
+        let okAction = UIAlertAction(title: "Confirmar", style: .Default) {
+            UIAlertAction in
+            
+            self.mandarPostPHP(precioFinalEnviar)
+        }
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .Cancel) {
+            UIAlertAction in
+            return
+        }
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func textoConfirmación(precioFinalEnviar: String) -> String {
+        let mensaje = "Tu impresión total será: $" + precioFinalEnviar + "\n" +
+                        "Costo por Folders: $\(self.costoFolders) \n" +
+                        "Costo por Engargolado: $\(self.costoEngargolado) \n\n" +
+                        "Revisa tu compra."
+        return mensaje
+    }
+    
+    func mandarPostPHP(precioFinalEnviar: String) {
         let alert = UIAlertController(title: nil, message: "Se están enviando tus archivos...", preferredStyle: .Alert)
         alert.view.tintColor = UIColor.blackColor()
         
@@ -123,7 +156,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             self.hurryPrintMethods.cancelConnection()
             return
-            })
+        })
         alert.addAction(callAction)
         
         alert.view.addSubview(loadingIndicator)
@@ -142,7 +175,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             "sucursal" : self.noSucursal,
             "hojas" : textFields[0].text!,
             "intervalo" : textFields[1].text!,
-            "totalimpresion" : self.calcularTotalImpresion(),
+            "totalimpresion" : precioFinalEnviar,
             "blanconegro" : switchesRespuesta[0],
             "color" : switchesRespuesta[1],
             "caratula" : switchesRespuesta[2],
@@ -189,7 +222,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.parseJSON( resultData )
             
         })
-        
     }
     
     func parseJSON(dataForJson: NSData) {
@@ -252,19 +284,20 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         if self.noEngargolado > 0.0 { // engargolado
             
             if ((Int(self.textFields[0].text!)) <= 40){
-                precioPorHojas = precioPorHojas + ( 18.00 * self.noEngargolado )
+                self.costoEngargolado = ( 18.00 * self.noEngargolado )
             }else if ((Int(self.textFields[0].text!)) > 40 && (Int(self.textFields[0].text!)) <= 80){
-                precioPorHojas = precioPorHojas + ( 20.00 * self.noEngargolado )
+                self.costoEngargolado = ( 20.00 * self.noEngargolado )
             }else if ((Int(self.textFields[0].text!)) > 80 && (Int(self.textFields[0].text!)) <= 110){
-                precioPorHojas = precioPorHojas + ( 22.00 * self.noEngargolado )
+                self.costoEngargolado = ( 22.00 * self.noEngargolado )
             }else if ((Int(self.textFields[0].text!)) > 110 && (Int(self.textFields[0].text!)) <= 150){
-                precioPorHojas = precioPorHojas + ( 24.00 * self.noEngargolado )
+                self.costoEngargolado = ( 24.00 * self.noEngargolado )
             }else if ((Int(self.textFields[0].text!)) > 150 && (Int(self.textFields[0].text!)) <= 200){
-                precioPorHojas = precioPorHojas + ( 26.00 * self.noEngargolado )
+                self.costoEngargolado = ( 26.00 * self.noEngargolado )
             }else {
                 let alert = UIAlertView(title: "Error en Engargolado", message: "No podremos engargolar.", delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
             }
+            precioPorHojas = precioPorHojas + self.costoEngargolado
         }
         
         // Folders
@@ -340,7 +373,6 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func openPopUpTutorial() {
-        
         self.popViewController = storyboard!.instantiateViewControllerWithIdentifier("ExportarViewController") as! ExportarViewController
         self.popViewController.showInView( self.view , animated: true, scaleX: 0.72, scaleY: 0.72)
     }

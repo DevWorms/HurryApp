@@ -121,7 +121,12 @@ class PerfilViewController: UIViewController, UIPopoverPresentationControllerDel
 
     @IBAction func showPopOver(sender: AnyObject) {
         
-        self.performSegueWithIdentifier("showViewPopover", sender: nil)
+        let alert = UIAlertView(title: nil, message: "En contrucción.", delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+        
+        // TODO
+        // Pantalla para recargarte en PayPal
+        //self.performSegueWithIdentifier("showViewPopover", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -39,7 +39,8 @@ class ViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDel
 
     @IBAction func loginHurry(sender: AnyObject) {
         
-        if self.contrasenaTxt.text == "" || self.telefonoTxt.text == "" {
+        if self.contrasenaTxt.text == "" || self.telefonoTxt.text == "" ||
+            !validatePassword( self.contrasenaTxt.text! ) {
             
             let alert = UIAlertView(title: "Error en campos", message: "Asegúrate de escribir correctamente en los campos.", delegate: nil, cancelButtonTitle: "OK")
             alert.show()
@@ -107,6 +108,14 @@ class ViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDel
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func validatePassword(value: String) -> Bool {
+        let PHONE_REGEX = "[a-zA-Z0-9]+"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result =  phoneTest.evaluateWithObject(value)
+        
+        return result
     }
     
     // MARK: - UITextFieldDelegate
