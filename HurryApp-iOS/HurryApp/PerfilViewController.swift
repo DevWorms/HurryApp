@@ -30,11 +30,14 @@ class PerfilViewController: UIViewController, UIPopoverPresentationControllerDel
         self.navigationItem.rightBarButtonItem?.action = #selector(PerfilViewController.refresh(_:))
         
         if FBSDKProfile.currentProfile() != nil {
-            
-            self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
             let imageFB = FBSDKProfilePictureView(frame: self.profileImage.frame)
             imageFB.profileID = FBSDKAccessToken.currentAccessToken().userID // "me"
-            //imageFB.pictureMode = FBSDKProfilePictureMode.
+            imageFB.layer.borderWidth = 1
+            imageFB.layer.masksToBounds = false
+            imageFB.layer.borderColor = UIColor.blackColor().CGColor
+            imageFB.layer.cornerRadius = self.profileImage.frame.height/2
+            imageFB.clipsToBounds = true
+            //imageFB.pictureMode = FBSDKProfilePictureMode.Normal
             self.view.addSubview(imageFB)
             
             self.profileName.text = FBSDKProfile.currentProfile().name

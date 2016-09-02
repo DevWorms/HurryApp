@@ -151,7 +151,7 @@ class ComprarViewController: UIViewController, UITableViewDelegate, UITableViewD
         loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
         loadingIndicator.startAnimating();
         
-        let callAction = UIAlertAction(title: "Cancel", style: .Default, handler: {
+        let callAction = UIAlertAction(title: "Cancelar", style: .Default, handler: {
             action in
             
             self.hurryPrintMethods.cancelConnection()

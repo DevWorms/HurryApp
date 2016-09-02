@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -53,9 +54,6 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="loginHurry:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sbW-km-MNY"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -70,13 +68,18 @@
                             <constraint firstItem="N0b-qP-VWK" firstAttribute="trailing" secondItem="IQe-hd-axV" secondAttribute="trailing" id="uuT-ev-0Ar"/>
                             <constraint firstItem="bXL-GN-7pl" firstAttribute="top" secondItem="IQe-hd-axV" secondAttribute="bottom" constant="14" id="zj8-gU-MN7"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="N0b-qP-VWK"/>
+                                <exclude reference="IQe-hd-axV"/>
+                                <exclude reference="bXL-GN-7pl"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="HurryPrint" id="mI3-GM-5tJ">
                         <barButtonItem key="backBarButtonItem" title=" " id="zXM-0P-21y"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="contrasenaTxt" destination="IQe-hd-axV" id="Lzs-sf-8hu"/>
-                        <outlet property="telefonoTxt" destination="N0b-qP-VWK" id="OfR-tn-ckZ"/>
                         <segue destination="hxl-6h-SUQ" kind="show" identifier="RegistroSegue" id="EE7-re-9Ae"/>
                         <segue destination="iqa-bu-kUl" kind="presentation" identifier="PrincipalSegue" modalTransitionStyle="flipHorizontal" id="nuF-7o-HbL"/>
                     </connections>
