@@ -90,7 +90,7 @@ public class JSONParser {
         }
 
         try {
-            Log.d("message: ", "> " + respuesta.message());
+            Log.d("message: ", "> " + respuesta.message().toString());
             if("OK".equals(respuesta.message().toString())){
                 json = respuesta.body().string().toString();
             }else{

@@ -124,16 +124,24 @@ public class Registro extends AppCompatActivity{
                 pas=pass.getText().toString();
                 pas2=pass2.getText().toString();
                 cel= celu.getText().toString();
-                if(nom.equals("") || nom == null || pas.equals("") || pas == null ||cel.equals("") || cel == null ) {
+                if( pas.equals("") || pas == null ||cel.equals("") || cel == null ) {
                     Toast.makeText(Registro.this,"Falta llenar campos.",Toast.LENGTH_SHORT).show();
                 }else{
                     if(pas.equals(pas2)){
+                        if(nom.equals("Nombre")){
+                            Toast.makeText(Registro.this,"Hubo un error con su registro vuelva a intentarlo.",Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Registro.this, Login.class);
+                            startActivity(intent);
+                            finish();
+                        }else{
+                            new getRegstroAT().execute();
+                        }
 
-                       new getRegstroAT().execute();
                     }else{
                         Toast.makeText(Registro.this,"La contraseña no coincide",Toast.LENGTH_SHORT).show();
                     }
                 }
+
 
 
             }
@@ -148,6 +156,7 @@ public class Registro extends AppCompatActivity{
                      } else {
                      Log.d("fb : ", "> " + profile.getCurrentProfile().getFirstName());
                      if (txtNombre != null) {
+                         txtNombre.setVisibility(View.VISIBLE);
                          txtNombre.setText(profile.getCurrentProfile().getName());
                          SharedPreferences sp =
                                  getSharedPreferences("prefe", Activity.MODE_PRIVATE);
@@ -167,7 +176,7 @@ public class Registro extends AppCompatActivity{
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
         if(Profile.getCurrentProfile() != null) {
-            Profile.getCurrentProfile().getFirstName();
+            setProfile(Profile.getCurrentProfile());
             Log.d("Resuult : ", "> " + Profile.getCurrentProfile().getFirstName());
         }
     }
@@ -229,7 +238,7 @@ public class Registro extends AppCompatActivity{
 
 
             }else {
-                resp="registro invalido";
+                resp="Usuario ya registrado, te registraste anteriormente";
             }
 
 

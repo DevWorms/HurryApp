@@ -83,7 +83,7 @@ public class Exp extends Fragment {
                         fragmentTransaction.commit();
 
                     }else{
-                        Toast.makeText(getActivity().getApplicationContext(), "Solo puede elegir Archivos Pdf, Doc o Docx",
+                        Toast.makeText(getActivity().getApplicationContext(), "Solo puede elegir Archivos *.pdf, *.doc o *.docx",
                                 Toast.LENGTH_SHORT).show();
                     }
 

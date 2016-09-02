@@ -30,7 +30,8 @@
                     android:textColor="#ff0037"
                     android:id="@+id/txtNomRegis"
                     android:gravity="center_horizontal"
-                    android:layout_marginBottom="10dp" />
+                    android:layout_marginBottom="10dp"
+                    android:visibility="invisible" />
 
                 <EditText
                     android:layout_width="280dp"
