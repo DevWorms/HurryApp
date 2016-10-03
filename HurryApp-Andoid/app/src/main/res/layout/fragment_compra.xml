@@ -157,7 +157,7 @@
                             android:layout_width="170dp"
                             android:layout_height="30dp"
                             android:textColor="#f5f5f5"
-                            android:text="Hojas"
+                            android:text="Intervalo"
                             android:id="@+id/hojas"
                             android:textSize="20dp"
                             android:gravity="left"

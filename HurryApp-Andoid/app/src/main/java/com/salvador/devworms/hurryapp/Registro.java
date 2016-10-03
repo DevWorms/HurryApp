@@ -20,6 +20,9 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphRequestAsyncTask;
+import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
@@ -38,7 +41,8 @@ public class Registro extends AppCompatActivity{
     EditText celu;
     EditText pass,pass2;
     TextView txtNombre;
-    String nom,pas,pas2,cel,resp;
+    LoginResult loginResult1;
+    String nom,pas,pas2,cel,resp,email;
     CallbackManager callbackManager;
 
     private Profile pendingUpdateForUser;
@@ -59,6 +63,7 @@ public class Registro extends AppCompatActivity{
             @Override
             protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
                               setProfile(currentProfile);
+
                             }
                   };
 
@@ -66,14 +71,7 @@ public class Registro extends AppCompatActivity{
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-                        AccessToken accessToken = loginResult.getAccessToken();
-                        Log.e("FB", String.valueOf(accessToken));
-                        Profile profile = Profile.getCurrentProfile();
 
-                        if (profile != null) {
-
-                            Log.e("FB",  profile.getName());
-                        }
                     }
 
                     @Override
@@ -86,7 +84,7 @@ public class Registro extends AppCompatActivity{
                         // App code
                     }
                 });
-        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile","email","contact_email"));
         Profile.fetchProfileForCurrentAccessToken();
         setProfile(Profile.getCurrentProfile());
 
@@ -95,7 +93,7 @@ public class Registro extends AppCompatActivity{
         txtNombre= (TextView)findViewById(R.id.txtNomRegis);
         celu=(EditText)findViewById(R.id.edt_celular);
         pass=(EditText)findViewById(R.id.edt_Pas);
-        pass2=(EditText)findViewById(R.id.edt_pass2);
+
         Button btnCanRegis=(Button)findViewById(R.id.btnCanRegis);
 
         Button btnRegis=(Button)findViewById(R.id.btn_registrar);
@@ -122,24 +120,22 @@ public class Registro extends AppCompatActivity{
 
                 nom= txtNombre.getText().toString();
                 pas=pass.getText().toString();
-                pas2=pass2.getText().toString();
+
                 cel= celu.getText().toString();
                 if( pas.equals("") || pas == null ||cel.equals("") || cel == null ) {
                     Toast.makeText(Registro.this,"Falta llenar campos.",Toast.LENGTH_SHORT).show();
                 }else{
-                    if(pas.equals(pas2)){
-                        if(nom.equals("Nombre")){
-                            Toast.makeText(Registro.this,"Hubo un error con su registro vuelva a intentarlo.",Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Registro.this, Login.class);
-                            startActivity(intent);
-                            finish();
-                        }else{
-                            new getRegstroAT().execute();
-                        }
 
+                    if(nom.equals("Nombre")){
+                        Toast.makeText(Registro.this,"Hubo un error con su registro vuelva a intentarlo.",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Registro.this, Login.class);
+                        startActivity(intent);
+                        finish();
                     }else{
-                        Toast.makeText(Registro.this,"La contraseña no coincide",Toast.LENGTH_SHORT).show();
+                        new getRegstroAT().execute();
                     }
+
+
                 }
 
 
@@ -154,10 +150,13 @@ public class Registro extends AppCompatActivity{
                  if (profile == null) {
 
                      } else {
-                     Log.d("fb : ", "> " + profile.getCurrentProfile().getFirstName());
+
                      if (txtNombre != null) {
                          txtNombre.setVisibility(View.VISIBLE);
                          txtNombre.setText(profile.getCurrentProfile().getName());
+
+
+
                          SharedPreferences sp =
                                  getSharedPreferences("prefe", Activity.MODE_PRIVATE);
                          SharedPreferences.Editor editor = sp.edit();
@@ -177,6 +176,7 @@ public class Registro extends AppCompatActivity{
         callbackManager.onActivityResult(requestCode, resultCode, data);
         if(Profile.getCurrentProfile() != null) {
             setProfile(Profile.getCurrentProfile());
+
             Log.d("Resuult : ", "> " + Profile.getCurrentProfile().getFirstName());
         }
     }
@@ -211,7 +211,7 @@ public class Registro extends AppCompatActivity{
 
             String body= "{\n" +
                     "\"nombre\" : \""+nom+"\",\n" +
-                    "\"contrasena\" : \""+pas+"\",\n" +
+                    "\"correo\" : \""+pas+"\",\n" +
                     "\"telefono\" : \""+cel+"\",\n" +
                     "\"token\" : \""+token+"\"\n" +
                     "}";
@@ -254,7 +254,7 @@ public class Registro extends AppCompatActivity{
             // dismiss the dialog after getting all albums
             Log.d("RegistroResp : ", "> " + resp);
             pDialog.dismiss();
-            if(resp!="registro invalido"){
+            if(resp!="Usuario ya registrado, te registraste anteriormente"){
                 Intent i = new Intent(Registro.this, MenuActivity.class);
                 startActivity(i);
                 finish();

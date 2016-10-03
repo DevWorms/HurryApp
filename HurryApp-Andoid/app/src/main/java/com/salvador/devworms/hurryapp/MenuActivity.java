@@ -60,7 +60,7 @@ public class MenuActivity extends AppCompatActivity
         txtSaldo=(TextView)findViewById(R.id.saldo);
         txtSaldoReg=(TextView)findViewById(R.id.saldoRegalo);
         name=(TextView)findViewById(R.id.nombreperfil);
-        imageViewFacebookPicture=(ImageView)findViewById(R.id.imageViewFacebookPicture);
+        imageViewFacebookPicture=(ImageView)findViewById(R.id.imgFoto);
         //fotoper=(ProfilePictureView)findViewById(R.id.profilePicture);
         SharedPreferences sp = getSharedPreferences("prefe", Activity.MODE_PRIVATE);
         Apikey = sp.getString("APIkey","");
